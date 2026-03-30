@@ -20,6 +20,10 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/privacy-policy": "Privacy Policy",
   "/terms-and-conditions": "Terms of Service",
   "/about-us": "About Us",
+  "/research": "Research",
+  "/research/industry-survey": "Industry Survey",
+  "/research/regulatory-environment": "Regulatory Environment",
+  "/research/legal-case-data": "Legal Case Data",
 };
 
 function buildBreadcrumbLd(path: string): string {

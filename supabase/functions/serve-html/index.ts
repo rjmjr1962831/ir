@@ -9,6 +9,10 @@ import { handleGeoLedger } from "./pages/geo-ledger.ts";
 import { renderAbout } from "./pages/about.ts";
 import { handleDashboard } from "./pages/dashboard.ts";
 import { renderSchedule } from "./pages/schedule.ts";
+import { renderResearchIndex } from "./pages/research-index.ts";
+import { renderResearchIndustry } from "./pages/research-industry.ts";
+import { renderResearchRegulatory } from "./pages/research-regulatory.ts";
+import { renderResearchLegal } from "./pages/research-legal.ts";
 
 const ROUTES: Record<string, () => string> = {
   "/": renderHome,
@@ -20,6 +24,10 @@ const ROUTES: Record<string, () => string> = {
   "/privacy-policy": renderPrivacy,
   "/terms-and-conditions": renderTerms,
   "/about-us": renderAbout,
+  "/research": renderResearchIndex,
+  "/research/industry-survey": renderResearchIndustry,
+  "/research/regulatory-environment": renderResearchRegulatory,
+  "/research/legal-case-data": renderResearchLegal,
 };
 
 function render404(): string {

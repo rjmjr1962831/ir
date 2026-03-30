@@ -61,6 +61,60 @@ export function renderResearchIndustry(): string {
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
 
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">Time Is Liability: Why Speed and Precision Win</h2>
+    <p><strong>Why this matters.</strong> In recall response, every day between "we found a problem" and "the right person actually took the product out of use" is pure, compounding liability. Instant Recall closes that gap by delivering real-time, product-matched alerts across all agencies, instead of waiting for weekly emails, media cycles, or scattered apps.</p>
+
+    <h3>The Status Quo Is Too Slow and Too Noisy</h3>
+    <p>CPSC has had to re-announce at least 46 recalls that were tied to ~150 deaths and 300 injuries because the original notices did not reach enough consumers. At least 16 people have died from products that were already recalled -- inclined sleepers, dressers, bathrobes, cribs, bed rails -- simply because they never heard about the recall.</p>
+    <p>Survey and performance data show that about 70 percent of Americans have not heard of a recall affecting their products within a five-year period, and consumer product recall completion still hovers around 6 percent.</p>
+
+    <h3>How Existing Channels Fall Short</h3>
+    <h4>Government lists and portals</h4>
+    <p>Federal agencies publish recall notices on their own sites and via generic email/RSS feeds. To be fully protected, a single household would need to monitor at least six separate systems (CPSC, FDA, NHTSA, FSIS, EPA, Coast Guard), none of which know what that household actually owns.</p>
+
+    <h4>Retailer and app fragmentation</h4>
+    <ul>
+      <li>Retailer systems like Amazon's "Your Recalls and Product Safety Alerts" are strong but only cover that retailer's purchase history.</li>
+      <li>Consumer apps (Whystle, ProductAlert, etc.) are partial, often dormant, and limited to specific categories or geographies.</li>
+      <li>No existing consumer service provides real-time, personalized coverage across all U.S. recall agencies.</li>
+    </ul>
+
+    <blockquote><strong>Key takeaway.</strong> When your notification stack is a mix of press releases, static web pages, and uncoordinated apps, you get exactly the outcomes the data shows: single-digit completion and repeated deaths and injuries long after recalls are announced.</blockquote>
+
+    <h3>Instant Recall's Advantage: Fast, Targeted, Documented</h3>
+    <h4>Speed by design</h4>
+    <p>Instant Recall is engineered to ingest recall feeds from all federal agencies in near real time and issue alerts within minutes, not days or weeks. That speed directly reduces the window in which severe incidents can occur after a recall.</p>
+
+    <h4>Precision that cuts through recall fatigue</h4>
+    <ul>
+      <li><strong>Inventory-based matching.</strong> Alerts are tied to the specific brands, models, UPCs, and serial ranges in a household or facility inventory -- avoiding the "spray and pray" noise of generic lists.</li>
+      <li><strong>Secondary-market coverage.</strong> Scan-before-you-buy checks for thrift stores, Facebook Marketplace, and garage sales address a blind spot where recalled products currently recirculate with zero screening.</li>
+      <li><strong>Institutional protection.</strong> Childcare centers, schools, property managers, hospitality, and healthcare can continuously screen installed equipment and fixtures for recalls.</li>
+    </ul>
+
+    <h4>From awareness to action</h4>
+    <p>Instant Recall goes beyond "this product is recalled" by embedding what to do next: where to take the product, how to get a refund or replacement, deadlines, and direct links or pre-filled forms. It can send reminders until the recall is resolved, creating a closed-loop experience rather than a one-time blast.</p>
+
+    <h3>The AI and GEO Edge</h3>
+    <p>Consumers increasingly ask AI assistants whether specific products are recalled. Today, AI systems have to scrape unstructured, inconsistent HTML from multiple agency sites and stitch it together. Instant Recall is designed to become the structured, multi-agency source that those systems cite by default -- complete with standardized identifiers, severity, and remedy data.</p>
+    <p>Owning that "recall answer layer" gives Instant Recall durable distribution and citation across assistants like ChatGPT, Gemini, Claude, and others, while giving regulators and industry a single, modern interface to an otherwise fragmented system.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; -- The fastest, most reliable way to connect recalls to the people who need to act.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
+
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
     <ol>
@@ -562,6 +616,21 @@ export function renderResearchIndustry(): string {
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#c8a951;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#c8a951;font-size:.72rem}
 </style>
 
 <script type="application/ld+json">${BREADCRUMB_LD}</script>`;

@@ -46,6 +46,67 @@ export function renderResearchRegulatory(): string {
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
 
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">The True Financial Cost of Recalls</h2>
+    <p><strong>Why this matters.</strong> For most brands, the question is not whether a recall will happen but how expensive it will be. With typical recall events costing eight to ten figures when you add logistics, penalties, class actions, and brand damage, a relatively small investment in faster, better notification is one of the highest-ROI risk controls available.</p>
+
+    <h3>What Recalls Really Cost</h3>
+    <h4>Direct costs <span class="exec-pill">Hard dollars</span></h4>
+    <ul>
+      <li>Top 10 products-liability and mass-tort settlements totalled ~US$50.3B (2022), US$25.8B (2023), and US$23.4B (2024), with billions more by mid-2025.</li>
+      <li>Nearly half of companies report recall costs between US$10M and US$50M; ~13 percent exceed US$50M for a single event.</li>
+      <li>Analysts estimate that a major recall can reach ~US$600M once field actions, warranty, lost sales, and brand campaigns are accounted for.</li>
+      <li>The medical device sector alone sees up to US$5B annually in recall-related expense.</li>
+    </ul>
+
+    <h4>Indirect and long-tail costs <span class="exec-pill">Hidden impact</span></h4>
+    <ul>
+      <li>Deaths and injuries that occur after recall issuance (Rock 'n Play, MALM, Takata, Gree) keep claims open for years and drive the largest payouts.</li>
+      <li>Brand damage: more than half of consumers say they would avoid a brand that has had a recall, and many expect generous remedies and frictionless returns.</li>
+      <li>Downstream effects include retailer de-listings, tighter contract terms, and higher cost of capital after large events.</li>
+    </ul>
+
+    <h3>Insurance, Capital, and Compliance</h3>
+    <p>Standard product-liability policies cover bodily injury and property damage, but they generally do not pay for recall logistics, notification, and brand rehabilitation. Those costs fall under specialized recall insurance.</p>
+    <p>Typical patterns from market guidance:</p>
+    <ul>
+      <li>Recall insurance premiums often start around US$15,000 annually with ~US$25,000 deductibles, scaling sharply with claims and perceived risk controls.</li>
+      <li>Insurers and brokers now actively look for evidence of recall preparedness and notification systems when they underwrite and price coverage.</li>
+      <li>Regulators are imposing more frequent and larger civil penalties, making poor recall execution a direct P&amp;L line item, not just a legal issue.</li>
+    </ul>
+
+    <blockquote><strong>Key takeaway.</strong> The most expensive part of a recall is rarely the initial pull. It is the extended tail of injuries, lawsuits, and brand erosion that happens when products remain in the field because customers never get the message.</blockquote>
+
+    <h3>Instant Recall's Financial Value</h3>
+    <h4>Fewer post-recall injuries, fewer "nuclear" claims</h4>
+    <p>By getting targeted notices to affected customers in minutes instead of weeks, Instant Recall materially reduces the window in which catastrophic injuries can occur after a recall. Every prevented fatality, amputation, or house fire avoids a seven- or eight-figure claim.</p>
+
+    <h4>Better terms from insurers and partners</h4>
+    <ul>
+      <li><strong>For insurers.</strong> Instant Recall provides data that can support premium credits, broader coverage, or preferred status for companies with demonstrably higher completion rates.</li>
+      <li><strong>For retailers and platforms.</strong> Integrated inventory screening and automated customer notification reduce the risk of fines (e.g., TJX's US$13M penalty for selling recalled inclined sleepers) and protect partner relationships.</li>
+      <li><strong>For manufacturers.</strong> Audit-ready logs of outreach efforts strengthen your negotiating position with both regulators and plaintiffs' counsel.</li>
+    </ul>
+
+    <h4>ROI framing for decision-makers</h4>
+    <p>For a mid-size company with typical recall exposure in the tens of millions of dollars, a high-four- or low-five-figure annual investment in Instant Recall can be justified if it prevents a single large claim or civil penalty.</p>
+    <p>For large brands and platforms, the combination of avoided penalties, improved insurance economics, and preserved brand equity makes Instant Recall a small line item relative to the risk it controls.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; -- The fastest, most reliable way to initiate and execute recalls with financial discipline.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
+
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
     <ol>
@@ -479,6 +540,22 @@ export function renderResearchRegulatory(): string {
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#c8a951;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-pill{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,.5);margin-left:6px;vertical-align:middle}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#c8a951;font-size:.72rem}
 </style>
 
 <script type="application/ld+json">${BREADCRUMB_LD}</script>`;

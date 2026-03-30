@@ -6,6 +6,7 @@ import { renderPortal } from "./pages/portal.ts";
 import { renderPrivacy } from "./pages/privacy.ts";
 import { renderTerms } from "./pages/terms.ts";
 import { handleGeoLedger } from "./pages/geo-ledger.ts";
+import { renderAbout } from "./pages/about.ts";
 
 const ROUTES: Record<string, () => string> = {
   "/": renderHome,
@@ -14,6 +15,7 @@ const ROUTES: Record<string, () => string> = {
   "/portal": renderPortal,
   "/privacy-policy": renderPrivacy,
   "/terms-and-conditions": renderTerms,
+  "/about-us": renderAbout,
 };
 
 function render404(): string {

@@ -66,6 +66,12 @@ a:hover{text-decoration:underline}
 .site-footer .footer-links{margin-bottom:.75rem}
 .site-footer .footer-links a{margin:0 .75rem}
 
+/* About / Bio cards */
+.about-intro{max-width:800px;margin:0 auto 2rem;font-size:1.05rem;color:#444;line-height:1.8}
+.about-intro p{margin-bottom:1rem}
+.bio-card h3{font-size:1.15rem;color:#0d47a1;margin-bottom:.25rem}
+.bio-role{font-weight:600;color:#1565c0;font-size:.95rem;margin-bottom:.75rem}
+
 /* Responsive */
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}

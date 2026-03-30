@@ -8,8 +8,8 @@ interface ScoreDimension {
 }
 
 interface ScoreHistory {
-  recorded_at: string;
-  composite_score: number;
+  score_date: string;
+  score: number;
 }
 
 async function fetchGeoScore(): Promise<{ composite: number; dimensions: ScoreDimension[] }> {
@@ -32,7 +32,7 @@ async function fetchGeoScore(): Promise<{ composite: number; dimensions: ScoreDi
 async function fetchScoreHistory(): Promise<ScoreHistory[]> {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/geo_score_history?select=recorded_at,composite_score&order=recorded_at.asc&limit=30`,
+      `${SUPABASE_URL}/rest/v1/geo_score_history?select=score_date,score&order=score_date.asc&limit=30`,
       { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -67,78 +67,79 @@ function renderGauge(score: number): string {
   </svg>`;
 }
 
-function renderTrendChart(history: ScoreHistory[]): string {
-  const W = 520, H = 180, PAD_L = 40, PAD_R = 15, PAD_T = 20, PAD_B = 30;
+function renderColumnChart(history: ScoreHistory[], liveScore: number): string {
+  const W = 520, H = 220, PAD_L = 45, PAD_R = 20, PAD_T = 30, PAD_B = 45;
   const plotW = W - PAD_L - PAD_R;
   const plotH = H - PAD_T - PAD_B;
+  const maxScore = 100;
 
-  // Use sample data if no history
-  const data = history.length >= 2 ? history : [
-    { recorded_at: "2026-03-01", composite_score: 52 },
-    { recorded_at: "2026-03-08", composite_score: 58 },
-    { recorded_at: "2026-03-15", composite_score: 65 },
-    { recorded_at: "2026-03-22", composite_score: 72 },
-    { recorded_at: "2026-03-30", composite_score: 78 },
-  ];
+  // Build data: historical + today live
+  const today = new Date().toISOString().slice(0, 10);
+  const data: { date: string; score: number; isLive: boolean }[] = [];
 
-  const scores = data.map(d => d.composite_score);
-  const minS = Math.max(0, Math.min(...scores) - 10);
-  const maxS = Math.min(100, Math.max(...scores) + 10);
-  const range = maxS - minS || 1;
+  for (const h of history) {
+    if (h.score_date === today) continue; // skip DB row for today, we use live
+    data.push({ date: h.score_date, score: h.score, isLive: false });
+  }
+  data.push({ date: today, score: liveScore, isLive: true });
 
-  const points = data.map((d, i) => {
-    const x = PAD_L + (i / (data.length - 1)) * plotW;
-    const y = PAD_T + plotH - ((d.composite_score - minS) / range) * plotH;
-    return `${x.toFixed(1)},${y.toFixed(1)}`;
-  });
+  const n = data.length;
+  if (n === 0) return '<div style="color:#556677;font-size:.85rem">No score data yet.</div>';
 
-  const polyline = points.join(" ");
+  const barGap = 12;
+  const totalGaps = (n - 1) * barGap;
+  const barWidth = Math.min(80, Math.max(40, (plotW - totalGaps) / n));
+  const totalBarsWidth = n * barWidth + totalGaps;
+  const offsetX = PAD_L + (plotW - totalBarsWidth) / 2;
 
-  // Gradient fill area
-  const firstX = PAD_L;
-  const lastX = PAD_L + plotW;
-  const areaPoints = `${firstX},${PAD_T + plotH} ${polyline} ${lastX},${PAD_T + plotH}`;
-
-  // Date labels (first and last)
   const fmtDate = (s: string) => {
-    const d = new Date(s);
-    return `${d.getMonth() + 1}/${d.getDate()}`;
+    const parts = s.split("-");
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return `${months[parseInt(parts[1], 10) - 1]} ${parseInt(parts[2], 10)}`;
   };
 
-  // Y-axis labels
-  const yLabels = [minS, Math.round((minS + maxS) / 2), maxS];
+  // Y-axis grid lines at 0, 25, 50, 75, 100
+  const yTicks = [0, 25, 50, 75, 100];
 
-  const isSample = history.length < 2;
+  let bars = "";
+  let labels = "";
+  let values = "";
+
+  for (let i = 0; i < n; i++) {
+    const d = data[i];
+    const x = offsetX + i * (barWidth + barGap);
+    const barH = (d.score / maxScore) * plotH;
+    const y = PAD_T + plotH - barH;
+    const color = scoreColor(d.score);
+
+    // Bar with rounded top corners
+    bars += `<rect x="${x}" y="${y}" width="${barWidth}" height="${barH}" rx="4" ry="4" fill="${color}" opacity="${d.isLive ? 1 : 0.85}"/>`;
+
+    // Score value on top of bar
+    values += `<text x="${x + barWidth / 2}" y="${y - 8}" text-anchor="middle" fill="${color}" font-size="14" font-weight="800" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${d.score}</text>`;
+
+    // Date label below x-axis
+    labels += `<text x="${x + barWidth / 2}" y="${H - PAD_B + 18}" text-anchor="middle" fill="#8899aa" font-size="11" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${fmtDate(d.date)}</text>`;
+
+    // "LIVE" indicator for today
+    if (d.isLive) {
+      labels += `<text x="${x + barWidth / 2}" y="${H - PAD_B + 33}" text-anchor="middle" fill="#00d4aa" font-size="9" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,sans-serif" letter-spacing="1.5">LIVE</text>`;
+    }
+  }
+
+  const gridLines = yTicks.map(v => {
+    const y = PAD_T + plotH - (v / maxScore) * plotH;
+    return `<line x1="${PAD_L}" y1="${y}" x2="${W - PAD_R}" y2="${y}" stroke="#1a2a3a" stroke-width="1"/>
+    <text x="${PAD_L - 8}" y="${y + 4}" text-anchor="end" fill="#556677" font-size="10" font-family="monospace">${v}</text>`;
+  }).join("\n");
 
   return `<div style="position:relative">
-    ${isSample ? '<div style="position:absolute;top:8px;right:12px;font-size:.7rem;color:#556677;text-transform:uppercase;letter-spacing:1px">Sample Data</div>' : ''}
     <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;max-width:100%">
-      <defs>
-        <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#00d4aa" stop-opacity="0.3"/>
-          <stop offset="100%" stop-color="#00d4aa" stop-opacity="0.02"/>
-        </linearGradient>
-      </defs>
       <rect width="${W}" height="${H}" rx="8" fill="#111d28"/>
-      <!-- grid lines -->
-      ${yLabels.map(v => {
-        const y = PAD_T + plotH - ((v - minS) / range) * plotH;
-        return `<line x1="${PAD_L}" y1="${y}" x2="${W - PAD_R}" y2="${y}" stroke="#1a2a3a" stroke-width="1"/>
-        <text x="${PAD_L - 6}" y="${y + 4}" text-anchor="end" fill="#556677" font-size="10" font-family="monospace">${v}</text>`;
-      }).join("\n")}
-      <!-- area fill -->
-      <polygon points="${areaPoints}" fill="url(#trendFill)"/>
-      <!-- line -->
-      <polyline points="${polyline}" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-      <!-- dots -->
-      ${data.map((d, i) => {
-        const x = PAD_L + (i / (data.length - 1)) * plotW;
-        const y = PAD_T + plotH - ((d.composite_score - minS) / range) * plotH;
-        return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="#00d4aa" stroke="#111d28" stroke-width="1.5"/>`;
-      }).join("\n")}
-      <!-- date labels -->
-      <text x="${PAD_L}" y="${H - 5}" fill="#556677" font-size="10" font-family="monospace">${fmtDate(data[0].recorded_at)}</text>
-      <text x="${W - PAD_R}" y="${H - 5}" text-anchor="end" fill="#556677" font-size="10" font-family="monospace">${fmtDate(data[data.length - 1].recorded_at)}</text>
+      ${gridLines}
+      ${bars}
+      ${values}
+      ${labels}
     </svg>
   </div>`;
 }
@@ -248,7 +249,7 @@ export async function handleDashboard(_req: Request): Promise<Response> {
     </div>
     <div class="geo-hero-right">
       <h3>Score Trend</h3>
-      ${renderTrendChart(history)}
+      ${renderColumnChart(history, scoreData.composite)}
     </div>
   </div>
 

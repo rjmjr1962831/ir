@@ -1,4 +1,15 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\", </ai-content-index.json>; rel=\"alternate\"; type=\"application/json\""
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/api/html" },
     { "source": "/solution", "destination": "/api/html" },
@@ -12,6 +23,11 @@
     { "source": "/geo-ledger", "destination": "/api/html" },
     { "source": "/robots.txt", "destination": "/api/robots" },
     { "source": "/llms.txt", "destination": "/api/llms" },
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
+    { "source": "/llms-full.txt", "destination": "/api/llms-full" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/ai-content-index.json", "destination": "/api/ai-content-index" },
+    { "source": "/.well-known/ai-content-index.json", "destination": "/api/ai-content-index" },
+    { "source": "/for-ai", "destination": "/api/for-ai" },
+    { "source": "/for-ai.txt", "destination": "/api/for-ai" }
   ]
 }

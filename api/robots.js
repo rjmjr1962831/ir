@@ -8,6 +8,12 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.instantrecall.com/sitemap.xml
+
+# AI Discovery Endpoints
+# llms.txt: https://www.instantrecall.com/llms.txt
+# llms-full.txt: https://www.instantrecall.com/llms-full.txt
+# ai-content-index.json: https://www.instantrecall.com/ai-content-index.json
+# for-ai.txt: https://www.instantrecall.com/for-ai.txt
 `;
 
   return new Response(body, {

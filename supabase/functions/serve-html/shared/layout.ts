@@ -10,6 +10,36 @@ interface LayoutOptions {
   body: string;
 }
 
+const BREADCRUMB_NAMES: Record<string, string> = {
+  "/": "Home",
+  "/solution": "Services",
+  "/contact-instant-recall": "Contact",
+  "/portal": "Login",
+  "/privacy-policy": "Privacy Policy",
+  "/terms-and-conditions": "Terms of Service",
+  "/about-us": "About Us",
+};
+
+function buildBreadcrumbLd(path: string): string {
+  const items: { name: string; url: string }[] = [
+    { name: "Home", url: SITE },
+  ];
+  if (path !== "/") {
+    const name = BREADCRUMB_NAMES[path] || path.slice(1);
+    items.push({ name, url: `${SITE}${path}` });
+  }
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  });
+}
+
 function header(): string {
   return `<header class="site-header">
   <a href="/" class="logo">Instant Recall</a>
@@ -55,6 +85,7 @@ export function renderPage(opts: LayoutOptions): string {
   <meta name="twitter:description" content="${opts.description}">
   <style>${CSS}</style>
   ${opts.jsonLd ? `<script type="application/ld+json">${opts.jsonLd}</script>` : ""}
+  <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>
 </head>
 <body>
 ${header()}

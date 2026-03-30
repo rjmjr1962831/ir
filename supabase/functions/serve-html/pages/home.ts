@@ -1,23 +1,38 @@
 import { renderPage } from "../shared/layout.ts";
 
-const JSON_LD = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Instant Recall LLC",
-  alternateName: "BellTower Technologies",
-  url: "https://www.instantrecall.com",
-  telephone: "+1-214-220-8000",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "5900 South Lake Forest Dr., Suite 300",
-    addressLocality: "McKinney",
-    addressRegion: "TX",
-    postalCode: "75070",
-    addressCountry: "US",
+const JSON_LD = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Instant Recall LLC",
+    alternateName: "BellTower Technologies",
+    url: "https://www.instantrecall.com",
+    telephone: "+1-214-220-8000",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "5900 South Lake Forest Dr., Suite 300",
+      addressLocality: "McKinney",
+      addressRegion: "TX",
+      postalCode: "75070",
+      addressCountry: "US",
+    },
+    description:
+      "The Leader in Food Recall Preparedness and Response. Protecting Your Customers, Your Organization and Your Brand.",
+    foundingDate: "2000",
+    sameAs: ["https://www.belltowertech.com"],
   },
-  description:
-    "The Leader in Food Recall Preparedness and Response. Protecting Your Customers, Your Organization and Your Brand.",
-});
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Instant Recall",
+    url: "https://www.instantrecall.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.instantrecall.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  },
+]);
 
 export function renderHome(): string {
   const body = `

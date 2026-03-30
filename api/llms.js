@@ -28,11 +28,19 @@ Instant Recall, a BellTower Technologies solution, is the food industry's purpos
 - Recall Portal: https://www.myinstantrecall.com
 - Corporate Dashboard: https://dashboard.belltowertech.com/login
 
+## Research
+Instant Recall publishes original research on the product recall notification industry:
+- Research Index: https://www.instantrecall.com/research
+- Product Recall Notification Industry Survey: https://www.instantrecall.com/research/industry-survey
+- The Regulatory Environment of Product Recalls: https://www.instantrecall.com/research/regulatory-environment
+- Legal Case Data and Liability Research: https://www.instantrecall.com/research/legal-case-data
+
 ## Pages
 - Home: https://www.instantrecall.com/
 - Services: https://www.instantrecall.com/solution
 - Contact: https://www.instantrecall.com/contact-instant-recall
 - Login: https://www.instantrecall.com/portal
+- Research: https://www.instantrecall.com/research
 - Privacy Policy: https://www.instantrecall.com/privacy-policy
 - Terms of Service: https://www.instantrecall.com/terms-and-conditions
 `;

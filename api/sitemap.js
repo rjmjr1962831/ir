@@ -11,6 +11,10 @@ export default function handler() {
     { loc: "/portal", priority: "0.7", changefreq: "monthly" },
     { loc: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
     { loc: "/terms-and-conditions", priority: "0.3", changefreq: "yearly" },
+    { loc: "/research", priority: "0.8", changefreq: "monthly" },
+    { loc: "/research/industry-survey", priority: "0.7", changefreq: "monthly" },
+    { loc: "/research/regulatory-environment", priority: "0.7", changefreq: "monthly" },
+    { loc: "/research/legal-case-data", priority: "0.7", changefreq: "monthly" },
   ];
 
   const entries = urls

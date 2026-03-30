@@ -2,7 +2,7 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrck
 const SUPABASE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 interface ScoreDimension {
-  dimension: string;
+  dimension_name: string;
   score: number;
   weight: number;
 }
@@ -15,7 +15,7 @@ interface ScoreHistory {
 async function fetchGeoScore(): Promise<{ composite: number; dimensions: ScoreDimension[] }> {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/geo_score_dimensions?select=dimension,score,weight&order=dimension.asc`,
+      `${SUPABASE_URL}/rest/v1/geo_score_dimensions?select=dimension_name,score,weight&order=weight.desc`,
       { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

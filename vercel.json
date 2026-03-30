@@ -1,5 +1,16 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/api/html" }
+    { "source": "/", "destination": "/api/html" },
+    { "source": "/solution", "destination": "/api/html" },
+    { "source": "/contact-instant-recall", "destination": "/api/html" },
+    { "source": "/contact", "destination": "/api/html" },
+    { "source": "/stop", "destination": "/api/html" },
+    { "source": "/portal", "destination": "/api/html" },
+    { "source": "/privacy-policy", "destination": "/api/html" },
+    { "source": "/terms-and-conditions", "destination": "/api/html" },
+    { "source": "/geo-ledger", "destination": "/api/html" },
+    { "source": "/robots.txt", "destination": "/api/robots" },
+    { "source": "/llms.txt", "destination": "/api/llms" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
   ]
 }

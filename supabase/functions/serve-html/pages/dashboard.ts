@@ -1,18 +1,160 @@
-export function renderDashboard(): string {
-  const now = new Date();
-  const dateStr = now.toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-  const timeStr = now.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    timeZoneName: "short",
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrcknm.supabase.co";
+const SUPABASE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+interface ScoreDimension {
+  dimension: string;
+  score: number;
+  weight: number;
+}
+
+interface ScoreHistory {
+  recorded_at: string;
+  composite_score: number;
+}
+
+async function fetchGeoScore(): Promise<{ composite: number; dimensions: ScoreDimension[] }> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/geo_score_dimensions?select=dimension,score,weight&order=dimension.asc`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const dims: ScoreDimension[] = await res.json();
+    if (!dims.length) return { composite: 0, dimensions: [] };
+    const totalWeight = dims.reduce((s, d) => s + (d.weight || 1), 0);
+    const composite = Math.round(dims.reduce((s, d) => s + d.score * (d.weight || 1), 0) / totalWeight);
+    return { composite, dimensions: dims };
+  } catch {
+    return { composite: 0, dimensions: [] };
+  }
+}
+
+async function fetchScoreHistory(): Promise<ScoreHistory[]> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/geo_score_history?select=recorded_at,composite_score&order=recorded_at.asc&limit=30`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
+function scoreColor(score: number): string {
+  if (score >= 80) return "#00d4aa";
+  if (score >= 50) return "#ffd93d";
+  return "#ff6b6b";
+}
+
+function renderGauge(score: number): string {
+  const color = scoreColor(score);
+  const radius = 70;
+  const stroke = 10;
+  const circumference = 2 * Math.PI * radius;
+  const pct = Math.min(score, 100) / 100;
+  const dashOffset = circumference * (1 - pct);
+
+  return `<svg viewBox="0 0 180 180" width="180" height="180" style="display:block">
+    <circle cx="90" cy="90" r="${radius}" fill="none" stroke="#1a2a3a" stroke-width="${stroke}"/>
+    <circle cx="90" cy="90" r="${radius}" fill="none" stroke="${color}" stroke-width="${stroke}"
+      stroke-dasharray="${circumference}" stroke-dashoffset="${dashOffset}"
+      stroke-linecap="round" transform="rotate(-90 90 90)"/>
+    <text x="90" y="82" text-anchor="middle" fill="${color}" font-size="42" font-weight="800" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${score}</text>
+    <text x="90" y="105" text-anchor="middle" fill="#8899aa" font-size="13" font-family="-apple-system,BlinkMacSystemFont,sans-serif">/ 100</text>
+    <text x="90" y="130" text-anchor="middle" fill="#556677" font-size="11" font-family="-apple-system,BlinkMacSystemFont,sans-serif">Target: 90+</text>
+  </svg>`;
+}
+
+function renderTrendChart(history: ScoreHistory[]): string {
+  const W = 520, H = 180, PAD_L = 40, PAD_R = 15, PAD_T = 20, PAD_B = 30;
+  const plotW = W - PAD_L - PAD_R;
+  const plotH = H - PAD_T - PAD_B;
+
+  // Use sample data if no history
+  const data = history.length >= 2 ? history : [
+    { recorded_at: "2026-03-01", composite_score: 52 },
+    { recorded_at: "2026-03-08", composite_score: 58 },
+    { recorded_at: "2026-03-15", composite_score: 65 },
+    { recorded_at: "2026-03-22", composite_score: 72 },
+    { recorded_at: "2026-03-30", composite_score: 78 },
+  ];
+
+  const scores = data.map(d => d.composite_score);
+  const minS = Math.max(0, Math.min(...scores) - 10);
+  const maxS = Math.min(100, Math.max(...scores) + 10);
+  const range = maxS - minS || 1;
+
+  const points = data.map((d, i) => {
+    const x = PAD_L + (i / (data.length - 1)) * plotW;
+    const y = PAD_T + plotH - ((d.composite_score - minS) / range) * plotH;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
   });
 
-  return `<!DOCTYPE html>
+  const polyline = points.join(" ");
+
+  // Gradient fill area
+  const firstX = PAD_L;
+  const lastX = PAD_L + plotW;
+  const areaPoints = `${firstX},${PAD_T + plotH} ${polyline} ${lastX},${PAD_T + plotH}`;
+
+  // Date labels (first and last)
+  const fmtDate = (s: string) => {
+    const d = new Date(s);
+    return `${d.getMonth() + 1}/${d.getDate()}`;
+  };
+
+  // Y-axis labels
+  const yLabels = [minS, Math.round((minS + maxS) / 2), maxS];
+
+  const isSample = history.length < 2;
+
+  return `<div style="position:relative">
+    ${isSample ? '<div style="position:absolute;top:8px;right:12px;font-size:.7rem;color:#556677;text-transform:uppercase;letter-spacing:1px">Sample Data</div>' : ''}
+    <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;max-width:100%">
+      <defs>
+        <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#00d4aa" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#00d4aa" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <rect width="${W}" height="${H}" rx="8" fill="#111d28"/>
+      <!-- grid lines -->
+      ${yLabels.map(v => {
+        const y = PAD_T + plotH - ((v - minS) / range) * plotH;
+        return `<line x1="${PAD_L}" y1="${y}" x2="${W - PAD_R}" y2="${y}" stroke="#1a2a3a" stroke-width="1"/>
+        <text x="${PAD_L - 6}" y="${y + 4}" text-anchor="end" fill="#556677" font-size="10" font-family="monospace">${v}</text>`;
+      }).join("\n")}
+      <!-- area fill -->
+      <polygon points="${areaPoints}" fill="url(#trendFill)"/>
+      <!-- line -->
+      <polyline points="${polyline}" fill="none" stroke="#00d4aa" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- dots -->
+      ${data.map((d, i) => {
+        const x = PAD_L + (i / (data.length - 1)) * plotW;
+        const y = PAD_T + plotH - ((d.composite_score - minS) / range) * plotH;
+        return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="#00d4aa" stroke="#111d28" stroke-width="1.5"/>`;
+      }).join("\n")}
+      <!-- date labels -->
+      <text x="${PAD_L}" y="${H - 5}" fill="#556677" font-size="10" font-family="monospace">${fmtDate(data[0].recorded_at)}</text>
+      <text x="${W - PAD_R}" y="${H - 5}" text-anchor="end" fill="#556677" font-size="10" font-family="monospace">${fmtDate(data[data.length - 1].recorded_at)}</text>
+    </svg>
+  </div>`;
+}
+
+export async function handleDashboard(_req: Request): Promise<Response> {
+  const [scoreData, history] = await Promise.all([fetchGeoScore(), fetchScoreHistory()]);
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("en-US", {
+    weekday: "long", year: "numeric", month: "long", day: "numeric",
+  });
+  const timeStr = now.toLocaleTimeString("en-US", {
+    hour: "2-digit", minute: "2-digit", timeZoneName: "short",
+  });
+
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,7 +167,6 @@ export function renderDashboard(): string {
     a{color:#00d4aa;text-decoration:none}
     a:hover{text-decoration:underline;color:#33e0be}
 
-    /* Header */
     .dash-header{background:linear-gradient(135deg,#0f1923 0%,#1a2a3a 100%);border-bottom:2px solid #00d4aa;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
     .dash-header h1{font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.5px}
     .dash-header h1 span{color:#00d4aa}
@@ -34,8 +175,14 @@ export function renderDashboard(): string {
     .env-staging{background:#ffd93d;color:#0f1923}
     .env-production{background:#00d4aa;color:#0f1923}
 
-    /* Main container */
     .dash-container{max-width:1200px;margin:0 auto;padding:2rem}
+
+    /* GEO Score hero */
+    .geo-hero{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;padding:1.5rem;background:#111d28;border:1px solid #1a2a3a;border-radius:12px}
+    .geo-hero-left{display:flex;flex-direction:column;align-items:center;min-width:200px}
+    .geo-hero-label{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:#556677;margin-bottom:.75rem}
+    .geo-hero-right{flex:1;min-width:300px}
+    .geo-hero-right h3{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:#556677;margin-bottom:.75rem}
 
     /* Section */
     .dash-section{margin-bottom:2.5rem}
@@ -51,45 +198,19 @@ export function renderDashboard(): string {
     .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
     .badge-live{background:#00d4aa;color:#0f1923}
     .badge-progress{background:#ffd93d;color:#0f1923}
-    .badge-planned{background:#556677;color:#ccc}
 
-    /* AI surfaces table */
-    .ai-table{width:100%;border-collapse:collapse}
-    .ai-table th,.ai-table td{text-align:left;padding:.6rem 1rem;border-bottom:1px solid #1a2a3a}
-    .ai-table th{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;font-weight:600}
-    .ai-table td{font-size:.9rem}
-    .ai-table td a{font-family:"SF Mono",Monaco,Consolas,monospace;font-size:.85rem}
-    .status-pass{color:#00d4aa;font-weight:700}
-    .status-fail{color:#ff6b6b;font-weight:700}
-    .status-skip{color:#ffd93d;font-weight:700}
+    /* GEO Ledger featured card */
+    .page-card.featured{border-color:#00d4aa;background:linear-gradient(135deg,#1a2a3a 0%,#0f2a2a 100%)}
+    .page-card.featured h3{color:#00d4aa;font-size:1.1rem}
 
-    /* GEO section */
-    .geo-signals{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:1rem}
-    .geo-signal{background:#1a2a3a;border:1px solid #253545;border-radius:6px;padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;font-size:.85rem}
-    .geo-signal .name{color:#ccc}
-
-    /* Quick actions */
-    .actions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-    .action-card{background:#1a2a3a;border:1px solid #253545;border-radius:8px;padding:1.25rem}
-    .action-card h3{font-size:.95rem;color:#fff;margin-bottom:.5rem}
-    .action-card p,.action-card code{font-size:.85rem;color:#8899aa}
-    .action-card code{display:block;background:#0f1923;padding:.5rem .75rem;border-radius:4px;margin-top:.5rem;font-family:"SF Mono",Monaco,Consolas,monospace;font-size:.8rem;color:#00d4aa;overflow-x:auto}
-
-    /* Checklist */
-    .checklist{list-style:none;padding:0}
-    .checklist li{padding:.5rem 0;border-bottom:1px solid #1a2a3a;font-size:.9rem;display:flex;align-items:center;gap:.5rem}
-    .check-done{color:#00d4aa}
-    .check-todo{color:#556677}
-    .check-label-done{color:#ccc}
-    .check-label-todo{color:#8899aa}
-
-    /* Footer */
     .dash-footer{text-align:center;padding:2rem;font-size:.8rem;color:#556677;border-top:1px solid #1a2a3a;margin-top:2rem}
 
     @media(max-width:600px){
       .dash-header{flex-direction:column;align-items:flex-start}
       .dash-header-meta{text-align:left}
       .page-grid{grid-template-columns:1fr}
+      .geo-hero{flex-direction:column;align-items:stretch}
+      .geo-hero-right{min-width:0}
     }
   </style>
   <script>
@@ -119,10 +240,28 @@ export function renderDashboard(): string {
 
 <div class="dash-container">
 
+  <!-- GEO SCORE HERO -->
+  <div class="geo-hero">
+    <div class="geo-hero-left">
+      <div class="geo-hero-label">GEO Composite Score</div>
+      ${renderGauge(scoreData.composite)}
+    </div>
+    <div class="geo-hero-right">
+      <h3>Score Trend</h3>
+      ${renderTrendChart(history)}
+    </div>
+  </div>
+
   <!-- SITE PAGES -->
   <div class="dash-section">
     <h2>Site Pages</h2>
     <div class="page-grid">
+      <a href="/geo-ledger" class="page-card featured" style="text-decoration:none;color:inherit">
+        <h3>GEO Ledger</h3>
+        <span class="route">/geo-ledger</span>
+        <div class="desc">GEO implementation ledger, signal tracking, and score history.</div>
+        <span class="badge badge-live">Live</span>
+      </a>
       <div class="page-card">
         <h3>Homepage</h3>
         <a href="/" class="route">/</a>
@@ -171,118 +310,7 @@ export function renderDashboard(): string {
         <div class="desc">Machine-readable summary page for AI discovery.</div>
         <span class="badge badge-live">Live</span>
       </div>
-      <div class="page-card">
-        <h3>GEO Ledger</h3>
-        <a href="/geo-ledger" class="route">/geo-ledger</a>
-        <div class="desc">GEO implementation ledger, signal tracking, and score history.</div>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <div class="page-card">
-        <h3>Stop Page</h3>
-        <a href="/stop" class="route">/stop</a>
-        <div class="desc">Emergency stop/redirect page.</div>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <div class="page-card">
-        <h3>Dashboard</h3>
-        <a href="/dashboard" class="route">/dashboard</a>
-        <div class="desc">This page. Dev navigation hub and build status.</div>
-        <span class="badge badge-live">Live</span>
-      </div>
     </div>
-  </div>
-
-  <!-- AI SURFACES -->
-  <div class="dash-section">
-    <h2>AI Surfaces</h2>
-    <table class="ai-table">
-      <thead>
-        <tr><th>Surface</th><th>Endpoint</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>robots.txt</td><td><a href="/robots.txt">/robots.txt</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>llms.txt</td><td><a href="/llms.txt">/llms.txt</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>llms-full.txt</td><td><a href="/llms-full.txt">/llms-full.txt</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>sitemap.xml</td><td><a href="/sitemap.xml">/sitemap.xml</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>ai-content-index.json</td><td><a href="/ai-content-index.json">/ai-content-index.json</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>for-ai.txt</td><td><a href="/for-ai.txt">/for-ai.txt</a></td><td class="status-pass">PASS</td></tr>
-        <tr><td>JSON-LD</td><td>All pages</td><td class="status-pass">PASS</td></tr>
-        <tr><td>Link Headers</td><td>All responses</td><td class="status-pass">PASS</td></tr>
-        <tr><td>MCP</td><td>--</td><td class="status-skip">SKIPPED</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- GEO LEDGER -->
-  <div class="dash-section">
-    <h2>GEO Ledger</h2>
-    <p style="margin-bottom:1rem"><a href="/geo-ledger" style="font-size:1.1rem;font-weight:600">Open GEO Ledger</a></p>
-    <div class="geo-signals">
-      <div class="geo-signal"><span class="name">robots.txt</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">llms.txt</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">Sitemap</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">Structured Data</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">Content Index</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">Link Headers</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">for-ai.txt</span><span class="status-pass">PASS</span></div>
-      <div class="geo-signal"><span class="name">MCP</span><span class="status-skip">SKIPPED</span></div>
-    </div>
-    <p style="margin-top:1rem;font-size:.85rem;color:#8899aa">
-      Supabase project:
-      <a href="https://supabase.com/dashboard/project/dewbyvlbmkersxjrcknm" target="_blank" rel="noopener">dewbyvlbmkersxjrcknm</a>
-    </p>
-  </div>
-
-  <!-- QUICK ACTIONS -->
-  <div class="dash-section">
-    <h2>Quick Actions</h2>
-    <div class="actions-grid">
-      <div class="action-card">
-        <h3>GitHub Repo</h3>
-        <p><a href="https://github.com/rjmjr1962831/ir" target="_blank" rel="noopener">rjmjr1962831/ir</a></p>
-      </div>
-      <div class="action-card">
-        <h3>Vercel Project</h3>
-        <p><a href="https://vercel.com" target="_blank" rel="noopener">Open Vercel Dashboard</a></p>
-      </div>
-      <div class="action-card">
-        <h3>Supabase Dashboard</h3>
-        <p><a href="https://supabase.com/dashboard/project/dewbyvlbmkersxjrcknm" target="_blank" rel="noopener">Open Supabase</a></p>
-      </div>
-      <div class="action-card">
-        <h3>Deploy to Staging</h3>
-        <code>git push origin staging</code>
-        <p style="margin-top:.5rem">Vercel auto-deploys staging branch to preview URL.</p>
-      </div>
-      <div class="action-card">
-        <h3>Deploy to Production</h3>
-        <code>npm run merge-to-main</code>
-        <p style="margin-top:.5rem">Merges staging to main. Vercel auto-deploys main to production.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- BUILD STATUS -->
-  <div class="dash-section">
-    <h2>Build Status</h2>
-    <ul class="checklist">
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">Clean-room HTML architecture</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">robots.txt</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">llms.txt + llms-full.txt</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">sitemap.xml</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">ai-content-index.json</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">for-ai.txt</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">JSON-LD on all pages</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">Link headers</span></li>
-      <li><span class="check-done">&#10003;</span> <span class="check-label-done">GEO Ledger</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Page content rendering (actual recall data)</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Consumer notification flow</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Product registration/scanning</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Multi-agency recall ingestion</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Push notification system</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">B2B portal</span></li>
-      <li><span class="check-todo">&#9744;</span> <span class="check-label-todo">Custom domain (instantrecall.com)</span></li>
-    </ul>
   </div>
 
 </div>
@@ -293,4 +321,12 @@ export function renderDashboard(): string {
 
 </body>
 </html>`;
+
+  return new Response(html, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "public, max-age=60, s-maxage=300",
+    },
+  });
 }

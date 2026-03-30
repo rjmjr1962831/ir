@@ -7,7 +7,7 @@ import { renderPrivacy } from "./pages/privacy.ts";
 import { renderTerms } from "./pages/terms.ts";
 import { handleGeoLedger } from "./pages/geo-ledger.ts";
 import { renderAbout } from "./pages/about.ts";
-import { renderDashboard } from "./pages/dashboard.ts";
+import { handleDashboard } from "./pages/dashboard.ts";
 
 const ROUTES: Record<string, () => string> = {
   "/": renderHome,
@@ -17,7 +17,6 @@ const ROUTES: Record<string, () => string> = {
   "/privacy-policy": renderPrivacy,
   "/terms-and-conditions": renderTerms,
   "/about-us": renderAbout,
-  "/dashboard": renderDashboard,
 };
 
 function render404(): string {
@@ -58,6 +57,10 @@ serve(async (req: Request) => {
   // Routes that need request access (for auth, query params, etc.)
   if (path === "/geo-ledger") {
     return await handleGeoLedger(req);
+  }
+
+  if (path === "/dashboard") {
+    return await handleDashboard(req);
   }
 
   const renderFn = ROUTES[path];

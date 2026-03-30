@@ -14,7 +14,9 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/": "Home",
   "/solution": "Services",
   "/contact-instant-recall": "Contact",
+  "/contact": "Contact",
   "/portal": "Login",
+  "/schedule": "Book an Appointment",
   "/privacy-policy": "Privacy Policy",
   "/terms-and-conditions": "Terms of Service",
   "/about-us": "About Us",
@@ -42,7 +44,7 @@ function buildBreadcrumbLd(path: string): string {
 
 function header(): string {
   return `<header class="site-header">
-  <a href="/" class="logo">Instant Recall</a>
+  <a href="/" class="logo"><img src="/images/InstantRecall_Horizontal-01.webp" alt="Instant Recall" height="50"></a>
   <nav>
     <a href="/">Home</a>
     <a href="/solution">Solution</a>
@@ -55,13 +57,29 @@ function header(): string {
 function footer(): string {
   const year = new Date().getFullYear();
   return `<footer class="site-footer">
-  <div class="footer-links">
-    <a href="/privacy-policy">Privacy Policy</a>
-    <a href="/terms-and-conditions">Terms of Service</a>
-    <a href="/contact-instant-recall">Contact</a>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="/images/footerlogo.webp" alt="Instant Recall" height="80">
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/solution">Solution</a>
+      <a href="/contact-instant-recall">Sign Up</a>
+      <a href="/contact-instant-recall">Contact Us</a>
+      <a href="/portal">Login</a>
+      <a href="/schedule">Book an Appointment</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; ${year} Instant Recall LLC. All Rights Reserved.</p>
+      <div class="footer-nav">
+        <a href="/">HOME</a>
+        <a href="/solution">SOLUTION</a>
+        <a href="/portal">LOGIN</a>
+        <a href="/contact-instant-recall">CONTACT US</a>
+      </div>
+      <p style="margin-top:.75rem"><a href="/terms-and-conditions">Terms and Conditions</a> | <a href="/privacy-policy">Privacy Policy</a></p>
+    </div>
   </div>
-  <p>&copy; ${year} Instant Recall LLC. All rights reserved.</p>
-  <p>A <a href="https://www.belltowertech.com" rel="noopener">BellTower Technologies</a> solution.</p>
 </footer>`;
 }
 

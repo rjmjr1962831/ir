@@ -1,19 +1,22 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { renderHome } from "./pages/home.ts";
 import { renderSolution } from "./pages/solution.ts";
-import { renderContact } from "./pages/contact.ts";
+import { renderContact, renderContactDirect } from "./pages/contact.ts";
 import { renderPortal } from "./pages/portal.ts";
 import { renderPrivacy } from "./pages/privacy.ts";
 import { renderTerms } from "./pages/terms.ts";
 import { handleGeoLedger } from "./pages/geo-ledger.ts";
 import { renderAbout } from "./pages/about.ts";
 import { handleDashboard } from "./pages/dashboard.ts";
+import { renderSchedule } from "./pages/schedule.ts";
 
 const ROUTES: Record<string, () => string> = {
   "/": renderHome,
   "/solution": renderSolution,
   "/contact-instant-recall": renderContact,
+  "/contact": renderContactDirect,
   "/portal": renderPortal,
+  "/schedule": renderSchedule,
   "/privacy-policy": renderPrivacy,
   "/terms-and-conditions": renderTerms,
   "/about-us": renderAbout,
@@ -27,11 +30,11 @@ function render404(): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found -- Instant Recall</title>
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f8f9fa;color:#1a1a2e;text-align:center}
+    body{font-family:'Raleway',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0b0b1a;color:#fff;text-align:center}
     .wrap{max-width:500px;padding:2rem}
-    h1{font-size:3rem;color:#0d47a1;margin-bottom:.5rem}
-    p{font-size:1.1rem;color:#666;margin-bottom:1.5rem}
-    a{color:#0d47a1;font-weight:600}
+    h1{font-size:3rem;color:#c8a951;margin-bottom:.5rem}
+    p{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:1.5rem}
+    a{color:#c8a951;font-weight:600}
   </style>
 </head>
 <body>

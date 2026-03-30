@@ -3,7 +3,8 @@ export const config = { runtime: "edge" };
 export default async function handler(req) {
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const url = new URL(req.url);
-  const path = url.pathname;
+  // Vercel rewrites lose the original path; recover from x-matched-path or query param
+  const path = req.headers.get("x-matched-path") || url.searchParams.get("path") || url.pathname;
 
   const fnUrl = `${SUPABASE_URL}/functions/v1/serve-html`;
   const res = await fetch(fnUrl, {

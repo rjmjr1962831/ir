@@ -314,6 +314,37 @@ export async function handleDashboard(_req: Request): Promise<Response> {
     </div>
   </div>
 
+  <!-- RESEARCH PAGES -->
+  <div class="dash-section">
+    <h2>Research</h2>
+    <div class="page-grid">
+      <div class="page-card">
+        <h3>Research Hub</h3>
+        <a href="/research" class="route">/research</a>
+        <div class="desc">Index page linking to all research reports.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Legal Case Data</h3>
+        <a href="/research/legal-case-data" class="route">/research/legal-case-data</a>
+        <div class="desc">Major recall lawsuits, post-sale duty to warn, CPSC enforcement, class action settlements.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Industry Survey</h3>
+        <a href="/research/industry-survey" class="route">/research/industry-survey</a>
+        <div class="desc">Competitive landscape, market size, consumer pain points, international systems.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Regulatory Environment</h3>
+        <a href="/research/regulatory-environment" class="route">/research/regulatory-environment</a>
+        <div class="desc">Federal agencies (CPSC, FDA, NHTSA, USDA), legislation, enforcement, and penalties.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="dash-footer">

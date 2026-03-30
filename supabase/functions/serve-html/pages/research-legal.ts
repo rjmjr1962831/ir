@@ -46,6 +46,59 @@ export function renderResearchLegal(): string {
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
 
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">Legal and Criminal Risk in the Recall Era</h2>
+    <p><strong>Why this matters.</strong> Recalls no longer "fix" liability by themselves. Courts and regulators now look at how quickly and effectively you warned people, and they are willing to impose eight-figure penalties and even prison time when notification fails. Instant Recall gives you a defensible, documented way to prove you met your post-sale duty to warn.</p>
+
+    <h3>The Risk Has Changed</h3>
+    <p>Recall volume and enforcement are both rising sharply. U.S. agencies now issue more than 3,200 recalls a year affecting hundreds of millions of units, while average consumer response rates sit at roughly 6 to 10 percent and vehicle completion averages about 45 percent.</p>
+    <p>At the same time, CPSC civil penalties have increased 64 percent year-over-year, with individual cases in the US$15 to 19 million range, and NHTSA penalties reaching US$200 million in the Takata airbag matter.</p>
+
+    <h3>Where Companies Are Getting Hurt</h3>
+    <h4>Post-sale duty to warn <span class="exec-pill">Legal standard</span></h4>
+    <p>Restatement (Third) of Torts Section 10 makes sellers liable if a "reasonable person" would have provided a warning after learning of a risk, especially where communication can be effectively targeted.</p>
+    <p>Today's 6 percent completion rates are hard to reconcile with "effective communication," particularly when 70 percent of Americans say they have not heard about any relevant recall in the past five years.</p>
+
+    <h4>Landmark cases that turned on notification</h4>
+    <ul>
+      <li><strong>IKEA MALM / Dudek.</strong> US$46M child wrongful-death settlement where IKEA had full purchase data but never notified the family of a dresser recall.</li>
+      <li><strong>Fisher-Price Rock 'n Play.</strong> ~100 infant deaths, class settlement of US$19M; recall had to be re-announced after millions of units remained in homes.</li>
+      <li><strong>Takata airbags.</strong> 67M inflators recalled in the U.S., deaths continuing years later from unrepaired vehicles; NHTSA resorted to "Do Not Drive" orders.</li>
+      <li><strong>Gree dehumidifiers.</strong> ~450 fires, US$15.45M civil penalty, US$91M deferred-prosecution penalty, and the first CPSA prison sentences (38 to 40 months) for executives who delayed reporting.</li>
+    </ul>
+
+    <h3>Expanding Liability for Sellers and Platforms</h3>
+    <p>Most U.S. product cases use strict liability. Every entity in the chain, including retailers and marketplaces, can be liable even if they did not manufacture the product or know it was defective.</p>
+    <p>The 2024 CPSC ruling that Amazon is a "distributor" for Fulfilled-by-Amazon products now requires Amazon to email recall notices and flag them in "Your Orders," signaling that platforms and intermediaries are expected to carry notification duties.</p>
+
+    <blockquote><strong>Key takeaway.</strong> A recall filing is now just the starting line. If you cannot show how you actually reached the end user, you are exposed to strict liability, aggravated damages, and, in extreme cases, criminal prosecution.</blockquote>
+
+    <h3>How Instant Recall Reduces Legal and Criminal Exposure</h3>
+    <h4>From "generic notice" to provable duty to warn</h4>
+    <ul>
+      <li><strong>Personalized matching.</strong> Alerts only go to consumers and facilities that actually have affected SKUs or serial ranges, cutting through recall fatigue.</li>
+      <li><strong>Multi-channel delivery.</strong> SMS, email, push, and optional voice/mail reach high-risk groups (parents, elderly, non-English speakers) where they are.</li>
+      <li><strong>Actionable instructions.</strong> Messages include what to do, where to go, deadlines, and direct links to remedy programs, not just "there is a recall."</li>
+      <li><strong>Audit-ready logs.</strong> Time-stamped evidence of who was notified, when, how often, and what they were told, aligned with CPSC Recall Handbook guidance on effective communication.</li>
+    </ul>
+
+    <p>For manufacturers, retailers, and marketplaces, Instant Recall operationalizes the post-sale duty to warn and creates the documentation regulators and courts increasingly expect to see.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; &ndash; The fastest, most reliable way to execute critical recall communications.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
+
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
     <ol>
@@ -484,6 +537,24 @@ export function renderResearchLegal(): string {
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+
+/* Executive Summary */
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#c8a951;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-pill{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,.5);margin-left:6px;vertical-align:middle}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#c8a951;font-size:.72rem}
 </style>
 
 <script type="application/ld+json">${BREADCRUMB_LD}</script>`;

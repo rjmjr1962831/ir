@@ -15,6 +15,12 @@ export default function handler() {
     { loc: "/research/industry-survey", priority: "0.7", changefreq: "monthly" },
     { loc: "/research/regulatory-environment", priority: "0.7", changefreq: "monthly" },
     { loc: "/research/legal-case-data", priority: "0.7", changefreq: "monthly" },
+    { loc: "/incident-response", priority: "0.8", changefreq: "monthly" },
+    { loc: "/cost-recovery", priority: "0.8", changefreq: "monthly" },
+    { loc: "/technology-prowess", priority: "0.8", changefreq: "monthly" },
+    { loc: "/industry-standard", priority: "0.8", changefreq: "monthly" },
+    { loc: "/customer-quotes-solutions", priority: "0.7", changefreq: "monthly" },
+    { loc: "/support-request", priority: "0.6", changefreq: "monthly" },
   ];
 
   const entries = urls

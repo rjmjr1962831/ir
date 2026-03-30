@@ -13,6 +13,12 @@ import { renderResearchIndex } from "./pages/research-index.ts";
 import { renderResearchIndustry } from "./pages/research-industry.ts";
 import { renderResearchRegulatory } from "./pages/research-regulatory.ts";
 import { renderResearchLegal } from "./pages/research-legal.ts";
+import { renderIncidentResponse } from "./pages/incident-response.ts";
+import { renderCostRecovery } from "./pages/cost-recovery.ts";
+import { renderTechnologyProwess } from "./pages/technology-prowess.ts";
+import { renderIndustryStandard } from "./pages/industry-standard.ts";
+import { renderCustomerQuotes } from "./pages/customer-quotes.ts";
+import { renderSupportRequest } from "./pages/support-request.ts";
 
 const ROUTES: Record<string, () => string> = {
   "/": renderHome,
@@ -28,6 +34,12 @@ const ROUTES: Record<string, () => string> = {
   "/research/industry-survey": renderResearchIndustry,
   "/research/regulatory-environment": renderResearchRegulatory,
   "/research/legal-case-data": renderResearchLegal,
+  "/incident-response": renderIncidentResponse,
+  "/cost-recovery": renderCostRecovery,
+  "/technology-prowess": renderTechnologyProwess,
+  "/industry-standard": renderIndustryStandard,
+  "/customer-quotes-solutions": renderCustomerQuotes,
+  "/support-request": renderSupportRequest,
 };
 
 function render404(): string {

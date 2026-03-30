@@ -38,7 +38,13 @@ Instant Recall publishes original research on the product recall notification in
 ## Pages
 - Home: https://www.instantrecall.com/
 - Services: https://www.instantrecall.com/solution
+- Recall Communications Management: https://www.instantrecall.com/incident-response
+- Regulatory Reporting and Audit Response: https://www.instantrecall.com/cost-recovery
+- Technology Prowess: https://www.instantrecall.com/technology-prowess
+- Industry Gold Standard: https://www.instantrecall.com/industry-standard
+- Customer Testimonials: https://www.instantrecall.com/customer-quotes-solutions
 - Contact: https://www.instantrecall.com/contact-instant-recall
+- Support Request: https://www.instantrecall.com/support-request
 - Login: https://www.instantrecall.com/portal
 - Research: https://www.instantrecall.com/research
 - Privacy Policy: https://www.instantrecall.com/privacy-policy

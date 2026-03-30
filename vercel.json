@@ -6,6 +6,10 @@
         {
           "key": "Link",
           "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\", </ai-content-index.json>; rel=\"alternate\"; type=\"application/json\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600"
         }
       ]
     }
@@ -27,6 +31,12 @@
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },
     { "source": "/research/legal-case-data", "destination": "/api/html?path=%2Fresearch%2Flegal-case-data" },
+    { "source": "/incident-response", "destination": "/api/html?path=%2Fincident-response" },
+    { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
+    { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
+    { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
+    { "source": "/customer-quotes-solutions", "destination": "/api/html?path=%2Fcustomer-quotes-solutions" },
+    { "source": "/support-request", "destination": "/api/html?path=%2Fsupport-request" },
     { "source": "/robots.txt", "destination": "/api/robots" },
     { "source": "/llms.txt", "destination": "/api/llms" },
     { "source": "/llms-full.txt", "destination": "/api/llms-full" },

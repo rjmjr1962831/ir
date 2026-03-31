@@ -9,9 +9,10 @@ const JSON_LD = JSON.stringify({
   description:
     "Major product recall lawsuits, post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions, class action settlement patterns, and the legal value of third-party notification services.",
   author: {
-    "@type": "Organization",
-    name: "Instant Recall Research Team",
-    url: "https://www.instantrecall.com",
+    "@type": "Person",
+    name: "Susan Linn",
+    jobTitle: "VP of Industry Relations",
+    affiliation: { "@type": "Organization", name: "Instant Recall LLC" },
   },
   publisher: {
     "@type": "Organization",
@@ -40,7 +41,7 @@ export function renderResearchLegal(): string {
   <div class="hero-content">
     <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
     <h1 style="font-size:2.2rem">Legal Case Data and Liability Research</h1>
-    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Instant Recall Research Team &middot; March 2026</p>
+    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
 
@@ -560,8 +561,7 @@ ${CITATION_CSS}
 </style>
 
 ${researchLegalCitationBlock()}
-
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+`;
 
   return renderPage({
     title: "Legal Case Data and Liability Research -- Instant Recall Research",

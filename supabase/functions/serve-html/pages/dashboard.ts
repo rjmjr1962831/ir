@@ -263,6 +263,12 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">GEO implementation ledger, signal tracking, and score history.</div>
         <span class="badge badge-live">Live</span>
       </a>
+      <a href="/crawl-stats" class="page-card featured" style="text-decoration:none;color:inherit">
+        <h3>Crawl Stats</h3>
+        <span class="route">/crawl-stats</span>
+        <div class="desc">Bot crawl logging, AI vs search vs social breakdown, hourly chart.</div>
+        <span class="badge badge-live">Live</span>
+      </a>
       <div class="page-card">
         <h3>Homepage</h3>
         <a href="/" class="route">/</a>

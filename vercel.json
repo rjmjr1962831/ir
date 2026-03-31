@@ -27,6 +27,7 @@
     { "source": "/about-us", "destination": "/api/html?path=%2Fabout-us" },
     { "source": "/geo-ledger", "destination": "/api/html?path=%2Fgeo-ledger" },
     { "source": "/dashboard", "destination": "/api/html?path=%2Fdashboard" },
+    { "source": "/crawl-stats", "destination": "/api/html?path=%2Fcrawl-stats" },
     { "source": "/research", "destination": "/api/html?path=%2Fresearch" },
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },

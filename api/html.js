@@ -14,8 +14,9 @@ export default async function handler(req) {
     },
   });
   const html = await res.text();
-  const upstreamCC = res.headers.get("cache-control");
-  const headers = { "Content-Type": "text/html; charset=utf-8" };
-  if (upstreamCC) headers["Cache-Control"] = upstreamCC;
+  const headers = {
+    "Content-Type": "text/html; charset=utf-8",
+    "Cache-Control": "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600",
+  };
   return new Response(html, { status: res.status, headers });
 }

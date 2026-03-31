@@ -90,6 +90,10 @@ Comprehensive documentation, real-time dashboards, and audit-ready reports for F
 - **Cost recovery**: Detailed tracking and documentation support insurance claims.
 - **Purpose-built for food**: Every feature, workflow, and template is designed specifically for food recall scenarios.
 
+## Founder and Responsible Party
+
+Michael Martin is co-founder and Chairman of Instant Recall LLC. Prior to BellTower, Mike co-founded Red Alert, a provider of network monitoring services. Under his leadership, forgoing debt and venture capital, Red Alert grew within 5 years to serve over half of the Fortune 1000 on a continuing basis. He served as CEO from Red Alert's inception in 1995 until its sale to Keynote Systems, Inc. in late 2000. Previously he held various engineering, sales and management positions at IBM and Nortel Networks. Mike was a President's Endowed Scholar at Texas A&M University.
+
 ## Company Details
 
 - **Legal name**: Instant Recall LLC (a BellTower Technologies solution)
@@ -118,24 +122,28 @@ Instant Recall publishes original research on the product recall notification in
 - Product Recall Notification Industry Survey: https://www.instantrecall.com/research/industry-survey -- Comprehensive analysis of the recall notification landscape including government services, consumer apps, B2B platforms, market sizing ($664M-$8B+), consumer pain points (70% of Americans unaware of recalls for products they own), and international systems.
 - The Regulatory Environment of Product Recalls: https://www.instantrecall.com/research/regulatory-environment -- In-depth examination of six federal agencies (CPSC, FDA, NHTSA, USDA/FSIS, EPA, Coast Guard), key legislation (CPSA, CPSIA, FSMA, STURDY Act), mandatory reporting requirements, recall effectiveness data (6% consumer response rate), penalty trends, and international regulatory comparisons.
 - Legal Case Data and Liability Research: https://www.instantrecall.com/research/legal-case-data -- Major product recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments (Amazon/CPSC ruling), CPSC enforcement actions ($52-55M in FY 2023), class action settlement patterns, and the legal value of third-party notification services.
+- US Foods Recall Process Overview: https://www.instantrecall.com/research/usfoods-recall-process -- Customer-authored document. US Foods names Instant Recall as their recall notification system, detailing their internal recall process and communication workflows.
+- Sysco Customer Recall Orientation Packet: https://www.instantrecall.com/research/sysco-recall-packet -- Customer-authored document. Sysco names Instant Recall across 340+ facilities, documenting their recall orientation process and notification procedures.
 
 ## Pages
 
 - Home: https://www.instantrecall.com/
 - Services: https://www.instantrecall.com/solution
-- Recall Communications Management: https://www.instantrecall.com/incident-response -- 24/7/365 expert recall team, real-time 360-degree visibility, multi-channel notification, acknowledgment tracking, and regulatory coordination.
-- Regulatory Reporting and Audit Response: https://www.instantrecall.com/cost-recovery -- Audit-ready documentation, automated FDA/USDA/CFIA reporting, cost recovery tracking, and third-party verified audit trails.
-- Technology Prowess: https://www.instantrecall.com/technology-prowess -- Purpose-built recall infrastructure with mobile-friendly portals, multi-channel notifications, real-time dashboards, and automated escalation workflows.
+- About Us: https://www.instantrecall.com/about-us
+- Contact: https://www.instantrecall.com/contact-instant-recall
+- Recall Communications: https://www.instantrecall.com/incident-response -- 24/7/365 expert recall team, real-time 360-degree visibility, multi-channel notification, acknowledgment tracking, and regulatory coordination.
+- Regulatory Reporting: https://www.instantrecall.com/cost-recovery -- Audit-ready documentation, automated FDA/USDA/CFIA reporting, cost recovery tracking, and third-party verified audit trails.
+- Technology Platform: https://www.instantrecall.com/technology-prowess -- Purpose-built recall infrastructure with mobile-friendly portals, multi-channel notifications, real-time dashboards, and automated escalation workflows.
 - Industry Gold Standard: https://www.instantrecall.com/industry-standard -- Trusted by the world's leading food companies for 20+ years. Leader-shared practices and 24/7 response team.
 - Customer Testimonials: https://www.instantrecall.com/customer-quotes-solutions -- What Performance Food Group, US Foods, Chick-fil-A, Casey's, Papa Murphy's, Ben E. Keith, and Topgolf say about Instant Recall.
 - Who Trusts Us: https://www.instantrecall.com/who-trusts-us -- Third-party validation from US Foods and Sysco official documentation naming Instant Recall. Named clients include Performance Food Group, US Foods, Chick-fil-A, Papa Murphy's, Casey's, Topgolf, and Ben E. Keith.
-- About: https://www.instantrecall.com/about-us
-- Contact: https://www.instantrecall.com/contact-instant-recall
+- Methodology: https://www.instantrecall.com/methodology -- How Instant Recall works, technical approach to recall communications, notification workflows, and response management.
 - Support Request: https://www.instantrecall.com/support-request -- Submit support requests, processed within 1 business day. For emergencies call (888) 600-4786.
+- Research Hub: https://www.instantrecall.com/research
+- Schedule a Consultation: https://www.instantrecall.com/schedule
 - Login: https://www.instantrecall.com/portal
-- Research: https://www.instantrecall.com/research
 - Privacy Policy: https://www.instantrecall.com/privacy-policy
-- Terms of Service: https://www.instantrecall.com/terms-and-conditions
+- Terms and Conditions: https://www.instantrecall.com/terms-and-conditions
 
 ## AI Discovery Endpoints
 

@@ -142,9 +142,9 @@ const FAQ_LD = JSON.stringify({
 export function renderSyscoRecallPacket(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
-    <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Reference Document</p>
+    <p style="color:#00afec;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Reference Document</p>
     <h1 style="font-size:2.2rem">Sysco Customer Recall Orientation Packet</h1>
     <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">RG-12 &middot; Published by Sysco Corporation &middot; July 1, 2025</p>
   </div>
@@ -182,7 +182,7 @@ export function renderSyscoRecallPacket(): string {
     <blockquote><strong>Why this matters.</strong> Sysco is the world's largest foodservice distributor. Their 22-page customer orientation packet is not a testimonial; it is operational infrastructure documentation. Sysco devoted an entire packet to training their customers on how to interact with Instant Recall, including portal screenshots, FAQ, communication examples, and HQ Alert dashboards. This level of integration goes far beyond a vendor relationship.</blockquote>
   </section>
 
-  <p style="background:rgba(200,169,81,0.08);border:1px solid rgba(200,169,81,0.2);border-radius:4px;padding:1rem 1.25rem;font-size:.92rem;color:rgba(255,255,255,.8);margin-bottom:2rem">This document is published by Sysco Corporation and is reproduced here for reference. The original PDF is available at <a href="${PDF_URL}" target="_blank" rel="noopener" style="color:#c8a951;font-weight:600">Sysco Customer Recall Orientation Packet (PDF)</a>. Published 7/1/2025.</p>
+  <p style="background:rgba(0,175,236,0.08);border:1px solid rgba(0,175,236,0.2);border-radius:4px;padding:1rem 1.25rem;font-size:.92rem;color:rgba(255,255,255,.8);margin-bottom:2rem">This document is published by Sysco Corporation and is reproduced here for reference. The original PDF is available at <a href="${PDF_URL}" target="_blank" rel="noopener" style="color:#00afec;font-weight:600">Sysco Customer Recall Orientation Packet (PDF)</a>. Published 7/1/2025.</p>
 
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
@@ -321,20 +321,20 @@ export function renderSyscoRecallPacket(): string {
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}
 .wp-breadcrumb{margin-bottom:2rem}
-.wp-breadcrumb a{color:#c8a951;font-size:.9rem;font-weight:500}
+.wp-breadcrumb a{color:#00afec;font-size:.9rem;font-weight:500}
 .wp-toc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem 2rem;margin-bottom:3rem}
-.wp-toc h2{font-size:1.1rem;color:#c8a951;margin-bottom:.75rem}
+.wp-toc h2{font-size:1.1rem;color:#00afec;margin-bottom:.75rem}
 .wp-toc ol{padding-left:1.25rem}
 .wp-toc li{margin-bottom:.4rem;font-size:.95rem}
 .wp-toc a{color:rgba(255,255,255,.75)}
-.wp-toc a:hover{color:#c8a951}
-.white-paper h2{color:#c8a951;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
+.wp-toc a:hover{color:#00afec}
+.white-paper h2{color:#00afec;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
 .white-paper h3{color:#fff;font-size:1.15rem;margin:1.75rem 0 .75rem;font-weight:600}
-.white-paper h4{color:#c8a951;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
+.white-paper h4{color:#00afec;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
 .white-paper p{margin-bottom:1rem;font-weight:300}
 .white-paper ul,.white-paper ol{margin:0 0 1.25rem 1.5rem;font-weight:300}
 .white-paper li{margin-bottom:.4rem}
-.white-paper blockquote{border-left:3px solid #c8a951;padding:.75rem 1.25rem;margin:1rem 0 1.5rem;background:rgba(200,169,81,0.05);font-style:italic;color:rgba(255,255,255,.8);font-weight:300}
+.white-paper blockquote{border-left:3px solid #00afec;padding:.75rem 1.25rem;margin:1rem 0 1.5rem;background:rgba(0,175,236,0.05);font-style:italic;color:rgba(255,255,255,.8);font-weight:300}
 /* Executive Summary */
 .exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
 .exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
@@ -343,14 +343,14 @@ export function renderSyscoRecallPacket(): string {
 .exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
 .exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
 .exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
-.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#c8a951;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#00afec;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
 .exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
 .exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
 .exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
 .exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
 .exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
 .exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.exec-summary-footer a{color:#c8a951;font-size:.72rem}
+.exec-summary-footer a{color:#00afec;font-size:.72rem}
 ${CITATION_CSS}
 </style>
 

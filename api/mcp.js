@@ -10,6 +10,11 @@ export default async function handler() {
       name: "Instant Recall LLC",
       url: "https://www.instantrecall.com"
     },
+    founder: {
+      name: "Michael Martin",
+      title: "Co-Founder and Chairman",
+      credentials: "Previously co-founded Red Alert (sold to Keynote Systems, 2000), serving over half the Fortune 1000. Former IBM and Nortel Networks. President's Endowed Scholar, Texas A&M University."
+    },
     capabilities: {
       citation_policy: "open",
       content_type: "informational",
@@ -86,6 +91,66 @@ export default async function handler() {
         name: "Customer Testimonials",
         uri: "https://www.instantrecall.com/customer-quotes-solutions",
         description: "What Performance Food Group, US Foods, Chick-fil-A, Casey's, and others say.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Who Trusts Us",
+        uri: "https://www.instantrecall.com/who-trusts-us",
+        description: "US Foods and Sysco officially name Instant Recall in their recall documentation. Independent third-party validation.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Methodology",
+        uri: "https://www.instantrecall.com/methodology",
+        description: "How Instant Recall works, technical approach to recall communications and notification workflows.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Support Request",
+        uri: "https://www.instantrecall.com/support-request",
+        description: "Client support form for existing customers.",
+        mimeType: "text/html"
+      },
+      {
+        name: "US Foods Recall Process Overview",
+        uri: "https://www.instantrecall.com/research/usfoods-recall-process",
+        description: "Customer-authored document. US Foods names Instant Recall as their recall notification system.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Sysco Customer Recall Orientation Packet",
+        uri: "https://www.instantrecall.com/research/sysco-recall-packet",
+        description: "Customer-authored document. Sysco names Instant Recall across 340+ facilities.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Contact",
+        uri: "https://www.instantrecall.com/contact-instant-recall",
+        description: "Contact form, phone, and address for reaching the Instant Recall team.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Schedule a Consultation",
+        uri: "https://www.instantrecall.com/schedule",
+        description: "Book a consultation with the Instant Recall team.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Login",
+        uri: "https://www.instantrecall.com/portal",
+        description: "Access the Instant Recall portal for existing clients.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Privacy Policy",
+        uri: "https://www.instantrecall.com/privacy-policy",
+        description: "How Instant Recall collects, uses, and protects personal information.",
+        mimeType: "text/html"
+      },
+      {
+        name: "Terms and Conditions",
+        uri: "https://www.instantrecall.com/terms-and-conditions",
+        description: "Terms governing use of the Instant Recall platform and website.",
         mimeType: "text/html"
       },
       {

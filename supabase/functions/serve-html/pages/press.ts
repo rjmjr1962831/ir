@@ -75,7 +75,7 @@ const JSON_LD = JSON.stringify({
 export function renderPress(): string {
   const body = `
 <section class="hero" style="min-height:400px;padding:5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
     <h1>Trusted by the Food Industry's Largest Companies</h1>
     <p>For more than 25 years, the world's leading food distributors, manufacturers, retailers, and restaurant chains have relied on Instant Recall to manage their recall communications. Our platform is not just recommended. It is named in official recall documentation by companies like US Foods and Sysco.</p>
@@ -87,12 +87,12 @@ export function renderPress(): string {
   <p class="section-subtitle">Independent documentation from two of the largest foodservice distributors in the world names Instant Recall as their recall communications platform.</p>
 
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
-    <div class="card" style="border-left:3px solid #c8a951">
+    <div class="card" style="border-left:3px solid #00afec">
       <h3>US Foods Recall Process Overview</h3>
       <p>US Foods, one of America's largest foodservice distributors, officially names <strong style="color:#fff">"Instant Recall by BellTower Technologies"</strong> in their Recall Process Overview documentation as the platform used to manage recall communications to their customers.</p>
       <p style="margin-top:1rem"><a href="https://www.usfoods.com/content/dam/usf/pdf/code-of-conduct/Recall-Process-Overview-v3.pdf" target="_blank" rel="noopener" style="font-weight:600">View US Foods Recall Process Overview (PDF) &rarr;</a></p>
     </div>
-    <div class="card" style="border-left:3px solid #c8a951">
+    <div class="card" style="border-left:3px solid #00afec">
       <h3>Sysco Customer Recall Orientation Packet</h3>
       <p>Sysco, the world's largest foodservice distributor, names <strong style="color:#fff">"Instant Recall by BellTower Technologies"</strong> in their Customer Recall Orientation Packet as the system used to deliver recall notifications to Sysco customers.</p>
       <p style="margin-top:1rem"><a href="https://assets.contentstack.io/v3/assets/bltfe3373143ecd3517/bltbed9319da41957ff/6966bee6f4f25c00087a9be8/RG-12_Sysco_Customer_Recall_Packet.pdf" target="_blank" rel="noopener" style="font-weight:600">View Sysco Customer Recall Orientation Packet (PDF) &rarr;</a></p>
@@ -104,15 +104,15 @@ export function renderPress(): string {
 .client-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:2rem auto}
 .client-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:2rem;transition:transform 0.2s,box-shadow 0.2s}
 .client-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
-.client-card h3{color:#c8a951;margin-bottom:.75rem;font-size:1.15rem;font-weight:600;letter-spacing:0.3px}
+.client-card h3{color:#00afec;margin-bottom:.75rem;font-size:1.15rem;font-weight:600;letter-spacing:0.3px}
 .client-card p{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;font-weight:300}
-.client-card .client-tag{display:inline-block;background:rgba(200,169,81,0.15);color:#c8a951;font-size:.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;padding:.25rem .75rem;border-radius:2px;margin-bottom:.75rem}
+.client-card .client-tag{display:inline-block;background:rgba(0,175,236,0.15);color:#00afec;font-size:.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;padding:.25rem .75rem;border-radius:2px;margin-bottom:.75rem}
 .history-section{text-align:center;padding:4rem 2rem;max-width:900px;margin:0 auto}
 .history-section h2{font-size:1.8rem;color:#fff;margin-bottom:1.25rem;font-weight:700}
 .history-section p{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.8;font-weight:300;margin-bottom:1rem}
 .history-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem auto;max-width:700px}
 .history-stat{text-align:center;padding:1.5rem 1rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid rgba(255,255,255,0.06)}
-.history-stat .stat-value{font-size:2.2rem;font-weight:700;color:#c8a951;display:block;margin-bottom:.25rem}
+.history-stat .stat-value{font-size:2.2rem;font-weight:700;color:#00afec;display:block;margin-bottom:.25rem}
 .history-stat .stat-label{font-size:.85rem;color:rgba(255,255,255,0.65);line-height:1.4}
 </style>
 

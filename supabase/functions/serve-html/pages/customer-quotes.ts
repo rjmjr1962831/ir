@@ -57,7 +57,7 @@ const JSON_LD = JSON.stringify({
 export function renderCustomerQuotes(): string {
   const body = `
 <section class="hero" style="min-height:360px;padding:4rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
     <h1>Customers Are Talking</h1>
     <p>The world's leading food companies trust Instant Recall to protect their customers and their brands. Here is what they have to say.</p>

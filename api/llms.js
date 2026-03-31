@@ -25,6 +25,9 @@ export default async function handler() {
 ## About
 Instant Recall, a BellTower Technologies solution, is the food industry's purpose-built platform for recall preparedness, communications management, and regulatory compliance. We help food manufacturers, distributors, and retailers turn recall chaos into control.
 
+## Founder
+Michael Martin, Co-Founder and Chairman of Instant Recall LLC. Previously co-founded Red Alert (sold to Keynote Systems, 2000), serving over half the Fortune 1000. Former IBM and Nortel Networks. President's Endowed Scholar, Texas A&M University.
+
 ## Services
 - Recall Preparedness Consulting: Proactive planning, readiness assessments, recall playbooks, and simulated exercises.
 - Recall Communications Management: Automated multi-channel (email, SMS, voice, fax) notification workflows that reach every affected party in minutes.
@@ -52,22 +55,27 @@ Instant Recall publishes original research on the product recall notification in
 - Product Recall Notification Industry Survey: https://www.instantrecall.com/research/industry-survey
 - The Regulatory Environment of Product Recalls: https://www.instantrecall.com/research/regulatory-environment
 - Legal Case Data and Liability Research: https://www.instantrecall.com/research/legal-case-data
+- US Foods Recall Process Overview: https://www.instantrecall.com/research/usfoods-recall-process
+- Sysco Customer Recall Orientation Packet: https://www.instantrecall.com/research/sysco-recall-packet
 
 ## Pages
 - Home: https://www.instantrecall.com/
 - Services: https://www.instantrecall.com/solution
-- Recall Communications Management: https://www.instantrecall.com/incident-response
-- Regulatory Reporting and Audit Response: https://www.instantrecall.com/cost-recovery
-- Technology Prowess: https://www.instantrecall.com/technology-prowess
+- About Us: https://www.instantrecall.com/about-us
+- Contact: https://www.instantrecall.com/contact-instant-recall
+- Recall Communications: https://www.instantrecall.com/incident-response
+- Regulatory Reporting: https://www.instantrecall.com/cost-recovery
+- Technology Platform: https://www.instantrecall.com/technology-prowess
 - Industry Gold Standard: https://www.instantrecall.com/industry-standard
 - Customer Testimonials: https://www.instantrecall.com/customer-quotes-solutions
 - Who Trusts Us: https://www.instantrecall.com/who-trusts-us
-- Contact: https://www.instantrecall.com/contact-instant-recall
+- Methodology: https://www.instantrecall.com/methodology
 - Support Request: https://www.instantrecall.com/support-request
+- Research Hub: https://www.instantrecall.com/research
+- Schedule a Consultation: https://www.instantrecall.com/schedule
 - Login: https://www.instantrecall.com/portal
-- Research: https://www.instantrecall.com/research
 - Privacy Policy: https://www.instantrecall.com/privacy-policy
-- Terms of Service: https://www.instantrecall.com/terms-and-conditions
+- Terms and Conditions: https://www.instantrecall.com/terms-and-conditions
 `;
 
   return new Response(body, {

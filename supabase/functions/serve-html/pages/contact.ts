@@ -27,7 +27,7 @@ export function renderContact(): string {
     <a href="https://myinstantrecall.com" class="route-option" rel="noopener">I am responding to a recall notification</a>
     <a href="/contact" class="route-option secondary">I want to learn more about Instant Recall</a>
   </div>
-  <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:rgba(255,255,255,.5)">Were you contacted in error? <a href="mailto:support@instantrecall.com?subject=Do Not Contact Request" style="color:#c8a951">Request to be put on the Do Not Contact list.</a></p>
+  <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:rgba(255,255,255,.5)">Were you contacted in error? <a href="mailto:support@instantrecall.com?subject=Do Not Contact Request" style="color:#00afec">Request to be put on the Do Not Contact list.</a></p>
 </div>`;
 
   return renderPage({

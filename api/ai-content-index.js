@@ -25,8 +25,8 @@ export default async function handler() {
       "The Leader in Food Recall Preparedness and Response. 25+ years serving the food industry.",
     url: "https://www.instantrecall.com",
     last_updated: lastUpdated,
-    page_count: f ? f.page_count : 13,
-    research_count: f ? f.research_count : 3,
+    page_count: f ? f.page_count : 22,
+    research_count: f ? f.research_count : 5,
     latest_fda_recall_date: f ? f.latest_fda_recall_date : null,
     pages: [
       {
@@ -50,14 +50,6 @@ export default async function handler() {
         title: "Contact Instant Recall",
         description:
           "Contact routing for recall response, product inquiries, and communication preferences. Phone, email, and online form.",
-        content_type: "contact_page",
-        last_updated: "2026-03-30",
-      },
-      {
-        url: "/contact",
-        title: "Contact",
-        description:
-          "General contact page for reaching the Instant Recall team.",
         content_type: "contact_page",
         last_updated: "2026-03-30",
       },
@@ -102,6 +94,70 @@ export default async function handler() {
         last_updated: "2026-03-30",
       },
       {
+        url: "/incident-response",
+        title: "Recall Communications",
+        description:
+          "24/7/365 expert recall team, multi-channel notification (email, SMS, voice, fax), real-time 360-degree visibility, acknowledgment tracking, and regulatory coordination.",
+        content_type: "service_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/cost-recovery",
+        title: "Regulatory Reporting",
+        description:
+          "Audit-ready documentation, automated FDA/USDA/CFIA reporting, cost recovery tracking, and third-party verified audit trails.",
+        content_type: "service_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/technology-prowess",
+        title: "Technology Platform",
+        description:
+          "Purpose-built recall infrastructure with mobile-friendly portals, multi-channel notifications, real-time dashboards, and automated escalation workflows.",
+        content_type: "service_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/industry-standard",
+        title: "Industry Gold Standard",
+        description:
+          "Trusted by the world's leading food companies for 20+ years. Leader-shared practices and 24/7 response team.",
+        content_type: "trust_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/customer-quotes-solutions",
+        title: "Customer Testimonials",
+        description:
+          "What Performance Food Group, US Foods, Chick-fil-A, Casey's, Papa Murphy's, Ben E. Keith, and Topgolf say about Instant Recall.",
+        content_type: "testimonial_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/who-trusts-us",
+        title: "Who Trusts Us",
+        description:
+          "US Foods and Sysco officially name Instant Recall in their recall documentation. Independent third-party validation from the industry's largest distributors.",
+        content_type: "trust_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/methodology",
+        title: "Methodology",
+        description:
+          "How Instant Recall works: technical approach to recall communications, notification workflows, and response management.",
+        content_type: "service_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/support-request",
+        title: "Support Request",
+        description:
+          "Client support form. Requests processed within 1 business day. For emergencies call (888) 600-4786.",
+        content_type: "support_page",
+        last_updated: "2026-03-30",
+      },
+      {
         url: "/research",
         title: "Research Index",
         description:
@@ -131,6 +187,22 @@ export default async function handler() {
         description:
           "Major product recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions ($52-55M in FY 2023), and class action settlement patterns.",
         content_type: "white_paper",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/research/usfoods-recall-process",
+        title: "US Foods Recall Process Overview",
+        description:
+          "Customer-authored document. US Foods names Instant Recall as their recall notification system, detailing their internal recall process and communication workflows.",
+        content_type: "customer_document",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/research/sysco-recall-packet",
+        title: "Sysco Customer Recall Orientation Packet",
+        description:
+          "Customer-authored document. Sysco names Instant Recall across 340+ facilities, documenting their recall orientation process and notification procedures.",
+        content_type: "customer_document",
         last_updated: "2026-03-30",
       },
     ],
@@ -169,6 +241,18 @@ export default async function handler() {
         url: "/research/legal-case-data",
         summary:
           "Major recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions, and class action settlement patterns.",
+      },
+      {
+        title: "US Foods Recall Process Overview",
+        url: "/research/usfoods-recall-process",
+        summary:
+          "Customer-authored document. US Foods names Instant Recall as their recall notification system, detailing their internal recall process and communication workflows.",
+      },
+      {
+        title: "Sysco Customer Recall Orientation Packet",
+        url: "/research/sysco-recall-packet",
+        summary:
+          "Customer-authored document. Sysco names Instant Recall across 340+ facilities, documenting their recall orientation process and notification procedures.",
       },
     ],
     key_statistics: {

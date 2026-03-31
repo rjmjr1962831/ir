@@ -18,7 +18,7 @@ const JSON_LD = JSON.stringify({
 export function renderMethodology(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
     <h1>Research Methodology</h1>
     <p>How Instant Recall compiles, validates, and cross-references product recall data.</p>
@@ -59,7 +59,7 @@ export function renderMethodology(): string {
   <section class="methodology-section" style="margin-top:2rem">
     <h2>About the Research Team</h2>
     <p>The Instant Recall Research Team combines deep food industry expertise with data analysis capabilities built over more than two decades of recall management operations. The team includes food safety professionals, regulatory specialists, and data analysts who collectively bring more than 75 years of industry experience to the research process.</p>
-    <p>For questions about our methodology, data sources, or to request access to underlying datasets, please <a href="/contact-instant-recall" style="color:#c8a951">contact our research team</a>.</p>
+    <p>For questions about our methodology, data sources, or to request access to underlying datasets, please <a href="/contact-instant-recall" style="color:#00afec">contact our research team</a>.</p>
   </section>
 </div>
 

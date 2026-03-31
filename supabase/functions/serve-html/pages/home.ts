@@ -76,25 +76,34 @@ export function renderHome(): string {
   const tickerHtml = TICKER_ITEMS.map(t => `<span>${t}</span>`).join("");
 
   const body = `
-<section class="hero" style="background-image:url('/images/iStock-835970896.webp')">
-  <div class="hero-overlay"></div>
+<style>
+.video-hero{display:flex;align-items:center;justify-content:center}
+.video-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.video-bg iframe{pointer-events:none}
+.value-prop{text-align:center;padding:4rem 2rem;max-width:900px;margin:0 auto}
+.value-prop h2{font-size:1.8rem;color:#fff;margin-bottom:1.25rem;font-weight:700}
+.value-prop p{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.8;font-weight:300;margin-bottom:1rem}
+</style>
+
+<section class="hero video-hero" style="min-height:600px;position:relative;overflow:hidden">
+  <div class="video-bg">
+    <iframe src="https://player.vimeo.com/video/314904191?background=1&autoplay=1&loop=1&muted=1&quality=720p" frameborder="0" allow="autoplay; fullscreen" style="position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;transform:translate(-50%,-50%)"></iframe>
+  </div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.7)"></div>
   <div class="hero-content">
-    <h1>The Leader in food recall preparedness and response</h1>
-    <p>Protecting Your Customers, Your Brand, and Your Bottom Line. Instant Recall is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence. Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast, no matter how complex the event.</p>
+    <h1 style="font-size:2.8rem">The <em>Leader</em> in food recall preparedness and response</h1>
   </div>
 </section>
 
+<section class="value-prop">
+  <h2>Protecting Your Customers, Your Brand, and Your Bottom Line</h2>
+  <p>Instant Recall is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence.</p>
+  <p>Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast, no matter how complex the event.</p>
+</section>
+
 <section class="video-section">
-  <div class="video-wrapper">
-    <div style="padding:56.25% 0 0 0;position:relative;">
-      <iframe src="https://player.vimeo.com/video/1152623274?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-        title="Instant Recall Overview"
-        loading="lazy"></iframe>
-    </div>
+  <div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:800px;margin:0 auto">
+    <iframe src="https://player.vimeo.com/video/1152623274" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
   </div>
 </section>
 
@@ -104,6 +113,10 @@ export function renderHome(): string {
     <div class="testimonial">
       <blockquote>"Instant Recall was an instant success for us. Never have I had a new regulatory related project implemented with the immediate response being 'Why didn't we do this sooner?' from every departmental stakeholder."</blockquote>
       <div class="attribution">J. Keith Jackson, PhD, Vice President of Quality Assurance<span>Performance Food Group</span></div>
+    </div>
+    <div class="testimonial">
+      <blockquote>"Recalls are no longer looked at as the dreaded email. We now have a process that makes recalls manageable, trackable, and far less stressful for our teams."</blockquote>
+      <div class="attribution">Performance Food Group<span>Performance Food Group</span></div>
     </div>
     <div class="testimonial">
       <blockquote>"The lengths to which this company goes to ensure we're able to reach our customers to remove violative product from distribution is... Second to None!"</blockquote>
@@ -141,7 +154,7 @@ export function renderHome(): string {
   <h2 class="section-title">Our Solution</h2>
   <div class="cards">
     <div class="card">
-      <img src="/images/RecallPreparednessConsulting.webp" alt="Recall Preparedness Consulting">
+      <img src="/images/RecallPreparednessConsulting2.webp" alt="Recall Preparedness Consulting">
       <h3>Recall Preparedness Consulting</h3>
       <p>As the industry leader in food recall communications management, we bring the combined best practices of the industry's largest and most successful food companies to you, tailored to handle your unique operational environment.</p>
     </div>
@@ -151,13 +164,13 @@ export function renderHome(): string {
       <p>Our team of recall communications experts is available to you 24x7x365 for your recall emergencies, backed by unrivaled, purpose-built technology, with real-time 360-degree recall progress visibility.</p>
     </div>
     <div class="card">
-      <img src="/images/architecture-buildings-business-280193_edited.webp" alt="Regulatory Reporting and Audit Response">
+      <img src="/images/RecallPreparednessConsulting.webp" alt="Regulatory Reporting and Audit Response">
       <h3>Regulatory Reporting and Audit Response</h3>
       <p>Instant Recall delivers ironclad, third party audit trail details that exceed regulatory requirements, and expedite successful resolution of regulatory audits.</p>
     </div>
   </div>
   <div style="text-align:center;margin-top:1.5rem">
-    <a href="/solution" class="btn" style="display:inline-block;background:#c8a951;color:#0b0b1a;padding:.85rem 2.5rem;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase">Learn more</a>
+    <a href="/solution" class="btn" style="display:inline-block;background:#00afec;color:#fff;padding:.85rem 2.5rem;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase">Learn more</a>
   </div>
 </section>
 

@@ -14,11 +14,11 @@ export function renderSchedule(): string {
     <p>Please follow the instructions below to book an appointment to learn more about Instant Recall's services.</p>
     <p style="margin-top:2rem">To schedule an appointment, please contact us:</p>
     <div style="margin-top:1.5rem">
-      <p><strong style="color:#c8a951">Sales (Toll-Free):</strong> <a href="tel:+18884004786" style="color:rgba(255,255,255,.85)">(888) 400-4786</a></p>
-      <p><strong style="color:#c8a951">Email:</strong> <a href="mailto:sales@instantrecall.com" style="color:rgba(255,255,255,.85)">sales@instantrecall.com</a></p>
+      <p><strong style="color:#00afec">Sales (Toll-Free):</strong> <a href="tel:+18884004786" style="color:rgba(255,255,255,.85)">(888) 400-4786</a></p>
+      <p><strong style="color:#00afec">Email:</strong> <a href="mailto:sales@instantrecall.com" style="color:rgba(255,255,255,.85)">sales@instantrecall.com</a></p>
     </div>
     <div style="margin-top:2rem">
-      <a href="/contact-instant-recall" style="display:inline-block;background:#c8a951;color:#0b0b1a;padding:.85rem 2.5rem;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase">Contact Us</a>
+      <a href="/contact-instant-recall" style="display:inline-block;background:#00afec;color:#272727;padding:.85rem 2.5rem;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase">Contact Us</a>
     </div>
   </div>
 </div>`;

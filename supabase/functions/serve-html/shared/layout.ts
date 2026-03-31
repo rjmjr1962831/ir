@@ -63,7 +63,7 @@ function header(): string {
     <a href="/">Home</a>
     <a href="/solution">Solution</a>
     <a href="/research">Research</a>
-    <a href="/portal">Login</a>
+    <a href="/portal">Portal</a>
     <a href="/contact-instant-recall">Contact Us</a>
   </nav>
 </header>`;
@@ -78,24 +78,56 @@ function footer(freshness?: FreshnessData | null): string {
   <div class="footer-inner">
     <div class="footer-left">
       <img src="/images/footerlogo.webp" alt="Instant Recall" height="80">
+      <p style="font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.75rem;max-width:280px;line-height:1.6">The leader in food recall preparedness and response. Trusted by the world's largest foodservice distributors for 25+ years.</p>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.5rem">Founded by <a href="/about-us" style="color:#00afec">Michael Martin</a>, 2000</p>
+      <a href="https://belltowertech.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem"><img src="/images/aserviceofbelltower.webp" alt="A service of BellTower" height="40"></a>
     </div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/solution">Solution</a>
-      <a href="/contact-instant-recall">Sign Up</a>
-      <a href="/contact-instant-recall">Contact Us</a>
-      <a href="/portal">Login</a>
-      <a href="/schedule">Book an Appointment</a>
+    <div class="footer-col">
+      <div class="footer-col-label">Company</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/solution">Solution</a>
+        <a href="/about-us">About Us</a>
+        <a href="/contact-instant-recall">Contact Us</a>
+        <a href="/portal">Login</a>
+        <a href="/schedule">Book an Appointment</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Research</div>
+      <div class="footer-links">
+        <a href="/research">Research Hub</a>
+        <a href="/research/legal-case-data">Legal Case Data</a>
+        <a href="/research/industry-survey">Industry Survey</a>
+        <a href="/research/regulatory-environment">Regulatory Environment</a>
+        <a href="/research/usfoods-recall-process">US Foods Recall Process</a>
+        <a href="/research/sysco-recall-packet">Sysco Recall Packet</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">For AI Systems</div>
+      <div class="footer-links">
+        <a href="/for-ai">For AI</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/llms-full.txt">llms-full.txt</a>
+        <a href="/ai-content-index.json">AI Content Index</a>
+        <a href="/.well-known/mcp.json">MCP Server</a>
+        <a href="/sitemap.xml">Sitemap</a>
+        <a href="/robots.txt">robots.txt</a>
+        <a href="/crawl-stats">Crawl Stats</a>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; ${year} Instant Recall LLC. All Rights Reserved.</p>
+      <p>(c) Instant Recall LLC All Rights Reserved</p>
       <div class="footer-nav">
         <a href="/">HOME</a>
         <a href="/solution">SOLUTION</a>
-        <a href="/portal">LOGIN</a>
+        <a href="/research">RESEARCH</a>
+        <a href="/portal">PORTAL</a>
         <a href="/contact-instant-recall">CONTACT US</a>
       </div>
       <p style="margin-top:.75rem"><a href="/terms-and-conditions">Terms and Conditions</a> | <a href="/privacy-policy">Privacy Policy</a></p>
+      <p style="margin-top:.5rem"><a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.5);font-size:.85rem">LinkedIn</a></p>
       ${updatedLine}
     </div>
   </div>

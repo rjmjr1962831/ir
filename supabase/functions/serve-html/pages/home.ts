@@ -1,5 +1,6 @@
 import { renderPage } from "../shared/layout.ts";
 import { homeCitationBlock, methodologyBlock, CITATION_CSS } from "../shared/citations.ts";
+import { CONTACT_FORM_CSS, CONTACT_FORM_HTML, CONTACT_FORM_JS } from "./contact.ts";
 
 const JSON_LD = JSON.stringify([
   {
@@ -199,14 +200,18 @@ ${homeCitationBlock()}
 
 ${methodologyBlock()}
 
-<!-- 9. CONTACT CTA: White background -->
-<section class="section-white">
+<!-- 9. CONTACT CTA: White background with form -->
+<style>${CONTACT_FORM_CSS}</style>
+<section class="section-white contact-form-section">
   <div class="section-inner">
-    <h2 style="font-size:1.8rem;margin-bottom:1rem;font-weight:700">Accelerate Your Recall Response</h2>
-    <p style="font-size:1.05rem;line-height:1.8;font-weight:300;margin-bottom:1.5rem">See how Instant Recall can protect your customers, your organization, and your brand.</p>
-    <a href="/contact-instant-recall" class="btn-outline">Contact Us</a>
+    <h2>Accelerate Your Recall Response</h2>
+    <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
+    <form id="contact-form">
+      ${CONTACT_FORM_HTML}
+    </form>
   </div>
-</section>`;
+</section>
+<script>${CONTACT_FORM_JS}</script>`;
 
   return renderPage({
     title: "Instant Recall -- The Leader in Food Recall Preparedness and Response",

@@ -144,8 +144,68 @@ function renderColumnChart(history: ScoreHistory[], liveScore: number): string {
   </div>`;
 }
 
+interface ContactSubmission {
+  id: number;
+  ts: string;
+  email: string;
+  first_name: string | null;
+  last_name: string | null;
+  company: string | null;
+  num_locations: string | null;
+  status: string;
+}
+
+async function fetchContactSubmissions(): Promise<ContactSubmission[]> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/contact_submissions?select=id,ts,email,first_name,last_name,company,num_locations,status&order=ts.desc&limit=20`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
+function renderContactTable(submissions: ContactSubmission[]): string {
+  if (submissions.length === 0) {
+    return '<div style="color:#556677;font-size:.85rem;padding:1rem">No contact submissions yet.</div>';
+  }
+
+  const rows = submissions.map(s => {
+    const date = new Date(s.ts).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const name = [s.first_name, s.last_name].filter(Boolean).join(" ") || "-";
+    const statusColor = s.status === "new" ? "#00d4aa" : s.status === "contacted" ? "#ffd93d" : "#556677";
+    return `<tr>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa;white-space:nowrap">${date}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#e8e8e8">${name}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem"><a href="mailto:${s.email}" style="color:#00d4aa">${s.email}</a></td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa">${s.company || "-"}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa">${s.num_locations || "-"}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:${statusColor};color:#0f1923">${s.status}</span></td>
+    </tr>`;
+  }).join("");
+
+  return `<div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Date</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Name</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Email</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Company</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Locations</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Status</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
 export async function handleDashboard(_req: Request): Promise<Response> {
-  const [scoreData, history] = await Promise.all([fetchGeoScore(), fetchScoreHistory()]);
+  const [scoreData, history, contactSubs] = await Promise.all([fetchGeoScore(), fetchScoreHistory(), fetchContactSubmissions()]);
 
   const now = new Date();
   const dateStr = now.toLocaleDateString("en-US", {
@@ -384,6 +444,14 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">Federal agencies (CPSC, FDA, NHTSA, USDA), legislation, enforcement, and penalties.</div>
         <span class="badge badge-live">Live</span>
       </div>
+    </div>
+  </div>
+
+  <!-- CONTACT SUBMISSIONS -->
+  <div class="dash-section">
+    <h2>Contact Submissions</h2>
+    <div style="background:#111d28;border:1px solid #1a2a3a;border-radius:12px;padding:1.25rem">
+      ${renderContactTable(contactSubs)}
     </div>
   </div>
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IR Phase 1 Progress Chart | March 31, 2026</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;padding:2rem;background:#f5f5f5;color:#222;line-height:1.5}
+.page{max-width:1100px;margin:0 auto;background:#fff;padding:2.5rem;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+h1{font-size:1.6rem;margin:0 0 .25rem;color:#111}
+h2{font-size:1.2rem;margin:2rem 0 .75rem;color:#333;border-bottom:2px solid #e0e0e0;padding-bottom:.4rem}
+.subtitle{color:#666;font-size:.95rem;margin-bottom:1.5rem}
+.legend{display:flex;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-done{background:#22c55e}
+.dot-ip{background:#f59e0b}
+.dot-ns{background:#ef4444}
+.dot-skip{background:#94a3b8}
+table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:.88rem}
+th{background:#f0f0f0;text-align:left;padding:.6rem .75rem;font-weight:700;border-bottom:2px solid #ddd;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:#555}
+td{padding:.55rem .75rem;border-bottom:1px solid #eee;vertical-align:top}
+tr:hover td{background:#fafafa}
+.done{color:#16a34a;font-weight:700}
+.ip{color:#d97706;font-weight:700}
+.ns{color:#dc2626;font-weight:700}
+.skip{color:#64748b;font-weight:700}
+.notes{color:#666;font-size:.82rem}
+.summary-table td,.summary-table th{text-align:center}
+.summary-table td:first-child,.summary-table th:first-child{text-align:left}
+.priorities{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:6px;padding:1.25rem 1.5rem;margin-top:1.5rem}
+.priorities h3{margin:0 0 .75rem;font-size:1rem;color:#333}
+.priorities ol{margin:0;padding-left:1.25rem}
+.priorities li{margin-bottom:.4rem;font-size:.9rem}
+.bar-container{display:flex;height:28px;border-radius:4px;overflow:hidden;margin:1rem 0}
+.bar-done{background:#22c55e}
+.bar-ip{background:#f59e0b}
+.bar-ns{background:#ef4444}
+.bar-skip{background:#94a3b8}
+.bar-label{color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;min-width:40px}
+hr{border:none;border-top:1px solid #e0e0e0;margin:1.5rem 0}
+.updated{font-size:.8rem;color:#999;margin-top:1rem;text-align:right}
+</style>
+</head>
+<body>
+<div class="page">
+<h1>instantrecall.com Phase 1 ASAP -- GEO & AI Citation Infrastructure</h1>
+<div class="subtitle">Progress Chart | Updated March 31, 2026 5:00 PM MST</div>
+
+<div class="legend">
+  <span><span class="dot dot-done"></span> DONE (18)</span>
+  <span><span class="dot dot-ip"></span> IN PROGRESS (4)</span>
+  <span><span class="dot dot-ns"></span> NOT STARTED (6)</span>
+  <span><span class="dot dot-skip"></span> SKIPPED (2)</span>
+</div>
+
+<div class="bar-container">
+  <div class="bar-done bar-label" style="width:60%">60%</div>
+  <div class="bar-ip bar-label" style="width:13%">13%</div>
+  <div class="bar-ns bar-label" style="width:20%">20%</div>
+  <div class="bar-skip bar-label" style="width:7%">7%</div>
+</div>
+
+<h2>TRACK A -- Discovery & Baseline (Days 1-3)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>A1</td><td>curl robots.txt -- bots blocked, allowed, or absent?</td><td class="done">DONE</td><td class="notes">24 user-agents explicitly allowed. All AI bots welcomed.</td></tr>
+<tr><td>A2</td><td>Check for llms.txt, sitemap.xml, /for-ai, ai-content-index.json</td><td class="done">DONE</td><td class="notes">All four live. Correct content-types (text/plain, application/xml, application/json). 23 pages in sitemap.</td></tr>
+<tr><td>A3</td><td>Run GEO score via geo-audit.js pipeline</td><td class="done">DONE</td><td class="notes">GEO ledger active in Supabase. 8 dimensions, 7 PASS / 1 FAIL (HTTP/3)</td></tr>
+<tr><td>A4</td><td>Confirm platform (WordPress assumed)</td><td class="done">DONE</td><td class="notes">Squarespace. Clean-room HTML rebuilt via Supabase Edge Functions + Vercel proxy</td></tr>
+<tr><td>A5</td><td>Page load speed -- homepage + top 5 pages (&lt;1500ms)</td><td class="done">DONE</td><td class="notes">Homepage 130ms, Solution 536ms, About 585ms, Research 379ms, Contact 446ms. All well under 1500ms</td></tr>
+<tr><td>A6</td><td>GA4 -- installed? Clean data or bot-polluted?</td><td class="ns">NOT STARTED</td><td class="notes">No GA4 on dev site. Squarespace has Google Ads tag only.</td></tr>
+</table>
+
+<h2>TRACK B -- Crawl & Infrastructure (Days 3-6)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>B1</td><td>Audit robots.txt and server-level blocks</td><td class="done">DONE</td><td class="notes">No blocks found. Clean robots.txt deployed.</td></tr>
+<tr><td>B2</td><td>Explicit Allow for all 15+ AI user-agents</td><td class="done">DONE</td><td class="notes">24 agents listed: GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-Web, Anthropic-AI, PerplexityBot, Gemini-AI, Google-Extended, GoogleOther, Googlebot, Applebot, Applebot-Extended, Bingbot, CCBot, Bytespider, Cohere-AI, Meta-ExternalAgent, Amazonbot, Grok, YouBot, AI2Bot, DuckDuckBot, catchall *</td></tr>
+<tr><td>B3</td><td>Verify with live curl per bot name after deploy</td><td class="done">DONE</td><td class="notes">All 23 bot user-agents verified returning HTTP 200 via live curl.</td></tr>
+<tr><td>B4</td><td>Clean robots.txt with full AI bot allowances</td><td class="done">DONE</td><td class="notes">24 explicit user-agent entries + sitemap + AI discovery endpoints listed</td></tr>
+<tr><td>B5</td><td>llms.txt reflecting actual page inventory (text/plain)</td><td class="done">DONE</td><td class="notes">text/plain confirmed. 16+ pages listed. Dynamic freshness date from Supabase.</td></tr>
+<tr><td>B6</td><td>sitemap.xml -- all live pages, accurate dates</td><td class="done">DONE</td><td class="notes">23 pages in sitemap. Dynamic lastmod from Supabase site_freshness table.</td></tr>
+<tr><td>B7</td><td>Submit sitemap to Google Search Console</td><td class="skip">SKIPPED</td><td class="notes">Deferred per Robert. Sitemap ready for submission.</td></tr>
+<tr><td>B8</td><td>Full crawl audit -- noindex tags, canonical mismatches</td><td class="done">DONE</td><td class="notes">19 pages audited: 0 noindex tags, 19/19 correct canonical URLs pointing to www.instantrecall.com</td></tr>
+<tr><td>B9</td><td>Submit unindexed pages to Search Console</td><td class="skip">SKIPPED</td><td class="notes">Deferred per Robert. All pages ready for submission.</td></tr>
+</table>
+
+<h2>TRACK C -- AI-Facing Infrastructure (Days 5-10)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>C1</td><td>/for-ai and ai-feed directory -- anti-hallucination, citation guides</td><td class="done">DONE</td><td class="notes">/for-ai (200), ai-content-index.json (200, application/json). Citation policy, key statistics, services, research all structured.</td></tr>
+<tr><td>C2</td><td>Structured data feeds -- valid JSON, correct content-type</td><td class="done">DONE</td><td class="notes">ai-content-index.json = application/json. llms.txt = text/plain. No HTML masquerading as data.</td></tr>
+<tr><td>C3</td><td>Clean-room HTML on all AI-targeted pages</td><td class="done">DONE</td><td class="notes">All 11 Squarespace pages + 8 new pages rebuilt as clean-room HTML. 19 total. No JS rendering required.</td></tr>
+<tr><td>C4</td><td>Verify Content-Length comparison vs. GPTBot user-agent</td><td class="ns">NOT STARTED</td><td class="notes">Clean-room HTML deployed but GPTBot-specific response comparison not yet run.</td></tr>
+<tr><td>C5</td><td>Daily cron for dateModified freshness in JSON-LD</td><td class="ip">IN PROGRESS</td><td class="notes">dateModified present on homepage (3 refs). site_freshness table drives llms.txt/sitemap dates. No daily cron updating JSON-LD dateModified on all pages yet.</td></tr>
+<tr><td>C6</td><td>GA4 baseline setup -- install, bot traffic filtering</td><td class="ns">NOT STARTED</td><td class="notes">No GA4 on dev site.</td></tr>
+</table>
+
+<h2>TRACK D -- Trust & Authority Content (Days 6-12)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>D1</td><td>Founder/executive page -- bios + LinkedIn links</td><td class="done">DONE</td><td class="notes">/about-us live with Person schema blocks. Bios, titles, expertise areas.</td></tr>
+<tr><td>D2</td><td>Person schema (JSON-LD) on the page</td><td class="done">DONE</td><td class="notes">Person + Organization schemas on /about-us. Multiple JSON-LD blocks.</td></tr>
+<tr><td>D3</td><td>FAQ sections + FAQPage schema on key pages</td><td class="ns">NOT STARTED</td><td class="notes">No FAQPage schema detected on any page.</td></tr>
+<tr><td>D4</td><td>Statistics sourced and datestamped</td><td class="done">DONE</td><td class="notes">Key stats in ai-content-index.json (6% participation, 70% unaware, 3200+ recalls, $4.32B market). Research papers with full citations.</td></tr>
+<tr><td>D5</td><td>BellTower Technologies authority page</td><td class="ns">NOT STARTED</td><td class="notes">/belltower returns 404. No BellTower page exists.</td></tr>
+<tr><td>D6</td><td>Organization schema, bidirectional links</td><td class="ip">IN PROGRESS</td><td class="notes">Organization schema on homepage with sameAs to belltowertech.com. BellTower side not built.</td></tr>
+<tr><td>D7</td><td>Site architecture for dual AI/human audiences</td><td class="done">DONE</td><td class="notes">Clean-room HTML for bots (Supabase Edge Functions), Squarespace for humans. AI content index maps audiences.</td></tr>
+</table>
+
+<h2>TRACK E -- Handoff (Days 12-14)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>E1</td><td>Document every file deployed: where, how to update</td><td class="ip">IN PROGRESS</td><td class="notes">CLAUDE.md + GEO ledger track all changes. No standalone client-facing runbook yet.</td></tr>
+<tr><td>E2</td><td>Write as you build -- not retrospective</td><td class="ip">IN PROGRESS</td><td class="notes">GEO ledger entries written per deploy. Needs consolidation into handoff doc.</td></tr>
+<tr><td>E3</td><td>Client team can maintain without ongoing dev cost</td><td class="ns">NOT STARTED</td><td class="notes">No handoff documentation prepared for client team.</td></tr>
+</table>
+
+<hr>
+
+<h2>PHASE 2 -- POST-SPRINT (Not in scope)</h2>
+<table>
+<tr><th style="width:40px">#</th><th>Item</th><th style="width:110px">Status</th><th>Notes</th></tr>
+<tr><td>P1</td><td>Add a great deal of new content</td><td class="ip">IN PROGRESS*</td><td class="notes">3 white papers + 3 executive summaries + 6 service sub-pages deployed. *Ahead of schedule.</td></tr>
+<tr><td>P2</td><td>Academic-style papers (e.g. 'The Yellow Page Moment')</td><td class="ns">NOT STARTED</td><td class="notes">--</td></tr>
+<tr><td>P3</td><td>Trade publication article placements</td><td class="ns">NOT STARTED</td><td class="notes">--</td></tr>
+<tr><td>P4</td><td>Case studies for Instant Recall</td><td class="ns">NOT STARTED</td><td class="notes">--</td></tr>
+<tr><td>P5</td><td>Targeted PR placements with testimonials</td><td class="ns">NOT STARTED</td><td class="notes">--</td></tr>
+</table>
+
+<hr>
+
+<h2>SUMMARY (Phase 1 Only)</h2>
+<table class="summary-table">
+<tr><th>Track</th><th>Done</th><th>In Progress</th><th>Not Started</th><th>Skipped</th><th>Total</th></tr>
+<tr><td>A -- Discovery & Baseline</td><td class="done">5</td><td class="ip">0</td><td class="ns">1</td><td class="skip">0</td><td>6</td></tr>
+<tr><td>B -- Crawl & Infrastructure</td><td class="done">6</td><td class="ip">0</td><td class="ns">0</td><td class="skip">2</td><td>8</td></tr>
+<tr><td>C -- AI Infrastructure</td><td class="done">3</td><td class="ip">1</td><td class="ns">2</td><td class="skip">0</td><td>6</td></tr>
+<tr><td>D -- Trust & Authority</td><td class="done">3</td><td class="ip">1</td><td class="ns">3</td><td class="skip">0</td><td>7</td></tr>
+<tr><td>E -- Handoff</td><td class="done">0</td><td class="ip">2</td><td class="ns">1</td><td class="skip">0</td><td>3</td></tr>
+<tr style="font-weight:800;border-top:2px solid #333"><td>TOTALS</td><td class="done">17</td><td class="ip">4</td><td class="ns">7</td><td class="skip">2</td><td>30</td></tr>
+</table>
+
+<div style="text-align:center;margin:1.5rem 0;font-size:1.3rem;font-weight:800">
+  <span style="color:#16a34a">57% Done</span> &nbsp;|&nbsp;
+  <span style="color:#d97706">13% In Progress</span> &nbsp;|&nbsp;
+  <span style="color:#dc2626">23% Not Started</span> &nbsp;|&nbsp;
+  <span style="color:#64748b">7% Skipped</span>
+</div>
+
+<div class="priorities">
+<h3>Remaining Items to Close Out Sprint</h3>
+<ol>
+<li><strong>GA4</strong> -- install and configure on dev site (blocker for baseline data) [A6, C6]</li>
+<li><strong>FAQPage schema</strong> -- add to key pages (GEO audit failure point) [D3]</li>
+<li><strong>BellTower Technologies page</strong> -- build with Organization schema + bidirectional links [D5, D6]</li>
+<li><strong>Daily dateModified cron</strong> -- automate JSON-LD freshness on all pages [C5]</li>
+<li><strong>GPTBot Content-Length verification</strong> -- compare clean-room vs SPA response [C4]</li>
+<li><strong>Handoff runbook</strong> -- consolidate GEO ledger into client-facing maintenance doc [E1, E2, E3]</li>
+</ol>
+</div>
+
+<div class="updated">Last generated: March 31, 2026 5:00 PM MST</div>
+</div>
+</body>
+</html>

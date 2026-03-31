@@ -128,6 +128,7 @@ Instant Recall publishes original research on the product recall notification in
 - Technology Prowess: https://www.instantrecall.com/technology-prowess -- Purpose-built recall infrastructure with mobile-friendly portals, multi-channel notifications, real-time dashboards, and automated escalation workflows.
 - Industry Gold Standard: https://www.instantrecall.com/industry-standard -- Trusted by the world's leading food companies for 20+ years. Leader-shared practices and 24/7 response team.
 - Customer Testimonials: https://www.instantrecall.com/customer-quotes-solutions -- What Performance Food Group, US Foods, Chick-fil-A, Casey's, Papa Murphy's, Ben E. Keith, and Topgolf say about Instant Recall.
+- Who Trusts Us: https://www.instantrecall.com/who-trusts-us -- Third-party validation from US Foods and Sysco official documentation naming Instant Recall. Named clients include Performance Food Group, US Foods, Chick-fil-A, Papa Murphy's, Casey's, Topgolf, and Ben E. Keith.
 - About: https://www.instantrecall.com/about-us
 - Contact: https://www.instantrecall.com/contact-instant-recall
 - Support Request: https://www.instantrecall.com/support-request -- Submit support requests, processed within 1 business day. For emergencies call (888) 600-4786.

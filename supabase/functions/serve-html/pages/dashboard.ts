@@ -311,6 +311,42 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">Machine-readable summary page for AI discovery.</div>
         <span class="badge badge-live">Live</span>
       </div>
+      <div class="page-card">
+        <h3>Recall Communications</h3>
+        <a href="/incident-response" class="route">/incident-response</a>
+        <div class="desc">24/7/365 expert recall team, multi-channel notification, real-time visibility.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Regulatory Reporting</h3>
+        <a href="/cost-recovery" class="route">/cost-recovery</a>
+        <div class="desc">Audit-ready documentation, automated FDA/USDA reporting, cost recovery tracking.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Technology Prowess</h3>
+        <a href="/technology-prowess" class="route">/technology-prowess</a>
+        <div class="desc">Purpose-built recall infrastructure, mobile portals, automated escalation.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Industry Gold Standard</h3>
+        <a href="/industry-standard" class="route">/industry-standard</a>
+        <div class="desc">Trusted by the world's leading food companies for 20+ years.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Customer Testimonials</h3>
+        <a href="/customer-quotes-solutions" class="route">/customer-quotes-solutions</a>
+        <div class="desc">What Performance Food Group, US Foods, Chick-fil-A, Casey's, and others say.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Support Request</h3>
+        <a href="/support-request" class="route">/support-request</a>
+        <div class="desc">Client support form. Processed within 1 business day.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
     </div>
   </div>
 

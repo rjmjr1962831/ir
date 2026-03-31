@@ -27,6 +27,7 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/research/regulatory-environment": "Regulatory Environment",
   "/research/legal-case-data": "Legal Case Data",
   "/methodology": "Research Methodology",
+  "/who-trusts-us": "Who Trusts Us",
 };
 
 function buildBreadcrumbLd(path: string): string {

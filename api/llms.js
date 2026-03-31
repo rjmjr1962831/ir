@@ -61,6 +61,7 @@ Instant Recall publishes original research on the product recall notification in
 - Technology Prowess: https://www.instantrecall.com/technology-prowess
 - Industry Gold Standard: https://www.instantrecall.com/industry-standard
 - Customer Testimonials: https://www.instantrecall.com/customer-quotes-solutions
+- Who Trusts Us: https://www.instantrecall.com/who-trusts-us
 - Contact: https://www.instantrecall.com/contact-instant-recall
 - Support Request: https://www.instantrecall.com/support-request
 - Login: https://www.instantrecall.com/portal

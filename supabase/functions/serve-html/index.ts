@@ -22,6 +22,7 @@ import { renderCustomerQuotes } from "./pages/customer-quotes.ts";
 import { renderSupportRequest } from "./pages/support-request.ts";
 import { renderMethodology } from "./pages/methodology.ts";
 import { handleCrawlStats } from "./pages/crawl-stats.ts";
+import { renderPress } from "./pages/press.ts";
 
 // --- Bot detection and logging ---
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrcknm.supabase.co";

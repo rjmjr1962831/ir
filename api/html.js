@@ -14,9 +14,14 @@ export default async function handler(req) {
     },
   });
   const html = await res.text();
+  // Respect upstream private cache (crawl-stats, dashboard, geo-ledger)
+  const upstreamCC = res.headers.get("cache-control") || "";
+  const cacheControl = upstreamCC.includes("private")
+    ? upstreamCC
+    : "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600";
   const headers = {
     "Content-Type": "text/html; charset=utf-8",
-    "Cache-Control": "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600",
+    "Cache-Control": cacheControl,
   };
   return new Response(html, { status: res.status, headers });
 }

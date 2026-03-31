@@ -400,7 +400,7 @@ export async function handleDashboard(_req: Request): Promise<Response> {
     status: 200,
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "public, max-age=60, s-maxage=300",
+      "Cache-Control": "private, max-age=30",
     },
   });
 }

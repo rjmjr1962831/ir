@@ -36,6 +36,11 @@ export default async function handler() {
     { loc: "/industry-standard", priority: "0.8", changefreq: "monthly" },
     { loc: "/customer-quotes-solutions", priority: "0.7", changefreq: "monthly" },
     { loc: "/support-request", priority: "0.6", changefreq: "monthly" },
+    { loc: "/about-us", priority: "0.8", changefreq: "monthly" },
+    { loc: "/schedule", priority: "0.7", changefreq: "monthly" },
+    { loc: "/contact", priority: "0.7", changefreq: "monthly" },
+    { loc: "/methodology", priority: "0.7", changefreq: "monthly" },
+    { loc: "/for-ai.txt", priority: "0.5", changefreq: "monthly" },
   ];
 
   const entries = urls

@@ -143,6 +143,44 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .schedule-section{max-width:800px;margin:0 auto;padding:2rem;text-align:center}
 .schedule-section p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2rem;font-weight:300}
 
+/* Section backgrounds */
+.section-white{background:#fff;color:#272727;padding:4rem 2rem}
+.section-white h2,.section-white h3{color:#272727}
+.section-white p{color:#3e3e3e}
+.section-white a{color:#00afec}
+
+.section-cyan{background:#00afec;color:#fff;padding:4rem 2rem}
+.section-cyan h2,.section-cyan h3{color:#fff}
+.section-cyan p{color:rgba(255,255,255,.95)}
+.section-cyan a{color:#fff;text-decoration:underline}
+.section-cyan blockquote{color:#fff;border-left-color:rgba(255,255,255,.5)}
+
+.section-gray{background:#f6f6f6;color:#272727;padding:4rem 2rem}
+.section-gray h2,.section-gray h3{color:#272727}
+.section-gray p{color:#3e3e3e}
+
+.section-dark{background:#272727;color:#fff;padding:4rem 2rem}
+
+/* Nav button */
+.site-header nav a.nav-btn{background:#00afec;color:#fff;padding:.5rem 1.25rem;border-radius:3px;font-weight:600}
+.site-header nav a.nav-btn:hover{background:#33c4ff}
+
+/* Service icons */
+.service-icon{width:100px;height:100px;border-radius:50%;background:#00afec;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.service-icon img{width:50px;height:50px;filter:brightness(0) invert(1)}
+
+/* Section inner */
+.section-inner{max-width:800px;margin:0 auto;text-align:center}
+
+/* Single testimonial */
+.testimonial-single{max-width:700px;margin:0 auto;text-align:center}
+.testimonial-single blockquote{font-size:1.25rem;font-weight:600;color:#fff;font-style:italic;line-height:1.6;margin-bottom:1.5rem}
+.testimonial-single .attribution{color:rgba(255,255,255,.9);font-size:.9rem}
+
+/* Outline button */
+.btn-outline{display:inline-block;border:2px solid #272727;color:#272727;padding:.75rem 2.5rem;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;background:transparent}
+.btn-outline:hover{background:#272727;color:#fff;text-decoration:none}
+
 /* Responsive */
 @media(max-width:768px){
   .hero h1{font-size:1.8rem}

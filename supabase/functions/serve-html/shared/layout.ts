@@ -64,7 +64,7 @@ function header(): string {
     <a href="/solution">Solution</a>
     <a href="/research">Research</a>
     <a href="/portal">Portal</a>
-    <a href="/contact-instant-recall">Contact Us</a>
+    <a href="/contact-instant-recall" class="nav-btn">Contact Us</a>
   </nav>
 </header>`;
 }

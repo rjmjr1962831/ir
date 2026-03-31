@@ -444,6 +444,18 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">Federal agencies (CPSC, FDA, NHTSA, USDA), legislation, enforcement, and penalties.</div>
         <span class="badge badge-live">Live</span>
       </div>
+      <div class="page-card">
+        <h3>US Foods Recall Process</h3>
+        <a href="/research/usfoods-recall-process" class="route">/research/usfoods-recall-process</a>
+        <div class="desc">Customer-authored document. US Foods names Instant Recall as their recall system.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Sysco Recall Packet</h3>
+        <a href="/research/sysco-recall-packet" class="route">/research/sysco-recall-packet</a>
+        <div class="desc">Customer-authored document. Sysco names Instant Recall across 340+ facilities.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
     </div>
   </div>
 

@@ -25,6 +25,7 @@
     { "source": "/privacy-policy", "destination": "/api/html?path=%2Fprivacy-policy" },
     { "source": "/terms-and-conditions", "destination": "/api/html?path=%2Fterms-and-conditions" },
     { "source": "/about-us", "destination": "/api/html?path=%2Fabout-us" },
+    { "source": "/methodology", "destination": "/api/html?path=%2Fmethodology" },
     { "source": "/geo-ledger", "destination": "/api/html?path=%2Fgeo-ledger" },
     { "source": "/dashboard", "destination": "/api/html?path=%2Fdashboard" },
     { "source": "/crawl-stats", "destination": "/api/html?path=%2Fcrawl-stats" },

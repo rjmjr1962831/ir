@@ -22,6 +22,16 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/industry-survey",
   inLanguage: "en-US",
+  citation: [
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.fsis.usda.gov/recalls",
+    "https://www.cpsc.gov/Recalls",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.foodsafetymagazine.com/",
+    "https://www.cdc.gov/foodsafety/",
+    "https://www.ers.usda.gov/publications/",
+    "https://www.gao.gov/products/gao-15-290",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({

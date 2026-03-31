@@ -22,6 +22,16 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/legal-case-data",
   inLanguage: "en-US",
+  citation: [
+    "https://www.cpsc.gov/Recalls",
+    "https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance",
+    "https://www.nhtsa.gov/recalls",
+    "https://www.law.cornell.edu/wex/products_liability",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.justice.gov/criminal-fraud",
+    "https://www.ali.org/publications/show/torts-liability-physical-and-emotional-harm/",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({

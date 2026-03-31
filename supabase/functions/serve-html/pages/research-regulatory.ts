@@ -22,6 +22,18 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/regulatory-environment",
   inLanguage: "en-US",
+  citation: [
+    "https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls",
+    "https://www.fsis.usda.gov/recalls",
+    "https://www.cpsc.gov/Recalls",
+    "https://www.nhtsa.gov/recalls",
+    "https://www.epa.gov/recalls",
+    "https://www.congress.gov/bill/111th-congress/house-bill/2749",
+    "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma",
+    "https://www.gao.gov/products/gao-22-105011",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.foodsafetymagazine.com/",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({

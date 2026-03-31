@@ -1,30 +1,55 @@
 import { renderPage } from "../shared/layout.ts";
 import { solutionCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
+const SERVICE_AUDIENCE = {
+  "@type": "Audience",
+  audienceType:
+    "Food manufacturers, distributors, retailers, and restaurant chains",
+};
+
 const JSON_LD = JSON.stringify([
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Recall Preparedness Consulting",
+    serviceType: "Recall Preparedness Consulting",
     provider: { "@type": "Organization", name: "Instant Recall LLC" },
     description:
       "As the industry leader in food recall communications management, we bring the combined best practices of the industry's largest and most successful food companies to you.",
+    areaServed: "United States",
+    audience: SERVICE_AUDIENCE,
   },
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Recall Communications Management",
+    serviceType: "Recall Communications Management",
     provider: { "@type": "Organization", name: "Instant Recall LLC" },
     description:
       "Our team of recall communications experts is available to you 24x7x365 for your recall emergencies, backed by unrivaled, purpose-built technology.",
+    areaServed: "United States",
+    audience: SERVICE_AUDIENCE,
   },
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Regulatory Reporting and Audit Response",
+    serviceType: "Regulatory Reporting",
     provider: { "@type": "Organization", name: "Instant Recall LLC" },
     description:
       "Instant Recall delivers ironclad, third party audit trail details that exceed regulatory requirements, and expedite successful resolution of regulatory audits.",
+    areaServed: "United States",
+    audience: SERVICE_AUDIENCE,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Instant Recall",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web-based",
+    description:
+      "Food recall preparedness and response platform for automated multi-channel notification, regulatory reporting, and recall management.",
+    provider: { "@type": "Organization", name: "Instant Recall LLC" },
   },
 ]);
 

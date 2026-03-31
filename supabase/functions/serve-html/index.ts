@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { getFreshness, setCurrentFreshness } from "./shared/freshness.ts";
 import { renderHome } from "./pages/home.ts";
 import { renderSolution } from "./pages/solution.ts";
 import { renderContact, renderContactDirect } from "./pages/contact.ts";
@@ -19,6 +20,7 @@ import { renderTechnologyProwess } from "./pages/technology-prowess.ts";
 import { renderIndustryStandard } from "./pages/industry-standard.ts";
 import { renderCustomerQuotes } from "./pages/customer-quotes.ts";
 import { renderSupportRequest } from "./pages/support-request.ts";
+import { renderMethodology } from "./pages/methodology.ts";
 import { handleCrawlStats } from "./pages/crawl-stats.ts";
 
 // --- Bot detection and logging ---
@@ -105,6 +107,7 @@ const ROUTES: Record<string, () => string> = {
   "/industry-standard": renderIndustryStandard,
   "/customer-quotes-solutions": renderCustomerQuotes,
   "/support-request": renderSupportRequest,
+  "/methodology": renderMethodology,
 };
 
 function render404(): string {
@@ -141,6 +144,10 @@ serve(async (req: Request) => {
   if (path.length > 1 && path.endsWith("/")) {
     path = path.slice(0, -1);
   }
+
+  // Load freshness data (cached, non-blocking on failure)
+  const freshness = await getFreshness();
+  setCurrentFreshness(freshness);
 
   // Bot detection (uses forwarded UA from Vercel proxy)
   const ua = req.headers.get("x-forwarded-user-agent") || req.headers.get("user-agent") || "";

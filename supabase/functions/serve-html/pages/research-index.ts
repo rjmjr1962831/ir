@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchIndexCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify([
   {
@@ -84,6 +85,10 @@ export function renderResearchIndex(): string {
     ${cards}
   </div>
 </section>
+
+${researchIndexCitationBlock()}
+
+<style>${CITATION_CSS}</style>
 
 <style>
 .research-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin:0 auto}

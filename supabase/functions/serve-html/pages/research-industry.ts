@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchIndustryCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
@@ -631,7 +632,10 @@ export function renderResearchIndustry(): string {
 .exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
 .exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 .exec-summary-footer a{color:#c8a951;font-size:.72rem}
+${CITATION_CSS}
 </style>
+
+${researchIndustryCitationBlock()}
 
 <script type="application/ld+json">${BREADCRUMB_LD}</script>`;
 

@@ -63,7 +63,7 @@ export function renderCostRecovery(): string {
     title: "Regulatory Reporting and Audit Response | Instant Recall",
     description:
       "Instant Recall delivers ironclad, third party audit trail details that exceed regulatory requirements, and expedite successful resolution of regulatory audits.",
-    path: "/regulatory-reporting",
+    path: "/cost-recovery",
     jsonLd: JSON_LD,
     body,
   });

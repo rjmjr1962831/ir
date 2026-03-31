@@ -40,7 +40,7 @@
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },
     { "source": "/research/legal-case-data", "destination": "/api/html?path=%2Fresearch%2Flegal-case-data" },
     { "source": "/incident-response", "destination": "/api/html?path=%2Fincident-response" },
-    { "source": "/cost-recovery", "destination": "/api/html?path=%2Fregulatory-reporting" },
+    { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
     { "source": "/regulatory-reporting", "destination": "/api/html?path=%2Fregulatory-reporting" },
     { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
     { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },

@@ -58,7 +58,7 @@ When Robert says `pk` or "project knowledge":
 
 When Robert says `pts`:
 1. `git add .`, `git commit`, `git push origin staging`
-2. Deploy Supabase edge function: `SUPABASE_ACCESS_TOKEN=sbp_73f9bc81a1882a6ede255b145def38b621647f51 npx supabase functions deploy serve-html --no-verify-jwt --project-ref dewbyvlbmkersxjrcknm`
+2. Deploy Supabase edge function: `SUPABASE_ACCESS_TOKEN=$SUPABASE_ACCESS_TOKEN npx supabase functions deploy serve-html --no-verify-jwt --project-ref dewbyvlbmkersxjrcknm` (load SUPABASE_ACCESS_TOKEN from .env)
 3. Force redeploy on Vercel (clears edge cache): `curl -s -X POST "https://api.vercel.com/v13/deployments?teamId=team_7PGzhT9wecJMLFkOWDGGxptE&forceNew=1" -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" -d '{"name":"ir","project":"prj_htbgIKYkHEwa0WNdPKVQ4sVy3iiE","target":"production","gitSource":{"type":"github","org":"rjmjr1962831","repo":"ir","ref":"staging"}}'` (load VERCEL_TOKEN from .env)
 
 ### PTM (Push to Main)

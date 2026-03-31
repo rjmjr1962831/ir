@@ -146,7 +146,18 @@ Closing the last mile of recall communication. The current system relies on pass
 - **Repo:** `rjmjr1962831/ir` (GitHub)
 - **Branch flow:** `feature-branch` -> `staging` -> `main`. Never merge main into staging. Never push without Robert's explicit permission (pts/ptm).
 - **Always create a feature branch BEFORE writing code.** Branch off staging, work on the branch, PR to staging. Never commit directly to staging.
-- **Always run code through Qodo before merging to staging.** Poll for Qodo comments yourself.
+
+### MANDATORY: Qodo Review Gate (NEVER SKIP)
+
+**Every feature branch MUST go through Qodo review before merging to staging. No exceptions.**
+
+1. Push the feature branch to origin
+2. Create a PR from the feature branch to staging via GitHub API
+3. Wait for Qodo to post review comments (poll every 30-60 seconds)
+4. Fix every issue Qodo flags
+5. Only THEN merge the PR to staging
+
+**Do NOT merge feature branches directly with `git merge`.** Always use the PR workflow so Qodo can review. This is a hard gate. If you skip this step, you are violating the deployment process. Robert will call you out on it.
 - **Internal docs stay on staging.** CLAUDE.md, COMPREHENSIVE_KNOWLEDGE_DOCUMENT.md, takeaways, prompts -- never on main.
 - **Vercel project:** ir (auto-deploys from staging)
 - **Supabase project:** `dewbyvlbmkersxjrcknm`
@@ -194,6 +205,8 @@ These are the core data points that establish Instant Recall's authority. Use th
 **KEEP YOURSELF AVAILABLE TO ROBERT AT ALL TIMES.** Never block on long-running tasks. Launch them in the background and stay responsive.
 
 **AUTONOMOUS EXECUTION. DO NOT ASK FOR APPROVAL EXCEPT AS NOTED BELOW.** Robert runs with `dangerouslySkipPermissions: true`. Execute all commands without pausing to ask permission.
+
+**QODO REVIEW IS MANDATORY BEFORE EVERY MERGE TO STAGING.** Create a PR, wait for Qodo, fix issues, then merge. Never use `git merge` directly. This is non-negotiable. See Section 6 for the full workflow.
 
 **OUTPUT FILES GO IN DOWNLOADS.** Save generated files to `C:\Users\ROBER\Downloads\`.
 

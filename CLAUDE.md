@@ -76,6 +76,15 @@ When Robert says `ptm`: Run `npm run merge-to-main` only. Do not touch main with
 
 ---
 
+## Key Links
+
+- **Dev Dashboard:** https://ir-zeta.vercel.app/dashboard?token=j0_5lvaDTXf0p0q4-m9EBZ0iIgRF82b6
+- **Progress Report:** https://ir-zeta.vercel.app/progress-report.html
+- **GEO Ledger:** https://ir-zeta.vercel.app/geo-ledger
+- **Crawl Stats:** https://ir-zeta.vercel.app/crawl-stats?token=j0_5lvaDTXf0p0q4-m9EBZ0iIgRF82b6
+
+---
+
 ## Tech Stack
 
 - **Frontend:** Vercel (edge proxy at `api/html.js`), clean-room HTML

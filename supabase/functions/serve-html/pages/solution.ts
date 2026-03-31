@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { solutionCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify([
   {
@@ -101,6 +102,10 @@ export function renderSolution(): string {
     </div>
   </div>
 </section>
+
+<style>${CITATION_CSS}</style>
+
+${solutionCitationBlock()}
 
 <section class="cta">
   <h2>Accelerate Your Recall Response</h2>

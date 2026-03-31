@@ -1,4 +1,5 @@
 import { CSS } from "./styles.ts";
+import { FreshnessData, formatDate, getCurrentFreshness } from "./freshness.ts";
 
 const SITE = "https://www.instantrecall.com";
 
@@ -8,6 +9,7 @@ interface LayoutOptions {
   path: string;
   jsonLd?: string;
   body: string;
+  freshness?: FreshnessData;
 }
 
 const BREADCRUMB_NAMES: Record<string, string> = {
@@ -24,6 +26,7 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/research/industry-survey": "Industry Survey",
   "/research/regulatory-environment": "Regulatory Environment",
   "/research/legal-case-data": "Legal Case Data",
+  "/methodology": "Research Methodology",
 };
 
 function buildBreadcrumbLd(path: string): string {
@@ -58,8 +61,11 @@ function header(): string {
 </header>`;
 }
 
-function footer(): string {
+function footer(freshness?: FreshnessData): string {
   const year = new Date().getFullYear();
+  const updatedLine = freshness
+    ? `<p style="margin-top:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)">Last updated: ${formatDate(freshness.lastContentUpdate)}</p>`
+    : "";
   return `<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">
@@ -82,6 +88,7 @@ function footer(): string {
         <a href="/contact-instant-recall">CONTACT US</a>
       </div>
       <p style="margin-top:.75rem"><a href="/terms-and-conditions">Terms and Conditions</a> | <a href="/privacy-policy">Privacy Policy</a></p>
+      ${updatedLine}
     </div>
   </div>
 </footer>`;
@@ -89,6 +96,25 @@ function footer(): string {
 
 export function renderPage(opts: LayoutOptions): string {
   const canonical = `${SITE}${opts.path === "/" ? "" : opts.path}`;
+  const f = opts.freshness || getCurrentFreshness();
+
+  // Freshness meta tag for AI crawlers
+  const lastModMeta = f
+    ? `<meta name="last-modified" content="${f.lastContentUpdate}">`
+    : "";
+
+  // Inject dateModified into a WebPage JSON-LD block
+  const webPageLd = f
+    ? `<script type="application/ld+json">${JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url: canonical,
+        name: opts.title,
+        dateModified: f.lastContentUpdate,
+        description: opts.description,
+      })}</script>`
+    : "";
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +122,7 @@ export function renderPage(opts: LayoutOptions): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${opts.title}</title>
   <meta name="description" content="${opts.description}">
+  ${lastModMeta}
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="${opts.title}">
@@ -108,11 +135,12 @@ export function renderPage(opts: LayoutOptions): string {
   <style>${CSS}</style>
   ${opts.jsonLd ? `<script type="application/ld+json">${opts.jsonLd}</script>` : ""}
   <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>
+  ${webPageLd}
 </head>
 <body>
 ${header()}
 ${opts.body}
-${footer()}
+${footer(f)}
 </body>
 </html>`;
 }

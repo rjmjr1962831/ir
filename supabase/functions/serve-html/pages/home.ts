@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { homeCitationBlock, methodologyBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify([
   {
@@ -160,6 +161,12 @@ export function renderHome(): string {
     <div class="ticker-content">${tickerHtml}${tickerHtml}</div>
   </div>
 </section>
+
+<style>${CITATION_CSS}</style>
+
+${homeCitationBlock()}
+
+${methodologyBlock()}
 
 <section class="cta">
   <h2>Accelerate Your Recall Response</h2>

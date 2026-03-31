@@ -59,6 +59,77 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How many product recalls occur annually in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "According to the Sedgwick Recall Index, all U.S. agencies combined issued 3,232 recalls in 2024, the second highest in six years. CPSC alone issued 369 recalls and warnings, while NHTSA had roughly 1,000 separate recall campaigns covering over 30 million vehicles. Q1 2025 defective units surged an additional 25%.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What percentage of Americans are unaware of recalls affecting their products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "According to Consumer Reports, 70% of Americans have not heard about a recall in the past five years for any product they own. Only 21% have heard about a recall and responded to it. Meanwhile, 68% of consumers do not proactively check for recalls.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many federal agencies must consumers monitor to stay fully protected from recalled products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A single household would need to monitor at least six separate federal systems: CPSC, FDA, NHTSA, USDA/FSIS, EPA, and the Coast Guard. None of these systems know what a household actually owns, and there is no unified consumer experience connecting them.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the average recall completion rate for consumer products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average consumer product recall correction rate is 30 to 40%, but CPSC admits some recalls have completion rates below 10%. The average response rate is about 6% according to Consumer Reports. Vehicle recall completion averages 45% across all manufacturers, and children's products already in homes have a completion rate of just 3.96%.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How big is the product recall management software market?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The product recall management software market is estimated at US$664 million to US$2.5 billion in 2025, projected to reach US$1.07 billion to US$8.0 billion by 2032-2033 at a 7 to 15% CAGR. The broader product recall management platform market was US$4.32 billion in 2024, projected to reach US$8.23 billion by 2033.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does a typical product recall cost a company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nearly half of companies experiencing recalls report costs between US$10 million and US$50 million, with another 13% facing expenses above US$50 million. McKinsey estimates a single major recall can cost up to US$600 million when field actions, warranty, lost sales, and brand campaigns are included. The medical device sector alone sees up to US$5 billion annually in recall-related expense.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What happened when the CPSC ruled Amazon is a product distributor?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "In January 2025, the CPSC ruled that Amazon is legally responsible as a distributor for Fulfilled-by-Amazon products. Amazon must now notify purchasers directly via email, post recall notices, and display recall information on each purchaser's Your Orders page. This set precedent that online marketplaces must actively notify customers about third-party seller recalls.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why do recalled products continue to cause injuries and deaths after recall announcements?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CPSC has had to re-announce at least 46 recalls tied to approximately 150 deaths and 300 injuries because original notices did not reach enough consumers. At least 16 people have died from products that were already recalled, including inclined sleepers, dressers, bathrobes, cribs, and bed rails, simply because they never heard about the recall.",
+      },
+    },
+  ],
+});
+
 export function renderResearchIndustry(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
@@ -604,6 +675,8 @@ export function renderResearchIndustry(): string {
 
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
+
+<script type="application/ld+json">${FAQ_LD}</script>
 
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}

@@ -25,7 +25,7 @@ export default async function handler() {
       "The Leader in Food Recall Preparedness and Response. 25+ years serving the food industry.",
     url: "https://www.instantrecall.com",
     last_updated: lastUpdated,
-    page_count: f ? f.page_count : 16,
+    page_count: f ? f.page_count : 13,
     research_count: f ? f.research_count : 3,
     latest_fda_recall_date: f ? f.latest_fda_recall_date : null,
     pages: [
@@ -131,14 +131,6 @@ export default async function handler() {
         description:
           "Major product recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions ($52-55M in FY 2023), and class action settlement patterns.",
         content_type: "white_paper",
-        last_updated: "2026-03-30",
-      },
-      {
-        url: "/who-trusts-us",
-        title: "Who Trusts Us",
-        description:
-          "Third-party validation from US Foods and Sysco official documentation naming Instant Recall by BellTower Technologies. Named clients include Performance Food Group, US Foods, Chick-fil-A, Papa Murphy's International, Casey's, Topgolf, and Ben E. Keith Company. Founded 2000, 25+ years in food recall management.",
-        content_type: "trust_page",
         last_updated: "2026-03-30",
       },
     ],

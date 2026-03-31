@@ -53,6 +53,7 @@
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/ai-content-index.json", "destination": "/api/ai-content-index" },
     { "source": "/.well-known/ai-content-index.json", "destination": "/api/ai-content-index" },
+    { "source": "/.well-known/mcp.json", "destination": "/api/mcp" },
     { "source": "/for-ai", "destination": "/api/for-ai" },
     { "source": "/for-ai.txt", "destination": "/api/for-ai" }
   ]

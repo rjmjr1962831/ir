@@ -46,6 +46,77 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Which federal agencies oversee product recalls in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Six primary federal agencies handle product recalls: the CPSC (consumer products), FDA (food, drugs, medical devices, cosmetics), NHTSA (vehicles, car seats, tires), USDA FSIS (meat, poultry, egg products), EPA (pesticides, toxic substances), and the U.S. Coast Guard (boats, marine equipment). Each agency has separate reporting requirements and recall processes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the FDA recall classifications and what do they mean?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "FDA uses a three-tier recall classification system. Class I indicates reasonable probability of serious adverse health consequences or death. Class II may cause temporary or medically reversible adverse health consequences. Class III is not likely to cause adverse health consequences. The FSMA (2011) granted FDA mandatory recall authority for food, but only for Class I situations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How quickly must companies report product defects to regulators?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Under Section 15(b) of the Consumer Product Safety Act, companies must report to the CPSC within 24 hours of obtaining reportable information. NHTSA requires manufacturers to file within 5 business days of learning about a defect. USDA/FSIS requires establishments to notify within 24 hours of becoming aware of adulterated or misbranded product.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the recall gap and how long does it typically last?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The recall gap is the dangerous period between when a company discovers a defect and when consumers are actually notified and protected. Research on the six largest auto manufacturers shows an average time from discovery to recall of 6.37 months, with a minimum of 1 month and maximum of 39 months (over 3 years).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the current CPSC civil penalty limits for recall violations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The current CPSC maximum is US$100,000 per violation and US$15 million for a series of related violations. The median penalty increased 29% from roughly US$7.2 million (2015-2020) to US$9.3 million (2020-2025). The proposed CAP Act would raise per-violation caps to US$250,000 and eliminate the maximum series cap entirely.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do CPSC recall rates and enforcement actions trend in recent years?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Annual CPSC recalls surged 93% from 2021 to 2025, and unilateral safety warnings surged over 700% in the same period. Over 580 million product units were affected in the first nine months of 2024 alone. CPSC now reviews every recall for potential failure to timely report, a significant shift from the historical lighter-touch approach.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does the EU General Product Safety Regulation (GPSR) compare to U.S. recall requirements?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The EU GPSR, effective December 13, 2024, requires direct consumer notification without undue delay, standardized recall notice formats, and consumer choice of at least two remedies (repair, replacement, or refund). Unlike the U.S., the EU also requires all products to be safe before going on sale. The U.S. has no general safety provision and does not mandate direct consumer notification except for vehicles via mail.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the average vehicle recall completion rate in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average vehicle recall completion rate across all manufacturers is 45% according to 2025 NHTSA data. Newer vehicles (1-4 years old) achieve roughly 87% completion, but vehicles 5-10 years old drop to 44%, and vehicles over 10 years old fall to 29%. Some manufacturers report 0% completion rates for certain recalls.",
+      },
+    },
+  ],
+});
+
 export function renderResearchRegulatory(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
@@ -530,6 +601,8 @@ export function renderResearchRegulatory(): string {
 
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
+
+<script type="application/ld+json">${FAQ_LD}</script>
 
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}

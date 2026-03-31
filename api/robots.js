@@ -29,6 +29,7 @@ Sitemap: https://www.instantrecall.com/sitemap.xml
 # llms-full.txt: https://www.instantrecall.com/llms-full.txt
 # ai-content-index.json: https://www.instantrecall.com/ai-content-index.json
 # for-ai.txt: https://www.instantrecall.com/for-ai.txt
+# mcp.json: https://www.instantrecall.com/.well-known/mcp.json
 `;
 
   return new Response(body, {

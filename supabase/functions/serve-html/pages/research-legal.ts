@@ -44,6 +44,77 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the post-sale duty to warn in product liability law?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Under Restatement (Third) of Torts Section 10, sellers are liable for harm caused by failing to provide a warning after sale if a reasonable person would have done so. Courts apply a four-factor test covering knowledge of risk, identifiability of affected consumers, ability to communicate effectively, and severity of harm.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What was the largest child wrongful death settlement in a product recall case?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The IKEA MALM dresser tip-over case resulted in a US$46 million settlement for the death of 2-year-old Jozef Dudek in 2020. His parents were IKEA Family members who purchased the dresser with an IKEA credit card, but IKEA never notified them of the 2016 recall despite having their purchase data.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What percentage of recalled consumer products are actually returned or fixed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average consumer product recall response rate is only about 6%, according to Consumer Reports. CPSC estimates follow-up at roughly 10%. This means for every 100 recalled products in circulation, approximately 90 to 94 remain in consumer homes unaddressed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can retailers be held liable for selling recalled products they did not manufacture?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Under strict product liability, every entity in the supply chain can share liability, even without knowledge of the defect. In July 2024, the CPSC voted unanimously that Amazon is a distributor for Fulfilled-by-Amazon products, requiring Amazon to notify purchasers directly about recalls covering 400,000+ hazardous products.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the penalties for failing to report product hazards to the CPSC?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CPSC civil penalties increased 64% year-over-year in FY 2023, reaching US$52 to 55 million total. Individual penalties have reached US$19.065 million (Peloton) and US$16 million (HSN). The proposed CAP Act would raise per-violation caps to US$250,000 and eliminate the maximum cap entirely.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Have any executives gone to prison for product recall violations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. In June 2025, two former Gree USA executives were sentenced to 38 and 40 months in federal prison for conspiracy and failure to report hazardous dehumidifiers that caused approximately 450 fires. This was the first-ever criminal prosecution and sentencing of corporate executives under the Consumer Product Safety Act.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much have major product recall settlements totaled in recent years?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Top 10 products liability and mass tort settlements totaled approximately US$50.3 billion in 2022, US$25.8 billion in 2023, and US$23.4 billion in 2024. Individual cases include Takata airbags at over US$1.5 billion and GM ignition switch at over US$1 billion in combined penalties and settlements.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is recall fatigue and why does it matter legally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Recall fatigue is the phenomenon where consumers become desensitized to recall announcements due to their frequency, with consumer product recalls surging 115% since 2018. Courts have recognized it both ways: manufacturers argue low completion rates stem from fatigue rather than notification failures, while plaintiffs argue fatigue makes more robust notification necessary.",
+      },
+    },
+  ],
+});
+
 export function renderResearchLegal(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
@@ -524,6 +595,8 @@ export function renderResearchLegal(): string {
 
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
+
+<script type="application/ld+json">${FAQ_LD}</script>
 
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}

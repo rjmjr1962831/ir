@@ -60,6 +60,7 @@ function header(): string {
   <nav>
     <a href="/">Home</a>
     <a href="/solution">Solution</a>
+    <a href="/research">Research</a>
     <a href="/portal">Login</a>
     <a href="/contact-instant-recall">Contact Us</a>
   </nav>
@@ -99,6 +100,29 @@ function footer(freshness?: FreshnessData | null): string {
 </footer>`;
 }
 
+/**
+ * Inject dateModified into a pre-stringified JSON-LD payload.
+ * Handles both single objects and arrays of objects.
+ * Leaves the original untouched if parsing fails.
+ */
+function injectDateModified(jsonLdStr: string, dateModified: string): string {
+  try {
+    const parsed = JSON.parse(jsonLdStr);
+    if (Array.isArray(parsed)) {
+      for (const item of parsed) {
+        if (item && typeof item === "object" && !item.dateModified) {
+          item.dateModified = dateModified;
+        }
+      }
+    } else if (parsed && typeof parsed === "object" && !parsed.dateModified) {
+      parsed.dateModified = dateModified;
+    }
+    return JSON.stringify(parsed);
+  } catch {
+    return jsonLdStr;
+  }
+}
+
 export function renderPage(opts: LayoutOptions): string {
   const canonical = `${SITE}${opts.path === "/" ? "" : opts.path}`;
   const f = opts.freshness || getCurrentFreshness();
@@ -107,6 +131,11 @@ export function renderPage(opts: LayoutOptions): string {
   const lastModMeta = f
     ? `<meta name="last-modified" content="${f.lastContentUpdate}">`
     : "";
+
+  // Inject dateModified into the page-level JSON-LD block
+  const enrichedJsonLd = opts.jsonLd && f
+    ? injectDateModified(opts.jsonLd, f.lastContentUpdate)
+    : opts.jsonLd;
 
   // Inject dateModified into a WebPage JSON-LD block
   const webPageLd = f
@@ -134,11 +163,16 @@ export function renderPage(opts: LayoutOptions): string {
   <meta property="og:description" content="${opts.description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:site_name" content="Instant Recall">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="${SITE}/images/InstantRecall_Horizontal-01.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="200">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${opts.title}">
   <meta name="twitter:description" content="${opts.description}">
+  <meta name="twitter:image" content="${SITE}/images/InstantRecall_Horizontal-01.webp">
   <style>${CSS}</style>
-  ${opts.jsonLd ? `<script type="application/ld+json">${opts.jsonLd}</script>` : ""}
+  ${enrichedJsonLd ? `<script type="application/ld+json">${enrichedJsonLd}</script>` : ""}
   <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>
   ${webPageLd}
 </head>

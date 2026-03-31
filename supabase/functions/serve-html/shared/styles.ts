@@ -97,6 +97,10 @@ a:hover{text-decoration:underline;color:#e0c36a}
 .bio-role{font-weight:600;color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:.75rem;letter-spacing:0.5px;text-transform:uppercase}
 .bio-card p:last-child{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;font-weight:300}
 
+/* Video embed */
+.video-section{padding:3rem 2rem;background:rgba(255,255,255,0.02)}
+.video-wrapper{max-width:800px;margin:0 auto;border-radius:4px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+
 /* Decades of trust */
 .trust-section{text-align:center;padding:4rem 2rem;max-width:900px;margin:0 auto}
 .trust-section h2{font-size:1.8rem;color:#fff;margin-bottom:1.25rem;font-weight:700}
@@ -121,13 +125,15 @@ a:hover{text-decoration:underline;color:#e0c36a}
 
 /* Footer */
 .site-footer{background:#060612;color:rgba(255,255,255,.6);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.05)}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;align-items:start}
 .footer-left{display:flex;flex-direction:column;gap:.75rem}
 .footer-left img{height:80px;width:auto}
-.footer-links{display:flex;flex-direction:column;gap:.5rem}
-.footer-links a{color:rgba(255,255,255,.7);font-size:.85rem;letter-spacing:0.5px;transition:color 0.2s}
+.footer-col{}
+.footer-col-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#c8a951;font-weight:600;margin-bottom:.75rem}
+.footer-links{display:flex;flex-direction:column;gap:.4rem}
+.footer-links a{color:rgba(255,255,255,.6);font-size:.8rem;letter-spacing:0.3px;transition:color 0.2s}
 .footer-links a:hover{color:#c8a951}
-.footer-bottom{width:100%;text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.8rem}
+.footer-bottom{grid-column:1/-1;text-align:center;margin-top:1rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.8rem}
 .footer-bottom a{color:rgba(255,255,255,.5)}
 .footer-nav{display:flex;gap:1.5rem;justify-content:center;margin-top:.75rem}
 .footer-nav a{color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:1px;text-transform:uppercase}
@@ -148,7 +154,8 @@ a:hover{text-decoration:underline;color:#e0c36a}
   .cards{grid-template-columns:1fr}
   .features{grid-template-columns:1fr}
   .testimonial-grid{grid-template-columns:1fr}
-  .footer-inner{flex-direction:column;text-align:center;align-items:center}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-col{text-align:center}
   .footer-links{align-items:center}
   .contact-info .phone-grid{grid-template-columns:1fr}
 }

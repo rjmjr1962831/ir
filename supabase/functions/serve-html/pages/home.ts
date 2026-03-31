@@ -31,6 +31,18 @@ const JSON_LD = JSON.stringify([
       "FSMA compliance",
     ],
     sameAs: ["https://www.belltowertech.com"],
+    founder: {
+      "@type": "Person",
+      name: "Michael Martin",
+      jobTitle: "Co-Founder and Chairman",
+      url: "https://www.instantrecall.com/about-us",
+      description: "Co-founder and Chairman of Instant Recall LLC. Previously co-founded Red Alert (sold to Keynote Systems in 2000) and held engineering, sales, and management positions at IBM and Nortel Networks. President's Endowed Scholar at Texas A&M University.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Instant Recall LLC",
+        url: "https://www.instantrecall.com",
+      },
+    },
   },
   {
     "@context": "https://schema.org",
@@ -69,6 +81,20 @@ export function renderHome(): string {
   <div class="hero-content">
     <h1>The Leader in food recall preparedness and response</h1>
     <p>Protecting Your Customers, Your Brand, and Your Bottom Line. Instant Recall is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence. Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast, no matter how complex the event.</p>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="video-wrapper">
+    <div style="padding:56.25% 0 0 0;position:relative;">
+      <iframe src="https://player.vimeo.com/video/1152623274?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"
+        title="Instant Recall Overview"
+        loading="lazy"></iframe>
+    </div>
   </div>
 </section>
 

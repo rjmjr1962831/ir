@@ -80,7 +80,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .contact-info .phone-grid dt{color:#00afec;font-weight:600;font-size:.85rem;letter-spacing:0.5px;text-transform:uppercase}
 .contact-info .phone-grid dd{color:rgba(255,255,255,.85);font-size:1rem;margin-bottom:0.75rem}
 
-/* Ticker */
+/* Ticker (legacy - used on non-home pages) */
 .ticker-section{background:#1f1f1f;padding:1.5rem 0;overflow:hidden;border-top:1px solid rgba(0,175,236,0.2);border-bottom:1px solid rgba(0,175,236,0.2)}
 .ticker-section h3{text-align:center;color:#00afec;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
 .ticker-wrapper{overflow:hidden;position:relative;height:2rem}
@@ -125,19 +125,12 @@ a:hover{text-decoration:underline;color:#33c4ff}
 
 /* Footer */
 .site-footer{background:#1f1f1f;color:rgba(255,255,255,.6);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.05)}
-.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;align-items:start}
-.footer-left{display:flex;flex-direction:column;gap:.75rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 3fr 1fr;gap:2rem;align-items:start}
+.footer-left{display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .footer-left img{height:80px;width:auto}
-.footer-col{}
-.footer-col-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#00afec;font-weight:600;margin-bottom:.75rem}
-.footer-links{display:flex;flex-direction:column;gap:.4rem}
-.footer-links a{color:rgba(255,255,255,.6);font-size:.8rem;letter-spacing:0.3px;transition:color 0.2s}
-.footer-links a:hover{color:#00afec}
-.footer-bottom{grid-column:1/-1;text-align:center;margin-top:1rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.8rem}
-.footer-bottom a{color:rgba(255,255,255,.5)}
-.footer-nav{display:flex;gap:1.5rem;justify-content:center;margin-top:.75rem}
-.footer-nav a{color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:1px;text-transform:uppercase}
-.footer-nav a:hover{color:#00afec}
+.footer-bottom{grid-column:1/-1;text-align:center;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);font-size:.8rem}
+.footer-bottom a{color:rgba(255,255,255,.35);transition:color .2s}
+.footer-bottom a:hover{color:#00afec}
 
 /* Schedule embed */
 .schedule-section{max-width:800px;margin:0 auto;padding:2rem;text-align:center}
@@ -193,8 +186,8 @@ a:hover{text-decoration:underline;color:#33c4ff}
   .features{grid-template-columns:1fr}
   .testimonial-grid{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr;text-align:center}
-  .footer-col{text-align:center}
-  .footer-links{align-items:center}
+  .footer-left{align-items:center}
+  .footer-center{grid-column:1 !important}
   .contact-info .phone-grid{grid-template-columns:1fr}
 }
 `;

@@ -23,6 +23,8 @@ import { renderSupportRequest } from "./pages/support-request.ts";
 import { renderMethodology } from "./pages/methodology.ts";
 import { handleCrawlStats } from "./pages/crawl-stats.ts";
 import { renderPress } from "./pages/press.ts";
+import { renderUSFoodsRecallProcess } from "./pages/usfoods-recall-process.ts";
+import { renderSyscoRecallPacket } from "./pages/sysco-recall-packet.ts";
 
 // --- Bot detection and logging ---
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrcknm.supabase.co";
@@ -111,6 +113,8 @@ const ROUTES: Record<string, () => string> = {
   "/support-request": renderSupportRequest,
   "/methodology": renderMethodology,
   "/who-trusts-us": renderPress,
+  "/research/usfoods-recall-process": renderUSFoodsRecallProcess,
+  "/research/sysco-recall-packet": renderSyscoRecallPacket,
 };
 
 function render404(): string {

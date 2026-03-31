@@ -28,6 +28,8 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/research/legal-case-data": "Legal Case Data",
   "/methodology": "Research Methodology",
   "/who-trusts-us": "Who Trusts Us",
+  "/research/usfoods-recall-process": "US Foods Recall Process Overview",
+  "/research/sysco-recall-packet": "Sysco Customer Recall Orientation Packet",
 };
 
 function buildBreadcrumbLd(path: string): string {

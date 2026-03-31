@@ -1,8 +1,26 @@
 export const config = { runtime: "edge" };
 
-export default function handler() {
+const SUPABASE_URL = "https://dewbyvlbmkersxjrcknm.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+async function getFreshnessDate() {
+  try {
+    const resp = await fetch(
+      `${SUPABASE_URL}/rest/v1/site_freshness?id=eq.1&select=last_content_update,last_ai_surface_update,latest_fda_recall_date`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+    );
+    if (!resp.ok) return null;
+    const rows = await resp.json();
+    return rows[0] || null;
+  } catch { return null; }
+}
+
+export default async function handler() {
+  const f = await getFreshnessDate();
+  const updated = f ? f.last_ai_surface_update.slice(0, 10) : new Date().toISOString().slice(0, 10);
   const body = `# Instant Recall
 > The Leader in Food Recall Preparedness and Response
+> Last updated: ${updated}
 
 ## About
 Instant Recall, a BellTower Technologies solution, is the food industry's purpose-built platform for recall preparedness, communications management, and regulatory compliance. We help food manufacturers, distributors, and retailers turn recall chaos into control.

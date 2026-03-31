@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { getFreshness, setCurrentFreshness } from "./shared/freshness.ts";
 import { renderHome } from "./pages/home.ts";
 import { renderSolution } from "./pages/solution.ts";
 import { renderContact, renderContactDirect } from "./pages/contact.ts";
@@ -142,6 +143,10 @@ serve(async (req: Request) => {
     path = path.slice(0, -1);
   }
 
+  // Load freshness data (cached, non-blocking on failure)
+  const freshness = await getFreshness();
+  setCurrentFreshness(freshness);
+
   // Bot detection (uses forwarded UA from Vercel proxy)
   const ua = req.headers.get("x-forwarded-user-agent") || req.headers.get("user-agent") || "";
   const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "";
@@ -167,13 +172,14 @@ serve(async (req: Request) => {
   if (renderFn) {
     const html = renderFn();
     if (bot) logCrawl(bot, path, ua, 200, ip);
-    return new Response(html, {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html; charset=utf-8",
-        "Cache-Control": "public, max-age=300, s-maxage=3600",
-      },
-    });
+    const headers: Record<string, string> = {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "public, max-age=300, s-maxage=3600",
+    };
+    if (freshness?.lastContentUpdate) {
+      headers["Last-Modified"] = new Date(freshness.lastContentUpdate).toUTCString();
+    }
+    return new Response(html, { status: 200, headers });
   }
 
   if (bot) logCrawl(bot, path, ua, 404, ip);

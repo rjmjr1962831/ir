@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/nightly-refresh",
+      "schedule": "0 5 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

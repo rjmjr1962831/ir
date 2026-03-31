@@ -17,17 +17,10 @@ export default async function handler(req) {
     },
   });
   const html = await res.text();
-  // Never cache non-200 responses or token-gated pages
-  const isProtected = path === "%2Fdashboard" || path === "/dashboard" || path === "%2Fcrawl-stats" || path === "/crawl-stats";
-  let cacheControl;
-  if (res.status !== 200 || isProtected) {
-    cacheControl = "private, no-store";
-  } else {
-    const upstreamCC = res.headers.get("cache-control") || "";
-    cacheControl = upstreamCC.includes("private")
-      ? upstreamCC
-      : "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600";
-  }
+  const upstreamCC = res.headers.get("cache-control") || "";
+  const cacheControl = upstreamCC.includes("private") || res.status !== 200
+    ? "private, no-store"
+    : "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600";
   const headers = {
     "Content-Type": "text/html; charset=utf-8",
     "Cache-Control": cacheControl,

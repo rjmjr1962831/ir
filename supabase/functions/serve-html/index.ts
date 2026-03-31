@@ -168,14 +168,11 @@ serve(async (req: Request) => {
     return resp;
   }
 
-  // Dashboard and crawl-stats require ?token= query param
-  const DASH_TOKEN = Deno.env.get("LEDGER_TOKEN") || "";
-  if (path === "/dashboard" || path === "/crawl-stats") {
-    const token = req.headers.get("x-forwarded-token") || url.searchParams.get("token") || "";
-    if (token !== DASH_TOKEN) {
-      return new Response("Unauthorized", { status: 401, headers: { "Content-Type": "text/plain" } });
-    }
-    if (path === "/dashboard") return await handleDashboard(req);
+  if (path === "/dashboard") {
+    return await handleDashboard(req);
+  }
+
+  if (path === "/crawl-stats") {
     return await handleCrawlStats(req);
   }
 

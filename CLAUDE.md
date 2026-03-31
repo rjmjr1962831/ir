@@ -14,6 +14,16 @@ For workflow rules and commands, this file (CLAUDE.md) is authoritative.
 
 **AUTONOMOUS EXECUTION. DO NOT ASK FOR APPROVAL EXCEPT AS NOTED BELOW.** Robert runs with `dangerouslySkipPermissions: true`. Execute all commands without pausing to ask permission. The ONLY exceptions where you stop and ask are: pts/ptm (pushing to branches), ambiguity in requirements, or changes that could break production.
 
+## `rib` (Run In Background)
+
+When Robert types `rib`, immediately move all current inline work to a background agent. No explanation, no apology -- just do it.
+
+**Default behavior (no rib needed):** ALL multi-step tasks -- file reads, fetches, code analysis, rewrites, research -- MUST run as background agents. Never chain 2+ tool calls inline. Never block the conversation waiting for results. Launch as many parallel agents as the task requires and stay available to Robert.
+
+If Robert has to type `rib`, you already failed. The goal is to never need it.
+
+---
+
 **OUTPUT FILES GO IN DOWNLOADS.** Whenever generating a file for Robert (PDFs, reports, CSVs, exports, documents), save it to `C:\Users\ROBER\Downloads\`.
 
 ---

@@ -61,7 +61,7 @@ function header(): string {
 </header>`;
 }
 
-function footer(freshness?: FreshnessData): string {
+function footer(freshness?: FreshnessData | null): string {
   const year = new Date().getFullYear();
   const updatedLine = freshness
     ? `<p style="margin-top:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)">Last updated: ${formatDate(freshness.lastContentUpdate)}</p>`

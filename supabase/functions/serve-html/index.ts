@@ -174,13 +174,14 @@ serve(async (req: Request) => {
   if (renderFn) {
     const html = renderFn();
     if (bot) logCrawl(bot, path, ua, 200, ip);
-    return new Response(html, {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html; charset=utf-8",
-        "Cache-Control": "public, max-age=300, s-maxage=3600",
-      },
-    });
+    const headers: Record<string, string> = {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "public, max-age=300, s-maxage=3600",
+    };
+    if (freshness?.lastContentUpdate) {
+      headers["Last-Modified"] = new Date(freshness.lastContentUpdate).toUTCString();
+    }
+    return new Response(html, { status: 200, headers });
   }
 
   if (bot) logCrawl(bot, path, ua, 404, ip);

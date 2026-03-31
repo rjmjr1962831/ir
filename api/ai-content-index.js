@@ -1,12 +1,33 @@
 export const config = { runtime: "edge" };
 
-export default function handler() {
+const SUPABASE_URL = "https://dewbyvlbmkersxjrcknm.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+async function getFreshnessInfo() {
+  try {
+    const resp = await fetch(
+      `${SUPABASE_URL}/rest/v1/site_freshness?id=eq.1&select=*`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+    );
+    if (!resp.ok) return null;
+    const rows = await resp.json();
+    return rows[0] || null;
+  } catch { return null; }
+}
+
+export default async function handler() {
+  const f = await getFreshnessInfo();
+  const lastUpdated = f ? f.last_content_update.slice(0, 10) : new Date().toISOString().slice(0, 10);
   const index = {
-    version: "1.0",
+    version: "1.1",
     name: "Instant Recall",
     description:
       "The Leader in Food Recall Preparedness and Response. 25+ years serving the food industry.",
     url: "https://www.instantrecall.com",
+    last_updated: lastUpdated,
+    page_count: f ? f.page_count : 16,
+    research_count: f ? f.research_count : 3,
+    latest_fda_recall_date: f ? f.latest_fda_recall_date : null,
     pages: [
       {
         url: "/",

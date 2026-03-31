@@ -7,16 +7,70 @@ export default function handler() {
 User-agent: GPTBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Amazonbot
+User-agent: Gemini-AI
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Grok
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: *
@@ -29,7 +83,6 @@ Sitemap: https://www.instantrecall.com/sitemap.xml
 # llms-full.txt: https://www.instantrecall.com/llms-full.txt
 # ai-content-index.json: https://www.instantrecall.com/ai-content-index.json
 # for-ai.txt: https://www.instantrecall.com/for-ai.txt
-# mcp.json: https://www.instantrecall.com/.well-known/mcp.json
 `;
 
   return new Response(body, {

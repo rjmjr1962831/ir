@@ -110,6 +110,7 @@ const ROUTES: Record<string, () => string> = {
   "/customer-quotes-solutions": renderCustomerQuotes,
   "/support-request": renderSupportRequest,
   "/methodology": renderMethodology,
+  "/who-trusts-us": renderPress,
 };
 
 function render404(): string {

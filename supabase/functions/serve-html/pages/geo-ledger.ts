@@ -563,24 +563,7 @@ ${footer()}
 </html>`;
 }
 
-export async function handleGeoLedger(req: Request): Promise<Response> {
-  const url = new URL(req.url);
-  const token = url.searchParams.get("token");
-  const expectedToken = Deno.env.get("LEDGER_TOKEN");
-
-  // If LEDGER_TOKEN is set, enforce auth
-  if (expectedToken) {
-    if (!token || token !== expectedToken) {
-      return new Response(renderAuthPage(), {
-        status: 200,
-        headers: {
-          "Content-Type": "text/html; charset=utf-8",
-          "Cache-Control": "no-store",
-        },
-      });
-    }
-  }
-
+export async function handleGeoLedger(_req: Request): Promise<Response> {
   const html = await renderLedgerPage();
   return new Response(html, {
     status: 200,

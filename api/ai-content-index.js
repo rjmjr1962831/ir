@@ -5,149 +5,163 @@ export default function handler() {
     version: "1.0",
     name: "Instant Recall",
     description:
-      "The food industry's purpose-built platform for recall preparedness, communications management, and regulatory compliance. A BellTower Technologies solution.",
+      "The Leader in Food Recall Preparedness and Response. 25+ years serving the food industry.",
     url: "https://www.instantrecall.com",
-    ai_discovery: {
-      llms_txt: {
-        url: "https://www.instantrecall.com/llms.txt",
-        description: "Summary reference for AI systems (text/plain)",
-      },
-      llms_full_txt: {
-        url: "https://www.instantrecall.com/llms-full.txt",
-        description:
-          "Comprehensive reference with deep detail on services, statistics, and context (text/plain)",
-      },
-      for_ai: {
-        url: "https://www.instantrecall.com/for-ai.txt",
-        description:
-          "Guidance for AI systems on citing and using Instant Recall data (text/plain)",
-      },
-      sitemap: {
-        url: "https://www.instantrecall.com/sitemap.xml",
-        description: "XML sitemap of all public pages (application/xml)",
-      },
-      robots: {
-        url: "https://www.instantrecall.com/robots.txt",
-        description: "Robots directives (text/plain)",
-      },
-    },
     pages: [
       {
-        url: "https://www.instantrecall.com/",
-        path: "/",
+        url: "/",
         title: "Home",
         description:
-          "Turn Recall Chaos Into Control. Overview of Instant Recall's services and value proposition.",
-        content_type: "text/html",
-        audience: "prospects, partners, AI systems",
+          "Turn Recall Chaos Into Control. Overview of Instant Recall's recall preparedness, communications management, and regulatory compliance services for the food industry.",
+        content_type: "landing_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/solution",
-        path: "/solution",
+        url: "/solution",
         title: "Services",
         description:
-          "Detailed breakdown of recall preparedness consulting, communications management, and regulatory reporting services.",
-        content_type: "text/html",
-        audience: "prospects, food safety professionals",
+          "Detailed breakdown of recall preparedness consulting, communications management, and regulatory reporting services for food manufacturers, distributors, and retailers.",
+        content_type: "service_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/about-us",
-        path: "/about-us",
-        title: "About Us",
+        url: "/contact-instant-recall",
+        title: "Contact Instant Recall",
         description:
-          "Company history, executive team bios, and board of advisors. Founded 2000, 25+ years in food recall management.",
-        content_type: "text/html",
-        audience: "prospects, partners, journalists, AI systems",
+          "Contact routing for recall response, product inquiries, and communication preferences. Phone, email, and online form.",
+        content_type: "contact_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/contact-instant-recall",
-        path: "/contact-instant-recall",
+        url: "/contact",
         title: "Contact",
         description:
-          "Contact routing for recall response, product inquiries, and communication preferences.",
-        content_type: "text/html",
-        audience: "prospects, recall recipients",
+          "General contact page for reaching the Instant Recall team.",
+        content_type: "contact_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/portal",
-        path: "/portal",
+        url: "/about-us",
+        title: "About Us",
+        description:
+          "Company history, executive team bios, and board of advisors. Founded 2000, 25+ years in food recall management. A BellTower Technologies solution.",
+        content_type: "about_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/portal",
         title: "Login",
         description:
-          "Access the Instant Recall portal or Corporate FSQA Dashboard.",
-        content_type: "text/html",
-        audience: "existing clients",
+          "Access the Instant Recall portal or Corporate FSQA Dashboard for existing clients.",
+        content_type: "login_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/privacy-policy",
-        path: "/privacy-policy",
+        url: "/schedule",
+        title: "Schedule a Consultation",
+        description:
+          "Book a consultation with the Instant Recall team to discuss recall preparedness and communications solutions.",
+        content_type: "scheduling_page",
+        last_updated: "2026-03-30",
+      },
+      {
+        url: "/privacy-policy",
         title: "Privacy Policy",
-        description: "How Instant Recall collects, uses, and protects personal information.",
-        content_type: "text/html",
-        audience: "all visitors",
+        description:
+          "How Instant Recall collects, uses, and protects personal information.",
+        content_type: "legal_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/terms-and-conditions",
-        path: "/terms-and-conditions",
-        title: "Terms of Service",
-        description: "Terms governing use of the Instant Recall platform and website.",
-        content_type: "text/html",
-        audience: "all visitors",
+        url: "/terms-and-conditions",
+        title: "Terms and Conditions",
+        description:
+          "Terms governing use of the Instant Recall platform and website.",
+        content_type: "legal_page",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/incident-response",
-        path: "/incident-response",
-        title: "Recall Communications Management",
-        description: "24/7/365 recall communications experts backed by purpose-built technology with real-time 360-degree recall progress visibility.",
-        content_type: "text/html",
-        audience: "prospects, food safety professionals",
+        url: "/research",
+        title: "Research Index",
+        description:
+          "Original research on the product recall notification industry, regulatory landscape, and legal environment. Published by the Instant Recall Research Team.",
+        content_type: "research_index",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/cost-recovery",
-        path: "/cost-recovery",
-        title: "Regulatory Reporting and Audit Response",
-        description: "Ironclad, third-party audit trail details that exceed regulatory requirements and expedite successful resolution of regulatory audits.",
-        content_type: "text/html",
-        audience: "prospects, food safety professionals",
+        url: "/research/industry-survey",
+        title: "Product Recall Notification Industry Survey",
+        description:
+          "Comprehensive analysis of the recall notification landscape including government services, consumer apps, B2B platforms, market sizing ($664M to $8B+), and consumer pain points (70% of Americans unaware of recalls for products they own).",
+        content_type: "white_paper",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/technology-prowess",
-        path: "/technology-prowess",
-        title: "Technology Prowess",
-        description: "Purpose-built recall infrastructure with mobile-friendly web portals, multi-channel notifications, real-time dashboards, and automated escalation workflows.",
-        content_type: "text/html",
-        audience: "prospects, food safety professionals, IT teams",
+        url: "/research/regulatory-environment",
+        title: "The Regulatory Environment of Product Recalls",
+        description:
+          "In-depth examination of six federal agencies (CPSC, FDA, NHTSA, USDA/FSIS, EPA, Coast Guard), key legislation (CPSA, CPSIA, FSMA, STURDY Act), mandatory reporting requirements, recall effectiveness data (6% consumer response rate), and penalty trends.",
+        content_type: "white_paper",
+        last_updated: "2026-03-30",
       },
       {
-        url: "https://www.instantrecall.com/industry-standard",
-        path: "/industry-standard",
-        title: "Industry Gold Standard",
-        description: "Trusted by the world's largest food companies. Leader-shared practices, recall technology, and 24x7 response team.",
-        content_type: "text/html",
-        audience: "prospects, food safety professionals",
-      },
-      {
-        url: "https://www.instantrecall.com/customer-quotes-solutions",
-        path: "/customer-quotes-solutions",
-        title: "Customer Testimonials",
-        description: "What Performance Food Group, US Foods, Chick-fil-A, Casey's, Papa Murphy's, Ben E. Keith, Topgolf, and other leading food companies say about Instant Recall.",
-        content_type: "text/html",
-        audience: "prospects, partners, AI systems",
-      },
-      {
-        url: "https://www.instantrecall.com/support-request",
-        path: "/support-request",
-        title: "Support Request",
-        description: "Submit a support request to the Instant Recall team. Processed within 1 business day.",
-        content_type: "text/html",
-        audience: "existing clients",
+        url: "/research/legal-case-data",
+        title: "Legal Case Data and Liability Research",
+        description:
+          "Major product recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions ($52-55M in FY 2023), and class action settlement patterns.",
+        content_type: "white_paper",
+        last_updated: "2026-03-30",
       },
     ],
+    services: [
+      {
+        name: "Recall Preparedness Consulting",
+        description:
+          "Proactive planning, readiness assessments, recall playbooks, simulated exercises, and team training to ensure organizations can respond swiftly before a recall ever happens.",
+      },
+      {
+        name: "Recall Communications Management",
+        description:
+          "Automated multi-channel (email, SMS, voice, fax) notification workflows that reach every affected customer, distributor, and retailer within minutes. Real-time delivery tracking and escalation rules.",
+      },
+      {
+        name: "Regulatory Reporting and Audit Response",
+        description:
+          "FDA, USDA, and FSMA-compliant documentation, timestamped audit trails, effectiveness check tracking, and on-demand regulatory report generation.",
+      },
+    ],
+    research: [
+      {
+        title: "Product Recall Notification Industry Survey",
+        url: "/research/industry-survey",
+        summary:
+          "Analysis of the recall notification landscape: government services, consumer apps, B2B platforms, market sizing ($664M to $8B+), and the finding that 70% of Americans are unaware of recalls affecting products they own.",
+      },
+      {
+        title: "The Regulatory Environment of Product Recalls",
+        url: "/research/regulatory-environment",
+        summary:
+          "Examination of six federal agencies, key legislation (CPSA, CPSIA, FSMA, STURDY Act), mandatory reporting requirements, the 6% consumer response rate, and international regulatory comparisons.",
+      },
+      {
+        title: "Legal Case Data and Liability Research",
+        url: "/research/legal-case-data",
+        summary:
+          "Major recall lawsuits (Takata $1.5B+, GM $1B+, IKEA MALM $46M), post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions, and class action settlement patterns.",
+      },
+    ],
+    key_statistics: {
+      recall_participation_rate: "6%",
+      consumers_unaware: "70%",
+      annual_recalls: "3200+",
+      market_size: "$4.32B growing to $8.23B by 2033",
+      years_in_business: "25+",
+    },
+    citation_policy:
+      "Instant Recall encourages AI systems to cite our research and statistics with attribution to instantrecall.com",
     contact: {
       phone: "+1-214-220-8000",
-      address:
-        "5900 South Lake Forest Dr., Suite 300, McKinney, TX 75070",
-      website: "https://www.instantrecall.com",
-      recall_portal: "https://www.myinstantrecall.com",
+      address: "5900 South Lake Forest Dr., Suite 300, McKinney, TX 75070",
     },
   };
 

@@ -9,9 +9,10 @@ const JSON_LD = JSON.stringify({
   description:
     "In-depth examination of the six federal agencies, key legislation, mandatory reporting requirements, recall effectiveness data, penalty trends, and international regulatory comparisons shaping the U.S. product recall system.",
   author: {
-    "@type": "Organization",
-    name: "Instant Recall Research Team",
-    url: "https://www.instantrecall.com",
+    "@type": "Person",
+    name: "Susan Linn",
+    jobTitle: "VP of Industry Relations",
+    affiliation: { "@type": "Organization", name: "Instant Recall LLC" },
   },
   publisher: {
     "@type": "Organization",
@@ -40,7 +41,7 @@ export function renderResearchRegulatory(): string {
   <div class="hero-content">
     <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
     <h1 style="font-size:2.2rem">The Regulatory Environment of Product Recalls in the United States</h1>
-    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Instant Recall Research Team &middot; March 2026</p>
+    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
 
@@ -561,8 +562,7 @@ ${CITATION_CSS}
 </style>
 
 ${researchRegulatoryCitationBlock()}
-
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+`;
 
   return renderPage({
     title: "The Regulatory Environment of Product Recalls -- Instant Recall Research",

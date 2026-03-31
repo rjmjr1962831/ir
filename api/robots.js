@@ -4,6 +4,21 @@ export default function handler() {
   const body = `# www.instantrecall.com
 # We welcome all AI bots and crawlers.
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 

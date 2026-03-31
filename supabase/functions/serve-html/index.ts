@@ -103,6 +103,7 @@ const ROUTES: Record<string, () => string> = {
   "/research/legal-case-data": renderResearchLegal,
   "/incident-response": renderIncidentResponse,
   "/cost-recovery": renderCostRecovery,
+  "/regulatory-reporting": renderCostRecovery,
   "/technology-prowess": renderTechnologyProwess,
   "/industry-standard": renderIndustryStandard,
   "/customer-quotes-solutions": renderCustomerQuotes,

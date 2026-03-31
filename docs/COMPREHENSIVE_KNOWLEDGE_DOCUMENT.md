@@ -108,7 +108,37 @@ Closing the last mile of recall communication. The current system relies on pass
 
 ---
 
-## 5. AI Surfaces Status (GEO Signal Ledger)
+## 5. TinaCMS Integration (Content Management)
+
+**Branch:** `feature/tinacms-setup`
+**Status:** Local dev working; not yet connected to Tina Cloud.
+
+### Installed Packages
+
+- `tinacms@3.7.1`
+- `@tinacms/cli@2.2.1`
+
+### Configuration
+
+- **Config file:** `tina/config.ts` with a `Pages` collection
+- **Content directory:** `content/pages/` containing markdown files for: home, about-us, contact, methodology, solution, incident-response
+
+### Local Development
+
+- `npm run dev` launches the TinaCMS admin UI at `localhost:4001/admin`
+- `npm run tina:build` builds the admin panel for deployment
+
+### Next Steps
+
+1. **Connect to Tina Cloud** -- obtain `TINA_CLIENT_ID` and `TINA_TOKEN`, add to environment variables
+2. **Bridge markdown content to serve-html templates** -- wire TinaCMS-managed markdown into the Supabase edge function clean-room HTML renderer
+3. **Deploy admin via vercel.json rewrite** -- add a rewrite rule so `/admin` serves the built TinaCMS panel
+4. **Add remaining pages** -- extend the Pages collection to cover all site routes (research, portal, schedule, privacy, terms, etc.)
+5. **PR + Qodo review before merge** -- create PR from `feature/tinacms-setup` to `staging`, wait for Qodo review, fix all issues, then merge
+
+---
+
+## 6. AI Surfaces Status (GEO Signal Ledger)
 
 **Current GEO Score: ~42/100** (as of 2026-03-30)
 
@@ -141,7 +171,7 @@ Closing the last mile of recall communication. The current system relies on pass
 
 ---
 
-## 6. Git and Deployment
+## 7. Git and Deployment
 
 - **Repo:** `rjmjr1962831/ir` (GitHub)
 - **Branch flow:** `feature-branch` -> `staging` -> `main`. Never merge main into staging. Never push without Robert's explicit permission (pts/ptm).
@@ -167,7 +197,7 @@ Closing the last mile of recall communication. The current system relies on pass
 
 ---
 
-## 7. Key Statistics -- The Recall Crisis
+## 8. Key Statistics -- The Recall Crisis
 
 These are the core data points that establish Instant Recall's authority. Use them in content, white papers, and AI-facing documents.
 
@@ -198,7 +228,7 @@ These are the core data points that establish Instant Recall's authority. Use th
 
 ---
 
-## 8. Execution Rules
+## 9. Execution Rules
 
 **RUN ALL TASKS IN THE BACKGROUND AND USE AS MANY AGENTS AS REQUIRED.** Every task -- coding, research, investigation, deployment -- MUST be launched as a background agent. Use multiple agents in parallel whenever work can be split. Never block the conversation waiting for a task to complete.
 
@@ -206,7 +236,7 @@ These are the core data points that establish Instant Recall's authority. Use th
 
 **AUTONOMOUS EXECUTION. DO NOT ASK FOR APPROVAL EXCEPT AS NOTED BELOW.** Robert runs with `dangerouslySkipPermissions: true`. Execute all commands without pausing to ask permission.
 
-**QODO REVIEW IS MANDATORY BEFORE EVERY MERGE TO STAGING.** Create a PR, wait for Qodo, fix issues, then merge. Never use `git merge` directly. This is non-negotiable. See Section 6 for the full workflow.
+**QODO REVIEW IS MANDATORY BEFORE EVERY MERGE TO STAGING.** Create a PR, wait for Qodo, fix issues, then merge. Never use `git merge` directly. This is non-negotiable. See Section 7 for the full workflow.
 
 **OUTPUT FILES GO IN DOWNLOADS.** Save generated files to `C:\Users\ROBER\Downloads\`.
 
@@ -222,7 +252,7 @@ These are the core data points that establish Instant Recall's authority. Use th
 
 ---
 
-## 9. Research Section
+## 10. Research Section
 
 Three published white papers at `/research/*`, authored by the Instant Recall Research Team (March 2026):
 
@@ -253,7 +283,7 @@ Three published white papers at `/research/*`, authored by the Instant Recall Re
 
 ---
 
-## 10. When to Stop and Ask Robert
+## 11. When to Stop and Ask Robert
 
 Execute everything autonomously EXCEPT:
 
@@ -268,7 +298,7 @@ Execute everything autonomously EXCEPT:
 
 ---
 
-## 11. Recent Updates (Session of 2026-03-30)
+## 12. Recent Updates (Session of 2026-03-30)
 
 ### AI Surface Buildout
 - Built and deployed: llms-full.txt, ai-content-index.json (API route), for-ai.txt, JSON-LD (Organization, WebSite, SearchAction, Service, BreadcrumbList on all pages), Link headers in vercel.json
@@ -313,7 +343,7 @@ Execute everything autonomously EXCEPT:
 
 ---
 
-## 12. Commands Reference
+## 13. Commands Reference
 
 ### PK (Load Project Knowledge)
 When Robert says `pk` or `pk ir`: query `geo_ledger_entries`, `geo_signal_status`, and `geo_score_dimensions` from Supabase (project dewbyvlbmkersxjrcknm). Answer the 6 verification questions.

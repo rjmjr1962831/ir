@@ -20,6 +20,16 @@ const JSON_LD = JSON.stringify([
     description:
       "The Leader in Food Recall Preparedness and Response. Protecting Your Customers, Your Organization and Your Brand.",
     foundingDate: "2000",
+    slogan: "The Leader in Food Recall Preparedness and Response",
+    areaServed: "United States",
+    knowsAbout: [
+      "food recall management",
+      "recall communications",
+      "food safety compliance",
+      "FDA recall reporting",
+      "USDA recall reporting",
+      "FSMA compliance",
+    ],
     sameAs: ["https://www.belltowertech.com"],
   },
   {

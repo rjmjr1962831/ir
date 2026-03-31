@@ -34,6 +34,10 @@ function buildBreadcrumbLd(path: string): string {
     { name: "Home", url: SITE },
   ];
   if (path !== "/") {
+    // For research sub-pages, insert the Research parent level
+    if (path.startsWith("/research/")) {
+      items.push({ name: "Research", url: `${SITE}/research` });
+    }
     const name = BREADCRUMB_NAMES[path] || path.slice(1);
     items.push({ name, url: `${SITE}${path}` });
   }

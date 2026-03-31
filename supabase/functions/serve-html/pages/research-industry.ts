@@ -21,32 +21,18 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/industry-survey",
   inLanguage: "en-US",
-});
-
-const BREADCRUMB_LD = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.instantrecall.com",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Research",
-      item: "https://www.instantrecall.com/research",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Industry Survey",
-      item: "https://www.instantrecall.com/research/industry-survey",
-    },
+  citation: [
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.fsis.usda.gov/recalls",
+    "https://www.cpsc.gov/Recalls",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.foodsafetymagazine.com/",
+    "https://www.cdc.gov/foodsafety/",
+    "https://www.ers.usda.gov/publications/",
+    "https://www.gao.gov/products/gao-15-290",
   ],
 });
+
 
 export function renderResearchIndustry(): string {
   const body = `
@@ -637,7 +623,7 @@ ${CITATION_CSS}
 
 ${researchIndustryCitationBlock()}
 
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+`;
 
   return renderPage({
     title: "Product Recall Notification Industry Survey -- Instant Recall Research",

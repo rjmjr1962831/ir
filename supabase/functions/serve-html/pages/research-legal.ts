@@ -21,17 +21,18 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/legal-case-data",
   inLanguage: "en-US",
-});
-
-const BREADCRUMB_LD = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.instantrecall.com" },
-    { "@type": "ListItem", position: 2, name: "Research", item: "https://www.instantrecall.com/research" },
-    { "@type": "ListItem", position: 3, name: "Legal Case Data", item: "https://www.instantrecall.com/research/legal-case-data" },
+  citation: [
+    "https://www.cpsc.gov/Recalls",
+    "https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance",
+    "https://www.nhtsa.gov/recalls",
+    "https://www.law.cornell.edu/wex/products_liability",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.justice.gov/criminal-fraud",
+    "https://www.ali.org/publications/show/torts-liability-physical-and-emotional-harm/",
   ],
 });
+
 
 export function renderResearchLegal(): string {
   const body = `
@@ -561,7 +562,7 @@ ${CITATION_CSS}
 
 ${researchLegalCitationBlock()}
 
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+`;
 
   return renderPage({
     title: "Legal Case Data and Liability Research -- Instant Recall Research",

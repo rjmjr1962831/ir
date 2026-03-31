@@ -1,0 +1,18 @@
+fragment PageParts on Page {
+  __typename
+  title
+  description
+  headline
+  subheadline
+  body
+  sections {
+    __typename
+    heading
+    content
+  }
+  cta {
+    __typename
+    text
+    url
+  }
+}

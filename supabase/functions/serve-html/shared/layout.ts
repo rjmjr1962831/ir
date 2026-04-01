@@ -68,10 +68,7 @@ function header(): string {
 </header>`;
 }
 
-function footer(freshness?: FreshnessData | null): string {
-  const updatedLine = freshness
-    ? `<p style="margin-top:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)">Last updated: ${formatDate(freshness.lastContentUpdate)}</p>`
-    : "";
+function footer(): string {
   return `
 <footer class="site-footer">
   <a href="#" style="display:block;text-align:center;color:rgba(255,255,255,.5);font-size:.8rem;padding:1rem 0;text-decoration:none">Back to Top</a>
@@ -89,7 +86,7 @@ function footer(freshness?: FreshnessData | null): string {
         <a href="/contact-instant-recall" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">CONTACT US</a>
       </div>
 
-      <p style="font-size:.8rem;color:rgba(255,255,255,.4)"><a href="/terms-and-conditions" style="color:rgba(255,255,255,.4)">Terms and Conditions</a> | <a href="/privacy-policy" style="color:rgba(255,255,255,.4)">Privacy Policy</a></p>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.4)"><a href="/terms-and-conditions" style="color:rgba(255,255,255,.4)">Terms and Conditions</a> | <a href="/privacy-policy" style="color:rgba(255,255,255,.4)">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.4)" onclick="return false;">Cookie Settings</a></p>
     </div>
     <div class="footer-right" style="text-align:center">
       <a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.5);color:rgba(255,255,255,.5);transition:all .2s">
@@ -97,14 +94,6 @@ function footer(freshness?: FreshnessData | null): string {
       </a>
     </div>
     <div class="footer-bottom" style="grid-column:1/-1">
-      <div class="footer-extra-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:.5rem">
-        <a href="/research" style="color:rgba(255,255,255,.35);font-size:.75rem">Research</a>
-        <a href="/about-us" style="color:rgba(255,255,255,.35);font-size:.75rem">About Us</a>
-        <a href="/for-ai" style="color:rgba(255,255,255,.35);font-size:.75rem">For AI</a>
-        <a href="/llms.txt" style="color:rgba(255,255,255,.35);font-size:.75rem">llms.txt</a>
-        <a href="/sitemap.xml" style="color:rgba(255,255,255,.35);font-size:.75rem">Sitemap</a>
-      </div>
-      ${updatedLine}
     </div>
   </div>
 </footer>`;
@@ -191,7 +180,7 @@ export function renderPage(opts: LayoutOptions): string {
 <body>
 ${header()}
 ${opts.body}
-${footer(f)}
+${footer()}
 </body>
 </html>`;
 }

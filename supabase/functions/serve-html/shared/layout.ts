@@ -73,24 +73,19 @@ function footer(freshness?: FreshnessData | null): string {
     ? `<p style="margin-top:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)">Last updated: ${formatDate(freshness.lastContentUpdate)}</p>`
     : "";
   return `
-<div class="pre-footer-social" style="text-align:center;padding:1rem 0;background:#272727">
-  <a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(255,255,255,.5);font-size:1.25rem;transition:color .2s">
-    <svg viewBox="0 0 64 64" width="24" height="24" style="fill:rgba(255,255,255,.5)"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44h5.4v-9.5C46,29.8,45,26.2,39.5,26.2z"></path></svg>
-  </a>
-</div>
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">
       <img src="/images/footerlogo.webp" alt="Instant Recall" height="80">
       <a href="https://belltowertech.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem"><img src="/images/aserviceofbelltower.webp" alt="A service of BellTower Technologies" height="40"></a>
-      <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.75rem">&copy; Instant Recall LLC<br>All Rights Reserved</p>
+      <p style="font-size:.6em;color:rgba(255,255,255,.4);margin-top:.75rem">&copy; Instant Recall LLC<br>All Rights Reserved</p>
     </div>
     <div class="footer-center" style="grid-column:2/4;text-align:center">
       <div style="margin-bottom:1.5rem">
-        <a href="/" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">HOME</a>
-        <a href="/solution" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">SOLUTION</a>
-        <a href="/portal" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">LOGIN</a>
-        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">CONTACT US</a>
+        <a href="/" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">HOME</a>
+        <a href="/solution" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">SOLUTION</a>
+        <a href="/portal" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">LOGIN</a>
+        <a href="/contact-instant-recall" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">CONTACT US</a>
       </div>
       <div class="footer-secondary-nav" style="margin-bottom:1rem">
         <a href="/" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Home</a>
@@ -201,6 +196,27 @@ export function renderPage(opts: LayoutOptions): string {
 ${header()}
 ${opts.body}
 ${footer(f)}
+<script>
+(function(){
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  var heroEl = document.querySelector('.hero');
+  function onScroll(){
+    if (window.scrollY > 80) {
+      h.classList.add('scrolled');
+    } else {
+      h.classList.remove('scrolled');
+    }
+  }
+  if (heroEl) {
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  } else {
+    h.style.position = 'relative';
+    h.style.background = '#575757';
+  }
+})();
+</script>
 </body>
 </html>`;
 }

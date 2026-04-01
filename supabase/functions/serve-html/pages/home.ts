@@ -218,20 +218,20 @@ const HOME_CSS = `
 .carousel-track .slide.active{display:block;opacity:1;position:relative}
 .carousel-dots{list-style:none;padding:0;margin:1.5rem 0 0;text-align:center;display:flex;justify-content:center;gap:10px}
 .carousel-dots li{display:inline}
-.carousel-dots li a{display:inline-block;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);text-indent:-9999px;overflow:hidden;box-shadow:inset 0 0 2px rgba(0,0,0,.3);transition:background .3s}
-.carousel-dots li.active a{background:rgba(255,255,255,.9)}
+.carousel-dots li a{display:inline-block;width:6px;height:6px;border-radius:15px;background:rgba(0,0,0,.2);text-indent:-9999px;overflow:hidden;box-shadow:inset 0 0 2px 0 rgba(0,0,0,.3);transition:background .3s}
+.carousel-dots li.active a{background:#222}
 
 /* Customer testimonial styling */
-.customer-carousel{padding:60px 32px}
+.customer-carousel{padding:76px 32px}
 .customer-carousel h2{color:#fff;font-weight:400;text-align:center;font-size:42px;margin-bottom:2rem}
-.customer-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:400}
-.customer-carousel .source{text-align:right;max-width:800px;margin:0 auto;line-height:1.3}
+.customer-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:bold}
+.customer-carousel .source{text-align:right;max-width:800px;margin:0 auto;line-height:1}
 .customer-carousel .source p{color:#fff;font-size:.95rem;margin:0}
 
 /* Safety quotes carousel */
-.safety-carousel{padding:60px 32px}
+.safety-carousel{padding:76px 32px}
 .safety-carousel h2{color:#fff;font-weight:400;text-align:center;font-size:42px;margin-bottom:2rem}
-.safety-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:400}
+.safety-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:bold}
 .safety-carousel .source{text-align:center;max-width:800px;margin:0 auto;color:rgba(255,255,255,.85);font-size:.95rem}
 
 /* Hero video bg */
@@ -240,33 +240,33 @@ const HOME_CSS = `
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:40px 20px}
+.intro-section{background:#fff;padding:76px 32px}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
-.intro-section h1{font-size:2rem;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.3}
-.intro-section p{font-size:1.05rem;color:#3e3e3e;line-height:1.8;font-weight:300}
+.intro-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
+.intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px}
 
 /* Video embed */
-.video-embed{background:#fff;padding:0 20px 40px}
+.video-embed{background:#fff;padding:0 32px 76px}
 .video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
 /* Decades of Trust */
-.decades-section{background:#fff;padding:40px 20px}
+.decades-section{background:#fff;padding:76px 32px}
 .decades-section .decades-inner{max-width:800px;margin:0 auto;text-align:center}
-.decades-section h1{font-size:2rem;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.3}
-.decades-section p{font-size:1.05rem;color:#000;line-height:1.8;font-weight:300}
+.decades-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
+.decades-section p{font-size:23px;color:#000;line-height:1.4em;font-weight:300;letter-spacing:.43px}
 
 /* Our Solution section */
-.solution-section{background:#f5f5f5;padding:40px 20px}
-.solution-section h1{text-align:center;font-size:2rem;color:#272727;font-weight:700;margin-bottom:2rem}
+.solution-section{background:#f5f5f5;padding:76px 32px}
+.solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:700;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
-.solution-pillar .icon-circle{width:100px;height:100px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center}
-.solution-pillar .icon-circle i{font-size:3.5rem;color:#00afec}
+.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%}
+.solution-pillar .icon-circle i{font-size:3em;color:#fff;line-height:90px}
 .solution-pillar h3{font-size:1rem;font-weight:700;color:#272727;text-transform:none;margin:0}
 .solution-section .learn-more-btn{display:block;text-align:center;margin-top:2rem}
-.solution-section .learn-more-btn a{display:inline-block;padding:.75rem 2.5rem;border:2px solid #272727;color:#272727;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:none;transition:all .2s;background:transparent;text-decoration:none}
-.solution-section .learn-more-btn a:hover{background:#272727;color:#fff}
+.solution-section .learn-more-btn a{display:inline-block;padding:1em 1.5em;border:2px solid #272727;color:#272727;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:all .1s linear;background:transparent;text-decoration:none;min-width:200px}
+.solution-section .learn-more-btn a:hover{background:#1cace6;border-color:#106080;color:#fff}
 
 /* Ticker / news scroller */
 .ticker-bar{background:#ed0056;width:100%;overflow:hidden;height:60px;position:relative}
@@ -277,8 +277,8 @@ const HOME_CSS = `
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Contact form section on white */
-.contact-section-home{background:#fff;padding:40px 20px}
-.contact-section-home h1{font-size:2rem;color:#272727;font-weight:700;margin-bottom:1rem}
+.contact-section-home{background:#fff;padding:76px 32px}
+.contact-section-home h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1rem;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em}
 
 /* Footer links in source style */
 .footer-links-bar{text-align:center;padding:1rem 0}
@@ -290,9 +290,11 @@ const HOME_CSS = `
 @media(max-width:768px){
   .customer-carousel h2,.safety-carousel h2{font-size:28px}
   .customer-carousel blockquote,.safety-carousel blockquote{font-size:1rem}
-  .customer-carousel,.safety-carousel{padding:40px 16px}
+  .customer-carousel,.safety-carousel{padding:26px 32px}
   .solution-pillars{flex-direction:column;align-items:center}
-  .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
+  .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem;text-transform:uppercase}
+  .intro-section p,.decades-section p{font-size:16px}
+  .intro-section,.decades-section,.solution-section,.video-embed,.contact-section-home{padding:26px 32px}
 }
 `;
 
@@ -406,15 +408,15 @@ export function renderHome(): string {
 <style>${HOME_CSS}</style>
 
 <!-- 1. HERO: Dark video background with blue overlay -->
-<section class="hero video-hero" style="min-height:600px;position:relative;overflow:hidden">
+<section class="hero video-hero" style="min-height:700px;position:relative;overflow:hidden">
   <div class="video-bg">
     <video autoplay muted loop playsinline style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover">
       <source src="/video/BTT_WebsiteHeader_v0005.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="hero-overlay" style="background:rgba(35,92,128,0.63)"></div>
+  <div class="hero-overlay" style="background:rgba(34,68,102,0.68)"></div>
   <div class="hero-content">
-    <h1 style="font-size:2.8rem;text-transform:uppercase;letter-spacing:2px;color:#fff">THE <em style="color:#00afec;font-style:italic">LEADER</em> IN FOOD RECALL PREPAREDNESS AND RESPONSE</h1>
+    <h1>The <em style="color:#00aeeb;font-style:normal">Leader </em>in food recall preparedness and response</h1>
   </div>
 </section>
 

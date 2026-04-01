@@ -243,10 +243,10 @@ const HOME_CSS = `
 .intro-section{background:#fff;padding:76px 32px 20px}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
-.intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px}
+.intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
 
 /* Video embed */
-.video-embed{background:#fff;padding:0 32px 20px}
+.video-embed{background:#fff;padding:0 32px 10px;margin:0}
 .video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
@@ -277,7 +277,7 @@ const HOME_CSS = `
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Contact form section on white */
-.contact-section-home{background:#fff;padding:76px 32px}
+.contact-section-home{background:#fff;padding:40px 32px}
 .contact-section-home h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1rem;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em}
 
 /* Footer links in source style */

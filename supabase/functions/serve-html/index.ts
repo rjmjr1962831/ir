@@ -18,7 +18,6 @@ import { renderIncidentResponse } from "./pages/incident-response.ts";
 import { renderCostRecovery } from "./pages/cost-recovery.ts";
 import { renderTechnologyProwess } from "./pages/technology-prowess.ts";
 import { renderIndustryStandard } from "./pages/industry-standard.ts";
-import { renderCustomerQuotes } from "./pages/customer-quotes.ts";
 import { renderSupportRequest } from "./pages/support-request.ts";
 import { renderMethodology } from "./pages/methodology.ts";
 import { handleCrawlStats } from "./pages/crawl-stats.ts";
@@ -112,7 +111,6 @@ const ROUTES: Record<string, () => string> = {
   "/cost-recovery": renderCostRecovery,
   "/technology-prowess": renderTechnologyProwess,
   "/industry-standard": renderIndustryStandard,
-  "/customer-quotes-solutions": renderCustomerQuotes,
   "/support-request": renderSupportRequest,
   "/methodology": renderMethodology,
   "/who-trusts-us": renderPress,
@@ -239,6 +237,12 @@ serve(async (req: Request) => {
     return new Response(null, {
       status: 301,
       headers: { Location: "/cost-recovery" },
+    });
+  }
+  if (path === "/customer-quotes" || path === "/customer-quotes-solutions") {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: "/" },
     });
   }
 

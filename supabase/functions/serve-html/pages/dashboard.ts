@@ -463,15 +463,15 @@ export async function handleDashboard(_req: Request): Promise<Response> {
   <div class="dash-section">
     <h2>Confidential Internal Docs</h2>
     <div class="page-grid">
-      <a href="/internal/ai-best-practices" class="page-card featured" style="text-decoration:none;color:inherit">
+      <a href="/docs/ai-best-practices" class="page-card featured" style="text-decoration:none;color:inherit">
         <h3>Aryah AI Best Practices</h3>
-        <span class="route">/internal/ai-best-practices</span>
+        <span class="route">/docs/ai-best-practices</span>
         <div class="desc">GEO mission, 8-signal framework, Floor+ technique, clean-room architecture, anti-hallucination directives.</div>
         <span class="badge badge-live">Live</span>
       </a>
-      <a href="/internal/project-knowledge" class="page-card featured" style="text-decoration:none;color:inherit">
+      <a href="/docs/project-knowledge" class="page-card featured" style="text-decoration:none;color:inherit">
         <h3>Project Knowledge Document</h3>
-        <span class="route">/internal/project-knowledge</span>
+        <span class="route">/docs/project-knowledge</span>
         <div class="desc">Full project handoff: architecture, database schema, deployment, Git flow, Qodo gate, key statistics, execution rules.</div>
         <span class="badge badge-live">Live</span>
       </a>

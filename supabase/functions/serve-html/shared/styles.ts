@@ -15,7 +15,11 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .site-header nav a:hover{color:rgba(255,255,255,.8);text-decoration:none}
 .site-header nav a.nav-btn{background:transparent;border:2px solid #fff;color:#fff;padding:1em 1.5em;margin-left:1em;transition:background-color .1s ease-in-out,color .1s ease-in-out;border-radius:0}
 .site-header nav a.nav-btn:hover{background:#fff;color:#181818}
-.mobile-menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+.mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;z-index:1001}
+.mobile-menu-toggle span{display:block;width:24px;height:2px;background:#fff;transition:transform .3s,opacity .3s}
+.mobile-menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mobile-menu-toggle.open span:nth-child(2){opacity:0}
+.mobile-menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* Hero */
 .hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:4rem 2rem;text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -178,14 +182,17 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .btn-outline:hover{background:#272727;color:#fff;text-decoration:none}
 
 /* Responsive */
-@media(max-width:640px){
+@media(max-width:768px){
+  .mobile-menu-toggle{display:flex}
+  .site-header{flex-wrap:wrap;height:auto;padding:1rem 1.5rem;background:#575757}
+  .site-header nav{display:none;flex-direction:column;width:100%;padding:1rem 0 0;gap:0}
+  .site-header nav.nav-open{display:flex}
+  .site-header nav a{padding:0.75rem 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,0.1);text-align:center}
+  .site-header nav a.nav-btn{border:none;margin-left:0;padding:0.75rem 0;background:transparent;text-align:center}
+  .site-header nav a.nav-btn:hover{background:transparent;color:rgba(255,255,255,.8)}
   .hero h1{font-size:2em}
   .hero p{font-size:1rem}
   .hero{padding:4rem 1.5rem;min-height:350px}
-  .site-header{flex-direction:column;height:auto;padding:1rem 1.5rem;position:relative;background:#575757}
-  .site-header nav{margin-top:.5rem;flex-wrap:wrap;justify-content:center}
-  .site-header nav a{padding:0.4rem 0.75rem;font-size:.75rem}
-  .site-header nav a.nav-btn{padding:0.4rem 0.75rem;margin-left:0;border-width:2px}
   .cards{grid-template-columns:1fr}
   .features{grid-template-columns:1fr}
   .features-header{grid-template-columns:1fr !important}

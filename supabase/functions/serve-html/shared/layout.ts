@@ -59,12 +59,16 @@ function buildBreadcrumbLd(path: string): string {
 function header(): string {
   return `<header class="site-header">
   <a href="/" class="logo"><img src="/images/InstantRecall_Horizontal-01.webp" alt="Instant Recall\u2122" height="50"></a>
+  <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <nav>
     <a href="/">Home</a>
     <a href="/solution">Solution</a>
     <a href="/portal">Login</a>
     <a href="/contact-instant-recall" class="nav-btn">Contact Us</a>
   </nav>
+  <script>(function(){var b=document.querySelector('.mobile-menu-toggle'),n=document.querySelector('.site-header nav');if(!b||!n)return;b.addEventListener('click',function(){var open=n.classList.toggle('nav-open');b.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open))})})()</script>
 </header>`;
 }
 

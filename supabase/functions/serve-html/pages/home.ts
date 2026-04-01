@@ -244,9 +244,9 @@ section{margin:0;border:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:76px 32px 20px}
+.intro-section{background:#fff;padding:40px 32px 0}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
-.intro-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
+.intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
 
 /* Video embed */
@@ -257,15 +257,15 @@ section{margin:0;border:0}
 /* Decades of Trust */
 .decades-section{background:#fff;padding:76px 32px}
 .decades-section .decades-inner{max-width:800px;margin:0 auto;text-align:center}
-.decades-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
+.decades-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .decades-section p{font-size:23px;color:#000;line-height:1.4em;font-weight:300;letter-spacing:.43px}
 
 /* Our Solution section */
 .solution-section{background:#f5f5f5;padding:76px 32px}
-.solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:700;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em;margin-bottom:2rem}
+.solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:400;letter-spacing:1.34px;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
-.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%}
+.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00afec;border-radius:50%}
 .solution-pillar .icon-circle i{font-size:3em;color:#fff;line-height:90px}
 .solution-pillar h3{font-size:1rem;font-weight:700;color:#272727;text-transform:none;margin:0}
 .solution-section .learn-more-btn{display:block;text-align:center;margin-top:2rem}
@@ -296,7 +296,7 @@ section{margin:0;border:0}
   .customer-carousel blockquote,.safety-carousel blockquote{font-size:1rem}
   .customer-carousel,.safety-carousel{padding:26px 32px}
   .solution-pillars{flex-direction:column;align-items:center}
-  .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem;text-transform:uppercase}
+  .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
   .intro-section p,.decades-section p{font-size:16px}
   .intro-section,.decades-section,.solution-section,.video-embed,.contact-section-home{padding:26px 32px}
   blockquote{font-size:22px;line-height:24px}
@@ -500,22 +500,22 @@ export function renderHome(): string {
   </div>
 </section>
 
-<!-- 8. CONTACT CTA: White background with HubSpot form -->
+<!-- 8. NEWS TICKER: Red/coral bar -->
+<section class="ticker-bar">
+  <div id="scrollerWrapper">
+    <ul id="scroller">
+      ${tickerItems}
+    </ul>
+  </div>
+</section>
+
+<!-- 9. CONTACT CTA: White background with HubSpot form -->
 <section class="section-white contact-form-section contact-section-home">
   <div class="section-inner">
     <h2 style="color:#272727">Accelerate Your Recall Response</h2>
     <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
     <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
     <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
-  </div>
-</section>
-
-<!-- 9. NEWS TICKER: Red/coral bar -->
-<section class="ticker-bar">
-  <div id="scrollerWrapper">
-    <ul id="scroller">
-      ${tickerItems}
-    </ul>
   </div>
 </section>
 

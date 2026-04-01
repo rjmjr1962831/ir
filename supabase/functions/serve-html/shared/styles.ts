@@ -176,7 +176,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .btn-outline:hover{background:#272727;color:#fff;text-decoration:none}
 
 /* Responsive */
-@media(max-width:768px){
+@media(max-width:640px){
   .hero h1{font-size:2em}
   .hero p{font-size:1rem}
   .hero{padding:4rem 1.5rem;min-height:350px}

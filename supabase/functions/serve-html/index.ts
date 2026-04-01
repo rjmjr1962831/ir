@@ -154,6 +154,17 @@ serve(async (req: Request) => {
     path = path.slice(0, -1);
   }
 
+  // Keep-warm ping -- minimal response, no DB calls, no logging
+  if (path === "/ping") {
+    return new Response(JSON.stringify({ ok: true, ts: Date.now() }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+      },
+    });
+  }
+
   // Load freshness data (cached, non-blocking on failure)
   const freshness = await getFreshness();
   setCurrentFreshness(freshness);

@@ -211,8 +211,8 @@ const SAFETY_QUOTES = [
 /* ------------------------------------------------------------------ */
 const HOME_CSS = `
 /* Section reset -- eliminate gaps between sections */
-.hero + section, section + section{margin:0}
 section{margin:0;border:0}
+h1,h2,h3,p{margin-top:0}
 
 /* Carousel / rslides */
 .carousel{position:relative;overflow:hidden}
@@ -244,13 +244,13 @@ section{margin:0;border:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:40px 32px 0;margin:0}
+.intro-section{background:#fff;padding:76px 32px;margin:0}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
 
 /* Video embed */
-.video-embed{background:#fff;padding:17px 32px 0;margin:0}
+.video-embed{padding:17px 0 0;margin:0}
 .video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 

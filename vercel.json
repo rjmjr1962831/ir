@@ -60,6 +60,7 @@
     { "source": "/.well-known/mcp.json", "destination": "/api/mcp" },
     { "source": "/for-ai", "destination": "/api/for-ai" },
     { "source": "/for-ai.txt", "destination": "/api/for-ai" },
+    { "source": "/ping", "destination": "/api/html?path=%2Fping" },
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/(.*)", "destination": "/admin/$1" }
   ]

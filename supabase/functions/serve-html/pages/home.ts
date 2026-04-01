@@ -244,7 +244,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section -- video is INSIDE this section */
-.intro-section{background:#fff;padding:40px 32px 10px;margin:0}
+.intro-section{background:#fff;padding:40px 32px 0;margin:0;overflow:hidden}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
@@ -298,7 +298,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
   .solution-pillars{flex-direction:column;align-items:center}
   .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
   .intro-section p,.decades-section p{font-size:16px}
-  .intro-section{padding:26px 32px 10px}
+  .intro-section{padding:26px 32px 0}
   .decades-section,.solution-section,.contact-section-home{padding:26px 32px}
   .video-embed{padding:17px 32px 0}
   blockquote{font-size:22px;line-height:24px}

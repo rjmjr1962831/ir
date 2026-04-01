@@ -128,6 +128,95 @@ function injectDateModified(jsonLdStr: string, dateModified: string): string {
   }
 }
 
+function newsletterPopup(): string {
+  return `
+<!-- Newsletter Popup Overlay -->
+<div id="nl-popup-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:center;justify-content:center">
+  <div style="background:#fff;max-width:520px;width:90%;border-radius:4px;position:relative;padding:2.5rem 2rem;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+    <button id="nl-popup-close" aria-label="Close" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.6rem;color:#666;cursor:pointer;line-height:1">&times;</button>
+    <img src="/images/InstantRecall_Horizontal-01.webp" alt="Instant Recall" style="max-width:200px;height:auto;margin-bottom:1.25rem">
+    <h2 style="color:#272727;font-size:1.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">LIKE WHAT YOU SEE?</h2>
+    <p style="color:#555;font-size:.95rem;margin-bottom:1.5rem;line-height:1.5">Sign up for our newsletter to stay informed on food recall preparedness, industry insights, and regulatory updates.</p>
+    <form id="nl-popup-form" style="display:flex;flex-direction:column;gap:.75rem;max-width:360px;margin:0 auto">
+      <input type="email" name="email" required placeholder="Email address" style="padding:.75rem 1rem;border:1px solid #ccc;border-radius:2px;font-size:.95rem;font-family:inherit;color:#333;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#00afec'" onblur="this.style.borderColor='#ccc'">
+      <button type="submit" style="background:#00afec;color:#fff;border:none;padding:.8rem 1.5rem;font-size:.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;font-family:inherit">Sign Up</button>
+    </form>
+    <p id="nl-popup-success" style="display:none;color:#2a9d2a;font-weight:600;margin-top:1rem">Thank you for subscribing!</p>
+    <p id="nl-popup-error" style="display:none;color:#d32f2f;font-size:.85rem;margin-top:.5rem"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var COOKIE='ir_nl_dismiss';
+  var FREQ=30;
+  var DELAY=5000;
+  var SCROLL_PCT=25;
+
+  function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]*)'));return m?m[1]:null}
+  function setCookie(n,v,d){var e=new Date();e.setDate(e.getDate()+d);document.cookie=n+'='+v+';expires='+e.toUTCString()+';path=/;SameSite=Lax'}
+
+  if(getCookie(COOKIE))return;
+
+  var overlay=document.getElementById('nl-popup-overlay');
+  var shown=false;
+
+  function showPopup(){
+    if(shown)return;
+    shown=true;
+    overlay.style.display='flex';
+  }
+
+  // Timer trigger
+  setTimeout(showPopup,DELAY);
+
+  // Scroll trigger
+  window.addEventListener('scroll',function(){
+    var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+    if(pct>=SCROLL_PCT)showPopup();
+  },{passive:true});
+
+  // Close handlers
+  document.getElementById('nl-popup-close').addEventListener('click',function(){
+    overlay.style.display='none';
+    setCookie(COOKIE,'1',FREQ);
+  });
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay){overlay.style.display='none';setCookie(COOKIE,'1',FREQ)}
+  });
+
+  // Form submit to HubSpot
+  document.getElementById('nl-popup-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=this.email.value.trim();
+    if(!email)return;
+    var btn=this.querySelector('button[type="submit"]');
+    btn.disabled=true;btn.textContent='Sending...';
+    document.getElementById('nl-popup-error').style.display='none';
+
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/48681528/2759faa2-dc43-43f4-8d4d-8fb442c2d0bf',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        fields:[{name:'email',value:email}],
+        context:{pageUri:window.location.href,pageName:document.title}
+      })
+    }).then(function(r){
+      if(!r.ok)throw new Error('Submit failed');
+      document.getElementById('nl-popup-form').style.display='none';
+      document.getElementById('nl-popup-success').style.display='block';
+      setCookie(COOKIE,'1',FREQ);
+      setTimeout(function(){overlay.style.display='none'},2500);
+    }).catch(function(){
+      btn.disabled=false;btn.textContent='Sign Up';
+      var err=document.getElementById('nl-popup-error');
+      err.textContent='Something went wrong. Please try again.';
+      err.style.display='block';
+    });
+  });
+})();
+</script>`;
+}
+
 export function renderPage(opts: LayoutOptions): string {
   const canonical = `${SITE}${opts.path === "/" ? "" : opts.path}`;
   const f = opts.freshness || getCurrentFreshness();
@@ -190,6 +279,7 @@ export function renderPage(opts: LayoutOptions): string {
 ${header()}
 ${opts.body}
 ${footer()}
+${newsletterPopup()}
 </body>
 </html>`;
 }

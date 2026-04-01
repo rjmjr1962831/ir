@@ -408,7 +408,7 @@ export function renderHome(): string {
 <style>${HOME_CSS}</style>
 
 <!-- 1. HERO: Dark video background with blue overlay -->
-<section class="hero video-hero" style="min-height:450px;position:relative;overflow:hidden">
+<section class="hero video-hero" style="min-height:700px;position:relative;overflow:hidden">
   <div class="video-bg">
     <img id="hero-fallback" src="/images/iStock-835970896_Small2.jpg" alt="Instant Recall - Food Recall Preparedness" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity 1.5s ease">
     <video id="hero-video" autoplay muted loop playsinline poster="/images/iStock-835970896_Small2.jpg" style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0">

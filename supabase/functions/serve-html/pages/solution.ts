@@ -1,5 +1,4 @@
 import { renderPage } from "../shared/layout.ts";
-import { solutionCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const SERVICE_AUDIENCE = {
   "@type": "Audience",
@@ -53,16 +52,54 @@ const JSON_LD = JSON.stringify([
   },
 ]);
 
+const SOLUTION_CSS = `
+  /* Solution page overrides - white background theme */
+  body { background: #fff; color: #272727; }
+
+  .hero { min-height: 350px; padding: 3rem 2rem; }
+  .hero h1 { font-size: 52px; letter-spacing: 4px; margin-bottom: 0; }
+
+  .solution-intro { background: #fff; padding: 4rem 2rem; text-align: center; max-width: 900px; margin: 0 auto; }
+  .solution-intro h2 { color: #272727; font-size: 1.8rem; font-weight: 700; margin-bottom: 1.25rem; }
+  .solution-intro p { color: #3e3e3e; font-size: 1.05rem; line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+
+  .container { background: #fff; }
+
+  .card { background: #fff; border: none; border-radius: 0; padding: 0; }
+  .card:hover { transform: none; box-shadow: none; }
+  .card img { border-radius: 0; margin-bottom: 1rem; }
+  .card h3 { color: #272727; font-size: 1.15rem; font-weight: 700; }
+  .card p { color: #3e3e3e; font-weight: 300; }
+
+  .features-section { background: #fff; padding: 4rem 2rem; }
+  .feature h4 { color: #272727; }
+  .feature p { color: #3e3e3e; }
+  .feature img { width: 80px; height: 80px; }
+
+  .feature-fullwidth { grid-column: 1 / -1; }
+
+  .cta { background: #fff; color: #272727; }
+  .cta h2 { color: #272727; }
+
+  .site-footer { background: #201a16; color: rgba(255,255,255,.4); }
+`;
+
 export function renderSolution(): string {
   const body = `
+<style>${SOLUTION_CSS}</style>
+
 <section class="hero" style="background-image:url('/images/iStock-685238966.webp')">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Turn Recall Chaos Into Control</h1>
-    <p>At Instant Recall\u2122, we understand that communicating mission-critical information instantly is essential to protecting both people and brands.</p>
-    <p style="margin-top:1rem">Trusted by the world's leading food companies, we unite the best practices of the global food supply chain into the trusted, gold standard for recall performance\u2014empowering teams to act faster and smarter, from anywhere, at any time.</p>
+    <h1>SOLUTION</h1>
   </div>
 </section>
+
+<div class="solution-intro">
+  <h2>Turn Recall Chaos Into Control</h2>
+  <p>At Instant Recall\u2122, we understand that communicating mission-critical information instantly is essential to protecting both people and brands.</p>
+  <p>Trusted by the world's leading food companies, we unite the best practices of the global food supply chain into the trusted, gold standard for recall performance\u2014empowering teams to act faster and smarter, from anywhere, at any time.</p>
+</div>
 
 <div class="container">
   <div class="cards">
@@ -88,8 +125,8 @@ export function renderSolution(): string {
 
 <section class="features-section">
   <div class="features-header" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;margin-bottom:2.5rem">
-    <h3 style="font-size:1.15rem;font-weight:700;color:#fff;margin:0;line-height:1.4">solution features</h3>
-    <p style="color:rgba(255,255,255,.75);font-size:1rem;line-height:1.6;font-weight:300;margin:0">Behind every recall is a team under pressure to act fast and get it right. Instant Recall gives those teams a better way, uniting the proven best practices of the industry's leading supply chain partners into the trusted gold standard for recall performance.</p>
+    <h3 style="font-size:1.15rem;font-weight:700;color:#272727;margin:0;line-height:1.4;text-transform:uppercase">SOLUTION FEATURES</h3>
+    <p style="color:#3e3e3e;font-size:1rem;line-height:1.6;font-weight:300;margin:0">Behind every recall is a team under pressure to act fast and get it right. Instant Recall gives those teams a better way, uniting the proven best practices of the industry's leading supply chain partners into the trusted gold standard for recall performance.</p>
   </div>
 
   <div class="features">
@@ -135,7 +172,7 @@ export function renderSolution(): string {
         <p>FSQA teams are able to use Instant Recall to quickly recover costs, minimize lost sales, avoid business disruption, and deliver bottom-line value to their organization.</p>
       </div>
     </div>
-    <div class="feature">
+    <div class="feature feature-fullwidth">
       <img src="/images/icon07.webp" alt="Purpose-Built for Food">
       <div class="feature-text">
         <h4>Purpose-built for the food industry</h4>
@@ -145,13 +182,10 @@ export function renderSolution(): string {
   </div>
 </section>
 
-<style>${CITATION_CSS}</style>
-
-${solutionCitationBlock()}
-
 <section class="cta" style="background:#fff;color:#272727">
-  <h2 style="color:#272727;font-size:2.2rem">\u00a0Accelerate Your Recall Response</h2>
-  <a href="/contact-instant-recall" class="btn" style="background:#00afec;color:#fff;border:2px solid #00afec">Contact Us</a>
+  <h2 style="color:#272727;font-size:2.2rem">Accelerate Your Recall Response</h2>
+  <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
+  <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
 </section>`;
 
   return renderPage({

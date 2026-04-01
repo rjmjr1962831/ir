@@ -497,18 +497,15 @@ export function renderHome(): string {
   </div>
 </section>
 
-<!-- 8. CONTACT CTA: White background with form -->
-<style>${CONTACT_FORM_CSS}</style>
+<!-- 8. CONTACT CTA: White background with HubSpot form -->
 <section class="section-white contact-form-section contact-section-home">
   <div class="section-inner">
     <h2 style="color:#272727">Accelerate Your Recall Response</h2>
     <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
-    <form id="contact-form">
-      ${CONTACT_FORM_HTML}
-    </form>
+    <script src="https://js-na2.hsforms.net/forms/embed/developer/48681528.js" defer></script>
+    <div class="hs-form-html" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
   </div>
 </section>
-<script>${CONTACT_FORM_JS}</script>
 
 <!-- 9. NEWS TICKER: Red/coral bar -->
 <section class="ticker-bar">

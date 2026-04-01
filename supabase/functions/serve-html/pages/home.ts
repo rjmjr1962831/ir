@@ -211,8 +211,8 @@ const SAFETY_QUOTES = [
 /* ------------------------------------------------------------------ */
 const HOME_CSS = `
 /* Section reset -- eliminate gaps between sections */
-section{margin:0;border:0}
-h1,h2,h3,p{margin-top:0}
+section{margin:0;padding:0;border:0}
+h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 
 /* Carousel / rslides */
 .carousel{position:relative;overflow:hidden}
@@ -226,14 +226,14 @@ h1,h2,h3,p{margin-top:0}
 .carousel-dots li.active a{background:#222}
 
 /* Customer testimonial styling */
-.customer-carousel{padding:40px 32px}
+.customer-carousel{padding:36px 32px}
 .customer-carousel h2{color:#fff;font-weight:400;text-align:center;font-size:42px;margin-bottom:2rem}
 .customer-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:bold}
 .customer-carousel .source{text-align:right;max-width:800px;margin:0 auto;line-height:1}
 .customer-carousel .source p{color:#fff;font-size:.95rem;margin:0}
 
 /* Safety quotes carousel */
-.safety-carousel{padding:40px 32px}
+.safety-carousel{padding:36px 32px}
 .safety-carousel h2{color:#fff;font-weight:400;text-align:center;font-size:42px;margin-bottom:2rem}
 .safety-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:bold}
 .safety-carousel .source{text-align:center;max-width:800px;margin:0 auto;color:rgba(255,255,255,.85);font-size:.95rem}
@@ -243,13 +243,13 @@ h1,h2,h3,p{margin-top:0}
 .video-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .video-bg iframe{pointer-events:none}
 
-/* Intro / value prop section */
-.intro-section{background:#fff;padding:76px 32px 0;margin:0}
+/* Intro / value prop section -- video is INSIDE this section */
+.intro-section{background:#fff;padding:40px 32px 10px;margin:0}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
 
-/* Video embed */
+/* Video embed -- sits inside .intro-section, zero bottom spacing */
 .video-embed{padding:17px 0 0;margin:0}
 .video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
@@ -261,7 +261,7 @@ h1,h2,h3,p{margin-top:0}
 .decades-section p{font-size:23px;color:#000;line-height:1.4em;font-weight:300;letter-spacing:.43px}
 
 /* Our Solution section */
-.solution-section{background:#f5f5f5;padding:76px 32px}
+.solution-section{background:#efefef;padding:40px 32px}
 .solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:400;letter-spacing:1.34px;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
@@ -281,7 +281,7 @@ h1,h2,h3,p{margin-top:0}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Contact form section on white */
-.contact-section-home.section-white{background:#fff;padding:76px 32px}
+.contact-section-home.section-white{background:#fff;padding:40px 32px}
 .contact-section-home h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1rem;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em}
 
 /* Footer links in source style */
@@ -298,8 +298,9 @@ h1,h2,h3,p{margin-top:0}
   .solution-pillars{flex-direction:column;align-items:center}
   .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
   .intro-section p,.decades-section p{font-size:16px}
-  .intro-section,.decades-section,.solution-section,.contact-section-home{padding:26px 32px}
-  .video-embed{padding:26px 32px 0}
+  .intro-section{padding:26px 32px 10px}
+  .decades-section,.solution-section,.contact-section-home{padding:26px 32px}
+  .video-embed{padding:17px 32px 0}
   blockquote{font-size:22px;line-height:24px}
 }
 `;
@@ -438,7 +439,7 @@ export function renderHome(): string {
     <h1>Protecting Your Customers, Your Brand, and Your Bottom Line</h1>
     <p>Instant Recall\u2122 is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence. Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast\u2014no matter how complex the event.</p>
   </div>
-  <div class="video-embed" style="padding:17px 32px 0">
+  <div class="video-embed">
     <div class="video-inner">
       <iframe src="https://player.vimeo.com/video/1152623274?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>

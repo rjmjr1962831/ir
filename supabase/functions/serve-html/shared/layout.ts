@@ -74,9 +74,10 @@ function footer(freshness?: FreshnessData | null): string {
     : "";
   return `
 <footer class="site-footer">
+  <a href="#" style="display:block;text-align:center;color:rgba(255,255,255,.5);font-size:.8rem;padding:1rem 0;text-decoration:none">Back to Top</a>
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="/images/footerlogo.webp" alt="Instant Recall" height="80">
+      <img src="/images/footerlogo.webp" alt="Instant Recall" style="max-width:150px;height:auto">
       <a href="https://belltowertech.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem"><img src="/images/aserviceofbelltower.webp" alt="A service of BellTower Technologies" height="40"></a>
       <p style="font-size:.6em;color:rgba(255,255,255,.4);margin-top:.75rem">&copy; Instant Recall LLC<br>All Rights Reserved</p>
     </div>
@@ -87,14 +88,7 @@ function footer(freshness?: FreshnessData | null): string {
         <a href="/portal" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">LOGIN</a>
         <a href="/contact-instant-recall" style="color:#fff;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500;text-decoration:none">CONTACT US</a>
       </div>
-      <div class="footer-secondary-nav" style="margin-bottom:1rem">
-        <a href="/" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Home</a>
-        <a href="/solution" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Solution</a>
-        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Sign Up</a>
-        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Contact Us</a>
-        <a href="/portal" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Login</a>
-        <a href="/schedule" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Book an Appointment</a>
-      </div>
+
       <p style="font-size:.8rem;color:rgba(255,255,255,.4)"><a href="/terms-and-conditions" style="color:rgba(255,255,255,.4)">Terms and Conditions</a> | <a href="/privacy-policy" style="color:rgba(255,255,255,.4)">Privacy Policy</a></p>
     </div>
     <div class="footer-right" style="text-align:center">

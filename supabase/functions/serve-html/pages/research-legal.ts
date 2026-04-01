@@ -93,7 +93,7 @@ const FAQ_LD = JSON.stringify({
       name: "Have any executives gone to prison for product recall violations?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. In June 2025, two former Gree USA executives were sentenced to 38 and 40 months in federal prison for conspiracy and failure to report hazardous dehumidifiers that caused approximately 450 fires. This was the first-ever criminal prosecution and sentencing of corporate executives under the Consumer Product Safety Act.",
+        text: "Yes, in both food and consumer product categories. In food safety, Peanut Corporation of America CEO Stewart Parnell was sentenced to 28 years in federal prison in 2015 for knowingly shipping salmonella-contaminated peanut products that caused 9 deaths and 714 illnesses -- the most severe criminal sentence ever imposed on a food company executive. Blue Bell Creameries' former president also pleaded guilty to conspiracy in 2020 for concealing listeria contamination. In consumer products, two former Gree USA executives were sentenced to 38 and 40 months in federal prison in June 2025 for conspiracy and failure to report hazardous dehumidifiers that caused approximately 450 fires -- the first-ever criminal sentencing under the Consumer Product Safety Act.",
       },
     },
     {
@@ -101,7 +101,15 @@ const FAQ_LD = JSON.stringify({
       name: "How much have major product recall settlements totaled in recent years?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Top 10 products liability and mass tort settlements totaled approximately US$50.3 billion in 2022, US$25.8 billion in 2023, and US$23.4 billion in 2024. Individual cases include Takata airbags at over US$1.5 billion and GM ignition switch at over US$1 billion in combined penalties and settlements.",
+        text: "Top 10 products liability and mass tort settlements totaled approximately US$50.3 billion in 2022, US$25.8 billion in 2023, and US$23.4 billion in 2024. Individual cases include Takata airbags (AUTOMOTIVE) at US$1 billion DOJ criminal penalty plus a separate US$1.5 billion class-action settlement for vehicle owners, GM ignition switch (AUTOMOTIVE) at over US$1 billion in combined penalties and settlements, Blue Bell Creameries (FOOD) at US$19.35 million in criminal penalties for listeria contamination, and Peanut Corporation of America (FOOD) where the CEO received a 28-year federal prison sentence for knowingly shipping salmonella-contaminated products.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the most significant food recall criminal cases in U.S. history?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The three landmark food recall criminal cases are: (1) Peanut Corporation of America (2015), where CEO Stewart Parnell received 28 years in federal prison for knowingly shipping salmonella-contaminated peanut products that caused 9 deaths and 714 illnesses -- the most severe criminal sentence ever for a food company executive; (2) Blue Bell Creameries (2020), which paid $19.35 million in criminal penalties for shipping listeria-contaminated ice cream that caused 3 deaths, with the former president pleading guilty to conspiracy; and (3) Jensen Farms (2011-2014), whose listeria-contaminated cantaloupe killed 33 people in the deadliest U.S. foodborne illness outbreak in nearly a century, though the owners received only probation and 5 months home detention.",
       },
     },
     {
@@ -153,10 +161,13 @@ export function renderResearchLegal(): string {
 
     <h4>Landmark cases that turned on notification</h4>
     <ul>
-      <li><strong>IKEA MALM / Dudek.</strong> US$46M child wrongful-death settlement where IKEA had full purchase data but never notified the family of a dresser recall.</li>
-      <li><strong>Fisher-Price Rock 'n Play.</strong> ~100 infant deaths, class settlement of US$19M; recall had to be re-announced after millions of units remained in homes.</li>
-      <li><strong>Takata airbags.</strong> 67M inflators recalled in the U.S., deaths continuing years later from unrepaired vehicles; NHTSA resorted to "Do Not Drive" orders.</li>
-      <li><strong>Gree dehumidifiers.</strong> ~450 fires, US$15.45M civil penalty, US$91M deferred-prosecution penalty, and the first CPSA prison sentences (38 to 40 months) for executives who delayed reporting.</li>
+      <li><strong>Peanut Corp. of America (FOOD).</strong> CEO sentenced to 28 years in federal prison for knowingly shipping salmonella-contaminated peanut products. 9 deaths, 714 illnesses across 46 states -- the most severe criminal sentence ever imposed on a food company executive.</li>
+      <li><strong>Blue Bell Creameries (FOOD).</strong> US$19.35M in criminal penalties for shipping listeria-contaminated ice cream. 3 deaths; former president pleaded guilty to conspiracy for concealing contamination from FDA.</li>
+      <li><strong>Jensen Farms cantaloupe (FOOD).</strong> Listeria outbreak killed 33 people -- deadliest U.S. foodborne illness outbreak in nearly a century. Owners received probation and 5 months home detention.</li>
+      <li><strong>IKEA MALM / Dudek (FURNITURE).</strong> US$46M private wrongful-death settlement where IKEA had full purchase data but never notified the family of a dresser recall.</li>
+      <li><strong>Fisher-Price Rock 'n Play (CONSUMER PRODUCTS).</strong> ~100 infant deaths, class-action settlement of US$19M; recall had to be re-announced after millions of units remained in homes.</li>
+      <li><strong>Takata airbags (AUTOMOTIVE).</strong> 67M inflators recalled in the U.S., US$1B DOJ criminal penalty; deaths continuing years later from unrepaired vehicles; NHTSA resorted to "Do Not Drive" orders.</li>
+      <li><strong>Gree dehumidifiers (CONSUMER PRODUCTS).</strong> ~450 fires, US$15.45M civil penalty, US$91M deferred-prosecution penalty, and the first CPSA prison sentences (38 to 40 months) for executives who delayed reporting.</li>
     </ul>
 
     <h3>Expanding Liability for Sellers and Platforms</h3>
@@ -203,25 +214,52 @@ export function renderResearchLegal(): string {
   <section id="major-lawsuits">
     <h2>1. Major Product Recall Lawsuits</h2>
 
-    <h3>Fisher-Price Rock 'n Play Sleeper</h3>
+    <h3>Peanut Corporation of America -- First Major Criminal Food Recall Prosecution <span class="exec-pill">FOOD</span></h3>
+    <ul>
+      <li><strong>Recall scope:</strong> Nationwide recall of peanut butter, peanut paste, and peanut products manufactured at PCA's Blakely, Georgia plant; affected over 3,900 products across 360+ companies</li>
+      <li><strong>Deaths/Illnesses:</strong> <strong>9 deaths</strong> and <strong>714 illnesses</strong> across 46 states from salmonella contamination</li>
+      <li><strong>Criminal sentence (2015):</strong> CEO Stewart Parnell sentenced to <strong>28 years in federal prison</strong> -- the most severe criminal sentence ever imposed on a food company executive. Brother Michael Parnell received 20 years; quality assurance manager received 5 years.</li>
+      <li><strong>Key finding:</strong> Parnell knowingly shipped salmonella-contaminated peanut products, falsified lab results, and directed employees to ship products that had tested positive for salmonella</li>
+      <li><strong>Significance:</strong> First food company executive to receive a federal criminal sentence of this magnitude; established that food recall cover-ups can lead to life-altering prison terms</li>
+    </ul>
+
+    <h3>Blue Bell Creameries -- Criminal Penalties for Listeria Cover-Up <span class="exec-pill">FOOD</span></h3>
+    <ul>
+      <li><strong>Recall scope:</strong> Complete recall of all Blue Bell ice cream products nationwide (2015); production shut down for months</li>
+      <li><strong>Deaths/Illnesses:</strong> <strong>3 deaths</strong> and <strong>10 illnesses</strong> from listeria monocytogenes contamination linked to a Kansas hospital and Texas</li>
+      <li><strong>Criminal penalties (2020):</strong> <strong>$19.35 million</strong> total -- $17.25 million criminal fine plus $2.1 million forfeiture. One of the largest-ever criminal penalties in a food safety case.</li>
+      <li><strong>Executive prosecution:</strong> Former Blue Bell president Paul Kruse pleaded guilty to conspiracy charges for concealing information from FDA investigators about the company's knowledge of listeria contamination</li>
+      <li><strong>Key finding:</strong> Blue Bell knew about listeria contamination in its facilities years before the outbreak but failed to adequately address the problem or notify regulators</li>
+    </ul>
+
+    <h3>Jensen Farms / Colorado Cantaloupe -- Deadliest U.S. Foodborne Illness Outbreak in a Century <span class="exec-pill">FOOD</span></h3>
+    <ul>
+      <li><strong>Recall scope:</strong> Rocky Ford-brand cantaloupes from Jensen Farms in Holly, Colorado (recalled September 2011)</li>
+      <li><strong>Deaths/Illnesses:</strong> <strong>33 deaths</strong> and <strong>147 illnesses</strong> across 28 states from listeria monocytogenes -- the <strong>deadliest U.S. foodborne illness outbreak in nearly a century</strong></li>
+      <li><strong>Criminal prosecution (2013-2014):</strong> Owners Eric and Ryan Jensen pleaded guilty to misdemeanor charges of introducing adulterated food into interstate commerce. Initially sentenced to probation (2014), each served <strong>5 months of home detention</strong>.</li>
+      <li><strong>Key finding:</strong> Contamination linked to unsanitary conditions at the packing facility, including use of equipment that could not be properly cleaned. Jensen Farms had switched to a new packing system shortly before the outbreak.</li>
+      <li><strong>Significance:</strong> Despite being the deadliest outbreak, the relatively light criminal sentences (compared to PCA's 28 years) sparked debate about whether food safety penalties adequately deter negligence when deaths are caused by carelessness rather than intentional fraud</li>
+    </ul>
+
+    <h3>Fisher-Price Rock 'n Play Sleeper <span class="exec-pill">CONSUMER PRODUCTS</span></h3>
     <ul>
       <li><strong>Recall scope:</strong> 4.7 million sleepers recalled (all models); original recall April 2019, reannounced January 2023</li>
       <li><strong>Deaths/Injuries:</strong> Linked to approximately <strong>100 infant deaths</strong> and over <strong>700 injuries</strong></li>
-      <li><strong>Class action settlement:</strong> $19 million (final approval granted February 28, 2025)</li>
+      <li><strong>Class-action settlement:</strong> $19 million (In Re: Fisher-Price Rock 'N Play Sleeper; final approval granted February 28, 2025). <em>Note: This was a consumer class-action settlement, not a CPSC enforcement penalty.</em></li>
       <li><strong>Key finding:</strong> Fisher-Price and Mattel knew the product's inclined design posed suffocation risks but marketed it as safe for infant sleep</li>
     </ul>
 
-    <h3>Takata Airbags -- Largest Auto Recall in History</h3>
+    <h3>Takata Airbags -- Largest Auto Recall in History <span class="exec-pill">AUTOMOTIVE</span></h3>
     <ul>
       <li><strong>Recall scope:</strong> 67 million Takata airbag inflators in the U.S.; 100+ million worldwide across 20+ automakers</li>
       <li><strong>Deaths/Injuries:</strong> At least <strong>28 deaths in the U.S.</strong> (35+ globally); <strong>400+ injuries</strong></li>
-      <li><strong>DOJ Settlement (2017):</strong> $1 billion -- $850M to affected automakers, $125M victim compensation trust, $25M federal fine</li>
+      <li><strong>DOJ criminal penalty (2017):</strong> <strong>$1 billion</strong> -- $25M criminal fine, $125M victim restitution fund, $850M automaker recall cost fund</li>
+      <li><strong>Separate class-action settlement:</strong> <strong>$1.5 billion</strong> for vehicle owners' economic losses</li>
       <li><strong>Automaker settlements:</strong> Toyota, BMW, Subaru, Mazda: $741 million; Volkswagen: $42 million; four automakers combined: $553 million</li>
-      <li><strong>Total settlements exceed $1.5 billion</strong></li>
       <li><strong>Notification failure:</strong> As of April 2024, 12% of recalled vehicles remain unrepaired, representing millions of vehicles still on the road with lethal airbags</li>
     </ul>
 
-    <h3>Peloton Tread+ Treadmill</h3>
+    <h3>Peloton Tread+ Treadmill <span class="exec-pill">FITNESS EQUIPMENT</span></h3>
     <ul>
       <li><strong>Recall issued:</strong> May 5, 2021 (all Tread+ and Tread models)</li>
       <li><strong>Deaths/Injuries:</strong> 1 child death; 90 injuries; 351 total incident reports</li>
@@ -229,14 +267,14 @@ export function renderResearchLegal(): string {
       <li><strong>Basis:</strong> Failure to immediately report entrapment hazards AND distributing recalled treadmills after the recall was issued</li>
     </ul>
 
-    <h3>Samsung Galaxy Note 7</h3>
+    <h3>Samsung Galaxy Note 7 <span class="exec-pill">CONSUMER ELECTRONICS</span></h3>
     <ul>
       <li><strong>Recall issued:</strong> September 2016 (battery explosion risk)</li>
       <li><strong>Incidents:</strong> 92 reports of overheating, 26 burns, 55 reports of property damage</li>
       <li><strong>Financial impact:</strong> Samsung estimated losses of <strong>$5.3 billion</strong>; production permanently discontinued</li>
     </ul>
 
-    <h3>GM Ignition Switch</h3>
+    <h3>GM Ignition Switch <span class="exec-pill">AUTOMOTIVE</span></h3>
     <ul>
       <li><strong>Recall scope:</strong> ~30 million vehicles worldwide (beginning February 2014)</li>
       <li><strong>Deaths/Injuries:</strong> <strong>124 deaths</strong> confirmed; 18 catastrophic injuries; 257 injuries requiring hospitalization</li>
@@ -246,12 +284,12 @@ export function renderResearchLegal(): string {
       <li><strong>Victim compensation:</strong> All 124 eligible death claimants offered $1 million or more each</li>
     </ul>
 
-    <h3>IKEA MALM Dresser Tip-Overs</h3>
+    <h3>IKEA MALM Dresser Tip-Overs <span class="exec-pill">FURNITURE</span></h3>
     <ul>
       <li><strong>Recall scope:</strong> 35+ million dressers in North America (recalled 2016, reannounced multiple times)</li>
       <li><strong>Deaths:</strong> At least <strong>9 children killed</strong></li>
-      <li><strong>Settlement #1 (2016):</strong> <strong>$50 million</strong> to three families</li>
-      <li><strong>Settlement #2 (2020):</strong> <strong>$46 million</strong> for 2-year-old Jozef Dudek -- believed to be the <strong>largest child wrongful death recovery in U.S. history</strong></li>
+      <li><strong>Settlement #1 (2016):</strong> <strong>$50 million</strong> to three families (private wrongful death settlements)</li>
+      <li><strong>Settlement #2 (2020):</strong> <strong>$46 million</strong> private wrongful death settlement for the family of 2-year-old Jozef Dudek -- believed to be the <strong>largest child wrongful death recovery in U.S. history</strong>. <em>Note: This was a private wrongful death settlement, not a CPSC civil penalty or recall enforcement action.</em></li>
       <li><strong>Critical notification failure:</strong> Jozef Dudek's parents were IKEA Family members who purchased the dresser with an IKEA credit card. <strong>They never received notice</strong> of the 2016 recall. Jozef died May 24, 2017 -- more than a year after the recall.</li>
     </ul>
   </section>
@@ -265,6 +303,8 @@ export function renderResearchLegal(): string {
       <li><strong>Inadequate notification extends liability.</strong> If a manufacturer issues a recall but fails to adequately notify consumers, subsequent injuries can result in greater damages, including punitive damages.</li>
       <li><strong>The IKEA/Dudek case is the landmark example.</strong> Despite IKEA having the Dudek family's purchase data, they failed to notify them. The $46M settlement directly reflects the aggravated liability from notification failure.</li>
       <li><strong>GM's 13-year concealment</strong> resulted in $900M in DOJ penalties plus $120M in state settlements, driven specifically by failure to disclose and notify.</li>
+      <li><strong>Peanut Corp. of America's deliberate concealment</strong> -- CEO Stewart Parnell knowingly shipped salmonella-positive products and falsified lab results, leading to a 28-year federal prison sentence (2015). The case proved that intentional failure to warn in the food industry can result in sentences comparable to violent crime.</li>
+      <li><strong>Blue Bell Creameries' concealment from the FDA</strong> resulted in $19.35M criminal penalties (2020) after executives hid their knowledge of listeria contamination that caused 3 deaths. Demonstrates that obstruction of food safety regulators compounds criminal exposure.</li>
     </ol>
 
     <h3>Relevant Case Law</h3>
@@ -319,6 +359,12 @@ export function renderResearchLegal(): string {
     <h3>Fisher-Price Rock 'n Play -- Deaths After Original Recall</h3>
     <p>Original recall April 2019 (after 30+ reported deaths). Reannounced January 2023 (death toll reached ~100). The need to reannounce underscores that the original notification failed. 4.7 million units in circulation; recall completion rates average only 6-10%.</p>
 
+    <h3>Peanut Corporation of America -- Deaths from Intentional Concealment (FOOD)</h3>
+    <p>Peanut Corp. of America knowingly shipped salmonella-contaminated peanut products for years, falsifying lab results. Nine people died and 714 were sickened across 46 states before the 2009 recall. CEO Stewart Parnell received a 28-year federal prison sentence in 2015 -- the harshest criminal penalty ever imposed on a food company executive, and a landmark in food safety enforcement.</p>
+
+    <h3>Jensen Farms Cantaloupe -- 33 Deaths in Deadliest Outbreak (FOOD)</h3>
+    <p>The 2011 Jensen Farms listeria outbreak killed 33 people and sickened 147 across 28 states, making it the deadliest U.S. foodborne illness outbreak in nearly a century. Despite the devastating death toll, farm owners Eric and Ryan Jensen received only probation and 5 months of home detention -- a sentencing disparity that fueled calls for stronger food safety criminal penalties.</p>
+
     <h3>Portable Bed Rails -- Deaths in 2024</h3>
     <p>Since 2021, at least 18 deaths from bed rail entrapment. 1.5 million portable bed rails recalled in 2024 following 2 patient deaths. Additional 200,000 Medical King bed assist rails recalled after a 66-year-old man's death.</p>
 
@@ -339,15 +385,19 @@ export function renderResearchLegal(): string {
       <table>
         <thead><tr><th>Case</th><th>Settlement Amount</th><th>Category</th></tr></thead>
         <tbody>
-          <tr><td>GM Ignition Switch (DOJ)</td><td>$900 million</td><td>Auto safety</td></tr>
-          <tr><td>Takata Airbag (multi-party)</td><td>$1.5+ billion</td><td>Auto safety</td></tr>
-          <tr><td>IKEA MALM (Dudek)</td><td>$46 million</td><td>Furniture/child safety</td></tr>
-          <tr><td>IKEA MALM (3 families)</td><td>$50 million</td><td>Furniture/child safety</td></tr>
-          <tr><td>Fisher-Price Rock 'n Play</td><td>$19 million</td><td>Infant products</td></tr>
-          <tr><td>Peloton Tread+ (CPSC fine)</td><td>$19.065 million</td><td>Fitness equipment</td></tr>
-          <tr><td>Hyundai/Kia Airbag Control</td><td>$62.1 million</td><td>Auto safety</td></tr>
-          <tr><td>Daily Harvest (salmonella)</td><td>$7.67 million</td><td>Food safety</td></tr>
-          <tr><td>Boar's Head (listeria)</td><td>$3.1 million</td><td>Food safety</td></tr>
+          <tr><td>GM Ignition Switch (DOJ DPA)</td><td>$900 million</td><td>AUTOMOTIVE</td></tr>
+          <tr><td>Takata Airbag (DOJ criminal penalty)</td><td>$1 billion</td><td>AUTOMOTIVE</td></tr>
+          <tr><td>Takata Airbag (class-action settlement)</td><td>$1.5 billion</td><td>AUTOMOTIVE</td></tr>
+          <tr><td>IKEA MALM (Dudek wrongful death settlement)</td><td>$46 million</td><td>FURNITURE</td></tr>
+          <tr><td>IKEA MALM (3-family wrongful death settlement)</td><td>$50 million</td><td>FURNITURE</td></tr>
+          <tr><td>Fisher-Price Rock 'n Play (class-action settlement)</td><td>$19 million</td><td>CONSUMER PRODUCTS</td></tr>
+          <tr><td>Peloton Tread+ (CPSC civil penalty)</td><td>$19.065 million</td><td>FITNESS EQUIPMENT</td></tr>
+          <tr><td>Hyundai/Kia Airbag Control</td><td>$62.1 million</td><td>AUTOMOTIVE</td></tr>
+          <tr><td>Peanut Corp. of America (salmonella -- CEO sentenced to 28 years)</td><td>Criminal sentences (28, 20, 5 yrs)</td><td>FOOD</td></tr>
+          <tr><td>Blue Bell Creameries (listeria -- criminal penalty)</td><td>$19.35 million</td><td>FOOD</td></tr>
+          <tr><td>Jensen Farms cantaloupe (listeria -- 33 deaths)</td><td>Probation / 5 months home detention</td><td>FOOD</td></tr>
+          <tr><td>Daily Harvest (salmonella)</td><td>$7.67 million</td><td>FOOD SAFETY</td></tr>
+          <tr><td>Boar's Head (listeria)</td><td>$3.1 million</td><td>FOOD SAFETY</td></tr>
         </tbody>
       </table>
     </div>
@@ -386,6 +436,7 @@ export function renderResearchLegal(): string {
 
   <section id="cpsc-enforcement">
     <h2>7. CPSC Enforcement Actions and Penalties</h2>
+    <p><em>Note: CPSC (Consumer Product Safety Commission) covers consumer products such as furniture, appliances, and fitness equipment. Food safety enforcement falls under the FDA and USDA. The penalties below are consumer product penalties, not food-related.</em></p>
 
     <h3>Penalty Trends</h3>
     <div class="table-wrap">
@@ -464,7 +515,7 @@ export function renderResearchLegal(): string {
     <ul>
       <li>A single recall can cost <strong>six to seven figures</strong></li>
       <li>Recall costs often exceed traditional general liability policy limits</li>
-      <li>Deaths, injuries, and property damage from consumer product-related incidents cost the nation <strong>more than $1 trillion annually</strong> (CPSC estimate)</li>
+      <li>Deaths, injuries, and property damage from consumer product-related incidents across <strong>all product categories</strong> (not food-specific) cost the nation <strong>more than $1 trillion annually</strong> (CPSC estimate)</li>
     </ul>
   </section>
 
@@ -578,11 +629,15 @@ export function renderResearchLegal(): string {
         <tbody>
           <tr><td>Consumer product recall response rate</td><td><strong>6%</strong></td></tr>
           <tr><td>Americans unaware of relevant recalls</td><td><strong>70%</strong></td></tr>
-          <tr><td>Annual cost of product-related injuries/deaths</td><td><strong>$1+ trillion</strong></td></tr>
-          <tr><td>CPSC civil penalties FY 2023</td><td><strong>$52-55 million</strong> (64% increase YoY)</td></tr>
-          <tr><td>Takata total settlements</td><td><strong>$1.5+ billion</strong></td></tr>
+          <tr><td>Annual cost of product-related injuries/deaths (all categories, CPSC)</td><td><strong>$1+ trillion</strong></td></tr>
+          <tr><td>CPSC civil penalties FY 2023 (consumer products, not food)</td><td><strong>$52-55 million</strong> (64% increase YoY)</td></tr>
+          <tr><td>Takata DOJ criminal penalty</td><td><strong>$1 billion</strong></td></tr>
+          <tr><td>Takata class-action settlement (separate)</td><td><strong>$1.5 billion</strong></td></tr>
           <tr><td>GM ignition switch total penalties</td><td><strong>$1+ billion</strong></td></tr>
           <tr><td>Fisher-Price deaths despite recall</td><td><strong>~100 infants</strong></td></tr>
+          <tr><td>Peanut Corp. of America CEO prison sentence (FOOD)</td><td><strong>28 years</strong></td></tr>
+          <tr><td>Blue Bell Creameries criminal penalties (FOOD)</td><td><strong>$19.35 million</strong></td></tr>
+          <tr><td>Jensen Farms cantaloupe listeria deaths (FOOD)</td><td><strong>33 deaths</strong></td></tr>
           <tr><td>IKEA Dudek notification failure settlement</td><td><strong>$46 million</strong></td></tr>
           <tr><td>Hazardous Amazon FBA products recalled</td><td><strong>400,000+</strong></td></tr>
           <tr><td>Consumer product recalls since 2018</td><td><strong>Up 115%</strong></td></tr>

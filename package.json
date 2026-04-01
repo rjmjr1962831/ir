@@ -1,0 +1,31 @@
+{
+  "name": "ir",
+  "version": "1.0.0",
+  "description": "Clean-room HTML edge function architecture.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "tinacms dev -c \"npx serve public\"",
+    "tina:build": "tinacms build",
+    "tina:audit": "tinacms audit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjmjr1962831/ir.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rjmjr1962831/ir/issues"
+  },
+  "homepage": "https://github.com/rjmjr1962831/ir#readme",
+  "dependencies": {
+    "@tinacms/cli": "^2.2.1",
+    "tinacms": "^3.7.1"
+  }
+}

@@ -58,76 +58,63 @@ function buildBreadcrumbLd(path: string): string {
 
 function header(): string {
   return `<header class="site-header">
-  <a href="/" class="logo"><img src="/images/InstantRecall_Horizontal-01.webp" alt="Instant Recall" height="50"></a>
+  <a href="/" class="logo"><img src="/images/InstantRecall_Horizontal-01.webp" alt="Instant Recall\u2122" height="50"></a>
   <nav>
     <a href="/">Home</a>
     <a href="/solution">Solution</a>
-    <a href="/research">Research</a>
-    <a href="/portal">Portal</a>
+    <a href="/portal">Login</a>
     <a href="/contact-instant-recall" class="nav-btn">Contact Us</a>
   </nav>
 </header>`;
 }
 
 function footer(freshness?: FreshnessData | null): string {
-  const year = new Date().getFullYear();
   const updatedLine = freshness
     ? `<p style="margin-top:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)">Last updated: ${formatDate(freshness.lastContentUpdate)}</p>`
     : "";
-  return `<footer class="site-footer">
+  return `
+<div class="pre-footer-social" style="text-align:center;padding:1rem 0;background:#272727">
+  <a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(255,255,255,.5);font-size:1.25rem;transition:color .2s">
+    <svg viewBox="0 0 64 64" width="24" height="24" style="fill:rgba(255,255,255,.5)"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44h5.4v-9.5C46,29.8,45,26.2,39.5,26.2z"></path></svg>
+  </a>
+</div>
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">
       <img src="/images/footerlogo.webp" alt="Instant Recall" height="80">
-      <p style="font-size:.85rem;color:rgba(255,255,255,.6);margin-top:.75rem;max-width:280px;line-height:1.6">The leader in food recall preparedness and response. Trusted by the world's largest foodservice distributors for 25+ years.</p>
-      <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.5rem">Founded by <a href="/about-us" style="color:#00afec">Michael Martin</a>, 2000</p>
-      <a href="https://belltowertech.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem"><img src="/images/aserviceofbelltower.webp" alt="A service of BellTower" height="40"></a>
+      <a href="https://belltowertech.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem"><img src="/images/aserviceofbelltower.webp" alt="A service of BellTower Technologies" height="40"></a>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.75rem">&copy; Instant Recall LLC<br>All Rights Reserved</p>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-label">Company</div>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/solution">Solution</a>
-        <a href="/about-us">About Us</a>
-        <a href="/contact-instant-recall">Contact Us</a>
-        <a href="/portal">Login</a>
-        <a href="/schedule">Book an Appointment</a>
+    <div class="footer-center" style="grid-column:2/4;text-align:center">
+      <div style="margin-bottom:1.5rem">
+        <a href="/" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">HOME</a>
+        <a href="/solution" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">SOLUTION</a>
+        <a href="/portal" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">LOGIN</a>
+        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .75rem;font-weight:500">CONTACT US</a>
       </div>
+      <div class="footer-secondary-nav" style="margin-bottom:1rem">
+        <a href="/" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Home</a>
+        <a href="/solution" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Solution</a>
+        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Sign Up</a>
+        <a href="/contact-instant-recall" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Contact Us</a>
+        <a href="/portal" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Login</a>
+        <a href="/schedule" style="color:rgba(255,255,255,.5);font-size:.8rem;margin:0 .5rem">Book an Appointment</a>
+      </div>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.4)"><a href="/terms-and-conditions" style="color:rgba(255,255,255,.4)">Terms and Conditions</a> | <a href="/privacy-policy" style="color:rgba(255,255,255,.4)">Privacy Policy</a></p>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-label">Research</div>
-      <div class="footer-links">
-        <a href="/research">Research Hub</a>
-        <a href="/research/legal-case-data">Legal Case Data</a>
-        <a href="/research/industry-survey">Industry Survey</a>
-        <a href="/research/regulatory-environment">Regulatory Environment</a>
-        <a href="/research/usfoods-recall-process">US Foods Recall Process</a>
-        <a href="/research/sysco-recall-packet">Sysco Recall Packet</a>
-      </div>
+    <div class="footer-right" style="text-align:center">
+      <a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.5);color:rgba(255,255,255,.5);transition:all .2s">
+        <svg viewBox="0 0 64 64" width="28" height="28" style="fill:currentColor"><path d="M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44h5.4v-9.5C46,29.8,45,26.2,39.5,26.2z"></path></svg>
+      </a>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-label">For AI Systems</div>
-      <div class="footer-links">
-        <a href="/for-ai">For AI</a>
-        <a href="/llms.txt">llms.txt</a>
-        <a href="/llms-full.txt">llms-full.txt</a>
-        <a href="/ai-content-index.json">AI Content Index</a>
-        <a href="/.well-known/mcp.json">MCP Server</a>
-        <a href="/sitemap.xml">Sitemap</a>
-        <a href="/robots.txt">robots.txt</a>
-        <a href="/crawl-stats">Crawl Stats</a>
+    <div class="footer-bottom" style="grid-column:1/-1">
+      <div class="footer-extra-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:.5rem">
+        <a href="/research" style="color:rgba(255,255,255,.35);font-size:.75rem">Research</a>
+        <a href="/about-us" style="color:rgba(255,255,255,.35);font-size:.75rem">About Us</a>
+        <a href="/for-ai" style="color:rgba(255,255,255,.35);font-size:.75rem">For AI</a>
+        <a href="/llms.txt" style="color:rgba(255,255,255,.35);font-size:.75rem">llms.txt</a>
+        <a href="/sitemap.xml" style="color:rgba(255,255,255,.35);font-size:.75rem">Sitemap</a>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>(c) Instant Recall LLC All Rights Reserved</p>
-      <div class="footer-nav">
-        <a href="/">HOME</a>
-        <a href="/solution">SOLUTION</a>
-        <a href="/research">RESEARCH</a>
-        <a href="/portal">PORTAL</a>
-        <a href="/contact-instant-recall">CONTACT US</a>
-      </div>
-      <p style="margin-top:.75rem"><a href="/terms-and-conditions">Terms and Conditions</a> | <a href="/privacy-policy">Privacy Policy</a></p>
-      <p style="margin-top:.5rem"><a href="https://www.linkedin.com/showcase/instantrecall/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.5);font-size:.85rem">LinkedIn</a></p>
       ${updatedLine}
     </div>
   </div>

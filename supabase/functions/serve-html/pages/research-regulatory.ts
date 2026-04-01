@@ -4,10 +4,10 @@ import { researchRegulatoryCitationBlock, CITATION_CSS } from "../shared/citatio
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Report",
-  name: "The Regulatory Environment of Product Recalls in the United States",
-  headline: "The Regulatory Environment of Product Recalls in the United States",
+  name: "The Regulatory Environment of Food Recalls in the United States",
+  headline: "The Regulatory Environment of Food Recalls in the United States",
   description:
-    "In-depth examination of the six federal agencies, key legislation, mandatory reporting requirements, recall effectiveness data, penalty trends, and international regulatory comparisons shaping the U.S. product recall system.",
+    "In-depth examination of FDA and USDA-FSIS oversight, key legislation, mandatory reporting requirements, recall effectiveness data, penalty trends, and international regulatory comparisons shaping the U.S. food recall system.",
   author: {
     "@type": "Person",
     name: "Susan Linn",
@@ -25,13 +25,10 @@ const JSON_LD = JSON.stringify({
   citation: [
     "https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls",
     "https://www.fsis.usda.gov/recalls",
-    "https://www.cpsc.gov/Recalls",
-    "https://www.nhtsa.gov/recalls",
-    "https://www.epa.gov/recalls",
+    "https://www.cdc.gov/foodsafety/outbreaks/index.html",
     "https://www.congress.gov/bill/111th-congress/house-bill/2749",
     "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma",
     "https://www.gao.gov/products/gao-22-105011",
-    "https://www.consumerreports.org/product-recalls/",
     "https://www.foodsafetymagazine.com/",
   ],
 });
@@ -52,10 +49,10 @@ const FAQ_LD = JSON.stringify({
   mainEntity: [
     {
       "@type": "Question",
-      name: "Which federal agencies oversee product recalls in the United States?",
+      name: "Which federal agencies oversee food recalls in the United States?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Six primary federal agencies handle product recalls: the CPSC (consumer products), FDA (food, drugs, medical devices, cosmetics), NHTSA (vehicles, car seats, tires), USDA FSIS (meat, poultry, egg products), EPA (pesticides, toxic substances), and the U.S. Coast Guard (boats, marine equipment). Each agency has separate reporting requirements and recall processes.",
+        text: "Two primary federal agencies oversee food recalls: the FDA (most foods, dietary supplements, beverages) and USDA-FSIS (meat, poultry, and processed egg products). The CDC plays a supporting role by detecting and investigating foodborne illness outbreaks that often trigger recalls. Other agencies such as CPSC (consumer products), NHTSA (vehicles), and EPA (pesticides) handle non-food recalls in their respective domains.",
       },
     },
     {
@@ -68,10 +65,10 @@ const FAQ_LD = JSON.stringify({
     },
     {
       "@type": "Question",
-      name: "How quickly must companies report product defects to regulators?",
+      name: "How quickly must companies report food safety issues to regulators?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Under Section 15(b) of the Consumer Product Safety Act, companies must report to the CPSC within 24 hours of obtaining reportable information. NHTSA requires manufacturers to file within 5 business days of learning about a defect. USDA/FSIS requires establishments to notify within 24 hours of becoming aware of adulterated or misbranded product.",
+        text: "For food recalls, USDA-FSIS requires establishments to notify within 24 hours of becoming aware of adulterated or misbranded product. FDA expects responsible firms to report voluntarily and promptly when a food product may be in violation. Under the Reportable Food Registry (RFR) established by FSMA, responsible parties must submit a reportable food report to FDA within 24 hours of determining that a food is reportable.",
       },
     },
     {
@@ -84,34 +81,34 @@ const FAQ_LD = JSON.stringify({
     },
     {
       "@type": "Question",
-      name: "What are the current CPSC civil penalty limits for recall violations?",
+      name: "What enforcement tools does FDA have for food recall violations?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The current CPSC maximum is US$100,000 per violation and US$15 million for a series of related violations. The median penalty increased 29% from roughly US$7.2 million (2015-2020) to US$9.3 million (2020-2025). The proposed CAP Act would raise per-violation caps to US$250,000 and eliminate the maximum series cap entirely.",
+        text: "FDA's primary food recall enforcement tools include warning letters, seizure actions (through DOJ), injunctions, criminal prosecution, and import alerts. The FSMA (2011) granted FDA mandatory recall authority for food when there is reasonable probability of serious adverse health consequences or death and the company refuses to voluntarily recall. FDA can also administratively detain food it has reason to believe is adulterated or misbranded.",
       },
     },
     {
       "@type": "Question",
-      name: "How do CPSC recall rates and enforcement actions trend in recent years?",
+      name: "How have food recall volumes trended in recent years?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annual CPSC recalls surged 93% from 2021 to 2025, and unilateral safety warnings surged over 700% in the same period. Over 580 million product units were affected in the first nine months of 2024 alone. CPSC now reviews every recall for potential failure to timely report, a significant shift from the historical lighter-touch approach.",
+        text: "USDA food recalls increased 112.7% in defective units in 2024 vs. 2023. FDA food recalls have also risen, driven by increased pathogen testing, stricter risk classification, and expanded supply chain oversight. Overall product recalls across all industries exceeded 2,450 in just the first 9 months of 2024, with over 580 million units affected.",
       },
     },
     {
       "@type": "Question",
-      name: "How does the EU General Product Safety Regulation (GPSR) compare to U.S. recall requirements?",
+      name: "How does EU food safety regulation compare to U.S. food recall requirements?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The EU GPSR, effective December 13, 2024, requires direct consumer notification without undue delay, standardized recall notice formats, and consumer choice of at least two remedies (repair, replacement, or refund). Unlike the U.S., the EU also requires all products to be safe before going on sale. The U.S. has no general safety provision and does not mandate direct consumer notification except for vehicles via mail.",
+        text: "EU food safety is governed primarily by Regulation (EC) 178/2002, which requires food business operators to withdraw unsafe food from the market and notify competent authorities immediately. The EU also operates the Rapid Alert System for Food and Feed (RASFF) for cross-border food safety notifications. The EU GPSR (2024), which covers non-food consumer products, mandates direct consumer notification -- a regulatory trend that could extend to food. The U.S. food recall system relies more heavily on voluntary action, with FDA mandatory recall authority limited to specific situations under FSMA.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the average vehicle recall completion rate in the United States?",
+      name: "What is the average food recall completion rate in the United States?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The average vehicle recall completion rate across all manufacturers is 45% according to 2025 NHTSA data. Newer vehicles (1-4 years old) achieve roughly 87% completion, but vehicles 5-10 years old drop to 44%, and vehicles over 10 years old fall to 29%. Some manufacturers report 0% completion rates for certain recalls.",
+        text: "Precise food recall completion rates are difficult to determine because FDA and USDA-FSIS do not publish comprehensive consumer-level completion data the way NHTSA does for vehicles. Industry estimates suggest only 6-10% of consumers take action on recalled consumer products generally. For food specifically, the challenge is compounded by perishability, consumption before notice, and lack of product registration. FDA recall audit checks measure retail-level removal effectiveness, but consumer-level completion remains largely unmeasured.",
       },
     },
   ],
@@ -123,7 +120,7 @@ export function renderResearchRegulatory(): string {
   <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
     <p style="color:#00afec;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
-    <h1 style="font-size:2.2rem">The Regulatory Environment of Product Recalls in the United States</h1>
+    <h1 style="font-size:2.2rem">The Regulatory Environment of Food Recalls in the United States</h1>
     <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
@@ -196,7 +193,7 @@ export function renderResearchRegulatory(): string {
     <h2>Table of Contents</h2>
     <ol>
       <li><a href="#executive-summary">Executive Summary</a></li>
-      <li><a href="#federal-agencies">Federal Regulatory Agencies and Their Jurisdictions</a></li>
+      <li><a href="#federal-agencies">Federal Regulatory Agencies and Food Recall Oversight</a></li>
       <li><a href="#legislation">Key Legislation</a></li>
       <li><a href="#reporting">Mandatory Reporting Requirements</a></li>
       <li><a href="#effectiveness">Recall Effectiveness: The Data Crisis</a></li>
@@ -212,164 +209,149 @@ export function renderResearchRegulatory(): string {
 
   <section id="executive-summary">
     <h2>1. Executive Summary</h2>
-    <p>The U.S. product recall system is a fragmented patchwork of at least six federal agencies, overlapping jurisdictions, and voluntary compliance mechanisms. Despite increasing regulatory activity -- annual CPSC recalls surged 93% from 2021 to 2025, and over 580 million product units were affected in just the first nine months of 2024 -- the system suffers from a fundamental effectiveness crisis. Only an estimated <strong>6-10% of consumers</strong> take action on recalled consumer products. Vehicle recall completion rates average just <strong>45%</strong> across all manufacturers. For children's products already in consumers' hands, the recall completion rate is a staggering <strong>3.96%</strong>.</p>
+    <p>The U.S. food recall system is split between two primary agencies -- the <strong>FDA</strong> (most foods, beverages, dietary supplements) and <strong>USDA-FSIS</strong> (meat, poultry, processed egg products) -- with the <strong>CDC</strong> playing a critical supporting role in outbreak detection and investigation. Despite increasing regulatory activity -- USDA food recalls surged 112.7% in defective units in 2024, and over 580 million product units were recalled across all industries in just the first nine months of 2024 -- the system suffers from a fundamental effectiveness crisis. Only an estimated <strong>6-10% of consumers</strong> take action on recalled products. Food recalls face unique challenges: products may be consumed before notice reaches consumers, lack of product registration makes affected households nearly impossible to identify, and perishability means recalled items often remain untracked.</p>
     <p>These numbers reveal a critical gap between government action and consumer protection -- a gap that a service like instantrecall.com is uniquely positioned to fill.</p>
   </section>
 
   <section id="federal-agencies">
-    <h2>2. Federal Regulatory Agencies and Their Jurisdictions</h2>
+    <h2>2. Federal Regulatory Agencies and Food Recall Oversight</h2>
 
-    <h3>2.1 Consumer Product Safety Commission (CPSC)</h3>
-    <p><strong>Jurisdiction:</strong> Over 15,000 types of consumer products used in and around the home, in sports, recreation, and schools. Excludes automobiles, food, drugs, cosmetics, medical devices, firearms, boats, pesticides, and aircraft.</p>
-    <p><strong>Role and Powers:</strong></p>
-    <ul>
-      <li>Negotiates voluntary recall agreements with manufacturers</li>
-      <li>Can order mandatory recalls (after Administrative Procedure Act hearing)</li>
-      <li>Issues unilateral safety warnings when companies fail to act voluntarily</li>
-      <li>Pursues injunctions and imposes multi-million-dollar civil penalties</li>
-      <li>Maintains SaferProducts.gov, a publicly searchable database of harm reports</li>
-      <li>Administers the Fast Track recall program for expedited voluntary recalls</li>
-    </ul>
-    <p><strong>Recall Process:</strong> The typical CPSC recall process involves: (1) receipt of a Section 15(b) report or complaint, (2) investigation by agency staff, (3) engagement with the company to negotiate a voluntary recall, and (4) if voluntary action fails, formal administrative proceedings. Before CPSC can order a recall, the CPSA requires an APA hearing, beginning with a Commission-authorized complaint, a hearing before an administrative law judge, potential appeal to the Commission, judicial review in federal court, and potentially appeal to the Supreme Court.</p>
-    <p><strong>Fast Track Program:</strong> Companies that report promptly and propose a corrective action plan within 20 business days can avoid the extended investigation process. However, as of 2025-2026, CPSC now reviews all recalls -- Fast Track and non-Fast Track -- for potential failure to timely report, a significant shift from the historical lighter-touch approach.</p>
-
-    <h3>2.2 Food and Drug Administration (FDA)</h3>
-    <p><strong>Jurisdiction:</strong> Food (except meat, poultry, and processed egg products), drugs (prescription and OTC), medical devices, cosmetics, dietary supplements, biologics, tobacco products, and animal feed.</p>
+    <h3>2.1 Food and Drug Administration (FDA) -- Primary Food Recall Authority</h3>
+    <p><strong>Jurisdiction:</strong> Most foods (including produce, seafood, packaged foods, beverages, dietary supplements, and animal feed), except meat, poultry, and processed egg products, which fall under USDA-FSIS.</p>
     <p><strong>Recall Classification System:</strong></p>
     <ul>
       <li><strong>Class I:</strong> Reasonable probability that use or exposure will cause serious adverse health consequences or death. (Most severe.)</li>
       <li><strong>Class II:</strong> May cause temporary or medically reversible adverse health consequences; probability of serious consequences is remote.</li>
       <li><strong>Class III:</strong> Not likely to cause adverse health consequences.</li>
     </ul>
-    <p><strong>Key Gaps:</strong> Historically relied almost entirely on voluntary recalls. The FSMA (2011) granted mandatory recall authority for food, but only for Class I situations. In the eight years following FSMA, FDA used mandatory recall authority only three times. For medical devices, FDA cannot mandate recalls directly. For drugs, FDA has no mandatory recall authority. A December 2025 GAO report found FDA staffing insufficient for adequate medical device recall oversight.</p>
+    <p><strong>Key Powers and Gaps:</strong> Historically relied almost entirely on voluntary recalls. The FSMA (2011) granted mandatory recall authority for food, but only when there is reasonable probability of serious adverse health consequences or death and the responsible party refuses to voluntarily recall. In the eight years following FSMA, FDA used mandatory recall authority only three times. FDA can also administratively detain food it has reason to believe is adulterated or misbranded. The Reportable Food Registry (RFR) requires responsible parties to report to FDA within 24 hours of determining a food is reportable.</p>
 
-    <h3>2.3 National Highway Traffic Safety Administration (NHTSA)</h3>
-    <p><strong>Jurisdiction:</strong> Motor vehicles, motor vehicle equipment, child restraint systems (car seats), and tires.</p>
-    <ul>
-      <li>Manufacturers must file a recall with NHTSA within <strong>5 business days</strong> of knowing about a defect</li>
-      <li>Manufacturers notify registered owners by <strong>first-class mail within 60 days</strong></li>
-      <li>In 2025, over <strong>30 million vehicles</strong> were recalled across nearly 1,000 separate safety issues</li>
-      <li>Historical peak: <strong>85.7 million vehicles</strong> recalled in 2015</li>
-    </ul>
-
-    <h3>2.4 USDA Food Safety and Inspection Service (FSIS)</h3>
+    <h3>2.2 USDA Food Safety and Inspection Service (FSIS) -- Primary Meat/Poultry Recall Authority</h3>
     <p><strong>Jurisdiction:</strong> Meat, poultry, and certain processed egg products.</p>
-    <p>FSIS <strong>does not have mandatory recall authority</strong>. Establishments must notify FSIS within 24 hours of becoming aware that adulterated or misbranded product entered commerce. If a company refuses to voluntarily recall, FSIS can detain products and ask DOJ to initiate seizure action. Senator Kirsten Gillibrand has sponsored legislation to give FSIS mandatory recall authority, but as of March 2026, FSIS still lacks this power.</p>
+    <p>FSIS <strong>does not have mandatory recall authority</strong>. Establishments must notify FSIS within 24 hours of becoming aware that adulterated or misbranded product entered commerce. If a company refuses to voluntarily recall, FSIS can detain products and ask DOJ to initiate seizure action. FSIS can also withdraw or suspend inspection marks of approval, effectively shutting down a facility. Senator Kirsten Gillibrand has sponsored legislation to give FSIS mandatory recall authority, but as of March 2026, FSIS still lacks this power.</p>
 
-    <h3>2.5 Environmental Protection Agency (EPA)</h3>
-    <p><strong>Jurisdiction:</strong> Pesticides, toxic substances, and certain chemicals under FIFRA and TSCA. The 1988 FIFRA amendments require recall of pesticides if registration is suspended. Enforcement tools include Stop Sale, Use, or Removal Orders (SSURO), injunctions, and emergency orders.</p>
+    <h3>2.3 Centers for Disease Control and Prevention (CDC) -- Outbreak Detection and Investigation</h3>
+    <p><strong>Role:</strong> The CDC does not directly oversee or initiate food recalls, but plays a critical supporting role in food safety. CDC detects and investigates multi-state foodborne illness outbreaks through surveillance networks including PulseNet (molecular subtyping) and the Foodborne Diseases Active Surveillance Network (FoodNet). CDC outbreak investigations frequently trigger FDA and USDA-FSIS recalls by identifying contaminated products through epidemiological analysis.</p>
 
-    <h3>2.6 National Marine Fisheries Service / Coast Guard</h3>
-    <p>The U.S. Coast Guard handles recalls of boats and marine equipment for safety defects under 46 U.S.C. Chapter 43.</p>
+    <h3>2.4 Other Federal Agencies (Non-Food)</h3>
+    <p>Several other federal agencies handle recalls in non-food domains. While not directly involved in food recalls, their regulatory frameworks provide useful context and comparison:</p>
+    <ul>
+      <li><strong>Consumer Product Safety Commission (CPSC):</strong> Oversees recalls of consumer products (household goods, toys, electronics). Explicitly excludes food, drugs, cosmetics, and vehicles from its jurisdiction.</li>
+      <li><strong>National Highway Traffic Safety Administration (NHTSA):</strong> Handles motor vehicle and car seat recalls. Notable for being the only agency that mandates direct consumer notification via first-class mail.</li>
+      <li><strong>Environmental Protection Agency (EPA):</strong> Handles recalls of pesticides and toxic substances under FIFRA and TSCA. Sets pesticide tolerances and drinking water standards that affect food safety indirectly, but does not oversee food recalls.</li>
+    </ul>
   </section>
 
   <section id="legislation">
     <h2>3. Key Legislation</h2>
 
-    <h3>3.1 Consumer Product Safety Act (CPSA, 1972)</h3>
-    <p>The foundational statute establishing the CPSC and the framework for consumer product safety regulation. Created the Commission as an independent federal agency, authorized mandatory safety standards, established Section 15(b) mandatory reporting, and provided for civil and criminal penalties.</p>
-
-    <h3>3.2 Consumer Product Safety Improvement Act (CPSIA, 2008)</h3>
-    <p>The most significant amendment to the CPSA, enacted in response to a wave of lead-contaminated toys imported from China:</p>
+    <h3>3.1 Food Safety Modernization Act (FSMA, 2011)</h3>
+    <p>The most significant overhaul of U.S. food safety law in over 70 years. FSMA shifted the focus from responding to contamination to preventing it:</p>
     <ul>
-      <li><strong>Lead Standards:</strong> Drastically lower lead levels for children's products</li>
-      <li><strong>Phthalate Restrictions:</strong> Prohibited certain chemical softeners in toys and childcare articles</li>
-      <li><strong>Third-Party Testing:</strong> Required manufacturers to test children's products at CPSC-accepted labs and issue a Children's Product Certificate</li>
-      <li><strong>Tracking Labels:</strong> Required permanent distinguishing marks on children's products for traceability</li>
-      <li><strong>SaferProducts.gov:</strong> Established a publicly searchable database of reports of harm</li>
-      <li><strong>Enhanced Penalties:</strong> Increased civil penalties to <strong>$100,000 per violation</strong> (capped at $15 million)</li>
+      <li><strong>Mandatory Recall Authority:</strong> Granted FDA mandatory food recall authority for the first time, when there is reasonable probability of serious adverse health consequences or death and the company refuses to act voluntarily</li>
+      <li><strong>Preventive Controls:</strong> Required food facilities to implement hazard analysis and risk-based preventive controls (HARPC)</li>
+      <li><strong>Produce Safety Rule:</strong> Established science-based minimum standards for growing, harvesting, packing, and holding produce</li>
+      <li><strong>Foreign Supplier Verification:</strong> Required importers to verify that foreign suppliers meet U.S. food safety standards</li>
+      <li><strong>Administrative Detention:</strong> Expanded FDA authority to detain food it has reason to believe is adulterated or misbranded</li>
+      <li><strong>Reportable Food Registry (RFR):</strong> Required responsible parties to report to FDA within 24 hours of determining a food is reportable</li>
+    </ul>
+    <p><strong>Key Gap:</strong> In the eight years following FSMA, FDA used mandatory recall authority only three times, reflecting the agency's continued reliance on voluntary action.</p>
+
+    <h3>3.2 Federal Meat Inspection Act (FMIA) and Poultry Products Inspection Act (PPIA)</h3>
+    <p>These foundational statutes authorize USDA-FSIS to regulate meat and poultry safety, including inspection requirements for slaughter and processing facilities. Notably, these statutes do <strong>not</strong> grant FSIS mandatory recall authority -- a gap that remains as of March 2026.</p>
+
+    <h3>3.3 FDA Food Safety and Nutrition Legislation</h3>
+    <p>Additional food-relevant legislation includes the Federal Food, Drug, and Cosmetic Act (FD&amp;C Act, 1938), which provides the foundation for FDA's authority over food safety, adulteration, and misbranding. The Nutrition Labeling and Education Act (1990) and the Food Allergen Labeling and Consumer Protection Act (FALCPA, 2004) established labeling requirements whose violations frequently trigger food recalls (undeclared allergens are among the most common food recall reasons).</p>
+
+    <h3>3.4 Non-Food Legislation (For Comparison)</h3>
+    <p>The broader product recall landscape includes several non-food statutes that provide useful regulatory comparison:</p>
+    <ul>
+      <li><strong>Consumer Product Safety Act (CPSA, 1972):</strong> Established the CPSC for consumer product safety. The CPSIA (2008) amendment enhanced penalties to $100,000 per violation (capped at $15 million) for consumer products -- not food.</li>
+      <li><strong>Consumer Advocacy and Protection (CAP) Act (proposed):</strong> Would increase CPSC per-violation penalty cap to <strong>$250,000</strong> and <strong>eliminate the maximum cap</strong> on a series of related violations. Applies to consumer products, not food. Not yet enacted as of March 2026.</li>
     </ul>
 
-    <h3>3.3 STURDY Act (2022)</h3>
-    <p>Signed December 2022 to address furniture tip-over hazards. CPSC adopted final safety standard April 2023. Background: furniture tip-overs cause approximately <strong>22,500 emergency room injuries annually</strong>; since 2000, <strong>581 deaths</strong> have been associated with tip-overs, <strong>81% of which were children</strong>.</p>
-
-    <h3>3.4 Food Safety Modernization Act (FSMA, 2011)</h3>
-    <p>Granted FDA mandatory food recall authority for the first time, but limited to Class I situations involving serious adverse health consequences.</p>
-
-    <h3>3.5 Proposed and Recent Legislation (2024-2026)</h3>
+    <h3>3.5 Proposed Food Safety Legislation (2024-2026)</h3>
     <ul>
-      <li><strong>Consumer Advocacy and Protection (CAP) Act:</strong> Would increase per-violation penalty cap to <strong>$250,000</strong> and <strong>eliminate the maximum cap</strong> on a series of related violations (currently $15 million). Not yet enacted as of March 2026.</li>
-      <li><strong>Protecting Americans from Harmful CCP Products Act (2025):</strong> Would have given CPSC a "fast lane" for ordering recalls of direct-to-consumer products from China. Did not advance out of committee.</li>
-      <li><strong>Certificates of Compliance Rule:</strong> Final rule applicable <strong>July 8, 2026</strong>.</li>
+      <li><strong>Mandatory FSIS Recall Authority:</strong> Senator Kirsten Gillibrand has sponsored legislation to give USDA-FSIS mandatory recall authority for meat and poultry. As of March 2026, this has not been enacted.</li>
     </ul>
   </section>
 
   <section id="reporting">
-    <h2>4. Mandatory Reporting Requirements</h2>
+    <h2>4. Food Recall Reporting Requirements</h2>
 
-    <h3>4.1 Section 15(b) of the CPSA -- Who Must Report</h3>
-    <p>Section 15(b) imposes reporting obligations on <strong>every manufacturer (including importers), distributor, and retailer</strong> of consumer products distributed in commerce.</p>
+    <h3>4.1 FDA Reportable Food Registry (RFR)</h3>
+    <p>Under the Reportable Food Registry established by FSMA, responsible parties must submit a report to FDA within <strong>24 hours</strong> of determining that an article of food is reportable. Reportable food includes food for which there is a reasonable probability that use or exposure will cause serious adverse health consequences or death. The RFR applies to <strong>manufacturers, processors, packers, and holders</strong> of food (excluding farms, restaurants, and other retail food establishments).</p>
 
-    <h3>4.2 What Must Be Reported</h3>
+    <h3>4.2 USDA-FSIS Reporting</h3>
+    <p>Establishments regulated by FSIS must notify the agency within <strong>24 hours</strong> of becoming aware that adulterated or misbranded meat, poultry, or processed egg product has entered commerce. FSIS then evaluates the situation and works with the firm to determine the appropriate recall classification and scope.</p>
+
+    <h3>4.3 What Triggers a Food Recall</h3>
     <ol>
-      <li>A defective product that could create a <strong>substantial risk of injury</strong> to consumers</li>
-      <li>A product that creates an <strong>unreasonable risk of serious injury or death</strong></li>
-      <li>A product that <strong>fails to comply</strong> with an applicable consumer product safety rule</li>
-      <li>An incident involving a child <strong>choking</strong> on a marble, small ball, latex balloon, or other small part</li>
-      <li>Certain types of <strong>lawsuits</strong> related to product defects</li>
+      <li><strong>Pathogen contamination:</strong> Salmonella, Listeria monocytogenes, E. coli O157:H7, and other pathogens</li>
+      <li><strong>Undeclared allergens:</strong> Among the most common food recall triggers, particularly undeclared milk, wheat, soy, peanuts, and tree nuts</li>
+      <li><strong>Foreign material contamination:</strong> Metal, glass, plastic, or other physical hazards</li>
+      <li><strong>Misbranding or labeling errors:</strong> Incorrect ingredient lists, missing allergen declarations</li>
+      <li><strong>Chemical contamination:</strong> Unapproved food additives, excessive levels of regulated substances</li>
+      <li><strong>CDC outbreak detection:</strong> Epidemiological investigation linking illnesses to a specific food product</li>
     </ol>
 
-    <h3>4.3 Timeline</h3>
-    <p>Companies must report to the Commission within <strong>24 hours</strong> of obtaining reportable information. A Section 15(b) report shall not be interpreted as an admission of liability.</p>
-
-    <h3>4.4 Other Agency Timelines</h3>
+    <h3>4.4 Non-Food Reporting Timelines (For Comparison)</h3>
     <ul>
-      <li><strong>NHTSA:</strong> Manufacturers must file within <strong>5 business days</strong></li>
-      <li><strong>USDA/FSIS:</strong> Establishments must notify within <strong>24 hours</strong></li>
+      <li><strong>CPSC (consumer products):</strong> Companies must report within <strong>24 hours</strong> of obtaining reportable information under Section 15(b) of the CPSA</li>
+      <li><strong>NHTSA (vehicles):</strong> Manufacturers must file within <strong>5 business days</strong></li>
     </ul>
   </section>
 
   <section id="effectiveness">
     <h2>5. Recall Effectiveness: The Data Crisis</h2>
 
-    <h3>5.1 Consumer Product Recall Response Rates</h3>
+    <h3>5.1 Food Recall Effectiveness</h3>
+    <p>Unlike vehicle recalls (where NHTSA tracks completion rates) or consumer product recalls (where CPSC measures correction rates), <strong>food recall completion at the consumer level is largely unmeasured</strong>. FDA conducts recall audit checks to verify that retailers and distributors have removed recalled products, but does not systematically track whether individual consumers received notification or disposed of recalled food.</p>
+    <p>Key challenges unique to food recalls:</p>
+    <ul>
+      <li><strong>Consumption before notice:</strong> Perishable food may be eaten before recall notification reaches consumers</li>
+      <li><strong>No product registration:</strong> Unlike vehicles (VINs) or consumer electronics (warranty cards), food products are rarely linked to individual purchasers</li>
+      <li><strong>Loyalty card gaps:</strong> While retailer loyalty programs can identify some purchasers, participation is inconsistent and data is siloed</li>
+      <li><strong>Retailer non-compliance:</strong> FDA has cited lack of recall awareness, incomplete removal, and restocking of recalled items at the retail level</li>
+    </ul>
+
+    <h3>5.2 Cross-Industry Recall Response Rates (For Comparison)</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Metric</th><th>Rate</th><th>Source</th></tr></thead>
+        <thead><tr><th>Metric</th><th>Rate</th><th>Source</th><th>Industry</th></tr></thead>
         <tbody>
-          <tr><td>Average consumer recall response rate</td><td><strong>6%</strong></td><td>Consumer Reports</td></tr>
-          <tr><td>CPSC estimate of consumer follow-up</td><td><strong>~10%</strong></td><td>CPSC</td></tr>
-          <tr><td>Children's products already in homes</td><td><strong>3.96%</strong></td><td>Kids in Danger</td></tr>
-          <tr><td>Consumers unaware of recalls (5-year period)</td><td><strong>~70%</strong></td><td>Consumer Reports</td></tr>
+          <tr><td>Average consumer recall response rate</td><td><strong>6%</strong></td><td>Consumer Reports</td><td>Consumer products (all types)</td></tr>
+          <tr><td>CPSC estimate of consumer follow-up</td><td><strong>~10%</strong></td><td>CPSC</td><td>Consumer products (non-food)</td></tr>
+          <tr><td>Children's products already in homes</td><td><strong>3.96%</strong></td><td>Kids in Danger</td><td>Consumer products (children's, non-food)</td></tr>
+          <tr><td>Average vehicle recall completion (2025)</td><td><strong>45%</strong></td><td>NHTSA</td><td>Automotive</td></tr>
+          <tr><td>Consumers unaware of recalls (5-year period)</td><td><strong>~70%</strong></td><td>Consumer Reports</td><td>All consumer products</td></tr>
         </tbody>
       </table>
     </div>
+    <p>While these rates cover non-food products, they illustrate the broader recall effectiveness crisis. Food recall effectiveness is likely even lower given the lack of product registration and perishability challenges.</p>
 
-    <h3>5.2 Vehicle Recall Completion Rates</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Metric</th><th>Rate</th><th>Source</th></tr></thead>
-        <tbody>
-          <tr><td>Average across all manufacturers (2025)</td><td><strong>45%</strong></td><td>NHTSA</td></tr>
-          <tr><td>Newer vehicles</td><td><strong>~87%</strong></td><td>NHTSA</td></tr>
-          <tr><td>Some manufacturers</td><td><strong>0%</strong></td><td>NHTSA</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>5.3 Why Recall Effectiveness is So Low</h3>
+    <h3>5.3 Why Food Recall Effectiveness is So Low</h3>
     <ol>
-      <li><strong>Notification Failure:</strong> Consumers simply never learn about recalls affecting their products</li>
-      <li><strong>Inconvenience:</strong> Returning or repairing products requires consumer effort</li>
-      <li><strong>Low-Value Products:</strong> For inexpensive items, consumers may discard without seeking remedy</li>
-      <li><strong>Measurement Gaps:</strong> CPSC uses a single metric -- the "correction rate" -- which may undercount actual response</li>
-      <li><strong>Outdated Contact Methods:</strong> Press releases, website postings, and first-class mail</li>
+      <li><strong>Notification Failure:</strong> Consumers simply never learn about recalls affecting food they purchased</li>
+      <li><strong>Perishability:</strong> Food may be consumed, discarded, or expired before notice arrives</li>
+      <li><strong>No Product Registration:</strong> Food lacks the registration infrastructure that vehicles and electronics have</li>
+      <li><strong>Outdated Contact Methods:</strong> Press releases, website postings, and in-store signage -- no direct push notification</li>
       <li><strong>Consumer Fatigue:</strong> 2,450+ recalls across industries in just 9 months of 2024</li>
       <li><strong>Retailer Non-Compliance:</strong> FDA has cited lack of recall awareness, incomplete removal, and restocking of recalled items</li>
+      <li><strong>Fragmented Distribution:</strong> Food reaches consumers through grocers, restaurants, institutions, online delivery, and farmers markets</li>
     </ol>
 
     <h3>5.4 Scale of the Problem</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Year</th><th>Products Recalled</th><th>Units Affected</th></tr></thead>
+        <thead><tr><th>Year</th><th>Products Recalled (All Industries)</th><th>Units Affected</th></tr></thead>
         <tbody>
           <tr><td>2023 (Jan-Sep)</td><td>~2,459</td><td>528.7 million</td></tr>
           <tr><td>2024 (Jan-Sep)</td><td>~2,454</td><td>580.4 million (+9.8% YoY)</td></tr>
-          <tr><td>2025 (Vehicles alone)</td><td>~1,000</td><td>30+ million vehicles</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Industry-specific trends (2024 vs. 2023): Medical Devices +134.5% increase in defective units; USDA Food +112.7% increase; Consumer Products +38.5% increase; Automotive -3.3% in count but +43.6% in affected units.</p>
+    <p>Industry-specific trends (2024 vs. 2023): <strong>USDA Food +112.7% increase</strong> in defective units; Medical Devices +134.5% increase; Consumer Products +38.5% increase; Automotive -3.3% in count but +43.6% in affected units.</p>
   </section>
 
   <section id="recall-gap">
@@ -377,104 +359,98 @@ export function renderResearchRegulatory(): string {
     <p>The "recall gap" refers to the dangerous period between when a company discovers a defect and when consumers are actually notified and protected.</p>
 
     <h3>6.1 Discovery-to-Recall Timeline</h3>
-    <p>Research on the six largest auto manufacturers shows an <strong>average time from discovery to recall of 6.37 months</strong> (minimum: 1 month; maximum: 39 months, over 3 years).</p>
+    <p>For food recalls, the timeline from contamination discovery to public notification varies widely. CDC outbreak investigations can take days to weeks to trace illnesses back to a specific food product. Once identified, FDA and USDA-FSIS initiate voluntary recall discussions, which add additional time before consumers are notified.</p>
+    <p><strong>Automotive comparison:</strong> Research on the six largest auto manufacturers shows an average time from discovery to recall of 6.37 months (minimum: 1 month; maximum: 39 months). While this data covers vehicles, it illustrates the systemic delays present across all recall domains.</p>
 
-    <h3>6.2 Case Study: Criminal Delays</h3>
-    <p><strong>Gree USA Dehumidifiers (2012-2016):</strong> In September 2012, executives knew products posed fire risks. They delayed at least 6 months before notifying CPSC. Result: over 2,000 overheating reports, approximately 450 fires, 2.5 million units recalled, millions in property damage. Criminal prosecution resulted in prison sentences of 38-40 months for executives.</p>
+    <h3>6.2 Case Study: Criminal Delays in Consumer Product Recalls</h3>
+    <p><strong>Gree USA Dehumidifiers (2012-2016) -- Consumer Products, Not Food:</strong> In September 2012, executives knew products posed fire risks. They delayed at least 6 months before notifying CPSC. Result: over 2,000 overheating reports, approximately 450 fires, 2.5 million units recalled, millions in property damage. Criminal prosecution resulted in prison sentences of 38-40 months for executives -- <strong>the first-ever criminal prosecution under the Consumer Product Safety Act</strong>. While this case involves consumer products rather than food, it demonstrates the escalating enforcement trend that could extend to food safety violations.</p>
 
     <h3>6.3 Medical Device Recall Gap</h3>
     <p>In May 2018, FDA issued a Class II recall for LINX Reflux Management System bead separation risks. Seven months later, in December 2018, a patient was implanted with the recalled device. Root cause: no centralized system linking recall notices to hospital inventory.</p>
 
-    <h3>6.4 Systemic Causes</h3>
+    <h3>6.4 Systemic Causes (Food-Specific)</h3>
     <ol>
-      <li><strong>Manual processes:</strong> Recalls managed through paper letters, emails, spreadsheets</li>
-      <li><strong>No real-time tracking:</strong> No automated link between recall status and product use</li>
-      <li><strong>Multi-layered distribution chains:</strong> Notices must traverse manufacturers, distributors, retailers, consumers</li>
-      <li><strong>Registration gaps:</strong> Many consumers do not register products</li>
-      <li><strong>Resale markets:</strong> Used products on secondary markets are effectively invisible</li>
-      <li><strong>NHTSA notification timeline:</strong> Up to 60 days to mail notifications after filing</li>
+      <li><strong>Manual processes:</strong> Recalls managed through phone trees, emails, faxes, and spreadsheets</li>
+      <li><strong>No real-time tracking:</strong> No automated link between recall status and retail/consumer inventory</li>
+      <li><strong>Multi-layered distribution chains:</strong> Notices must traverse manufacturers, distributors, wholesalers, retailers, restaurants, and institutions</li>
+      <li><strong>No purchase registration:</strong> Unlike vehicles or electronics, food purchases are rarely linked to individual consumers</li>
+      <li><strong>Perishability:</strong> Recalled food may be consumed or discarded before notice arrives</li>
+      <li><strong>Restaurant and institutional use:</strong> Food served in restaurants and institutions is nearly impossible to trace back to consumers</li>
     </ol>
   </section>
 
   <section id="penalties">
     <h2>7. Penalties and Enforcement</h2>
 
-    <h3>7.1 CPSC Civil Penalties</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Period</th><th>Median Penalty</th><th>Trend</th></tr></thead>
-        <tbody>
-          <tr><td>2015-2020</td><td>~$7.2 million</td><td>Baseline</td></tr>
-          <tr><td>2020-2025</td><td>~$9.3 million</td><td>+29% increase</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p><strong>Current Statutory Limits:</strong> Maximum per violation: $100,000. Maximum for a series of related violations: $15,000,000.</p>
-
-    <h3>Notable Recent Penalties</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Company</th><th>Penalty Amount</th><th>Violation</th></tr></thead>
-        <tbody>
-          <tr><td>HSN Inc. (Nov 2023)</td><td><strong>$16 million</strong></td><td>Knowingly failed to report defective handheld clothing steamers</td></tr>
-          <tr><td>Bestar (Nov 2024)</td><td><strong>$16.025 million</strong></td><td>Failed to report wall bed crush hazards linked to one death</td></tr>
-          <tr><td>Gree USA (Mar 2016)</td><td><strong>$15.45 million</strong></td><td>Dehumidifier fire hazards</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>7.2 CPSC Criminal Enforcement</h3>
-    <p>In June 2025, two former Gree USA executives were sentenced to prison for conspiracy and failure to report hazardous products -- <strong>the first-ever criminal prosecution and sentencing of corporate executives under the CPSA</strong>. Sentences: 38 and 40 months in federal prison. Gree's foreign affiliates agreed to a <strong>$91 million deferred prosecution penalty</strong> plus a <strong>$500,000 criminal fine</strong>.</p>
-
-    <h3>7.3 NHTSA Civil Penalties</h3>
+    <h3>7.1 FDA Food Recall Enforcement</h3>
+    <p>FDA's primary food safety enforcement tools include:</p>
     <ul>
-      <li>Maximum per violation: <strong>$21,000</strong></li>
-      <li>Maximum for a related series: <strong>$105,000,000</strong></li>
-      <li>Largest in NHTSA history: <strong>$200 million</strong> (Takata)</li>
-      <li>Second largest: <strong>$165 million</strong> (Ford)</li>
+      <li><strong>Warning Letters:</strong> Formal notices of violations requiring corrective action</li>
+      <li><strong>Seizure Actions:</strong> Through DOJ, FDA can seize adulterated or misbranded food products</li>
+      <li><strong>Injunctions:</strong> Court orders requiring companies to cease violating practices</li>
+      <li><strong>Criminal Prosecution:</strong> For willful or repeated violations of food safety laws, including the "Park Doctrine" which holds corporate officers personally liable</li>
+      <li><strong>Import Alerts and Detention:</strong> Blocking entry of food from foreign facilities with violations</li>
+      <li><strong>Mandatory Recall (FSMA):</strong> When voluntary recall is refused and there is reasonable probability of serious health consequences or death</li>
+    </ul>
+    <p>FDA does <strong>not</strong> impose direct civil monetary penalties for most food recall-related violations. Instead, enforcement relies on seizure, injunction, and criminal prosecution, which can result in fines and imprisonment.</p>
+
+    <h3>7.2 USDA-FSIS Enforcement</h3>
+    <p>FSIS enforcement tools include withholding or withdrawing the marks of inspection (effectively shutting down a facility), detention of product, and referral to DOJ for seizure or criminal prosecution. FSIS lacks the authority to impose civil monetary penalties directly or to mandate recalls.</p>
+
+    <h3>7.3 Notable Food Safety Criminal Prosecutions</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Case</th><th>Outcome</th><th>Significance</th></tr></thead>
+        <tbody>
+          <tr><td>Peanut Corporation of America (2015)</td><td>CEO sentenced to <strong>28 years</strong> in federal prison</td><td>Largest sentence ever for a food safety crime; Salmonella outbreak killed 9, sickened 714</td></tr>
+          <tr><td>Jensen Farms (2013)</td><td>Owners sentenced to <strong>5 years probation, 6 months home detention</strong></td><td>Listeria-contaminated cantaloupe killed 33 people, sickened 147</td></tr>
+          <tr><td>Quality Egg (2015)</td><td>Owner sentenced to <strong>3 months</strong> in prison</td><td>Salmonella outbreak; 56,000+ illnesses; $6.79M in fines</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>7.4 Non-Food Penalty Structures (For Comparison)</h3>
+    <p>Other agencies have distinct penalty frameworks that provide useful comparison for understanding enforcement trends:</p>
+    <ul>
+      <li><strong>CPSC (consumer products, not food):</strong> Maximum $100,000 per violation, $15 million for a series of related violations. Median penalty increased 29% from ~$7.2M (2015-2020) to ~$9.3M (2020-2025). Annual CPSC recalls surged 93% from 2021 to 2025.</li>
+      <li><strong>NHTSA (vehicles, not food):</strong> Maximum $21,000 per violation, $105 million for a related series. Largest: $200 million (Takata).</li>
     </ul>
 
-    <h3>7.4 FDA Enforcement</h3>
-    <p>FDA's primary tools include warning letters, seizure actions (through DOJ), injunctions, criminal prosecution, and import alerts. FDA does <strong>not</strong> impose civil monetary penalties for most recall-related violations.</p>
+    <h3>7.5 Consumer Product Criminal Enforcement (For Comparison)</h3>
+    <p><strong>Gree USA Dehumidifiers (consumer products, not food):</strong> In June 2025, two former executives were sentenced to 38 and 40 months in federal prison -- the first-ever criminal prosecution and sentencing of corporate executives under the CPSA. Gree's foreign affiliates agreed to a $91 million deferred prosecution penalty plus a $500,000 criminal fine. This landmark case signals an escalation in personal criminal liability for recall failures that could influence food safety enforcement trends.</p>
 
-    <h3>7.5 Enforcement Trends (2025-2026)</h3>
+    <h3>7.6 Food Safety Enforcement Trends (2025-2026)</h3>
     <ul>
-      <li>CPSC annual recalls increased <strong>93%</strong> from 2021 to 2025</li>
-      <li>Unilateral safety warnings surged <strong>over 700%</strong> in the same period</li>
-      <li>CPSC now reviews <strong>every recall</strong> for potential failure to timely report</li>
+      <li>USDA food recalls surged <strong>112.7%</strong> in defective units (2024 vs. 2023)</li>
+      <li>FDA has raised recall classifications on hundreds of products (stricter risk assessment)</li>
       <li>The DOJ Consumer Protection Branch was reorganized into the Enforcement and Affirmative Litigation Branch</li>
-      <li>CPSC FY 2026 priorities: accelerate recalls, leverage AI for digital commerce enforcement</li>
+      <li>FDA guidance urging industry to improve recall efficiency after infant formula failures</li>
+      <li>December 2025 GAO Report found FDA staffing insufficient for adequate oversight</li>
     </ul>
   </section>
 
   <section id="recent-changes">
-    <h2>8. Recent Regulatory Changes (2024-2026)</h2>
+    <h2>8. Recent Food Safety Regulatory Changes (2024-2026)</h2>
 
-    <h3>8.1 CPSC Developments</h3>
+    <h3>8.1 FDA Food Safety Developments</h3>
     <ul>
-      <li>New safety standards for water beads, infant neck floats, and battery-powered micromobility products</li>
-      <li>Expanding digital commerce oversight, leveraging AI to detect and remove recalled products online</li>
-      <li>Certificates of Compliance final rule applicable July 8, 2026</li>
-      <li>Updated Recall Handbook published March 2025</li>
+      <li>December 2025 GAO Report: FDA staffing insufficient for adequate food and medical device recall oversight</li>
+      <li>Post-infant-formula-crisis guidance urging industry to improve recall efficiency and communication</li>
+      <li>Raised recall classifications on hundreds of food products (stricter risk assessment)</li>
+      <li>Continued implementation of FSMA final rules including the Food Traceability Rule (FSMA Section 204), which requires additional traceability records for certain high-risk foods</li>
     </ul>
 
-    <h3>8.2 FDA Developments</h3>
+    <h3>8.2 USDA-FSIS Developments</h3>
     <ul>
-      <li>December 2025 GAO Report: FDA staffing insufficient for medical device recall oversight</li>
-      <li>Guidance urging industry to improve recall efficiency after infant formula failures</li>
-      <li>Raised recall classifications on hundreds of products (stricter risk assessment)</li>
+      <li>USDA food recalls surged 112.7% in defective units in 2024</li>
+      <li>Ongoing legislative efforts to grant FSIS mandatory recall authority</li>
     </ul>
 
-    <h3>8.3 NHTSA Developments</h3>
+    <h3>8.3 Cross-Industry Regulatory Trends (For Context)</h3>
     <ul>
-      <li>2025 Recall Completion Rate Report (January 2026): 45% average completion</li>
-      <li>Annual Recall Report 2024 (April 2025): documenting scope and trends</li>
-    </ul>
-
-    <h3>8.4 Proposed Legislation</h3>
-    <ul>
-      <li><strong>CAP Act:</strong> $250,000 per violation; eliminate series cap</li>
-      <li><strong>Mandatory FSIS Recall Authority:</strong> Ongoing legislative efforts</li>
+      <li><strong>CPSC (consumer products):</strong> Annual recalls surged 93% from 2021-2025; unilateral safety warnings surged over 700%; now reviews every recall for potential failure to timely report</li>
+      <li><strong>NHTSA (vehicles):</strong> 2025 Recall Completion Rate Report showed 45% average completion across all manufacturers</li>
+      <li>The DOJ Consumer Protection Branch was reorganized into the Enforcement and Affirmative Litigation Branch, signaling increased enforcement across all product safety domains including food</li>
     </ul>
   </section>
 
@@ -497,13 +473,20 @@ export function renderResearchRegulatory(): string {
   <section id="international">
     <h2>10. International Regulatory Comparison</h2>
 
-    <h3>10.1 European Union -- GPSR (2024)</h3>
-    <p>The EU General Product Safety Regulation (GPSR), effective December 13, 2024, represents a major modernization:</p>
+    <h3>10.1 European Union -- Food Safety and GPSR</h3>
+    <p><strong>EU Food Safety Framework -- Regulation (EC) 178/2002:</strong> EU food safety is governed primarily by Regulation (EC) 178/2002 (the General Food Law), which:</p>
+    <ul>
+      <li>Requires food business operators to <strong>immediately withdraw unsafe food</strong> from the market and notify competent authorities</li>
+      <li>Operates the <strong>Rapid Alert System for Food and Feed (RASFF)</strong> for cross-border food safety notifications across all EU member states</li>
+      <li>Establishes the <strong>European Food Safety Authority (EFSA)</strong> for independent scientific risk assessment</li>
+      <li>Applies the <strong>precautionary principle:</strong> Measures may be adopted even when scientific evidence is uncertain</li>
+    </ul>
+    <p><strong>EU GPSR (2024) -- Non-Food Products:</strong> The General Product Safety Regulation, effective December 13, 2024, covers non-food consumer products (not food). However, its regulatory innovations represent trends that could extend to food:</p>
     <ul>
       <li><strong>Direct Consumer Notification:</strong> Mandatory obligation to directly notify all identifiable affected consumers "without undue delay"</li>
       <li><strong>Standardized Recall Notices:</strong> Mandatory format with prescribed content requirements</li>
       <li><strong>Consumer Choice of Remedy:</strong> Must offer at least two remedies: repair, replacement, or refund</li>
-      <li><strong>General Safety Provision:</strong> The EU requires all products to be safe before going on sale -- a requirement that does not exist in the U.S.</li>
+      <li><strong>General Safety Provision:</strong> Requires all products to be safe before going on sale -- a requirement that does not exist in U.S. law</li>
     </ul>
 
     <h3>10.2 Canada -- CCPSA (2011)</h3>
@@ -512,17 +495,17 @@ export function renderResearchRegulatory(): string {
     <h3>10.3 Australia -- ACL and ACCC</h3>
     <p>Suppliers must recall products when aware of safety risks. Mandatory notification to ACCC within 2 days. Civil penalties up to A$1.1 million for corporations.</p>
 
-    <h3>10.4 Comparative Summary</h3>
+    <h3>10.4 Comparative Summary (Food Safety Focus)</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Feature</th><th>United States</th><th>EU (GPSR)</th><th>Canada</th><th>Australia</th></tr></thead>
+        <thead><tr><th>Feature</th><th>United States (Food)</th><th>EU (Food -- Reg. 178/2002)</th><th>Canada</th><th>Australia</th></tr></thead>
         <tbody>
-          <tr><td>Mandatory recall authority</td><td>Limited (varies by agency)</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>Direct consumer notification</td><td>No (except vehicles via mail)</td><td>Yes</td><td>Varies</td><td>No</td></tr>
-          <tr><td>General safety provision</td><td>No</td><td>Yes</td><td>No</td><td>No</td></tr>
-          <tr><td>Mandatory incident reporting</td><td>Yes (24 hours)</td><td>Yes</td><td>Yes</td><td>Yes (2 days)</td></tr>
-          <tr><td>Max civil penalties</td><td>$15M (CPSC); $105M (NHTSA)</td><td>Varies by member state</td><td>Lower than U.S.</td><td>A$1.1M</td></tr>
-          <tr><td>Criminal penalties for individuals</td><td>Yes (first prosecution 2025)</td><td>Varies</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Mandatory food recall authority</td><td>FDA: Yes (FSMA, limited); FSIS: No</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Cross-border alert system</td><td>No unified system</td><td>Yes (RASFF)</td><td>Bilateral</td><td>Bilateral</td></tr>
+          <tr><td>Direct consumer notification</td><td>No (no food-specific requirement)</td><td>Yes (GPSR for non-food; food operators must inform consumers)</td><td>Varies</td><td>No</td></tr>
+          <tr><td>Precautionary principle</td><td>Not codified</td><td>Yes (codified in Reg. 178/2002)</td><td>Case-by-case</td><td>Case-by-case</td></tr>
+          <tr><td>Mandatory incident reporting</td><td>Yes (24 hours -- RFR and FSIS)</td><td>Yes</td><td>Yes</td><td>Yes (2 days)</td></tr>
+          <tr><td>Criminal penalties for individuals</td><td>Yes (Park Doctrine; PCA case 28 years)</td><td>Varies by member state</td><td>Yes</td><td>Yes</td></tr>
         </tbody>
       </table>
     </div>
@@ -535,13 +518,13 @@ export function renderResearchRegulatory(): string {
     <p>The current system relies on government press releases, voluntary media coverage, first-class mail (vehicles only), and inconsistent retailer point-of-sale notifications. <strong>Result: 70% of consumers report not hearing about a recall for a product they own within a 5-year period.</strong></p>
 
     <h3>11.2 The Fragmentation Problem</h3>
-    <p>A single household must monitor CPSC, FDA, NHTSA, USDA/FSIS, EPA, and state agencies separately. No single federal system effectively aggregates all of these into a personalized consumer-friendly service.</p>
+    <p>Even for food alone, consumers must monitor both FDA and USDA-FSIS separately, plus state agencies. Adding other household recall sources (CPSC for products, NHTSA for vehicles), a single household faces a fragmented system with no unified notification. No single federal system effectively aggregates all of these into a personalized consumer-friendly service.</p>
 
     <h3>11.3 The Effectiveness Problem</h3>
     <ul>
-      <li><strong>6%</strong> average response rate for consumer products</li>
-      <li><strong>45%</strong> average vehicle recall completion</li>
-      <li><strong>3.96%</strong> for children's products already in homes</li>
+      <li><strong>6-10%</strong> estimated consumer action rate on recalled products (across all product types)</li>
+      <li><strong>No published consumer-level completion rates</strong> for food recalls specifically</li>
+      <li>Food-specific challenges: perishability, consumption before notice, no product registration</li>
     </ul>
 
     <h3>11.4 The Regulatory Gap instantrecall.com Fills</h3>
@@ -550,10 +533,10 @@ export function renderResearchRegulatory(): string {
         <thead><tr><th>Gap</th><th>Current System</th><th>Instant Recall Opportunity</th></tr></thead>
         <tbody>
           <tr><td>Consumer notification</td><td>Passive (press releases, websites)</td><td>Active (push notifications)</td></tr>
-          <tr><td>Agency fragmentation</td><td>6+ separate federal agencies</td><td>Single aggregated feed</td></tr>
-          <tr><td>Product matching</td><td>Consumer must search by product</td><td>Product registration and matching</td></tr>
+          <tr><td>Agency fragmentation</td><td>FDA + USDA-FSIS + state agencies, no unified feed</td><td>Single aggregated feed</td></tr>
+          <tr><td>Purchase matching</td><td>Consumer must search by product; loyalty card data siloed</td><td>Purchase history matching and alerts</td></tr>
           <tr><td>Timeliness</td><td>Days to weeks</td><td>Near real-time alerts</td></tr>
-          <tr><td>Personalization</td><td>One-size-fits-all</td><td>Tailored to owned products</td></tr>
+          <tr><td>Personalization</td><td>One-size-fits-all</td><td>Tailored to purchased foods</td></tr>
           <tr><td>Recall tracking</td><td>No confirmation system</td><td>Guided resolution workflow</td></tr>
         </tbody>
       </table>
@@ -563,38 +546,40 @@ export function renderResearchRegulatory(): string {
   <section id="sources">
     <h2>12. Sources</h2>
 
-    <h3>Federal Agency Sources</h3>
+    <h3>Federal Agency Sources -- Food Safety</h3>
     <ul class="sources-list">
-      <li><a href="https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance">CPSC Recall Guidance</a></li>
-      <li><a href="https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance/Duty-to-Report-to-CPSC-Rights-and-Responsibilities-of-Businesses">CPSC Duty to Report</a></li>
-      <li><a href="https://www.cpsc.gov/s3fs-public/RecallHandbookFINAL9_2technicalrevision_3052025.pdf">CPSC Recall Handbook (March 2025)</a></li>
       <li><a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts">FDA Recalls, Market Withdrawals, &amp; Safety Alerts</a></li>
-      <li><a href="https://www.nhtsa.gov/recalls">NHTSA Recalls</a></li>
+      <li><a href="https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls">FDA Food Recalls</a></li>
+      <li><a href="https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma">FDA FSMA Overview</a></li>
+      <li><a href="https://www.fda.gov/safety/reportable-food-registry-rfr">FDA Reportable Food Registry</a></li>
+      <li><a href="https://www.fsis.usda.gov/food-safety/recalls-public-health-alerts">USDA FSIS Recalls &amp; Public Health Alerts</a></li>
       <li><a href="https://www.fsis.usda.gov/inspection/compliance-guidance/recall-process">USDA FSIS Recall Process</a></li>
+      <li><a href="https://www.cdc.gov/foodsafety/outbreaks/index.html">CDC Foodborne Outbreak Investigations</a></li>
       <li><a href="https://www.recalls.gov/">Recalls.gov</a></li>
     </ul>
 
     <h3>Legislation and Regulatory Sources</h3>
     <ul class="sources-list">
-      <li><a href="https://www.law.cornell.edu/uscode/text/15/2064">15 U.S.C. Section 2064 -- Substantial Product Hazards</a></li>
-      <li><a href="https://www.cpsc.gov/Regulations-Laws--Standards/Statutes/The-Consumer-Product-Safety-Improvement-Act">CPSIA Summary (CPSC)</a></li>
-      <li><a href="https://www.ecfr.gov/current/title-16/chapter-II/subchapter-B/part-1115">16 CFR Part 1115 -- Substantial Product Hazard Reports</a></li>
+      <li><a href="https://www.congress.gov/bill/111th-congress/house-bill/2749">FSMA Legislation (Congress.gov)</a></li>
+      <li><a href="https://www.law.cornell.edu/uscode/text/21/chapter-9">Federal Food, Drug, and Cosmetic Act (FD&amp;C Act)</a></li>
+      <li><a href="https://www.gao.gov/products/gao-22-105011">GAO Report on FDA Recall Oversight</a></li>
     </ul>
 
     <h3>Enforcement and Analysis Sources</h3>
     <ul class="sources-list">
-      <li><a href="https://www.mofo.com/resources/insights/250218-cpsc-s-2024-year-in-review">CPSC 2024 Year in Review (Morrison Foerster)</a></li>
-      <li><a href="https://www.jonesday.com/en/insights/2025/07/landmark-enforcement-under-us-cpsa-leads-to-sentencing-of-corporate-executives-for-failure-to-report-product-hazards">Landmark CPSA Criminal Enforcement (Jones Day)</a></li>
       <li><a href="https://riskandinsurance.com/u-s-product-recalls-surge-to-record-levels-in-2024-ytd/">U.S. Product Recalls Surge to Record Levels (Risk &amp; Insurance)</a></li>
       <li><a href="https://www.consumerreports.org/recalls/when-recalls-fail/">When Recalls Fail (Consumer Reports)</a></li>
-      <li><a href="https://www.cpsc.gov/s3fs-public/RecallEffectiveness.pdf">CPSC Recall Effectiveness Research</a></li>
+      <li><a href="https://www.foodsafetymagazine.com/">Food Safety Magazine</a></li>
+      <li><a href="https://www.mofo.com/resources/insights/250218-cpsc-s-2024-year-in-review">CPSC 2024 Year in Review (Morrison Foerster) -- Consumer Products</a></li>
+      <li><a href="https://www.jonesday.com/en/insights/2025/07/landmark-enforcement-under-us-cpsa-leads-to-sentencing-of-corporate-executives-for-failure-to-report-product-hazards">Landmark CPSA Criminal Enforcement (Jones Day) -- Consumer Products</a></li>
     </ul>
 
     <h3>International Sources</h3>
     <ul class="sources-list">
-      <li><a href="https://ec.europa.eu/safety-gate-alerts/">EU Safety Gate (RAPEX)</a></li>
-      <li><a href="https://www.nortonrosefulbright.com/en-us/knowledge/publications/5d7816ab/new-eu-product-recall-requirements-under-the-general-product-safety-regulation">EU GPSR (Norton Rose Fulbright)</a></li>
-      <li><a href="https://www.canada.ca/en/health-canada/services/consumer-product-safety/reports-publications/industry-professionals/recalling-consumer-products-guide-industry.html">Canada Consumer Product Safety Act (Health Canada)</a></li>
+      <li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32002R0178">EU Regulation (EC) 178/2002 -- General Food Law</a></li>
+      <li><a href="https://webgate.ec.europa.eu/rasff-window/screen/search">EU RASFF -- Rapid Alert System for Food and Feed</a></li>
+      <li><a href="https://www.nortonrosefulbright.com/en-us/knowledge/publications/5d7816ab/new-eu-product-recall-requirements-under-the-general-product-safety-regulation">EU GPSR (Norton Rose Fulbright) -- Non-Food Products</a></li>
+      <li><a href="https://www.canada.ca/en/health-canada/services/consumer-product-safety/reports-publications/industry-professionals/recalling-consumer-products-guide-industry.html">Canada Consumer Product Safety (Health Canada)</a></li>
       <li><a href="https://www.productsafety.gov.au/system/files/Consumer%20product%20safety%20recall%20guidelines.pdf">Australia ACCC Recall Guidelines</a></li>
     </ul>
   </section>
@@ -650,9 +635,9 @@ ${researchRegulatoryCitationBlock()}
 `;
 
   return renderPage({
-    title: "The Regulatory Environment of Product Recalls -- Instant Recall Research",
+    title: "The Regulatory Environment of Food Recalls -- Instant Recall Research",
     description:
-      "In-depth examination of the six federal agencies, key legislation, mandatory reporting requirements, recall effectiveness data, and international regulatory comparisons shaping U.S. product recalls.",
+      "In-depth examination of FDA and USDA-FSIS oversight, key legislation, mandatory reporting requirements, recall effectiveness data, and international regulatory comparisons shaping U.S. food recalls.",
     path: "/research/regulatory-environment",
     jsonLd: JSON_LD,
     body,

@@ -35,6 +35,8 @@
     { "source": "/geo-ledger", "destination": "/api/html?path=%2Fgeo-ledger" },
     { "source": "/dashboard", "destination": "/api/html?path=%2Fdashboard" },
     { "source": "/crawl-stats", "destination": "/api/html?path=%2Fcrawl-stats" },
+    { "source": "/docs/ai-best-practices", "destination": "/api/html?path=%2Finternal%2Fai-best-practices" },
+    { "source": "/docs/project-knowledge", "destination": "/api/html?path=%2Finternal%2Fproject-knowledge" },
     { "source": "/research", "destination": "/api/html?path=%2Fresearch" },
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },
@@ -57,6 +59,8 @@
     { "source": "/.well-known/ai-content-index.json", "destination": "/api/ai-content-index" },
     { "source": "/.well-known/mcp.json", "destination": "/api/mcp" },
     { "source": "/for-ai", "destination": "/api/for-ai" },
-    { "source": "/for-ai.txt", "destination": "/api/for-ai" }
+    { "source": "/for-ai.txt", "destination": "/api/for-ai" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/(.*)", "destination": "/admin/$1" }
   ]
 }

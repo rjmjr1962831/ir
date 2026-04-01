@@ -244,7 +244,7 @@ section{margin:0;border:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:76px 32px}
+.intro-section{background:#fff;padding:76px 32px 20px}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px;text-transform:uppercase}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
@@ -437,16 +437,14 @@ export function renderHome(): string {
     <h1>Protecting Your Customers, Your Brand, and Your Bottom Line</h1>
     <p>Instant Recall\u2122 is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence. Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast\u2014no matter how complex the event.</p>
   </div>
-</section>
-
-<!-- 3. VIDEO EMBED -->
-<section class="video-embed">
-  <div class="video-inner">
-    <iframe src="https://player.vimeo.com/video/1152623274?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div class="video-embed" style="padding:17px 32px 0">
+    <div class="video-inner">
+      <iframe src="https://player.vimeo.com/video/1152623274?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
-<!-- 4. CUSTOMER TESTIMONIALS: Cyan carousel -->
+<!-- 3. CUSTOMER TESTIMONIALS: Cyan carousel -->
 <section style="background:#00afec">
   <div class="carousel customer-carousel" id="customer-carousel">
     <h2>Customers are Talking...</h2>

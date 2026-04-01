@@ -497,7 +497,20 @@ export function renderHome(): string {
   </div>
 </section>
 
-<!-- 8. NEWS TICKER: Red/coral bar -->
+<!-- 8. CONTACT CTA: White background with form -->
+<style>${CONTACT_FORM_CSS}</style>
+<section class="section-white contact-form-section contact-section-home">
+  <div class="section-inner">
+    <h2 style="color:#272727">Accelerate Your Recall Response</h2>
+    <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
+    <form id="contact-form">
+      ${CONTACT_FORM_HTML}
+    </form>
+  </div>
+</section>
+<script>${CONTACT_FORM_JS}</script>
+
+<!-- 9. NEWS TICKER: Red/coral bar -->
 <section class="ticker-bar">
   <div id="scrollerWrapper">
     <ul id="scroller">
@@ -511,19 +524,6 @@ export function renderHome(): string {
 ${homeCitationBlock()}
 
 ${methodologyBlock()}
-
-<!-- 9. CONTACT CTA: White background with form -->
-<style>${CONTACT_FORM_CSS}</style>
-<section class="section-white contact-form-section contact-section-home">
-  <div class="section-inner">
-    <h2 style="color:#272727">Accelerate Your Recall Response</h2>
-    <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
-    <form id="contact-form">
-      ${CONTACT_FORM_HTML}
-    </form>
-  </div>
-</section>
-<script>${CONTACT_FORM_JS}</script>
 <script>${CAROUSEL_JS}</script>
 <script>${TICKER_JS}</script>`;
 

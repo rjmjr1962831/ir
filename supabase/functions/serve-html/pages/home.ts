@@ -210,6 +210,10 @@ const SAFETY_QUOTES = [
 /*  PAGE-SPECIFIC CSS                                                 */
 /* ------------------------------------------------------------------ */
 const HOME_CSS = `
+/* Section reset -- eliminate gaps between sections */
+.hero + section, section + section{margin:0}
+section{margin:0;border:0}
+
 /* Carousel / rslides */
 .carousel{position:relative;overflow:hidden}
 .carousel-track{position:relative;width:100%}
@@ -277,7 +281,7 @@ const HOME_CSS = `
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Contact form section on white */
-.contact-section-home{background:#fff;padding:76px 32px}
+.contact-section-home.section-white{background:#fff;padding:76px 32px}
 .contact-section-home h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1rem;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em}
 
 /* Footer links in source style */

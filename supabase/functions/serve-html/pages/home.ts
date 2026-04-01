@@ -244,13 +244,13 @@ section{margin:0;border:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:40px 32px 0}
+.intro-section{background:#fff;padding:40px 32px 0;margin:0}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
 
 /* Video embed */
-.video-embed{background:#fff;padding:17px 32px;margin:0}
+.video-embed{background:#fff;padding:17px 32px 0;margin:0}
 .video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
@@ -265,7 +265,7 @@ section{margin:0;border:0}
 .solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:400;letter-spacing:1.34px;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
-.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00afec;border-radius:50%}
+.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%;padding:20px}
 .solution-pillar .icon-circle i{font-size:3em;color:#fff;line-height:90px}
 .solution-pillar h3{font-size:1rem;font-weight:700;color:#272727;text-transform:none;margin:0}
 .solution-section .learn-more-btn{display:block;text-align:center;margin-top:2rem}
@@ -298,7 +298,8 @@ section{margin:0;border:0}
   .solution-pillars{flex-direction:column;align-items:center}
   .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
   .intro-section p,.decades-section p{font-size:16px}
-  .intro-section,.decades-section,.solution-section,.video-embed,.contact-section-home{padding:26px 32px}
+  .intro-section,.decades-section,.solution-section,.contact-section-home{padding:26px 32px}
+  .video-embed{padding:26px 32px 0}
   blockquote{font-size:22px;line-height:24px}
 }
 `;

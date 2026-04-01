@@ -38,23 +38,23 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:2rem;transition:transform 0.2s,box-shadow 0.2s;overflow:hidden}
 .card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
 .card img{width:100%;height:200px;object-fit:cover;border-radius:2px;margin-bottom:1.25rem}
-.card h3{color:#00afec;margin-bottom:.75rem;font-size:1.15rem;font-weight:600;letter-spacing:0.5px}
+.card h3{color:#fff;margin-bottom:.75rem;font-size:1.15rem;font-weight:700;letter-spacing:0.5px}
 .card p{font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;font-weight:300}
 
 /* Feature icons grid */
 .features-section{background:rgba(255,255,255,0.02);padding:4rem 2rem}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
-.feature{text-align:center;padding:2rem 1.5rem}
-.feature img{width:80px;height:80px;margin-bottom:1rem;border-radius:50%}
-.feature h4{color:#00afec;margin-bottom:.5rem;font-size:1rem;font-weight:600;letter-spacing:0.3px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 3rem;max-width:1100px;margin:0 auto}
+.feature{display:flex;align-items:flex-start;gap:1.25rem}
+.feature img{width:100px;height:100px;border-radius:50%;clip-path:circle(50%);flex-shrink:0}
+.feature h4{color:#fff;margin-bottom:.5rem;font-size:1rem;font-weight:700;letter-spacing:0.3px}
 .feature p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.6;font-weight:300}
 
 /* CTA */
-.cta{background:linear-gradient(135deg,#1f1f1f 0%,#333333 100%);color:#fff;text-align:center;padding:4rem 2rem}
-.cta h2{font-size:1.8rem;margin-bottom:1rem;font-weight:700}
-.cta p{max-width:600px;margin:0 auto 1.25rem;font-size:1.05rem;opacity:.85;font-weight:300}
-.cta a.btn{display:inline-block;background:#00afec;color:#fff;padding:.85rem 2.5rem;border-radius:0;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:background 0.2s}
-.cta a.btn:hover{background:#33c4ff;text-decoration:none}
+.cta{background:#fff;color:#272727;text-align:center;padding:4rem 2rem}
+.cta h2{font-size:2.2rem;margin-bottom:1.5rem;font-weight:700;color:#272727}
+.cta p{max-width:600px;margin:0 auto 1.25rem;font-size:1.05rem;color:#3e3e3e;font-weight:300}
+.cta a.btn{display:inline-block;background:#00afec;color:#fff;padding:.85rem 2.5rem;border-radius:0;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:background 0.2s;border:2px solid #00afec}
+.cta a.btn:hover{background:#33c4ff;border-color:#33c4ff;text-decoration:none}
 
 /* Testimonials */
 .testimonials{background:rgba(255,255,255,0.02);padding:4rem 2rem}
@@ -114,6 +114,9 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .legal h2{font-size:1.3rem;margin:1.5rem 0 .5rem;color:#00afec}
 .legal h3{font-size:1.1rem;margin:1rem 0 .4rem;color:rgba(255,255,255,.9)}
 .legal p,.legal li{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:.5rem;font-weight:300}
+.legal p strong{color:#fff;font-weight:700}
+.legal a{color:#00afec}
+.legal a:hover{color:#33c4ff}
 .legal ul{padding-left:1.5rem;margin-bottom:1rem}
 .legal ol{padding-left:1.5rem;margin-bottom:1rem}
 
@@ -185,6 +188,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
   .site-header nav a.nav-btn{padding:0.4rem 0.75rem;margin-left:0;border-width:2px}
   .cards{grid-template-columns:1fr}
   .features{grid-template-columns:1fr}
+  .features-header{grid-template-columns:1fr !important}
   .testimonial-grid{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr;text-align:center}
   .footer-left{align-items:center}

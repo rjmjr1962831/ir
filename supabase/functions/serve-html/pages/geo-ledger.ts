@@ -330,7 +330,7 @@ function footer(): string {
   return `<footer class="site-footer">
   <div class="footer-links">
     <a href="/privacy-policy">Privacy Policy</a>
-    <a href="/terms-and-conditions">Terms of Service</a>
+    <a href="/terms-and-conditions">Terms and Conditions</a>
     <a href="/contact-instant-recall">Contact</a>
   </div>
   <p>&copy; ${year} Instant Recall LLC. All rights reserved.</p>

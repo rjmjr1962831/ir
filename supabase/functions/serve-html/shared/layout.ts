@@ -20,7 +20,7 @@ const BREADCRUMB_NAMES: Record<string, string> = {
   "/portal": "Login",
   "/schedule": "Book an Appointment",
   "/privacy-policy": "Privacy Policy",
-  "/terms-and-conditions": "Terms of Service",
+  "/terms-and-conditions": "Terms and Conditions",
   "/about-us": "About Us",
   "/research": "Research",
   "/research/industry-survey": "Industry Survey",

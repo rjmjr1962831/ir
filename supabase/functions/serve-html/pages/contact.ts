@@ -121,17 +121,8 @@ export function renderContact(): string {
     <a href="https://myinstantrecall.com" class="route-option" rel="noopener">I am responding to a recall notification</a>
     <a href="/contact" class="route-option secondary">I want to learn more about Instant Recall</a>
   </div>
-  <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:rgba(255,255,255,.5)">Were you contacted in error? <a href="mailto:support@instantrecall.com?subject=Do Not Contact Request" style="color:#00afec">Request to be put on the Do Not Contact list.</a></p>
-</div>
-
-<section class="section-white contact-form-section" style="background:#fff;padding:4rem 2rem">
-  <div style="max-width:720px;margin:0 auto">
-    <h2 style="font-size:1.8rem;font-weight:700;margin-bottom:.5rem;color:#272727">Send Us a Message</h2>
-    <p style="font-size:1.05rem;line-height:1.8;font-weight:300;color:#3e3e3e;margin-bottom:2rem">Have a question or want to get started? Fill out the form below and we will be in touch.</p>
-    <script src="https://js-na2.hsforms.net/forms/embed/developer/48681528.js" defer></script>
-    <div class="hs-form-html" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
-  </div>
-</section>`;
+  <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:rgba(255,255,255,.5)">Were you contacted in error? Request to be put on the <a href="https://instantrecall.com/stop" target="_blank" style="color:#00afec">Do Not Contact</a> list.</p>
+</div>`;
 
   return renderPage({
     title: "Contact Us | Instant Recall",
@@ -159,8 +150,8 @@ export function renderContactDirect(): string {
   <div class="section-inner">
     <h2>Accelerate Your Recall Response</h2>
     <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
-    <script src="https://js-na2.hsforms.net/forms/embed/developer/48681528.js" defer></script>
-    <div class="hs-form-html" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
+    <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
+    <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
   </div>
 </section>
 

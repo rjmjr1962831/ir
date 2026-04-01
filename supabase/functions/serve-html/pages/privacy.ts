@@ -4,85 +4,98 @@ export function renderPrivacy(): string {
   const body = `
 <div class="legal">
   <h1>Privacy Policy</h1>
-  <p><strong>Effective Date:</strong> January 1, 2024<br>
-  <strong>Last Updated:</strong> January 1, 2024</p>
 
-  <p>BellTower Technologies LLC ("we," "us," or "our") operates the Instant Recall platform and the website at www.instantrecall.com. This Privacy Policy describes how we collect, use, disclose, and protect your personal information when you use our services.</p>
+  <p>Your privacy is important to BellTower Technologies. This privacy statement provides information about the personal information that BellTower Technologies collects, and the ways in which BellTower Technologies uses that personal information.</p>
 
-  <h2>1. Information We Collect</h2>
-  <h3>Information You Provide</h3>
+  <p><strong>Personal information collection</strong></p>
+
+  <p>BellTower Technologies may collect and use the following kinds of personal information:</p>
   <ul>
-    <li>Contact information: name, email address, phone number, mailing address</li>
-    <li>Account credentials: username and password</li>
-    <li>Business information: company name, title, role</li>
-    <li>Communications: messages, feedback, and support requests you send to us</li>
-    <li>Recall-related data: product information, distribution lists, and contact records you upload to the platform</li>
+    <li>information about your use of this website (including pages visited and your host IP address);</li>
+    <li>information about transactions carried out over this website (including time, login id and type of transactions);</li>
+    <li>information that you provide for the purpose of subscribing to the website services or executing a product demonstration (including name, telephone number and email address); and</li>
+    <li>any other information that you send to BellTower Technologies (including contact information necessary to perform mass notification services at your request, billing information and contact information for the users you provision to have access to your account).</li>
   </ul>
 
-  <h3>Information Collected Automatically</h3>
+  <p><strong>Using personal information</strong></p>
+
+  <p>BellTower Technologies may use your personal information to:</p>
   <ul>
-    <li>Device and browser information: IP address, browser type, operating system</li>
-    <li>Usage data: pages visited, features used, timestamps, referral URLs</li>
-    <li>Cookies and similar technologies for session management and analytics</li>
+    <li>enable your access to and use of the website services;</li>
+    <li>supply to you services that you purchase;</li>
+    <li>send you statements and invoices;</li>
+    <li>collect payments from you; and</li>
+    <li>send you marketing communications.</li>
   </ul>
 
-  <h2>2. How We Use Your Information</h2>
-  <p>We use the information we collect to:</p>
-  <ul>
-    <li>Provide, operate, and maintain the Instant Recall platform</li>
-    <li>Process recall notifications and communications on your behalf</li>
-    <li>Respond to your inquiries and provide customer support</li>
-    <li>Send administrative notices, updates, and security alerts</li>
-    <li>Improve our services, develop new features, and conduct analytics</li>
-    <li>Comply with legal obligations and enforce our terms</li>
-  </ul>
+  <p>To opt-out from any communications, or to view, modify or delete your personal information, please contact us at PrivacyOfficer@belltowertech.com.</p>
 
-  <h2>3. How We Disclose Your Information</h2>
-  <p>We do not sell your personal information. We may share your information with:</p>
-  <ul>
-    <li><strong>Service providers:</strong> Third-party vendors who assist with hosting, analytics, email delivery, and other operational services, subject to confidentiality obligations</li>
-    <li><strong>Regulatory authorities:</strong> When required by law, regulation, or legal process, or to protect the rights and safety of our users</li>
-    <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction</li>
-    <li><strong>With your consent:</strong> When you direct us to share information with third parties</li>
-  </ul>
+  <p>Where BellTower Technologies discloses your personal information to its agents or vendors (telecommunications providers, messaging services and call centers) for these purposes, the agent or vendor in question will be obligated to use that personal information in accordance with the terms of this privacy statement.</p>
 
-  <h2>4. Data Security</h2>
-  <p>We implement industry-standard technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include encryption in transit and at rest, access controls, regular security assessments, and employee training. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+  <p>In addition to the disclosures reasonably necessary for the purposes identified elsewhere above, BellTower Technologies may disclose your personal information to the extent that it is required to do so by law, including to meet national security or law enforcement requirements, in connection with any legal proceedings or prospective legal proceedings, and in order to establish, exercise or defend its legal rights.</p>
 
-  <h2>5. Children's Privacy</h2>
-  <p>Our services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children. If we become aware that a child under 16 has provided us with personal information, we will take steps to delete such information promptly.</p>
+  <p><strong>Securing your data</strong></p>
 
-  <h2>6. EU-US Data Privacy Framework</h2>
-  <p>BellTower Technologies LLC complies with the EU-US Data Privacy Framework (DPF) as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of personal information transferred from the European Union to the United States. We have certified to the Department of Commerce that we adhere to the DPF Principles. If there is any conflict between the terms in this privacy policy and the DPF Principles, the DPF Principles shall govern. To learn more about the Data Privacy Framework program, visit <a href="https://www.dataprivacyframework.gov" rel="noopener">https://www.dataprivacyframework.gov</a>.</p>
-  <p>In compliance with the DPF, we commit to resolve complaints about our collection or use of your personal information. EU individuals with inquiries or complaints regarding our DPF policy should first contact us using the information below.</p>
+  <p>BellTower Technologies will take reasonable technical and organizational precautions to prevent the loss, misuse or alteration of your personal information. BellTower Technologies will store all the personal information you provide on its secure servers. Access to your personal information is restricted to the personnel that have business purpose for such access. Transmission of personal information using our websites is secured using SSL encryption technology.</p>
 
-  <h2>7. Your Rights and Choices</h2>
-  <p>Depending on your jurisdiction, you may have the right to:</p>
-  <ul>
-    <li>Access the personal information we hold about you</li>
-    <li>Request correction of inaccurate information</li>
-    <li>Request deletion of your personal information</li>
-    <li>Object to or restrict certain processing activities</li>
-    <li>Data portability</li>
-    <li>Withdraw consent where processing is based on consent</li>
-  </ul>
-  <p>To exercise any of these rights, please contact us using the information below.</p>
+  <p><strong>Children&rsquo;s Privacy</strong></p>
 
-  <h2>8. Data Retention</h2>
-  <p>We retain your personal information for as long as necessary to fulfill the purposes for which it was collected, comply with our legal obligations, resolve disputes, and enforce our agreements. When personal information is no longer needed, we will securely delete or anonymize it.</p>
+  <p>We do not knowingly collect personal data from children.<br>
+  We take specific steps to protect the privacy of children by making reasonable efforts to ensure that a parent has authorized the collection of the child&rsquo;s personal data.</p>
 
-  <h2>9. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will notify you of material changes by posting the new policy on this page and updating the "Last Updated" date. Your continued use of our services after such changes constitutes your acceptance of the revised policy.</p>
+  <p><strong>EU-U.S. Data Privacy Framework (EU-U.S. DPF) Compliance</strong></p>
 
-  <h2>10. Contact Information</h2>
-  <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
-  <p>
-    BellTower Technologies LLC<br>
-    5900 South Lake Forest Dr., Suite 300<br>
-    McKinney, TX 75070<br>
-    Phone: (214) 220-8000<br>
-    Email: privacy@belltowertech.com
-  </p>
+  <p>BellTower Technologies LLC complies with the EU-U.S. Data Privacy Framework (EU-U.S. DPF)  as set forth by the U.S. Department of Commerce. BellTower Technologies has certified to the U.S. Department of Commerce that it adheres to the EU-U.S. Data Privacy Framework Principles (EU-U.S. DPF Principles) with regard to the processing of personal data received from the European Union in reliance on the EU-U.S. DPF. If there is any conflict between the terms in this privacy policy and the EU-U.S. DPF Principles, the Principles shall govern. To learn more about the Data Privacy Framework (DPF) program, and to view our certification, please visit <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener"><strong><u>www.dataprivacyframework.gov</u></strong></a>.</p>
+
+  <p>With respect to onward transfers to third-party agents under DPF, DPF requires that BellTower Technologies LLC remains liable should such agents process personal information in a manner inconsistent with the DPF Principles, unless we prove that we are not responsible for the event giving rise to the damage.</p>
+
+  <p>You have a right to access your personal data to correct or delete it, or limit its use or disclosure. Please contact PrivacyOfficer@belltowertech.com for assistance.</p>
+
+  <p>We will provide an individual opt-out choice, or opt-in for sensitive data, before we share your data with third parties other than our agents, or before we use it for a purpose other than which it was originally collected or subsequently authorized. To request to limit the use and disclosure of your personal information, please submit a written request to PrivacyOfficer@belltowertech.com.</p>
+
+  <p><strong>Members of the European Union</strong></p>
+
+  <p>If you are a resident of a Member State of the European Union and have any concerns or complaints, please first address these issues to our Privacy Officer. BellTower Technologies LLC is located in the United States, as are the servers that make our websites available. Except with respect to the personal data of EU individuals processed pursuant to DPF, all matters relating to privacy issues and websites are governed by the laws of the United States and the State of Texas.</p>
+
+  <p>In compliance with the EU-U.S. Data Privacy Framework (EU-U.S. DPF), BellTower Technologies LLC commits to resolve complaints about our collection or use of your personal information transferred to the U.S. pursuant to the EU-U.S. DPF. EU individuals with inquiries or complaints should first contact BellTower Technologies LLC at:</p>
+
+  <p>Email: PrivacyOfficer@belltowertech.com<br>
+  Phone: +1-214-220-8000<br>
+  Fax: +1-214-999-6761<br>
+  Mail:<br>
+  BellTower Technologies LLC<br>
+  5900 South Lake Forest Dr.<br>
+  Suite 300<br>
+  McKinney, TX 75070</p>
+
+  <p>BellTower Technologies LLC has further committed to refer unresolved DPF Principles-related complaints to an independent dispute resolution mechanism, BBB NATIONAL PROGRAMS. If you do not receive timely acknowledgment of your complaint, or if your complaint is not satisfactorily addressed, please visit <a href="https://www.bbbprograms.org/dpf-complaints" rel="noopener"><strong><u>www.bbbprograms.org/dpf-complaints</u></strong></a> for more information and to file a complaint. This service is provided free of charge to you. BellTower Technologies is subject to the investigatory and enforcement powers of the United States Federal Trade Commission (FTC).</p>
+
+  <p>If your DPF complaint cannot be resolved through the above channels, under certain conditions, you may invoke binding arbitration for some residual claims not resolved by other redress mechanisms. See <a href="https://www.dataprivacyframework.gov/s/article/ANNEX-I-introduction-dpf" target="_blank" rel="noopener"><strong><u>www.dataprivacyframework.gov/s/article/ANNEX-I-introduction-dpf</u></strong></a> for details.</p>
+
+  <p><strong>Updating this statement</strong></p>
+
+  <p>BellTower Technologies may update this privacy policy by posting a new version on this website.</p>
+
+  <p>You should check this page occasionally to ensure you are familiar with any changes.</p>
+
+  <p><strong>Other websites</strong></p>
+
+  <p>This website contains links to other websites. BellTower Technologies is not responsible for the privacy policies or practices of any third party.</p>
+
+  <p><strong>Contact BellTower Technologies</strong></p>
+
+  <p>If you have any questions about this privacy policy or BellTower Technologies&rsquo; treatment of your personal information, please contact the Privacy Officer:</p>
+
+  <p>Email: PrivacyOfficer@belltowertech.com<br>
+  Phone: +1-214-220-8000<br>
+  Fax: +1-214-999-6761<br>
+  Mail:<br>
+  BellTower Technologies LLC<br>
+  5900 South Lake Forest Dr.<br>
+  Suite 300<br>
+  McKinney, TX 75070</p>
+
+  <p>We will address your concern and attempt to resolve any problem.</p>
 </div>`;
 
   return renderPage({

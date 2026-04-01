@@ -279,7 +279,7 @@ export function renderPage(opts: LayoutOptions): string {
 ${header()}
 ${opts.body}
 ${footer()}
-${newsletterPopup()}
+${opts.path === "/" ? newsletterPopup() : ""}
 </body>
 </html>`;
 }

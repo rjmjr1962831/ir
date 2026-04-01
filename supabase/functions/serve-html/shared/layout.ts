@@ -192,6 +192,7 @@ export function renderPage(opts: LayoutOptions): string {
   ${enrichedJsonLd ? `<script type="application/ld+json">${enrichedJsonLd}</script>` : ""}
   <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>
   ${webPageLd}
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48681528.js"></script>
 </head>
 <body>
 ${header()}

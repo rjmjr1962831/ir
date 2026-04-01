@@ -62,6 +62,7 @@ const JSON_LD = JSON.stringify([
 /*  TICKER ITEMS (from instantrecall.com live data)                   */
 /* ------------------------------------------------------------------ */
 const TICKER_ITEMS = [
+  // --- Original 14 items ---
   "Weis Markets Issues Recall for Undeclared Egg Allergen In WQ Banana Puddin Ice Cream",
   `Mondel\u0113z Global LLC Conducts Voluntary Recall of Certain Chewy Chips Ahoy 13oz Due to Unexpected Solidified Ingredient in Product in the US`,
   "Jensen Tuna of Louisiana is Voluntarily Recalling Frozen Ground Tuna Imported from JK Fish, Because it may Potentially be Contaminated with Salmonella",
@@ -76,6 +77,43 @@ const TICKER_ITEMS = [
   "Frito-Lay Issues Voluntary Allergy Alert on Undeclared Milk In Small Number of Stacy's Simply Naked Pita Chips",
   "RXBAR Recalls Certain Varieties of Bars Due to a Potential Undeclared Peanut Allergen",
   "Hill's Pet Nutrition Voluntarily Recalls Select Canned Dog Food for Excessive Vitamin D",
+  // --- 36 additional real recalls (2024-2025) ---
+  "Boar's Head Provisions Co. Recalls Ready-To-Eat Liverwurst and Deli Meat Products Due to Possible Listeria Contamination",
+  "BrucePac Recalls 11.8 Million Pounds of Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination",
+  "Grimmway Farms Recalls Organic Whole and Baby Carrots Due to Potential E. coli O121 Contamination",
+  "Taylor Farms Recalls Yellow Onions Linked to E. coli O157:H7 Outbreak at McDonald's Restaurants",
+  "TreeHouse Foods Expands Voluntary Recall of All Waffle and Pancake Products Due to Potential Listeria Contamination",
+  "Rizo-Lopez Foods Inc. Voluntarily Recalls Dairy Products Including Cotija and Queso Fresco Due to Listeria",
+  "Totally Cool Inc. Recalls All Ice Cream Products Due to Possible Listeria Contamination",
+  "Yu Shang Food Inc. Recalls Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination",
+  "Perdue Foods LLC Recalls 167,000 Pounds of Frozen Chicken Nuggets and Tenders Due to Metal Wire Contamination",
+  "FGF Brands Recalls Over 2 Million Donut and Pastry Products Including Dunkin' Items Due to Potential Listeria",
+  "Nestle USA Recalls Limited Quantity of Lean Cuisine and Stouffer's Frozen Meals Due to Foreign Material",
+  "Agrotato S.A. de C.V. Cucumbers Recalled Due to Salmonella Typhimurium Outbreak Across 19 States",
+  "Frito-Lay Recalls Lay's Classic Party Size Potato Chips Due to Undeclared Milk Allergen",
+  "Cal Yee Farm LLC Recalls Chocolate and Yogurt Covered Nuts Due to Undeclared Milk, Soy, Wheat, and Almonds",
+  "Kraft Heinz Foods Company Recalls Turkey Bacon Products Due to Possible Listeria Contamination",
+  "Smith Packing LLC Recalls Sausage and Sliced Meat Products Due to Sodium Nitrite Levels Exceeding Regulatory Limit",
+  "Suzanna's Kitchen Recalls Fully Cooked Breaded Chicken Products Due to Undeclared Allergen",
+  "ByHeart Inc. Recalls Whole Nutrition Infant Formula Due to Infant Botulism Risk",
+  "Face Rock Creamery LLC Recalls Vampire Slayer Garlic Cheddar Due to Potential Listeria Contamination",
+  "Ventura Foods LLC Recalls Peanut Butter Products Due to Possible Plastic Foreign Material Contamination",
+  "Unilever Recalls Popsicle Brand Jolly Rancher Frozen Pops Due to Undeclared Milk Allergen",
+  "ZB Importing LLC Recalls Ulker Brand Snack Rolls and Biscuits Due to Undeclared Wheat, Egg, and Milk",
+  "White Castle Frozen Food Division Recalls Original Sliders Due to Undeclared Milk and Soy",
+  "Fran's Chocolates Ltd. Recalls Pure Bar Almondmilk Chocolate Due to Undeclared Hazelnuts",
+  "Palermo Villa Inc. Recalls Connie's Thin Crust Cheese Frozen Pizzas Due to Possible Plastic Contamination",
+  "Mountain West Food Group LLC Recalls Ground Beef Products Due to Possible E. coli O26 Contamination",
+  "Taylor Fresh Foods Inc. Recalls Marketside Bacon Ranch Chopped Salad Kit Due to Potential Listeria",
+  "Gold Star Distribution Inc. Recalls All FDA Regulated Products Due to Rodent and Avian Contamination",
+  "Sulu Organics LLC Recalls Pork Lard and Beef Tallow Products Produced Without Federal Inspection",
+  "Tyson Foods Inc. Recalls Chicken Patty Products Due to Possible Foreign Matter Contamination",
+  "Troemner Farm Issues Allergy Alert on Undeclared Milk, Wheat, and Soy in Pfeffernusse Cookies",
+  "Direct Source Seafood LLC Recalls Frozen Raw Shrimp Due to Potential Contamination",
+  "Tom Bumble Recalls Oregon Bark Nutty Peanut Butter Flake Candy Due to Foreign Material",
+  "Cava Foods Inc. Issues Allergy Alert for Undeclared Sesame in Cava Spicy Hummus",
+  "FSIS Issues Public Health Alert for Frozen Ready-To-Eat Meat and Poultry Pasties Due to Undeclared Allergen",
+  "Boar's Head Expands Recall to 7 Million Pounds of 71 Deli Meat Products Due to Listeria Outbreak",
 ];
 
 /* ------------------------------------------------------------------ */

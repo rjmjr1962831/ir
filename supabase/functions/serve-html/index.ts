@@ -109,7 +109,6 @@ const ROUTES: Record<string, () => string> = {
   "/research/legal-case-data": renderResearchLegal,
   "/incident-response": renderIncidentResponse,
   "/cost-recovery": renderCostRecovery,
-  "/regulatory-reporting": renderCostRecovery,
   "/technology-prowess": renderTechnologyProwess,
   "/industry-standard": renderIndustryStandard,
   "/customer-quotes-solutions": renderCustomerQuotes,
@@ -220,6 +219,14 @@ serve(async (req: Request) => {
         "Content-Type": "text/html; charset=utf-8",
         "Cache-Control": "private, max-age=30",
       },
+    });
+  }
+
+  // Legacy route redirects
+  if (path === "/regulatory-reporting") {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: "/cost-recovery" },
     });
   }
 

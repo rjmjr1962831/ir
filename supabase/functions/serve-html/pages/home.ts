@@ -410,10 +410,15 @@ export function renderHome(): string {
 <!-- 1. HERO: Dark video background with blue overlay -->
 <section class="hero video-hero" style="min-height:700px;position:relative;overflow:hidden">
   <div class="video-bg">
-    <video autoplay muted loop playsinline poster="/images/iStock-835970896_Small2.jpg" style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover">
+    <img id="hero-fallback" src="/images/iStock-835970896_Small2.jpg" alt="Instant Recall - Food Recall Preparedness" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity 1.5s ease">
+    <video id="hero-video" autoplay muted loop playsinline poster="/images/iStock-835970896_Small2.jpg" style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0">
       <source src="/video/BTT_WebsiteHeader_v0005.mp4" type="video/mp4">
     </video>
-    <img src="/images/iStock-835970896_Small2.jpg" alt="Instant Recall - Food Recall Preparedness" class="custom-fallback-image" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1">
+    <script>
+      var v=document.getElementById('hero-video');
+      var f=document.getElementById('hero-fallback');
+      if(v&&f){v.addEventListener('playing',function(){setTimeout(function(){f.style.opacity='0';setTimeout(function(){f.style.display='none'},1500)},2000)})}
+    </script>
   </div>
   <div class="hero-overlay" style="background:rgba(34,68,102,0.68)"></div>
   <div class="hero-content">

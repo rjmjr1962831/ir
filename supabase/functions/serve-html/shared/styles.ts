@@ -7,25 +7,28 @@ a{color:#00afec;text-decoration:none}
 a:hover{text-decoration:underline;color:#33c4ff}
 
 /* Header */
-.site-header{background:#272727;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:80px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.site-header{background:transparent;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px;position:absolute;top:0;left:0;width:100%;z-index:1000;box-sizing:border-box}
+.site-header.scrolled{background:rgba(32,26,22,.75);position:fixed}
 .site-header .logo{display:flex;align-items:center}
 .site-header .logo img{height:50px;width:auto}
-.site-header nav{display:flex;align-items:center;gap:0}
-.site-header nav a{color:rgba(255,255,255,.85);padding:0.5rem 1.25rem;font-size:.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s}
-.site-header nav a:hover{color:#00afec;text-decoration:none}
+.site-header nav{display:flex;align-items:center;gap:0;white-space:nowrap}
+.site-header nav a{color:#fff;padding:0.5rem 1.25rem;font-size:17px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s;text-decoration:none;font-family:'Lato','Helvetica Neue',Helvetica,Arial,sans-serif}
+.site-header nav a:hover{color:rgba(255,255,255,.8);text-decoration:none}
+.site-header nav a.nav-btn{background:transparent;border:2px solid #fff;color:#fff;padding:1em 1.5em;margin-left:1em;transition:background-color .1s ease-in-out,color .1s ease-in-out;border-radius:0}
+.site-header nav a.nav-btn:hover{background:#fff;color:#181818}
 .mobile-menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
 
 /* Hero */
-.hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.hero-overlay{position:absolute;inset:0;background:rgba(39,39,39,0.75);z-index:1}
+.hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;padding-top:calc(80px + 4rem);text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-overlay{position:absolute;inset:0;z-index:1}
 .hero-content{position:relative;z-index:2;max-width:900px}
-.hero h1{font-size:2.8rem;margin-bottom:1.25rem;font-weight:700;letter-spacing:0.5px;line-height:1.2}
-.hero p{max-width:750px;margin:0 auto;font-size:1.1rem;opacity:.9;line-height:1.8;font-weight:300}
+.hero h1{font-size:46px;margin-bottom:1.25rem;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase}
+.hero p{max-width:750px;margin:0 auto;font-size:23px;line-height:1.4em;font-weight:300}
 .hero .btn{display:inline-block;background:#00afec;color:#fff;padding:.85rem 2.5rem;border-radius:0;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;margin-top:1.5rem;transition:background 0.2s}
 .hero .btn:hover{background:#33c4ff;text-decoration:none}
 
 /* Container */
-.container{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.container{max-width:1100px;margin:0 auto;padding:76px 32px}
 
 /* Section headings */
 .section-title{text-align:center;font-size:1.8rem;color:#fff;margin:2rem 0 .75rem;font-weight:700;letter-spacing:0.5px}
@@ -124,7 +127,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .news-quote cite{color:#00afec;font-size:.8rem;font-weight:500;font-style:normal}
 
 /* Footer */
-.site-footer{background:#1f1f1f;color:rgba(255,255,255,.6);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.05)}
+.site-footer{background:#201a16;color:rgba(255,255,255,.4);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.05)}
 .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 3fr 1fr;gap:2rem;align-items:start}
 .footer-left{display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .footer-left img{height:80px;width:auto}
@@ -154,9 +157,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 
 .section-dark{background:#272727;color:#fff;padding:4rem 2rem}
 
-/* Nav button */
-.site-header nav a.nav-btn{background:#00afec;color:#fff;padding:.5rem 1.25rem;border-radius:3px;font-weight:600}
-.site-header nav a.nav-btn:hover{background:#33c4ff}
+/* Nav button - defined in header section above */
 
 /* Service icons */
 .service-icon{width:100px;height:100px;border-radius:50%;background:#00afec;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
@@ -176,12 +177,13 @@ a:hover{text-decoration:underline;color:#33c4ff}
 
 /* Responsive */
 @media(max-width:768px){
-  .hero h1{font-size:1.8rem}
+  .hero h1{font-size:2em}
   .hero p{font-size:1rem}
   .hero{padding:4rem 1.5rem;min-height:350px}
-  .site-header{flex-direction:column;height:auto;padding:1rem 1.5rem}
+  .site-header{flex-direction:column;height:auto;padding:1rem 1.5rem;position:relative;background:#575757}
   .site-header nav{margin-top:.5rem;flex-wrap:wrap;justify-content:center}
   .site-header nav a{padding:0.4rem 0.75rem;font-size:.75rem}
+  .site-header nav a.nav-btn{padding:0.4rem 0.75rem;margin-left:0;border-width:2px}
   .cards{grid-template-columns:1fr}
   .features{grid-template-columns:1fr}
   .testimonial-grid{grid-template-columns:1fr}
@@ -189,5 +191,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
   .footer-left{align-items:center}
   .footer-center{grid-column:1 !important}
   .contact-info .phone-grid{grid-template-columns:1fr}
+  blockquote{font-size:22px;line-height:24px}
+  .collection-type-index .page-content{padding:26px 32px !important}
 }
 `;

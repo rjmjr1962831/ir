@@ -502,8 +502,8 @@ export function renderHome(): string {
   <div class="section-inner">
     <h2 style="color:#272727">Accelerate Your Recall Response</h2>
     <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
-    <script src="https://js-na2.hsforms.net/forms/embed/developer/48681528.js" defer></script>
-    <div class="hs-form-html" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
+    <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
+    <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
   </div>
 </section>
 

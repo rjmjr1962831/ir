@@ -282,7 +282,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 
 /* Contact form section on white */
 .contact-section-home.section-white{background:#fff;padding:40px 32px}
-.contact-section-home h1{font-size:46px;color:#272727;font-weight:700;margin-bottom:1rem;letter-spacing:1.34px;text-transform:uppercase;line-height:1.4em}
+.contact-section-home h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1rem;letter-spacing:1.34px;line-height:1.4em}
 
 /* Footer links in source style */
 .footer-links-bar{text-align:center;padding:1rem 0}
@@ -474,15 +474,15 @@ export function renderHome(): string {
   <div class="solution-pillars">
     <div class="solution-pillar">
       <div class="icon-circle"><i class="fas fa-phone-volume"></i></div>
-      <h3>Recall Preparedness Consulting</h3>
+      <h3>RECALL PREPAREDNESS CONSULTING</h3>
     </div>
     <div class="solution-pillar">
       <div class="icon-circle"><i class="fas fa-clipboard-list"></i></div>
-      <h3>Recall Communications Management</h3>
+      <h3>RECALL COMMUNICATIONS MANAGEMENT</h3>
     </div>
     <div class="solution-pillar">
       <div class="icon-circle"><i class="fas fa-user-shield"></i></div>
-      <h3>Regulatory Reporting and audit response</h3>
+      <h3>REGULATORY REPORTING AND AUDIT RESPONSE</h3>
     </div>
   </div>
   <div class="learn-more-btn">

@@ -7,8 +7,7 @@ a{color:#00afec;text-decoration:none}
 a:hover{text-decoration:underline;color:#33c4ff}
 
 /* Header */
-.site-header{background:transparent;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px;position:absolute;top:0;left:0;width:100%;z-index:1000;box-sizing:border-box}
-.site-header.scrolled{background:rgba(32,26,22,.75);position:fixed}
+.site-header{background:#272727;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:80px;position:relative;width:100%;z-index:1000;box-sizing:border-box}
 .site-header .logo{display:flex;align-items:center}
 .site-header .logo img{height:50px;width:auto}
 .site-header nav{display:flex;align-items:center;gap:0;white-space:nowrap}
@@ -19,7 +18,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .mobile-menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
 
 /* Hero */
-.hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;padding-top:calc(80px + 4rem);text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:4rem 2rem;text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hero-overlay{position:absolute;inset:0;z-index:1}
 .hero-content{position:relative;z-index:2;max-width:900px}
 .hero h1{font-size:46px;margin-bottom:1.25rem;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase}

@@ -101,7 +101,7 @@ ${researchIndexCitationBlock()}
 </style>`;
 
   return renderPage({
-    title: "Research -- Instant Recall",
+    title: "Research | Instant Recall\u2122",
     description:
       "Original research on the product recall notification industry, regulatory environment, and legal landscape from the Instant Recall Research Team.",
     path: "/research",

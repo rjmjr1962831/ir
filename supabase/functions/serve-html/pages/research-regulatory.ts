@@ -25,7 +25,7 @@ const JSON_LD = JSON.stringify({
   citation: [
     "https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls",
     "https://www.fsis.usda.gov/recalls",
-    "https://www.cdc.gov/foodsafety/outbreaks/index.html",
+    "https://www.cdc.gov/foodsafety/outbreaks/",
     "https://www.congress.gov/bill/111th-congress/house-bill/2749",
     "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma",
     "https://www.gao.gov/products/gao-22-105011",
@@ -551,10 +551,10 @@ export function renderResearchRegulatory(): string {
       <li><a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts">FDA Recalls, Market Withdrawals, &amp; Safety Alerts</a></li>
       <li><a href="https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls">FDA Food Recalls</a></li>
       <li><a href="https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma">FDA FSMA Overview</a></li>
-      <li><a href="https://www.fda.gov/safety/reportable-food-registry-rfr">FDA Reportable Food Registry</a></li>
+      <li><a href="https://www.fda.gov/food/compliance-enforcement-food/reportable-food-registry">FDA Reportable Food Registry</a></li>
       <li><a href="https://www.fsis.usda.gov/food-safety/recalls-public-health-alerts">USDA FSIS Recalls &amp; Public Health Alerts</a></li>
       <li><a href="https://www.fsis.usda.gov/inspection/compliance-guidance/recall-process">USDA FSIS Recall Process</a></li>
-      <li><a href="https://www.cdc.gov/foodsafety/outbreaks/index.html">CDC Foodborne Outbreak Investigations</a></li>
+      <li><a href="https://www.cdc.gov/foodsafety/outbreaks/">CDC Foodborne Outbreak Investigations</a></li>
       <li><a href="https://www.recalls.gov/">Recalls.gov</a></li>
     </ul>
 
@@ -635,7 +635,7 @@ ${researchRegulatoryCitationBlock()}
 `;
 
   return renderPage({
-    title: "The Regulatory Environment of Food Recalls -- Instant Recall Research",
+    title: "The Regulatory Environment of Food Recalls | Instant Recall\u2122 Research",
     description:
       "In-depth examination of FDA and USDA-FSIS oversight, key legislation, mandatory reporting requirements, recall effectiveness data, and international regulatory comparisons shaping U.S. food recalls.",
     path: "/research/regulatory-environment",

@@ -481,6 +481,12 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">Complete register of all 66 GEO optimization tasks across 4 days. What was done, why, and ledger cross-references.</div>
         <span class="badge badge-live">Live</span>
       </a>
+      <a href="/docs/dev-workflow" class="page-card featured" style="text-decoration:none;color:inherit">
+        <h3>Developer Workflow</h3>
+        <span class="route">/docs/dev-workflow</span>
+        <div class="desc">Step-by-step guide: environment setup, adding pages, Git flow, Qodo gate, deploying, GEO rules, testing.</div>
+        <span class="badge badge-live">Live</span>
+      </a>
     </div>
   </div>
 

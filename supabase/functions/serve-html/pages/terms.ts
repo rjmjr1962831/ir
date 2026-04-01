@@ -87,7 +87,7 @@ export function renderTerms(): string {
 </div>`;
 
   return renderPage({
-    title: "Terms and Conditions -- Instant Recall",
+    title: "Terms and Conditions | Instant Recall\u2122",
     description:
       "Terms and Conditions for the Instant Recall platform operated by BellTower Technologies LLC.",
     path: "/terms-and-conditions",

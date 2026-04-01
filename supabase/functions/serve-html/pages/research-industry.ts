@@ -724,7 +724,7 @@ ${researchIndustryCitationBlock()}
 `;
 
   return renderPage({
-    title: "Product Recall Notification Industry Survey -- Instant Recall Research",
+    title: "Product Recall Notification Industry Survey | Instant Recall\u2122 Research",
     description:
       "Comprehensive research report on the product recall notification landscape: government services, consumer apps, B2B platforms, market size, consumer pain points, and international systems.",
     path: "/research/industry-survey",

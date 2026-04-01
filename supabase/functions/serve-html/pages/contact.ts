@@ -125,7 +125,7 @@ export function renderContact(): string {
 </div>`;
 
   return renderPage({
-    title: "Contact Us | Instant Recall",
+    title: "Contact Us | Instant Recall\u2122",
     description:
       "Get in touch with Instant Recall for recall response, product information, or communication preferences.",
     path: "/contact-instant-recall",
@@ -171,7 +171,7 @@ export function renderContactDirect(): string {
 </div>`;
 
   return renderPage({
-    title: "Contact Us | Instant Recall",
+    title: "Contact Us | Instant Recall\u2122",
     description:
       "The Leader in Food Recall Preparedness and Response. Contact Instant Recall for more information.",
     path: "/contact",

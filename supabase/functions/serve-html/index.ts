@@ -27,6 +27,7 @@ import { renderUSFoodsRecallProcess } from "./pages/usfoods-recall-process.ts";
 import { renderSyscoRecallPacket } from "./pages/sysco-recall-packet.ts";
 import { renderAiBestPractices } from "./pages/ai-best-practices.ts";
 import { renderProjectKnowledge } from "./pages/project-knowledge.ts";
+import { renderDevWorkflow } from "./pages/dev-workflow.ts";
 import { renderWorkLog } from "./pages/work-log.ts";
 
 // --- Bot detection and logging ---
@@ -109,7 +110,6 @@ const ROUTES: Record<string, () => string> = {
   "/research/legal-case-data": renderResearchLegal,
   "/incident-response": renderIncidentResponse,
   "/cost-recovery": renderCostRecovery,
-  "/regulatory-reporting": renderCostRecovery,
   "/technology-prowess": renderTechnologyProwess,
   "/industry-standard": renderIndustryStandard,
   "/customer-quotes-solutions": renderCustomerQuotes,
@@ -220,6 +220,25 @@ serve(async (req: Request) => {
         "Content-Type": "text/html; charset=utf-8",
         "Cache-Control": "private, max-age=30",
       },
+    });
+  }
+
+  if (path === "/docs/dev-workflow") {
+    const html = renderDevWorkflow();
+    return new Response(html, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "private, max-age=30",
+      },
+    });
+  }
+
+  // Legacy route redirects
+  if (path === "/regulatory-reporting") {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: "/cost-recovery" },
     });
   }
 

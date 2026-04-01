@@ -59,7 +59,7 @@ export function renderCustomerQuotes(): string {
 <section class="hero" style="min-height:360px;padding:4rem 2rem">
   <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
-    <h1>Customers Are Talking</h1>
+    <h1>Customers are Talking...</h1>
     <p>The world's leading food companies trust Instant Recall to protect their customers and their brands. Here is what they have to say.</p>
   </div>
 </section>
@@ -135,7 +135,7 @@ export function renderCustomerQuotes(): string {
 </section>`;
 
   return renderPage({
-    title: "Customer Testimonials | Instant Recall",
+    title: "Customer Testimonials | Instant Recall\u2122",
     description:
       "What the world's leading food companies say about Instant Recall. Trusted by Performance Food Group, US Foods, Chick-fil-A, Casey's, Papa Murphy's, Ben E. Keith, Topgolf, and more.",
     path: "/customer-quotes-solutions",

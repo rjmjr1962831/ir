@@ -99,7 +99,7 @@ export function renderPrivacy(): string {
 </div>`;
 
   return renderPage({
-    title: "Privacy Policy -- Instant Recall",
+    title: "Privacy Policy | Instant Recall\u2122",
     description:
       "Privacy Policy for Instant Recall and BellTower Technologies LLC. Learn how we collect, use, and protect your information.",
     path: "/privacy-policy",

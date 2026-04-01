@@ -133,7 +133,7 @@ ${aboutCitationBlock()}
 </section>`;
 
   return renderPage({
-    title: "About Us | Instant Recall",
+    title: "About Us | Instant Recall\u2122",
     description:
       "Meet the Instant Recall team. The global leader in food incident management with more than two decades of food safety and recall expertise.",
     path: "/about-us",

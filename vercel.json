@@ -20,6 +20,9 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/regulatory-reporting", "destination": "/cost-recovery", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/api/html?path=%2F" },
     { "source": "/solution", "destination": "/api/html?path=%2Fsolution" },
@@ -38,6 +41,7 @@
     { "source": "/docs/ai-best-practices", "destination": "/api/html?path=%2Finternal%2Fai-best-practices" },
     { "source": "/docs/project-knowledge", "destination": "/api/html?path=%2Finternal%2Fproject-knowledge" },
     { "source": "/docs/work-log", "destination": "/api/html?path=%2Fdocs%2Fwork-log" },
+    { "source": "/docs/dev-workflow", "destination": "/api/html?path=%2Fdocs%2Fdev-workflow" },
     { "source": "/research", "destination": "/api/html?path=%2Fresearch" },
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },
@@ -46,7 +50,6 @@
     { "source": "/research/sysco-recall-packet", "destination": "/api/html?path=%2Fresearch%2Fsysco-recall-packet" },
     { "source": "/incident-response", "destination": "/api/html?path=%2Fincident-response" },
     { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
-    { "source": "/regulatory-reporting", "destination": "/api/html?path=%2Fregulatory-reporting" },
     { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
     { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
     { "source": "/customer-quotes-solutions", "destination": "/api/html?path=%2Fcustomer-quotes-solutions" },

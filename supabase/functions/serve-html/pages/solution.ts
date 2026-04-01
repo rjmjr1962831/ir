@@ -71,10 +71,10 @@ const SOLUTION_CSS = `
   .card h3 { color: #272727; font-size: 1.15rem; font-weight: 700; }
   .card p { color: #3e3e3e; font-weight: 300; }
 
-  .features-section { background: #fff; padding: 4rem 2rem; }
+  .features-section { background: #f5f5f5; padding: 4rem 2rem; }
   .feature h4 { color: #272727; }
   .feature p { color: #3e3e3e; }
-  .feature img { width: 80px; height: 80px; }
+  .feature img { width: 100px; height: 100px; }
 
   .feature-fullwidth { grid-column: 1 / -1; }
 
@@ -82,6 +82,10 @@ const SOLUTION_CSS = `
   .cta h2 { color: #272727; }
 
   .site-footer { background: #201a16; color: rgba(255,255,255,.4); }
+
+  .hero .btn:hover { background: #1cace6; }
+  .cta a.btn:hover { background: #1cace6; border-color: #1cace6; }
+  a:hover { color: #1cace6; }
 `;
 
 export function renderSolution(): string {

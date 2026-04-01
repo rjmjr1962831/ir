@@ -172,6 +172,7 @@ export function renderPage(opts: LayoutOptions): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${opts.title}</title>
   <meta name="description" content="${opts.description}">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   ${lastModMeta}
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="website">
@@ -179,14 +180,14 @@ export function renderPage(opts: LayoutOptions): string {
   <meta property="og:description" content="${opts.description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:site_name" content="Instant Recall">
-  <meta property="og:image" content="${SITE}/images/InstantRecall_Horizontal-01.webp">
-  <meta property="og:image:type" content="image/webp">
-  <meta property="og:image:width" content="800">
-  <meta property="og:image:height" content="200">
+  <meta property="og:image" content="${SITE}/images/iStock-854374912.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="1000">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${opts.title}">
   <meta name="twitter:description" content="${opts.description}">
-  <meta name="twitter:image" content="${SITE}/images/InstantRecall_Horizontal-01.webp">
+  <meta name="twitter:image" content="${SITE}/images/iStock-854374912.jpg">
   <style>${CSS}</style>
   ${enrichedJsonLd ? `<script type="application/ld+json">${enrichedJsonLd}</script>` : ""}
   <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>

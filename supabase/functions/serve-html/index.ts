@@ -25,6 +25,8 @@ import { handleCrawlStats } from "./pages/crawl-stats.ts";
 import { renderPress } from "./pages/press.ts";
 import { renderUSFoodsRecallProcess } from "./pages/usfoods-recall-process.ts";
 import { renderSyscoRecallPacket } from "./pages/sysco-recall-packet.ts";
+import { renderAiBestPractices } from "./pages/ai-best-practices.ts";
+import { renderProjectKnowledge } from "./pages/project-knowledge.ts";
 
 // --- Bot detection and logging ---
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrcknm.supabase.co";
@@ -174,6 +176,28 @@ serve(async (req: Request) => {
 
   if (path === "/crawl-stats") {
     return await handleCrawlStats(req);
+  }
+
+  if (path === "/internal/ai-best-practices") {
+    const html = renderAiBestPractices();
+    return new Response(html, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "private, max-age=30",
+      },
+    });
+  }
+
+  if (path === "/internal/project-knowledge") {
+    const html = renderProjectKnowledge();
+    return new Response(html, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "private, max-age=30",
+      },
+    });
   }
 
   const renderFn = ROUTES[path];

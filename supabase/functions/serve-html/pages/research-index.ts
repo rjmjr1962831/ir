@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchIndexCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify([
   {
@@ -72,7 +73,7 @@ export function renderResearchIndex(): string {
 
   const body = `
 <section class="hero" style="min-height:360px;padding:4rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
     <h1>Research</h1>
     <p>Original research from the Instant Recall Research Team on the product recall notification industry, regulatory landscape, and legal environment.</p>
@@ -85,14 +86,18 @@ export function renderResearchIndex(): string {
   </div>
 </section>
 
+${researchIndexCitationBlock()}
+
+<style>${CITATION_CSS}</style>
+
 <style>
 .research-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin:0 auto}
 .research-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:2.5rem;transition:transform 0.2s,box-shadow 0.2s}
 .research-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
-.research-card h2{color:#c8a951;font-size:1.35rem;margin-bottom:.75rem;font-weight:700;letter-spacing:0.3px}
+.research-card h2{color:#00afec;font-size:1.35rem;margin-bottom:.75rem;font-weight:700;letter-spacing:0.3px}
 .research-card p{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;font-weight:300;margin-bottom:1.25rem}
-.read-link{display:inline-block;color:#c8a951;font-weight:600;font-size:.9rem;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s}
-.read-link:hover{color:#e0c36a}
+.read-link{display:inline-block;color:#00afec;font-weight:600;font-size:.9rem;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s}
+.read-link:hover{color:#33c4ff}
 </style>`;
 
   return renderPage({

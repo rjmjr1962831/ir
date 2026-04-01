@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { aboutCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
@@ -120,6 +121,10 @@ export function renderAbout(): string {
     </div>
   </div>
 </div>
+
+<style>${CITATION_CSS}</style>
+
+${aboutCitationBlock()}
 
 <section class="cta">
   <h2>Ready to Strengthen Your Recall Readiness?</h2>

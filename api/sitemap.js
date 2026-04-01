@@ -1,7 +1,22 @@
 export const config = { runtime: "edge" };
 
-export default function handler() {
-  const lastmod = "2026-03-29";
+const SUPABASE_URL = "https://dewbyvlbmkersxjrcknm.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+async function getFreshnessDate() {
+  try {
+    const resp = await fetch(
+      `${SUPABASE_URL}/rest/v1/site_freshness?id=eq.1&select=last_content_update`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+    );
+    if (!resp.ok) return null;
+    const rows = await resp.json();
+    return rows[0] ? rows[0].last_content_update.slice(0, 10) : null;
+  } catch { return null; }
+}
+
+export default async function handler() {
+  const lastmod = (await getFreshnessDate()) || new Date().toISOString().slice(0, 10);
   const base = "https://www.instantrecall.com";
 
   const urls = [
@@ -15,6 +30,19 @@ export default function handler() {
     { loc: "/research/industry-survey", priority: "0.7", changefreq: "monthly" },
     { loc: "/research/regulatory-environment", priority: "0.7", changefreq: "monthly" },
     { loc: "/research/legal-case-data", priority: "0.7", changefreq: "monthly" },
+    { loc: "/research/usfoods-recall-process", priority: "0.7", changefreq: "monthly" },
+    { loc: "/research/sysco-recall-packet", priority: "0.7", changefreq: "monthly" },
+    { loc: "/incident-response", priority: "0.8", changefreq: "monthly" },
+    { loc: "/cost-recovery", priority: "0.8", changefreq: "monthly" },
+    { loc: "/technology-prowess", priority: "0.8", changefreq: "monthly" },
+    { loc: "/industry-standard", priority: "0.8", changefreq: "monthly" },
+    { loc: "/customer-quotes-solutions", priority: "0.7", changefreq: "monthly" },
+    { loc: "/who-trusts-us", priority: "0.8", changefreq: "monthly" },
+    { loc: "/support-request", priority: "0.6", changefreq: "monthly" },
+    { loc: "/about-us", priority: "0.8", changefreq: "monthly" },
+    { loc: "/schedule", priority: "0.7", changefreq: "monthly" },
+    { loc: "/methodology", priority: "0.7", changefreq: "monthly" },
+    { loc: "/for-ai.txt", priority: "0.5", changefreq: "monthly" },
   ];
 
   const entries = urls

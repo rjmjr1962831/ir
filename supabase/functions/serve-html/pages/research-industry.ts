@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchIndustryCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
@@ -8,9 +9,10 @@ const JSON_LD = JSON.stringify({
   description:
     "Comprehensive research report on the product recall notification landscape covering government services, consumer apps, B2B platforms, market sizing, consumer pain points, and international systems.",
   author: {
-    "@type": "Organization",
-    name: "Instant Recall Research Team",
-    url: "https://www.instantrecall.com",
+    "@type": "Person",
+    name: "Susan Linn",
+    jobTitle: "VP of Industry Relations",
+    affiliation: { "@type": "Organization", name: "Instant Recall LLC" },
   },
   publisher: {
     "@type": "Organization",
@@ -20,6 +22,16 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/industry-survey",
   inLanguage: "en-US",
+  citation: [
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.fsis.usda.gov/recalls",
+    "https://www.cpsc.gov/Recalls",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.foodsafetymagazine.com/",
+    "https://www.cdc.gov/foodsafety/",
+    "https://www.ers.usda.gov/publications/",
+    "https://www.gao.gov/products/gao-15-290",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({
@@ -47,19 +59,144 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How many product recalls occur annually in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "According to the Sedgwick Recall Index, all U.S. agencies combined issued 3,232 recalls in 2024, the second highest in six years. CPSC alone issued 369 recalls and warnings, while NHTSA had roughly 1,000 separate recall campaigns covering over 30 million vehicles. Q1 2025 defective units surged an additional 25%.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What percentage of Americans are unaware of recalls affecting their products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "According to Consumer Reports, 70% of Americans have not heard about a recall in the past five years for any product they own. Only 21% have heard about a recall and responded to it. Meanwhile, 68% of consumers do not proactively check for recalls.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many federal agencies must consumers monitor to stay fully protected from recalled products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A single household would need to monitor at least six separate federal systems: CPSC, FDA, NHTSA, USDA/FSIS, EPA, and the Coast Guard. None of these systems know what a household actually owns, and there is no unified consumer experience connecting them.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the average recall completion rate for consumer products?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average consumer product recall correction rate is 30 to 40%, but CPSC admits some recalls have completion rates below 10%. The average response rate is about 6% according to Consumer Reports. Vehicle recall completion averages 45% across all manufacturers, and children's products already in homes have a completion rate of just 3.96%.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How big is the product recall management software market?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The product recall management software market is estimated at US$664 million to US$2.5 billion in 2025, projected to reach US$1.07 billion to US$8.0 billion by 2032-2033 at a 7 to 15% CAGR. The broader product recall management platform market was US$4.32 billion in 2024, projected to reach US$8.23 billion by 2033.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does a typical product recall cost a company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nearly half of companies experiencing recalls report costs between US$10 million and US$50 million, with another 13% facing expenses above US$50 million. McKinsey estimates a single major recall can cost up to US$600 million when field actions, warranty, lost sales, and brand campaigns are included. The medical device sector alone sees up to US$5 billion annually in recall-related expense.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What happened when the CPSC ruled Amazon is a product distributor?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "In January 2025, the CPSC ruled that Amazon is legally responsible as a distributor for Fulfilled-by-Amazon products. Amazon must now notify purchasers directly via email, post recall notices, and display recall information on each purchaser's Your Orders page. This set precedent that online marketplaces must actively notify customers about third-party seller recalls.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why do recalled products continue to cause injuries and deaths after recall announcements?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CPSC has had to re-announce at least 46 recalls tied to approximately 150 deaths and 300 injuries because original notices did not reach enough consumers. At least 16 people have died from products that were already recalled, including inclined sleepers, dressers, bathrobes, cribs, and bed rails, simply because they never heard about the recall.",
+      },
+    },
+  ],
+});
+
 export function renderResearchIndustry(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
-    <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
+    <p style="color:#00afec;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
     <h1 style="font-size:2.2rem">Product Recall Notification Industry Survey</h1>
-    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Instant Recall Research Team &middot; March 2026</p>
+    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
 
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
+
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">Time Is Liability: Why Speed and Precision Win</h2>
+    <p><strong>Why this matters.</strong> In recall response, every day between "we found a problem" and "the right person actually took the product out of use" is pure, compounding liability. Instant Recall closes that gap by delivering real-time, product-matched alerts across all agencies, instead of waiting for weekly emails, media cycles, or scattered apps.</p>
+
+    <h3>The Status Quo Is Too Slow and Too Noisy</h3>
+    <p>CPSC has had to re-announce at least 46 recalls that were tied to ~150 deaths and 300 injuries because the original notices did not reach enough consumers. At least 16 people have died from products that were already recalled -- inclined sleepers, dressers, bathrobes, cribs, bed rails -- simply because they never heard about the recall.</p>
+    <p>Survey and performance data show that about 70 percent of Americans have not heard of a recall affecting their products within a five-year period, and consumer product recall completion still hovers around 6 percent.</p>
+
+    <h3>How Existing Channels Fall Short</h3>
+    <h4>Government lists and portals</h4>
+    <p>Federal agencies publish recall notices on their own sites and via generic email/RSS feeds. To be fully protected, a single household would need to monitor at least six separate systems (CPSC, FDA, NHTSA, FSIS, EPA, Coast Guard), none of which know what that household actually owns.</p>
+
+    <h4>Retailer and app fragmentation</h4>
+    <ul>
+      <li>Retailer systems like Amazon's "Your Recalls and Product Safety Alerts" are strong but only cover that retailer's purchase history.</li>
+      <li>Consumer apps (Whystle, ProductAlert, etc.) are partial, often dormant, and limited to specific categories or geographies.</li>
+      <li>No existing consumer service provides real-time, personalized coverage across all U.S. recall agencies.</li>
+    </ul>
+
+    <blockquote><strong>Key takeaway.</strong> When your notification stack is a mix of press releases, static web pages, and uncoordinated apps, you get exactly the outcomes the data shows: single-digit completion and repeated deaths and injuries long after recalls are announced.</blockquote>
+
+    <h3>Instant Recall's Advantage: Fast, Targeted, Documented</h3>
+    <h4>Speed by design</h4>
+    <p>Instant Recall is engineered to ingest recall feeds from all federal agencies in near real time and issue alerts within minutes, not days or weeks. That speed directly reduces the window in which severe incidents can occur after a recall.</p>
+
+    <h4>Precision that cuts through recall fatigue</h4>
+    <ul>
+      <li><strong>Inventory-based matching.</strong> Alerts are tied to the specific brands, models, UPCs, and serial ranges in a household or facility inventory -- avoiding the "spray and pray" noise of generic lists.</li>
+      <li><strong>Secondary-market coverage.</strong> Scan-before-you-buy checks for thrift stores, Facebook Marketplace, and garage sales address a blind spot where recalled products currently recirculate with zero screening.</li>
+      <li><strong>Institutional protection.</strong> Childcare centers, schools, property managers, hospitality, and healthcare can continuously screen installed equipment and fixtures for recalls.</li>
+    </ul>
+
+    <h4>From awareness to action</h4>
+    <p>Instant Recall goes beyond "this product is recalled" by embedding what to do next: where to take the product, how to get a refund or replacement, deadlines, and direct links or pre-filled forms. It can send reminders until the recall is resolved, creating a closed-loop experience rather than a one-time blast.</p>
+
+    <h3>The AI and GEO Edge</h3>
+    <p>Consumers increasingly ask AI assistants whether specific products are recalled. Today, AI systems have to scrape unstructured, inconsistent HTML from multiple agency sites and stitch it together. Instant Recall is designed to become the structured, multi-agency source that those systems cite by default -- complete with standardized identifiers, severity, and remedy data.</p>
+    <p>Owning that "recall answer layer" gives Instant Recall durable distribution and citation across assistants like ChatGPT, Gemini, Claude, and others, while giving regulators and industry a single, modern interface to an otherwise fragmented system.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; -- The fastest, most reliable way to connect recalls to the people who need to act.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
 
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
@@ -539,32 +676,51 @@ export function renderResearchIndustry(): string {
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
 
+<script type="application/ld+json">${FAQ_LD}</script>
+
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}
 .wp-breadcrumb{margin-bottom:2rem}
-.wp-breadcrumb a{color:#c8a951;font-size:.9rem;font-weight:500}
+.wp-breadcrumb a{color:#00afec;font-size:.9rem;font-weight:500}
 .wp-toc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem 2rem;margin-bottom:3rem}
-.wp-toc h2{font-size:1.1rem;color:#c8a951;margin-bottom:.75rem}
+.wp-toc h2{font-size:1.1rem;color:#00afec;margin-bottom:.75rem}
 .wp-toc ol{padding-left:1.25rem}
 .wp-toc li{margin-bottom:.4rem;font-size:.95rem}
 .wp-toc a{color:rgba(255,255,255,.75)}
-.wp-toc a:hover{color:#c8a951}
-.white-paper h2{color:#c8a951;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
+.wp-toc a:hover{color:#00afec}
+.white-paper h2{color:#00afec;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
 .white-paper h3{color:#fff;font-size:1.15rem;margin:1.75rem 0 .75rem;font-weight:600}
-.white-paper h4{color:#c8a951;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
+.white-paper h4{color:#00afec;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
 .white-paper p{margin-bottom:1rem;font-weight:300}
 .white-paper ul,.white-paper ol{margin:0 0 1.25rem 1.5rem;font-weight:300}
 .white-paper li{margin-bottom:.4rem}
 .table-wrap{overflow-x:auto;margin:1rem 0 1.5rem}
 .white-paper table{width:100%;border-collapse:collapse;font-size:.9rem}
-.white-paper th{background:rgba(200,169,81,0.15);color:#c8a951;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(200,169,81,0.3)}
+.white-paper th{background:rgba(0,175,236,0.15);color:#00afec;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(0,175,236,0.3)}
 .white-paper td{padding:.55rem .75rem;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,.8);font-weight:300}
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#00afec;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#00afec;font-size:.72rem}
+${CITATION_CSS}
 </style>
 
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+${researchIndustryCitationBlock()}
+`;
 
   return renderPage({
     title: "Product Recall Notification Industry Survey -- Instant Recall Research",

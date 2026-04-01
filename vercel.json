@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/nightly-refresh",
+      "schedule": "0 5 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -6,6 +12,10 @@
         {
           "key": "Link",
           "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\", </ai-content-index.json>; rel=\"alternate\"; type=\"application/json\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600"
         }
       ]
     }
@@ -21,18 +31,31 @@
     { "source": "/privacy-policy", "destination": "/api/html?path=%2Fprivacy-policy" },
     { "source": "/terms-and-conditions", "destination": "/api/html?path=%2Fterms-and-conditions" },
     { "source": "/about-us", "destination": "/api/html?path=%2Fabout-us" },
+    { "source": "/methodology", "destination": "/api/html?path=%2Fmethodology" },
     { "source": "/geo-ledger", "destination": "/api/html?path=%2Fgeo-ledger" },
     { "source": "/dashboard", "destination": "/api/html?path=%2Fdashboard" },
+    { "source": "/crawl-stats", "destination": "/api/html?path=%2Fcrawl-stats" },
     { "source": "/research", "destination": "/api/html?path=%2Fresearch" },
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },
     { "source": "/research/legal-case-data", "destination": "/api/html?path=%2Fresearch%2Flegal-case-data" },
+    { "source": "/research/usfoods-recall-process", "destination": "/api/html?path=%2Fresearch%2Fusfoods-recall-process" },
+    { "source": "/research/sysco-recall-packet", "destination": "/api/html?path=%2Fresearch%2Fsysco-recall-packet" },
+    { "source": "/incident-response", "destination": "/api/html?path=%2Fincident-response" },
+    { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
+    { "source": "/regulatory-reporting", "destination": "/api/html?path=%2Fregulatory-reporting" },
+    { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
+    { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
+    { "source": "/customer-quotes-solutions", "destination": "/api/html?path=%2Fcustomer-quotes-solutions" },
+    { "source": "/support-request", "destination": "/api/html?path=%2Fsupport-request" },
+    { "source": "/who-trusts-us", "destination": "/api/html?path=%2Fwho-trusts-us" },
     { "source": "/robots.txt", "destination": "/api/robots" },
     { "source": "/llms.txt", "destination": "/api/llms" },
     { "source": "/llms-full.txt", "destination": "/api/llms-full" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/ai-content-index.json", "destination": "/api/ai-content-index" },
     { "source": "/.well-known/ai-content-index.json", "destination": "/api/ai-content-index" },
+    { "source": "/.well-known/mcp.json", "destination": "/api/mcp" },
     { "source": "/for-ai", "destination": "/api/for-ai" },
     { "source": "/for-ai.txt", "destination": "/api/for-ai" }
   ]

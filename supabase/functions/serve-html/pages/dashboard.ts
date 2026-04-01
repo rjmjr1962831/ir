@@ -144,8 +144,68 @@ function renderColumnChart(history: ScoreHistory[], liveScore: number): string {
   </div>`;
 }
 
+interface ContactSubmission {
+  id: number;
+  ts: string;
+  email: string;
+  first_name: string | null;
+  last_name: string | null;
+  company: string | null;
+  num_locations: string | null;
+  status: string;
+}
+
+async function fetchContactSubmissions(): Promise<ContactSubmission[]> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/contact_submissions?select=id,ts,email,first_name,last_name,company,num_locations,status&order=ts.desc&limit=20`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
+function renderContactTable(submissions: ContactSubmission[]): string {
+  if (submissions.length === 0) {
+    return '<div style="color:#556677;font-size:.85rem;padding:1rem">No contact submissions yet.</div>';
+  }
+
+  const rows = submissions.map(s => {
+    const date = new Date(s.ts).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const name = [s.first_name, s.last_name].filter(Boolean).join(" ") || "-";
+    const statusColor = s.status === "new" ? "#00d4aa" : s.status === "contacted" ? "#ffd93d" : "#556677";
+    return `<tr>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa;white-space:nowrap">${date}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#e8e8e8">${name}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem"><a href="mailto:${s.email}" style="color:#00d4aa">${s.email}</a></td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa">${s.company || "-"}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a;font-size:.85rem;color:#8899aa">${s.num_locations || "-"}</td>
+      <td style="padding:.6rem .75rem;border-bottom:1px solid #1a2a3a"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:${statusColor};color:#0f1923">${s.status}</span></td>
+    </tr>`;
+  }).join("");
+
+  return `<div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Date</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Name</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Email</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Company</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Locations</th>
+          <th style="padding:.6rem .75rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#556677;border-bottom:2px solid #1a2a3a">Status</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
 export async function handleDashboard(_req: Request): Promise<Response> {
-  const [scoreData, history] = await Promise.all([fetchGeoScore(), fetchScoreHistory()]);
+  const [scoreData, history, contactSubs] = await Promise.all([fetchGeoScore(), fetchScoreHistory(), fetchContactSubmissions()]);
 
   const now = new Date();
   const dateStr = now.toLocaleDateString("en-US", {
@@ -263,6 +323,12 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">GEO implementation ledger, signal tracking, and score history.</div>
         <span class="badge badge-live">Live</span>
       </a>
+      <a href="/crawl-stats" class="page-card featured" style="text-decoration:none;color:inherit">
+        <h3>Crawl Stats</h3>
+        <span class="route">/crawl-stats</span>
+        <div class="desc">Bot crawl logging, AI vs search vs social breakdown, hourly chart.</div>
+        <span class="badge badge-live">Live</span>
+      </a>
       <div class="page-card">
         <h3>Homepage</h3>
         <a href="/" class="route">/</a>
@@ -311,6 +377,93 @@ export async function handleDashboard(_req: Request): Promise<Response> {
         <div class="desc">Machine-readable summary page for AI discovery.</div>
         <span class="badge badge-live">Live</span>
       </div>
+      <div class="page-card">
+        <h3>Recall Communications</h3>
+        <a href="/incident-response" class="route">/incident-response</a>
+        <div class="desc">24/7/365 expert recall team, multi-channel notification, real-time visibility.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Regulatory Reporting</h3>
+        <a href="/cost-recovery" class="route">/cost-recovery</a>
+        <div class="desc">Audit-ready documentation, automated FDA/USDA reporting, cost recovery tracking.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Technology Prowess</h3>
+        <a href="/technology-prowess" class="route">/technology-prowess</a>
+        <div class="desc">Purpose-built recall infrastructure, mobile portals, automated escalation.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Industry Gold Standard</h3>
+        <a href="/industry-standard" class="route">/industry-standard</a>
+        <div class="desc">Trusted by the world's leading food companies for 20+ years.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Customer Testimonials</h3>
+        <a href="/customer-quotes-solutions" class="route">/customer-quotes-solutions</a>
+        <div class="desc">What Performance Food Group, US Foods, Chick-fil-A, Casey's, and others say.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Support Request</h3>
+        <a href="/support-request" class="route">/support-request</a>
+        <div class="desc">Client support form. Processed within 1 business day.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH PAGES -->
+  <div class="dash-section">
+    <h2>Research</h2>
+    <div class="page-grid">
+      <div class="page-card">
+        <h3>Research Hub</h3>
+        <a href="/research" class="route">/research</a>
+        <div class="desc">Index page linking to all research reports.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Legal Case Data</h3>
+        <a href="/research/legal-case-data" class="route">/research/legal-case-data</a>
+        <div class="desc">Major recall lawsuits, post-sale duty to warn, CPSC enforcement, class action settlements.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Industry Survey</h3>
+        <a href="/research/industry-survey" class="route">/research/industry-survey</a>
+        <div class="desc">Competitive landscape, market size, consumer pain points, international systems.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Regulatory Environment</h3>
+        <a href="/research/regulatory-environment" class="route">/research/regulatory-environment</a>
+        <div class="desc">Federal agencies (CPSC, FDA, NHTSA, USDA), legislation, enforcement, and penalties.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>US Foods Recall Process</h3>
+        <a href="/research/usfoods-recall-process" class="route">/research/usfoods-recall-process</a>
+        <div class="desc">Customer-authored document. US Foods names Instant Recall as their recall system.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <div class="page-card">
+        <h3>Sysco Recall Packet</h3>
+        <a href="/research/sysco-recall-packet" class="route">/research/sysco-recall-packet</a>
+        <div class="desc">Customer-authored document. Sysco names Instant Recall across 340+ facilities.</div>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT SUBMISSIONS -->
+  <div class="dash-section">
+    <h2>Contact Submissions</h2>
+    <div style="background:#111d28;border:1px solid #1a2a3a;border-radius:12px;padding:1.25rem">
+      ${renderContactTable(contactSubs)}
     </div>
   </div>
 
@@ -327,7 +480,7 @@ export async function handleDashboard(_req: Request): Promise<Response> {
     status: 200,
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "public, max-age=60, s-maxage=300",
+      "Cache-Control": "private, max-age=30",
     },
   });
 }

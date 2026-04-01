@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchLegalCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
@@ -8,9 +9,10 @@ const JSON_LD = JSON.stringify({
   description:
     "Major product recall lawsuits, post-sale duty to warn doctrine, retailer liability developments, CPSC enforcement actions, class action settlement patterns, and the legal value of third-party notification services.",
   author: {
-    "@type": "Organization",
-    name: "Instant Recall Research Team",
-    url: "https://www.instantrecall.com",
+    "@type": "Person",
+    name: "Susan Linn",
+    jobTitle: "VP of Industry Relations",
+    affiliation: { "@type": "Organization", name: "Instant Recall LLC" },
   },
   publisher: {
     "@type": "Organization",
@@ -20,6 +22,16 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/legal-case-data",
   inLanguage: "en-US",
+  citation: [
+    "https://www.cpsc.gov/Recalls",
+    "https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance",
+    "https://www.nhtsa.gov/recalls",
+    "https://www.law.cornell.edu/wex/products_liability",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "https://www.justice.gov/criminal-fraud",
+    "https://www.ali.org/publications/show/torts-liability-physical-and-emotional-harm/",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({
@@ -32,19 +44,143 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the post-sale duty to warn in product liability law?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Under Restatement (Third) of Torts Section 10, sellers are liable for harm caused by failing to provide a warning after sale if a reasonable person would have done so. Courts apply a four-factor test covering knowledge of risk, identifiability of affected consumers, ability to communicate effectively, and severity of harm.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What was the largest child wrongful death settlement in a product recall case?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The IKEA MALM dresser tip-over case resulted in a US$46 million settlement for the death of 2-year-old Jozef Dudek in 2020. His parents were IKEA Family members who purchased the dresser with an IKEA credit card, but IKEA never notified them of the 2016 recall despite having their purchase data.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What percentage of recalled consumer products are actually returned or fixed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average consumer product recall response rate is only about 6%, according to Consumer Reports. CPSC estimates follow-up at roughly 10%. This means for every 100 recalled products in circulation, approximately 90 to 94 remain in consumer homes unaddressed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can retailers be held liable for selling recalled products they did not manufacture?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Under strict product liability, every entity in the supply chain can share liability, even without knowledge of the defect. In July 2024, the CPSC voted unanimously that Amazon is a distributor for Fulfilled-by-Amazon products, requiring Amazon to notify purchasers directly about recalls covering 400,000+ hazardous products.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the penalties for failing to report product hazards to the CPSC?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CPSC civil penalties increased 64% year-over-year in FY 2023, reaching US$52 to 55 million total. Individual penalties have reached US$19.065 million (Peloton) and US$16 million (HSN). The proposed CAP Act would raise per-violation caps to US$250,000 and eliminate the maximum cap entirely.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Have any executives gone to prison for product recall violations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. In June 2025, two former Gree USA executives were sentenced to 38 and 40 months in federal prison for conspiracy and failure to report hazardous dehumidifiers that caused approximately 450 fires. This was the first-ever criminal prosecution and sentencing of corporate executives under the Consumer Product Safety Act.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much have major product recall settlements totaled in recent years?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Top 10 products liability and mass tort settlements totaled approximately US$50.3 billion in 2022, US$25.8 billion in 2023, and US$23.4 billion in 2024. Individual cases include Takata airbags at over US$1.5 billion and GM ignition switch at over US$1 billion in combined penalties and settlements.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is recall fatigue and why does it matter legally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Recall fatigue is the phenomenon where consumers become desensitized to recall announcements due to their frequency, with consumer product recalls surging 115% since 2018. Courts have recognized it both ways: manufacturers argue low completion rates stem from fatigue rather than notification failures, while plaintiffs argue fatigue makes more robust notification necessary.",
+      },
+    },
+  ],
+});
+
 export function renderResearchLegal(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
-    <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
+    <p style="color:#00afec;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
     <h1 style="font-size:2.2rem">Legal Case Data and Liability Research</h1>
-    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Instant Recall Research Team &middot; March 2026</p>
+    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
 
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
+
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">Legal and Criminal Risk in the Recall Era</h2>
+    <p><strong>Why this matters.</strong> Recalls no longer "fix" liability by themselves. Courts and regulators now look at how quickly and effectively you warned people, and they are willing to impose eight-figure penalties and even prison time when notification fails. Instant Recall gives you a defensible, documented way to prove you met your post-sale duty to warn.</p>
+
+    <h3>The Risk Has Changed</h3>
+    <p>Recall volume and enforcement are both rising sharply. U.S. agencies now issue more than 3,200 recalls a year affecting hundreds of millions of units, while average consumer response rates sit at roughly 6 to 10 percent and vehicle completion averages about 45 percent.</p>
+    <p>At the same time, CPSC civil penalties have increased 64 percent year-over-year, with individual cases in the US$15 to 19 million range, and NHTSA penalties reaching US$200 million in the Takata airbag matter.</p>
+
+    <h3>Where Companies Are Getting Hurt</h3>
+    <h4>Post-sale duty to warn <span class="exec-pill">Legal standard</span></h4>
+    <p>Restatement (Third) of Torts Section 10 makes sellers liable if a "reasonable person" would have provided a warning after learning of a risk, especially where communication can be effectively targeted.</p>
+    <p>Today's 6 percent completion rates are hard to reconcile with "effective communication," particularly when 70 percent of Americans say they have not heard about any relevant recall in the past five years.</p>
+
+    <h4>Landmark cases that turned on notification</h4>
+    <ul>
+      <li><strong>IKEA MALM / Dudek.</strong> US$46M child wrongful-death settlement where IKEA had full purchase data but never notified the family of a dresser recall.</li>
+      <li><strong>Fisher-Price Rock 'n Play.</strong> ~100 infant deaths, class settlement of US$19M; recall had to be re-announced after millions of units remained in homes.</li>
+      <li><strong>Takata airbags.</strong> 67M inflators recalled in the U.S., deaths continuing years later from unrepaired vehicles; NHTSA resorted to "Do Not Drive" orders.</li>
+      <li><strong>Gree dehumidifiers.</strong> ~450 fires, US$15.45M civil penalty, US$91M deferred-prosecution penalty, and the first CPSA prison sentences (38 to 40 months) for executives who delayed reporting.</li>
+    </ul>
+
+    <h3>Expanding Liability for Sellers and Platforms</h3>
+    <p>Most U.S. product cases use strict liability. Every entity in the chain, including retailers and marketplaces, can be liable even if they did not manufacture the product or know it was defective.</p>
+    <p>The 2024 CPSC ruling that Amazon is a "distributor" for Fulfilled-by-Amazon products now requires Amazon to email recall notices and flag them in "Your Orders," signaling that platforms and intermediaries are expected to carry notification duties.</p>
+
+    <blockquote><strong>Key takeaway.</strong> A recall filing is now just the starting line. If you cannot show how you actually reached the end user, you are exposed to strict liability, aggravated damages, and, in extreme cases, criminal prosecution.</blockquote>
+
+    <h3>How Instant Recall Reduces Legal and Criminal Exposure</h3>
+    <h4>From "generic notice" to provable duty to warn</h4>
+    <ul>
+      <li><strong>Personalized matching.</strong> Alerts only go to consumers and facilities that actually have affected SKUs or serial ranges, cutting through recall fatigue.</li>
+      <li><strong>Multi-channel delivery.</strong> SMS, email, push, and optional voice/mail reach high-risk groups (parents, elderly, non-English speakers) where they are.</li>
+      <li><strong>Actionable instructions.</strong> Messages include what to do, where to go, deadlines, and direct links to remedy programs, not just "there is a recall."</li>
+      <li><strong>Audit-ready logs.</strong> Time-stamped evidence of who was notified, when, how often, and what they were told, aligned with CPSC Recall Handbook guidance on effective communication.</li>
+    </ul>
+
+    <p>For manufacturers, retailers, and marketplaces, Instant Recall operationalizes the post-sale duty to warn and creates the documentation regulators and courts increasingly expect to see.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; &ndash; The fastest, most reliable way to execute critical recall communications.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
 
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
@@ -460,33 +596,55 @@ export function renderResearchLegal(): string {
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
 
+<script type="application/ld+json">${FAQ_LD}</script>
+
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}
 .wp-breadcrumb{margin-bottom:2rem}
-.wp-breadcrumb a{color:#c8a951;font-size:.9rem;font-weight:500}
+.wp-breadcrumb a{color:#00afec;font-size:.9rem;font-weight:500}
 .wp-toc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem 2rem;margin-bottom:3rem}
-.wp-toc h2{font-size:1.1rem;color:#c8a951;margin-bottom:.75rem}
+.wp-toc h2{font-size:1.1rem;color:#00afec;margin-bottom:.75rem}
 .wp-toc ol{padding-left:1.25rem}
 .wp-toc li{margin-bottom:.4rem;font-size:.95rem}
 .wp-toc a{color:rgba(255,255,255,.75)}
-.wp-toc a:hover{color:#c8a951}
-.white-paper h2{color:#c8a951;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
+.wp-toc a:hover{color:#00afec}
+.white-paper h2{color:#00afec;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
 .white-paper h3{color:#fff;font-size:1.15rem;margin:1.75rem 0 .75rem;font-weight:600}
-.white-paper h4{color:#c8a951;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
+.white-paper h4{color:#00afec;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
 .white-paper p{margin-bottom:1rem;font-weight:300}
 .white-paper ul,.white-paper ol{margin:0 0 1.25rem 1.5rem;font-weight:300}
 .white-paper li{margin-bottom:.4rem}
-.white-paper blockquote{border-left:3px solid #c8a951;padding:.75rem 1.25rem;margin:1rem 0 1.5rem;background:rgba(200,169,81,0.05);font-style:italic;color:rgba(255,255,255,.8);font-weight:300}
+.white-paper blockquote{border-left:3px solid #00afec;padding:.75rem 1.25rem;margin:1rem 0 1.5rem;background:rgba(0,175,236,0.05);font-style:italic;color:rgba(255,255,255,.8);font-weight:300}
 .table-wrap{overflow-x:auto;margin:1rem 0 1.5rem}
 .white-paper table{width:100%;border-collapse:collapse;font-size:.9rem}
-.white-paper th{background:rgba(200,169,81,0.15);color:#c8a951;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(200,169,81,0.3)}
+.white-paper th{background:rgba(0,175,236,0.15);color:#00afec;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(0,175,236,0.3)}
 .white-paper td{padding:.55rem .75rem;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,.8);font-weight:300}
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+
+/* Executive Summary */
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#00afec;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-pill{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,.5);margin-left:6px;vertical-align:middle}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#00afec;font-size:.72rem}
+${CITATION_CSS}
 </style>
 
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+${researchLegalCitationBlock()}
+`;
 
   return renderPage({
     title: "Legal Case Data and Liability Research -- Instant Recall Research",

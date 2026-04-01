@@ -1,4 +1,5 @@
 import { renderPage } from "../shared/layout.ts";
+import { researchRegulatoryCitationBlock, CITATION_CSS } from "../shared/citations.ts";
 
 const JSON_LD = JSON.stringify({
   "@context": "https://schema.org",
@@ -8,9 +9,10 @@ const JSON_LD = JSON.stringify({
   description:
     "In-depth examination of the six federal agencies, key legislation, mandatory reporting requirements, recall effectiveness data, penalty trends, and international regulatory comparisons shaping the U.S. product recall system.",
   author: {
-    "@type": "Organization",
-    name: "Instant Recall Research Team",
-    url: "https://www.instantrecall.com",
+    "@type": "Person",
+    name: "Susan Linn",
+    jobTitle: "VP of Industry Relations",
+    affiliation: { "@type": "Organization", name: "Instant Recall LLC" },
   },
   publisher: {
     "@type": "Organization",
@@ -20,6 +22,18 @@ const JSON_LD = JSON.stringify({
   datePublished: "2026-03",
   url: "https://www.instantrecall.com/research/regulatory-environment",
   inLanguage: "en-US",
+  citation: [
+    "https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls",
+    "https://www.fsis.usda.gov/recalls",
+    "https://www.cpsc.gov/Recalls",
+    "https://www.nhtsa.gov/recalls",
+    "https://www.epa.gov/recalls",
+    "https://www.congress.gov/bill/111th-congress/house-bill/2749",
+    "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma",
+    "https://www.gao.gov/products/gao-22-105011",
+    "https://www.consumerreports.org/product-recalls/",
+    "https://www.foodsafetymagazine.com/",
+  ],
 });
 
 const BREADCRUMB_LD = JSON.stringify({
@@ -32,19 +46,151 @@ const BREADCRUMB_LD = JSON.stringify({
   ],
 });
 
+const FAQ_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Which federal agencies oversee product recalls in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Six primary federal agencies handle product recalls: the CPSC (consumer products), FDA (food, drugs, medical devices, cosmetics), NHTSA (vehicles, car seats, tires), USDA FSIS (meat, poultry, egg products), EPA (pesticides, toxic substances), and the U.S. Coast Guard (boats, marine equipment). Each agency has separate reporting requirements and recall processes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the FDA recall classifications and what do they mean?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "FDA uses a three-tier recall classification system. Class I indicates reasonable probability of serious adverse health consequences or death. Class II may cause temporary or medically reversible adverse health consequences. Class III is not likely to cause adverse health consequences. The FSMA (2011) granted FDA mandatory recall authority for food, but only for Class I situations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How quickly must companies report product defects to regulators?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Under Section 15(b) of the Consumer Product Safety Act, companies must report to the CPSC within 24 hours of obtaining reportable information. NHTSA requires manufacturers to file within 5 business days of learning about a defect. USDA/FSIS requires establishments to notify within 24 hours of becoming aware of adulterated or misbranded product.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the recall gap and how long does it typically last?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The recall gap is the dangerous period between when a company discovers a defect and when consumers are actually notified and protected. Research on the six largest auto manufacturers shows an average time from discovery to recall of 6.37 months, with a minimum of 1 month and maximum of 39 months (over 3 years).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the current CPSC civil penalty limits for recall violations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The current CPSC maximum is US$100,000 per violation and US$15 million for a series of related violations. The median penalty increased 29% from roughly US$7.2 million (2015-2020) to US$9.3 million (2020-2025). The proposed CAP Act would raise per-violation caps to US$250,000 and eliminate the maximum series cap entirely.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do CPSC recall rates and enforcement actions trend in recent years?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Annual CPSC recalls surged 93% from 2021 to 2025, and unilateral safety warnings surged over 700% in the same period. Over 580 million product units were affected in the first nine months of 2024 alone. CPSC now reviews every recall for potential failure to timely report, a significant shift from the historical lighter-touch approach.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does the EU General Product Safety Regulation (GPSR) compare to U.S. recall requirements?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The EU GPSR, effective December 13, 2024, requires direct consumer notification without undue delay, standardized recall notice formats, and consumer choice of at least two remedies (repair, replacement, or refund). Unlike the U.S., the EU also requires all products to be safe before going on sale. The U.S. has no general safety provision and does not mandate direct consumer notification except for vehicles via mail.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the average vehicle recall completion rate in the United States?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The average vehicle recall completion rate across all manufacturers is 45% according to 2025 NHTSA data. Newer vehicles (1-4 years old) achieve roughly 87% completion, but vehicles 5-10 years old drop to 44%, and vehicles over 10 years old fall to 29%. Some manufacturers report 0% completion rates for certain recalls.",
+      },
+    },
+  ],
+});
+
 export function renderResearchRegulatory(): string {
   const body = `
 <section class="hero" style="min-height:320px;padding:3.5rem 2rem">
-  <div class="hero-overlay" style="background:rgba(11,11,26,0.85)"></div>
+  <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
-    <p style="color:#c8a951;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
+    <p style="color:#00afec;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;margin-bottom:.75rem">Research Report</p>
     <h1 style="font-size:2.2rem">The Regulatory Environment of Product Recalls in the United States</h1>
-    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Instant Recall Research Team &middot; March 2026</p>
+    <p style="margin-top:.75rem;opacity:.7;font-size:.95rem">Susan Linn, VP of Industry Relations, Instant Recall &middot; March 2026</p>
   </div>
 </section>
 
 <article class="white-paper">
   <nav class="wp-breadcrumb"><a href="/research">&larr; Back to Research</a></nav>
+
+  <section class="exec-summary">
+    <div class="exec-summary-bar"></div>
+    <div class="exec-summary-header">
+      <div>
+        <div class="exec-summary-logo">Instant Recall&trade;</div>
+        <div class="exec-summary-tagline">Protecting your customers, your brand, and your bottom line</div>
+      </div>
+      <div class="exec-summary-badge">Executive Summary</div>
+    </div>
+
+    <h2 class="exec-summary-title">The True Financial Cost of Recalls</h2>
+    <p><strong>Why this matters.</strong> For most brands, the question is not whether a recall will happen but how expensive it will be. With typical recall events costing eight to ten figures when you add logistics, penalties, class actions, and brand damage, a relatively small investment in faster, better notification is one of the highest-ROI risk controls available.</p>
+
+    <h3>What Recalls Really Cost</h3>
+    <h4>Direct costs <span class="exec-pill">Hard dollars</span></h4>
+    <ul>
+      <li>Top 10 products-liability and mass-tort settlements totalled ~US$50.3B (2022), US$25.8B (2023), and US$23.4B (2024), with billions more by mid-2025.</li>
+      <li>Nearly half of companies report recall costs between US$10M and US$50M; ~13 percent exceed US$50M for a single event.</li>
+      <li>Analysts estimate that a major recall can reach ~US$600M once field actions, warranty, lost sales, and brand campaigns are accounted for.</li>
+      <li>The medical device sector alone sees up to US$5B annually in recall-related expense.</li>
+    </ul>
+
+    <h4>Indirect and long-tail costs <span class="exec-pill">Hidden impact</span></h4>
+    <ul>
+      <li>Deaths and injuries that occur after recall issuance (Rock 'n Play, MALM, Takata, Gree) keep claims open for years and drive the largest payouts.</li>
+      <li>Brand damage: more than half of consumers say they would avoid a brand that has had a recall, and many expect generous remedies and frictionless returns.</li>
+      <li>Downstream effects include retailer de-listings, tighter contract terms, and higher cost of capital after large events.</li>
+    </ul>
+
+    <h3>Insurance, Capital, and Compliance</h3>
+    <p>Standard product-liability policies cover bodily injury and property damage, but they generally do not pay for recall logistics, notification, and brand rehabilitation. Those costs fall under specialized recall insurance.</p>
+    <p>Typical patterns from market guidance:</p>
+    <ul>
+      <li>Recall insurance premiums often start around US$15,000 annually with ~US$25,000 deductibles, scaling sharply with claims and perceived risk controls.</li>
+      <li>Insurers and brokers now actively look for evidence of recall preparedness and notification systems when they underwrite and price coverage.</li>
+      <li>Regulators are imposing more frequent and larger civil penalties, making poor recall execution a direct P&amp;L line item, not just a legal issue.</li>
+    </ul>
+
+    <blockquote><strong>Key takeaway.</strong> The most expensive part of a recall is rarely the initial pull. It is the extended tail of injuries, lawsuits, and brand erosion that happens when products remain in the field because customers never get the message.</blockquote>
+
+    <h3>Instant Recall's Financial Value</h3>
+    <h4>Fewer post-recall injuries, fewer "nuclear" claims</h4>
+    <p>By getting targeted notices to affected customers in minutes instead of weeks, Instant Recall materially reduces the window in which catastrophic injuries can occur after a recall. Every prevented fatality, amputation, or house fire avoids a seven- or eight-figure claim.</p>
+
+    <h4>Better terms from insurers and partners</h4>
+    <ul>
+      <li><strong>For insurers.</strong> Instant Recall provides data that can support premium credits, broader coverage, or preferred status for companies with demonstrably higher completion rates.</li>
+      <li><strong>For retailers and platforms.</strong> Integrated inventory screening and automated customer notification reduce the risk of fines (e.g., TJX's US$13M penalty for selling recalled inclined sleepers) and protect partner relationships.</li>
+      <li><strong>For manufacturers.</strong> Audit-ready logs of outreach efforts strengthen your negotiating position with both regulators and plaintiffs' counsel.</li>
+    </ul>
+
+    <h4>ROI framing for decision-makers</h4>
+    <p>For a mid-size company with typical recall exposure in the tens of millions of dollars, a high-four- or low-five-figure annual investment in Instant Recall can be justified if it prevents a single large claim or civil penalty.</p>
+    <p>For large brands and platforms, the combination of avoided penalties, improved insurance economics, and preserved brand equity makes Instant Recall a small line item relative to the risk it controls.</p>
+
+    <div class="exec-summary-footer">
+      <div>&copy; Instant Recall&trade; -- The fastest, most reliable way to initiate and execute recalls with financial discipline.</div>
+      <div><a href="https://www.instantrecall.com">www.instantrecall.com</a></div>
+    </div>
+  </section>
 
   <nav class="wp-toc">
     <h2>Table of Contents</h2>
@@ -456,32 +602,52 @@ export function renderResearchRegulatory(): string {
   <nav class="wp-breadcrumb" style="margin-top:3rem"><a href="/research">&larr; Back to Research</a></nav>
 </article>
 
+<script type="application/ld+json">${FAQ_LD}</script>
+
 <style>
 .white-paper{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;line-height:1.8;font-size:1.05rem;color:rgba(255,255,255,.88)}
 .wp-breadcrumb{margin-bottom:2rem}
-.wp-breadcrumb a{color:#c8a951;font-size:.9rem;font-weight:500}
+.wp-breadcrumb a{color:#00afec;font-size:.9rem;font-weight:500}
 .wp-toc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem 2rem;margin-bottom:3rem}
-.wp-toc h2{font-size:1.1rem;color:#c8a951;margin-bottom:.75rem}
+.wp-toc h2{font-size:1.1rem;color:#00afec;margin-bottom:.75rem}
 .wp-toc ol{padding-left:1.25rem}
 .wp-toc li{margin-bottom:.4rem;font-size:.95rem}
 .wp-toc a{color:rgba(255,255,255,.75)}
-.wp-toc a:hover{color:#c8a951}
-.white-paper h2{color:#c8a951;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
+.wp-toc a:hover{color:#00afec}
+.white-paper h2{color:#00afec;font-size:1.5rem;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);font-weight:700;letter-spacing:0.3px}
 .white-paper h3{color:#fff;font-size:1.15rem;margin:1.75rem 0 .75rem;font-weight:600}
-.white-paper h4{color:#c8a951;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
+.white-paper h4{color:#00afec;font-size:1rem;margin:1.25rem 0 .5rem;font-weight:600}
 .white-paper p{margin-bottom:1rem;font-weight:300}
 .white-paper ul,.white-paper ol{margin:0 0 1.25rem 1.5rem;font-weight:300}
 .white-paper li{margin-bottom:.4rem}
 .table-wrap{overflow-x:auto;margin:1rem 0 1.5rem}
 .white-paper table{width:100%;border-collapse:collapse;font-size:.9rem}
-.white-paper th{background:rgba(200,169,81,0.15);color:#c8a951;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(200,169,81,0.3)}
+.white-paper th{background:rgba(0,175,236,0.15);color:#00afec;text-align:left;padding:.6rem .75rem;font-weight:600;border-bottom:2px solid rgba(0,175,236,0.3)}
 .white-paper td{padding:.55rem .75rem;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,.8);font-weight:300}
 .white-paper tr:hover td{background:rgba(255,255,255,0.02)}
 .sources-list{font-size:.9rem;line-height:1.9}
 .sources-list li{margin-bottom:.3rem}
+.exec-summary{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:2rem 2.5rem;margin-bottom:2.5rem}
+.exec-summary-bar{border-top:4px solid #d62828;margin-bottom:1rem}
+.exec-summary-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exec-summary-logo{font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff}
+.exec-summary-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,.5)}
+.exec-summary-badge{font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#d62828;font-weight:600}
+.exec-summary-title{font-size:1.4rem;margin:0 0 1rem 0;color:#fff;border:none;padding:0}
+.exec-summary h3{font-size:1.05rem;margin:1.25rem 0 .5rem;color:#00afec;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:.3rem}
+.exec-summary h4{font-size:.95rem;margin:.75rem 0 .4rem;color:rgba(255,255,255,.9);font-weight:600}
+.exec-summary p{font-size:.92rem;margin:.25rem 0 .65rem;color:rgba(255,255,255,.8);font-weight:300;line-height:1.7}
+.exec-summary ul{margin:.25rem 0 .65rem 1.25rem;font-size:.92rem;font-weight:300}
+.exec-summary li{margin-bottom:.35rem;color:rgba(255,255,255,.8)}
+.exec-pill{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,.5);margin-left:6px;vertical-align:middle}
+.exec-summary blockquote{border-left:3px solid #d62828;padding:.6rem 1rem;margin:.75rem 0;font-size:.88rem;color:rgba(255,255,255,.85);background:rgba(214,40,40,0.05);font-style:normal}
+.exec-summary-footer{margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.exec-summary-footer a{color:#00afec;font-size:.72rem}
+${CITATION_CSS}
 </style>
 
-<script type="application/ld+json">${BREADCRUMB_LD}</script>`;
+${researchRegulatoryCitationBlock()}
+`;
 
   return renderPage({
     title: "The Regulatory Environment of Product Recalls -- Instant Recall Research",

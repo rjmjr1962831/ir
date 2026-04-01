@@ -14,6 +14,16 @@ For workflow rules and commands, this file (CLAUDE.md) is authoritative.
 
 **AUTONOMOUS EXECUTION. DO NOT ASK FOR APPROVAL EXCEPT AS NOTED BELOW.** Robert runs with `dangerouslySkipPermissions: true`. Execute all commands without pausing to ask permission. The ONLY exceptions where you stop and ask are: pts/ptm (pushing to branches), ambiguity in requirements, or changes that could break production.
 
+## `rib` (Run In Background)
+
+When Robert types `rib`, immediately move all current inline work to a background agent. No explanation, no apology -- just do it.
+
+**Default behavior (no rib needed):** ALL multi-step tasks -- file reads, fetches, code analysis, rewrites, research -- MUST run as background agents. Never chain 2+ tool calls inline. Never block the conversation waiting for results. Launch as many parallel agents as the task requires and stay available to Robert.
+
+If Robert has to type `rib`, you already failed. The goal is to never need it.
+
+---
+
 **OUTPUT FILES GO IN DOWNLOADS.** Whenever generating a file for Robert (PDFs, reports, CSVs, exports, documents), save it to `C:\Users\ROBER\Downloads\`.
 
 ---
@@ -56,7 +66,10 @@ When Robert says `pk` or "project knowledge":
 
 ### PTS (Push to Staging)
 
-When Robert says `pts`: `git add .`, `git commit`, `git push origin staging`.
+When Robert says `pts`:
+1. `git add .`, `git commit`, `git push origin staging`
+2. Deploy Supabase edge function: `SUPABASE_ACCESS_TOKEN=$SUPABASE_ACCESS_TOKEN npx supabase functions deploy serve-html --no-verify-jwt --project-ref dewbyvlbmkersxjrcknm` (load SUPABASE_ACCESS_TOKEN from .env)
+3. Force redeploy on Vercel (clears edge cache): `curl -s -X POST "https://api.vercel.com/v13/deployments?teamId=team_7PGzhT9wecJMLFkOWDGGxptE&forceNew=1" -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" -d '{"name":"ir","project":"prj_htbgIKYkHEwa0WNdPKVQ4sVy3iiE","target":"production","gitSource":{"type":"github","org":"rjmjr1962831","repo":"ir","ref":"staging"}}'` (load VERCEL_TOKEN from .env)
 
 ### PTM (Push to Main)
 
@@ -70,6 +83,15 @@ When Robert says `ptm`: Run `npm run merge-to-main` only. Do not touch main with
 - No em dashes in generated content, file edits, or responses.
 - For live site checks: use `curl -s -H "Cache-Control: no-cache"` -- do not use web_fetch (returns stale content).
 - Terminal commands: always `cd C:\Users\rober\ir` first.
+
+---
+
+## Key Links
+
+- **Dev Dashboard:** https://ir-zeta.vercel.app/dashboard?token=j0_5lvaDTXf0p0q4-m9EBZ0iIgRF82b6
+- **Progress Report:** https://ir-zeta.vercel.app/progress-report.html
+- **GEO Ledger:** https://ir-zeta.vercel.app/geo-ledger
+- **Crawl Stats:** https://ir-zeta.vercel.app/crawl-stats?token=j0_5lvaDTXf0p0q4-m9EBZ0iIgRF82b6
 
 ---
 

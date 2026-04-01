@@ -251,7 +251,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 
 /* Video embed -- sits inside .intro-section, zero bottom spacing */
 .video-embed{padding:17px 0 0;margin:0}
-.video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.video-embed .video-inner{max-width:800px;margin:0 auto;position:relative;aspect-ratio:16/9;overflow:hidden}
 .video-embed .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
 /* Decades of Trust */

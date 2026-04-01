@@ -261,13 +261,13 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 .decades-section p{font-size:23px;color:#000;line-height:1.4em;font-weight:300;letter-spacing:.43px}
 
 /* Our Solution section */
-.solution-section{background:#efefef;padding:40px 32px}
+.solution-section{background:#f5f5f5;padding:40px 32px}
 .solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:400;letter-spacing:1.34px;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
-.solution-pillar .icon-circle{width:110px;height:110px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%;padding:20px}
-.solution-pillar .icon-circle i{font-size:2.5rem;color:#fff}
-.solution-pillar h3{font-size:.85rem;font-weight:700;color:#272727;text-transform:uppercase;letter-spacing:1px;margin:0}
+.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%;padding:20px}
+.solution-pillar .icon-circle i{font-size:3em;color:#fff}
+.solution-pillar h3{font-size:.85rem;font-weight:700;color:#272727;letter-spacing:1px;margin:0}
 .solution-section .learn-more-btn{display:block;text-align:center;margin-top:2rem}
 .solution-section .learn-more-btn a{display:inline-block;padding:1em 1.5em;border:2px solid #272727;color:#272727;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:all .1s linear;background:transparent;text-decoration:none;min-width:200px}
 .solution-section .learn-more-btn a:hover{background:#1cace6;border-color:#106080;color:#fff}
@@ -353,8 +353,8 @@ const CAROUSEL_JS = `
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    initCarousel('customer-carousel', 6000);
-    initCarousel('safety-carousel', 8000);
+    initCarousel('customer-carousel', 10000);
+    initCarousel('safety-carousel', 10000);
   });
 })();
 `;
@@ -437,7 +437,8 @@ export function renderHome(): string {
 <section class="intro-section">
   <div class="intro-inner">
     <h1>Protecting Your Customers, Your Brand, and Your Bottom Line</h1>
-    <p>Instant Recall\u2122 is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence. Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast\u2014no matter how complex the event.</p>
+    <p>Instant Recall\u2122 is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence.</p>
+    <p style="margin-top:1rem">Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast\u2014no matter how complex the event.</p>
   </div>
   <div class="video-embed">
     <div class="video-inner">
@@ -514,8 +515,7 @@ export function renderHome(): string {
 <!-- 9. CONTACT CTA: White background with HubSpot form -->
 <section class="section-white contact-form-section contact-section-home">
   <div class="section-inner">
-    <h2 style="color:#272727">Accelerate Your Recall Response</h2>
-    <p class="form-subtitle">See how Instant Recall can protect your customers, your organization, and your brand.</p>
+    <h1 style="color:#272727;font-size:46px;font-weight:400">Accelerate Your Recall Response</h1>
     <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
     <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
   </div>

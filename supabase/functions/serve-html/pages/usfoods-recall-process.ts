@@ -179,7 +179,7 @@ ${CITATION_CSS}
 </section>`;
 
   return renderPage({
-    title: "US Foods Recall Process Overview -- Instant Recall",
+    title: "US Foods Recall Process Overview | Instant Recall\u2122",
     description:
       "Full text of the US Foods Recall Process Overview v3, which officially names Instant Recall by BellTower Technologies as the system used to manage recall communications for US Foods customers.",
     path: "/research/usfoods-recall-process",

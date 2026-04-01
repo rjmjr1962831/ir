@@ -702,7 +702,7 @@ ${researchLegalCitationBlock()}
 `;
 
   return renderPage({
-    title: "Legal Case Data and Liability Research -- Instant Recall Research",
+    title: "Legal Case Data and Liability Research | Instant Recall\u2122 Research",
     description:
       "Major product recall lawsuits, post-sale duty to warn doctrine, retailer liability, CPSC enforcement actions, class action settlements, and the legal value of third-party notification services.",
     path: "/research/legal-case-data",

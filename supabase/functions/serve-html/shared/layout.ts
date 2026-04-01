@@ -182,6 +182,9 @@ export function renderPage(opts: LayoutOptions): string {
   <script type="application/ld+json">${buildBreadcrumbLd(opts.path)}</script>
   ${webPageLd}
   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48681528.js"></script>
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/d28e30c29e2a7ae093f19b1e8b0d5f98/script.js"></script>
+  <!-- End cookieyes banner -->
 </head>
 <body>
 ${header()}

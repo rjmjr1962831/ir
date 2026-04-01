@@ -203,7 +203,7 @@ export function renderPress(): string {
 </section>`;
 
   return renderPage({
-    title: "Who Trusts Us | Instant Recall",
+    title: "Who Trusts Us | Instant Recall\u2122",
     description:
       "US Foods and Sysco officially name Instant Recall by BellTower Technologies in their recall process documentation. Trusted by Performance Food Group, Chick-fil-A, Casey's, Topgolf, and more for 25+ years.",
     path: "/who-trusts-us",

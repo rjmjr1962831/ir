@@ -373,7 +373,7 @@ ${CITATION_CSS}
 </section>`;
 
   return renderPage({
-    title: "Sysco Customer Recall Orientation Packet -- Instant Recall",
+    title: "Sysco Customer Recall Orientation Packet | Instant Recall\u2122",
     description:
       "Sysco Corporation's official Customer Recall Orientation Packet (RG-12) describing the Instant Recall by BellTower Technologies automated notification system used across 340+ distribution facilities and 90 countries.",
     path: "/research/sysco-recall-packet",

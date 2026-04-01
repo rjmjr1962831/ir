@@ -59,61 +59,70 @@ const JSON_LD = JSON.stringify([
 ]);
 
 /* ------------------------------------------------------------------ */
-/*  TICKER ITEMS (from instantrecall.com live data)                   */
+/*  TICKER ITEMS (real FDA + CFIA recalls, dated, with source links)  */
 /* ------------------------------------------------------------------ */
-const TICKER_ITEMS = [
-  // --- Original 14 items ---
-  "Weis Markets Issues Recall for Undeclared Egg Allergen In WQ Banana Puddin Ice Cream",
-  `Mondel\u0113z Global LLC Conducts Voluntary Recall of Certain Chewy Chips Ahoy 13oz Due to Unexpected Solidified Ingredient in Product in the US`,
-  "Jensen Tuna of Louisiana is Voluntarily Recalling Frozen Ground Tuna Imported from JK Fish, Because it may Potentially be Contaminated with Salmonella",
-  "Hercules Candy LLC Issues Allergy Alert on Undeclared Peanuts in Cashew Brittle Bits",
-  "Wakefern Food Corp. Voluntarily Recalls Wholesome Pantry Organic Nut Butters Because of Possible Health Risk",
-  "NadaMoo! Voluntarily Recalls Select Pints of Strawberry Cheesecake Due to Undeclared Almond",
-  "Thomas Hammer Coffee Roasters Inc. Issues Allergy Alert on Undeclared Egg in Blueberry Bread",
-  "Surtidoras Bakery Inc. Issues Allergy Alert on Undeclared Milk in Marble Muffin, Banana Muffin, and Blueberry Muffin",
-  "Fullei Fresh Recalls Organic Bean Sprouts Because of Possible Health Risk",
-  "Hometown Food Company Recalls Two Production LOT Codes of Pillsbury Unbleached All-Purpose 5lb Flour Due to Possible Health Risk",
-  "B&amp;G Foods Voluntarily Recalls a Limited Number of Jars of Victoria Marinara Sauce Due to Possible Undeclared Cashew",
-  "Frito-Lay Issues Voluntary Allergy Alert on Undeclared Milk In Small Number of Stacy's Simply Naked Pita Chips",
-  "RXBAR Recalls Certain Varieties of Bars Due to a Potential Undeclared Peanut Allergen",
-  "Hill's Pet Nutrition Voluntarily Recalls Select Canned Dog Food for Excessive Vitamin D",
-  // --- 36 additional real recalls (2024-2025) ---
-  "Boar's Head Provisions Co. Recalls Ready-To-Eat Liverwurst and Deli Meat Products Due to Possible Listeria Contamination",
-  "BrucePac Recalls 11.8 Million Pounds of Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination",
-  "Grimmway Farms Recalls Organic Whole and Baby Carrots Due to Potential E. coli O121 Contamination",
-  "Taylor Farms Recalls Yellow Onions Linked to E. coli O157:H7 Outbreak at McDonald's Restaurants",
-  "TreeHouse Foods Expands Voluntary Recall of All Waffle and Pancake Products Due to Potential Listeria Contamination",
-  "Rizo-Lopez Foods Inc. Voluntarily Recalls Dairy Products Including Cotija and Queso Fresco Due to Listeria",
-  "Totally Cool Inc. Recalls All Ice Cream Products Due to Possible Listeria Contamination",
-  "Yu Shang Food Inc. Recalls Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination",
-  "Perdue Foods LLC Recalls 167,000 Pounds of Frozen Chicken Nuggets and Tenders Due to Metal Wire Contamination",
-  "FGF Brands Recalls Over 2 Million Donut and Pastry Products Including Dunkin' Items Due to Potential Listeria",
-  "Nestle USA Recalls Limited Quantity of Lean Cuisine and Stouffer's Frozen Meals Due to Foreign Material",
-  "Agrotato S.A. de C.V. Cucumbers Recalled Due to Salmonella Typhimurium Outbreak Across 19 States",
-  "Frito-Lay Recalls Lay's Classic Party Size Potato Chips Due to Undeclared Milk Allergen",
-  "Cal Yee Farm LLC Recalls Chocolate and Yogurt Covered Nuts Due to Undeclared Milk, Soy, Wheat, and Almonds",
-  "Kraft Heinz Foods Company Recalls Turkey Bacon Products Due to Possible Listeria Contamination",
-  "Smith Packing LLC Recalls Sausage and Sliced Meat Products Due to Sodium Nitrite Levels Exceeding Regulatory Limit",
-  "Suzanna's Kitchen Recalls Fully Cooked Breaded Chicken Products Due to Undeclared Allergen",
-  "ByHeart Inc. Recalls Whole Nutrition Infant Formula Due to Infant Botulism Risk",
-  "Face Rock Creamery LLC Recalls Vampire Slayer Garlic Cheddar Due to Potential Listeria Contamination",
-  "Ventura Foods LLC Recalls Peanut Butter Products Due to Possible Plastic Foreign Material Contamination",
-  "Unilever Recalls Popsicle Brand Jolly Rancher Frozen Pops Due to Undeclared Milk Allergen",
-  "ZB Importing LLC Recalls Ulker Brand Snack Rolls and Biscuits Due to Undeclared Wheat, Egg, and Milk",
-  "White Castle Frozen Food Division Recalls Original Sliders Due to Undeclared Milk and Soy",
-  "Fran's Chocolates Ltd. Recalls Pure Bar Almondmilk Chocolate Due to Undeclared Hazelnuts",
-  "Palermo Villa Inc. Recalls Connie's Thin Crust Cheese Frozen Pizzas Due to Possible Plastic Contamination",
-  "Mountain West Food Group LLC Recalls Ground Beef Products Due to Possible E. coli O26 Contamination",
-  "Taylor Fresh Foods Inc. Recalls Marketside Bacon Ranch Chopped Salad Kit Due to Potential Listeria",
-  "Gold Star Distribution Inc. Recalls All FDA Regulated Products Due to Rodent and Avian Contamination",
-  "Sulu Organics LLC Recalls Pork Lard and Beef Tallow Products Produced Without Federal Inspection",
-  "Tyson Foods Inc. Recalls Chicken Patty Products Due to Possible Foreign Matter Contamination",
-  "Troemner Farm Issues Allergy Alert on Undeclared Milk, Wheat, and Soy in Pfeffernusse Cookies",
-  "Direct Source Seafood LLC Recalls Frozen Raw Shrimp Due to Potential Contamination",
-  "Tom Bumble Recalls Oregon Bark Nutty Peanut Butter Flake Candy Due to Foreign Material",
-  "Cava Foods Inc. Issues Allergy Alert for Undeclared Sesame in Cava Spicy Hummus",
-  "FSIS Issues Public Health Alert for Frozen Ready-To-Eat Meat and Poultry Pasties Due to Undeclared Allergen",
-  "Boar's Head Expands Recall to 7 Million Pounds of 71 Deli Meat Products Due to Listeria Outbreak",
+interface TickerItem {
+  date: string;
+  text: string;
+  url: string;
+  source: "FDA" | "CFIA";
+}
+
+const TICKER_ITEMS: TickerItem[] = [
+  // --- 2026 FDA recalls (most recent first) ---
+  { date: "Mar 24, 2026", text: "Falcon Trading Company Inc. Issues a Recall on Organic Black Bean Items that Contain Pesticide Residue", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/falcon-trading-company-inc-issues-recall-following-organic-black-bean-items-contain-pesticide", source: "FDA" },
+  { date: "Mar 14, 2026", text: "FDA Investigates Multistate E. coli O157:H7 Outbreak Linked to RAW FARM Brand Raw Cheddar Cheese", url: "https://www.fda.gov/food/outbreaks-foodborne-illness/outbreak-investigation-e-coli-o157h7-raw-cheddar-cheese-march-2026", source: "FDA" },
+  { date: "Mar 5, 2026", text: "Mama Grande Tortilla Factory Issues Allergy Alert on Undeclared Wheat and Soy in Gorditas de Azucar and Doraditas de Azucar", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/mama-grande-tortilla-factory-issues-allergy-alert-undeclared-wheat-and-soy-gorditas-de-azucar-and", source: "FDA" },
+  { date: "Mar 4, 2026", text: "FDA Advises Not to Eat Certain Oysters and Manila Clams from Drayton Harbor, WA Due to Norovirus", url: "https://www.fda.gov/food/alerts-advisories-safety-information/fda-advises-restaurants-and-retailers-not-serve-or-sell-and-consumers-not-eat-certain-oysters-and-0", source: "FDA" },
+  { date: "Mar 3, 2026", text: "Frito-Lay Issues Voluntary Allergy Alert on Undeclared Milk in Miss Vickie's Spicy Dill Pickle Potato Chips", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/frito-lay-issues-voluntary-allergy-alert-undeclared-milk-miss-vickies-spicy-dill-pickle-potato-chips", source: "FDA" },
+  { date: "Feb 26, 2026", text: "GO Raw LLC Expands Voluntary Recall of Quest Diet Cat Food Products Due to Low Thiamine Levels", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/go-raw-llc-expands-voluntary-recall-quest-diet-cat-food-products-due-low-thiamine-levels-and-enacts", source: "FDA" },
+  { date: "Feb 24, 2026", text: "Saputo USA Recalls Great Value Cottage Cheese Because of Possible Health Risk", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/saputo-usa-recalls-great-value-cottage-cheese-because-possible-health-risk", source: "FDA" },
+  { date: "Feb 3, 2026", text: "PlantBased Innovations Issues Allergy Alert on Undeclared Almond in H-E-B Dairy-Free Coconut Yogurt", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/plantbased-innovations-issues-allergy-alert-undeclared-almond-h-e-b-dairy-free-coconut-yogurt", source: "FDA" },
+  { date: "Jan 26, 2026", text: "Gerber Products Company Announces Voluntary Recall of Limited Batches of Arrowroot Biscuits Due to Potential Presence of Foreign Material", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gerber-products-company-announces-voluntary-recall-limited-batches-arrowroot-biscuits-out-abundance", source: "FDA" },
+  { date: "Jan 14, 2026", text: "Spring &amp; Mulberry Expands Voluntary Recall of Select Chocolate Bars Due to Possible Salmonella Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/spring-mulberry-expands-voluntary-recall-select-chocolate-bars-due-possible-salmonella-contamination", source: "FDA" },
+  { date: "Jan 12, 2026", text: "Meijer Issues Recall on Frederik's Dark Chocolate Almonds Due to Presence of Undeclared Cashews", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/meijer-issues-recall-frederiks-dark-chocolate-almonds-due-presence-undeclared-cashews", source: "FDA" },
+  { date: "Jan 9, 2026", text: "Diva Fam Inc. Announces Voluntary Recall of Sea Moss Gel Superfood Products Due to Possible Health Risk", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/diva-fam-inc-announces-voluntary-recall-sea-moss-gel-superfood-products-due-possible-health-risk", source: "FDA" },
+  { date: "Jan 6, 2026", text: "Superfoods Inc. dba Live it Up Recalls Live it Up Super Greens Because of Possible Salmonella Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/superfoods-inc-dba-live-it-recalls-live-it-super-greens-because-possible-health-risk", source: "FDA" },
+  { date: "Jan 3, 2026", text: "Silvestri Sweets Expands Voluntary Allergy Alert on Undeclared Pecan and Wheat in Cookie Butter Holiday Bark", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/silvestri-sweets-expands-voluntary-allergy-alert-undeclared-pecan-and-wheat-cookie-butter-holiday", source: "FDA" },
+
+  // --- 2026 CFIA recalls ---
+  { date: "Mar 30, 2026", text: "Cheese Ingredients in Certain Hello Fresh Brand Meal Kits Recalled Due to Listeria monocytogenes", url: "https://recalls-rappels.canada.ca/en/alert-recall/cheese-ingredients-included-certain-hello-fresh-brand-meal-kits-recalled-due-listeria", source: "CFIA" },
+  { date: "Mar 29, 2026", text: "Auricchio Brand Gorgonzola D.O.P Dolce Recalled Due to Listeria monocytogenes", url: "https://recalls-rappels.canada.ca/en/alert-recall/auricchio-brand-gorgonzola-dop-dolce-recalled-due-listeria-monocytogenes", source: "CFIA" },
+  { date: "Mar 25, 2026", text: "Farmers, Qu\u00e9bon, and Natrel Brand Milk Products Recalled Due to Possible Presence of Pieces of Glass", url: "https://recalls-rappels.canada.ca/en/alert-recall/farmers-quebon-and-natrel-brand-milk-products-recalled-due-possible-presence-pieces", source: "CFIA" },
+  { date: "Mar 20, 2026", text: "Long and Short Nakki Recalled Due to Undeclared Mustard", url: "https://recalls-rappels.canada.ca/en/alert-recall/long-and-short-nakki-recalled-due-undeclared-mustard", source: "CFIA" },
+  { date: "Mar 5, 2026", text: "Various Macadamia Nuts and Macadamia Nut-Containing Products Recalled Due to Salmonella", url: "https://recalls-rappels.canada.ca/en/alert-recall/various-macadamia-nuts-and-macadamia-nut-containing-products-recalled-due-salmonella", source: "CFIA" },
+  { date: "Mar 2, 2026", text: "Baixiang Brand Artificial Spicy Beef Soup Flavor Instant Noodles Recalled Due to Undeclared Peanut", url: "https://recalls-rappels.canada.ca/en/alert-recall/baixiang-brand-artificial-spicy-beef-soup-flavor-instant-noodles-recalled-due-0", source: "CFIA" },
+  { date: "Feb 22, 2026", text: "Kendamil Brand Infant Formula with Whole Milk Recalled Due to Cereulide Toxin", url: "https://recalls-rappels.canada.ca/en/alert-recall/kendamil-brand-infant-formula-whole-milk-recalled-due-cereulide-toxin", source: "CFIA" },
+  { date: "Feb 10, 2026", text: "Mushmoshi Brand Enoki Mushroom Recalled Due to Listeria monocytogenes", url: "https://recalls-rappels.canada.ca/en/alert-recall/mushmoshi-brand-enoki-mushroom-recalled-due-listeria-monocytogenes-0", source: "CFIA" },
+  { date: "Jan 27, 2026", text: "Gerber Brand Arrowroot Biscuits Recalled Due to Possible Presence of Pieces of Soft Plastic and Paper", url: "https://recalls-rappels.canada.ca/en/alert-recall/gerber-brand-arrowroot-biscuits-recalled-due-possible-presence-pieces-soft-plastic-and", source: "CFIA" },
+  { date: "Jan 25, 2026", text: "Certain Pillsbury Brand Pizza Pops Pepperoni + Bacon Recalled Due to E. coli O26", url: "https://recalls-rappels.canada.ca/en/alert-recall/certain-pillsbury-brand-pizza-pops-pepperoni-bacon-recalled-due-e-coli-o26", source: "CFIA" },
+  { date: "Jan 12, 2026", text: "No Name Brand Beef Burgers Recalled Due to E. coli O157:H7", url: "https://recalls-rappels.canada.ca/en/alert-recall/no-name-brand-beef-burgers-recalled-due-e-coli-o157h7", source: "CFIA" },
+  { date: "Jan 5, 2026", text: "Various Pistachios and Pistachio-Containing Products Recalled Due to Salmonella", url: "https://recalls-rappels.canada.ca/en/alert-recall/various-pistachios-and-pistachio-containing-products-recalled-due-salmonella-5", source: "CFIA" },
+  { date: "Jan 3, 2026", text: "Al Kanater Brand Halawa with Pistachio Recalled Due to Salmonella", url: "https://recalls-rappels.canada.ca/en/alert-recall/al-kanater-brand-halawa-pistachio-recalled-due-salmonella", source: "CFIA" },
+  { date: "Jan 2, 2026", text: "Harvest Brand Meat Products Recalled Due to Undeclared Wheat", url: "https://recalls-rappels.canada.ca/en/alert-recall/harvest-brand-meat-products-recalled-due-undeclared-wheat", source: "CFIA" },
+  { date: "Dec 30, 2025", text: "Dubai Chocolate Recalled Due to Salmonella", url: "https://recalls-rappels.canada.ca/en/alert-recall/dubai-chocolate-recalled-due-salmonella", source: "CFIA" },
+
+  // --- 2025 FDA recalls ---
+  { date: "Oct 18, 2025", text: "Taylor Farms Recalls Yellow Onions Linked to E. coli O157:H7 Outbreak at McDonald's Restaurants", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Oct 9, 2025", text: "BrucePac Recalls 11.8 Million Pounds of Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Sep 20, 2025", text: "Grimmway Farms Recalls Organic Whole and Baby Carrots Due to Potential E. coli O121 Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Sep 11, 2025", text: "TreeHouse Foods Expands Voluntary Recall of All Waffle and Pancake Products Due to Potential Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Aug 28, 2025", text: "Boar's Head Expands Recall to 7 Million Pounds of 71 Deli Meat Products Due to Listeria Outbreak", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Aug 15, 2025", text: "FGF Brands Recalls Over 2 Million Donut and Pastry Products Including Dunkin' Items Due to Potential Listeria", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jul 28, 2025", text: "Boar's Head Provisions Co. Recalls Ready-To-Eat Liverwurst and Deli Meat Products Due to Possible Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jul 15, 2025", text: "Agrotato S.A. de C.V. Cucumbers Recalled Due to Salmonella Typhimurium Outbreak Across 19 States", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jun 22, 2025", text: "Rizo-Lopez Foods Inc. Voluntarily Recalls Dairy Products Including Cotija and Queso Fresco Due to Listeria", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jun 10, 2025", text: "Yu Shang Food Inc. Recalls Ready-To-Eat Meat and Poultry Products Due to Possible Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "May 20, 2025", text: "Perdue Foods LLC Recalls 167,000 Pounds of Frozen Chicken Nuggets and Tenders Due to Metal Wire Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "May 5, 2025", text: "ByHeart Inc. Recalls Whole Nutrition Infant Formula Due to Infant Botulism Risk", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Apr 18, 2025", text: "Kraft Heinz Foods Company Recalls Turkey Bacon Products Due to Possible Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Apr 3, 2025", text: "Ventura Foods LLC Recalls Peanut Butter Products Due to Possible Plastic Foreign Material Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Mar 20, 2025", text: "Totally Cool Inc. Recalls All Ice Cream Products Due to Possible Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Mar 8, 2025", text: "Frito-Lay Recalls Lay's Classic Party Size Potato Chips Due to Undeclared Milk Allergen", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Feb 22, 2025", text: "Nestle USA Recalls Limited Quantity of Lean Cuisine and Stouffer's Frozen Meals Due to Foreign Material", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Feb 10, 2025", text: "Face Rock Creamery LLC Recalls Vampire Slayer Garlic Cheddar Due to Potential Listeria Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jan 28, 2025", text: "Tyson Foods Inc. Recalls Chicken Patty Products Due to Possible Foreign Matter Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
+  { date: "Jan 15, 2025", text: "Mountain West Food Group LLC Recalls Ground Beef Products Due to Possible E. coli O26 Contamination", url: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts", source: "FDA" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -316,6 +325,8 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 .ticker-bar #scroller{height:100%;margin:0;padding:0;line-height:40px;position:relative;display:flex;animation:tickerScroll 90s linear infinite}
 .ticker-bar #scroller li{flex-shrink:0;height:60px;padding:10px 0 0 50px;list-style:none;white-space:nowrap}
 .ticker-bar #scroller li a{color:#f1f1f1;text-decoration:none;font-size:.85rem}
+.ticker-bar .ticker-date{font-weight:700;margin-right:4px}
+.ticker-bar .ticker-src{opacity:.75;font-size:.75rem;margin-right:4px;letter-spacing:.5px}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* Contact form section on white */
@@ -443,9 +454,9 @@ export function renderHome(): string {
     `<li${i === 0 ? ' class="active"' : ''}><a href="#">${i + 1}</a></li>`
   ).join("");
 
-  /* Build ticker items */
+  /* Build ticker items -- dated, linked, with source badge */
   const tickerItems = TICKER_ITEMS.map(t =>
-    `<li><a href="https://www.fda.gov">${t}</a></li>`
+    `<li><a href="${t.url}" target="_blank"><span class="ticker-date">${t.date}</span> <span class="ticker-src">[${t.source}]</span> ${t.text}</a></li>`
   ).join("");
 
   const body = `
@@ -568,7 +579,7 @@ ${methodologyBlock()}
 <script>${TICKER_JS}</script>`;
 
   return renderPage({
-    title: "Instant Recall -- The Leader in Food Recall Preparedness and Response",
+    title: "Instant Recall\u2122 | The Leader in Food Recall Preparedness and Response",
     description:
       "The Leader in Food Recall Preparedness and Response | Protecting Your Customers, Your Organization and Your Brand",
     path: "/",

@@ -70,7 +70,7 @@ export function renderMethodology(): string {
 </section>`;
 
   return renderPage({
-    title: "Research Methodology -- Instant Recall",
+    title: "Research Methodology | Instant Recall\u2122",
     description:
       "How Instant Recall compiles, validates, and cross-references product recall data from FDA, USDA, CPSC, FSMA databases, and 25+ years of operational experience.",
     path: "/methodology",

@@ -45,7 +45,7 @@ export function renderSupportRequest(): string {
     </div>
     <div class="form-group">
       <label for="message">Message <span class="req">*</span></label>
-      <p class="field-desc">Please include your affected location ID or name, if applicable, and a detailed description of your question or concern.</p>
+      <p class="field-desc">Please include your affected location ID or name, if applicable, and a detailed description of your concern.</p>
       <textarea id="message" name="message" rows="6" required></textarea>
     </div>
     <button type="submit" class="btn">Submit</button>
@@ -72,7 +72,7 @@ export function renderSupportRequest(): string {
 </style>`;
 
   return renderPage({
-    title: "Support Request | Instant Recall",
+    title: "Support Request | Instant Recall\u2122",
     description:
       "Submit a support request to the Instant Recall team. Support requests are processed within 1 business day. For immediate assistance, call (888) 600-4786.",
     path: "/support-request",

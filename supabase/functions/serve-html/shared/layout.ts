@@ -198,27 +198,6 @@ export function renderPage(opts: LayoutOptions): string {
 ${header()}
 ${opts.body}
 ${footer(f)}
-<script>
-(function(){
-  var h = document.querySelector('.site-header');
-  if (!h) return;
-  var heroEl = document.querySelector('.hero');
-  function onScroll(){
-    if (window.scrollY > 80) {
-      h.classList.add('scrolled');
-    } else {
-      h.classList.remove('scrolled');
-    }
-  }
-  if (heroEl) {
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  } else {
-    h.style.position = 'relative';
-    h.style.background = '#575757';
-  }
-})();
-</script>
 </body>
 </html>`;
 }

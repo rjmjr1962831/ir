@@ -244,7 +244,7 @@ h1,h2,h3,p{margin-top:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section */
-.intro-section{background:#fff;padding:76px 32px 32px;margin:0}
+.intro-section{background:#fff;padding:76px 32px 0;margin:0}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
@@ -265,9 +265,9 @@ h1,h2,h3,p{margin-top:0}
 .solution-section h1{text-align:center;font-size:46px;color:#272727;font-weight:400;letter-spacing:1.34px;line-height:1.4em;margin-bottom:2rem}
 .solution-pillars{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;max-width:1100px;margin:0 auto}
 .solution-pillar{flex:0 1 280px;text-align:center}
-.solution-pillar .icon-circle{width:90px;height:90px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%;padding:20px}
-.solution-pillar .icon-circle i{font-size:3em;color:#fff;line-height:90px}
-.solution-pillar h3{font-size:1rem;font-weight:700;color:#272727;text-transform:none;margin:0}
+.solution-pillar .icon-circle{width:110px;height:110px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;background:#00d49d;border-radius:50%;padding:20px}
+.solution-pillar .icon-circle i{font-size:2.5rem;color:#fff}
+.solution-pillar h3{font-size:.85rem;font-weight:700;color:#272727;text-transform:uppercase;letter-spacing:1px;margin:0}
 .solution-section .learn-more-btn{display:block;text-align:center;margin-top:2rem}
 .solution-section .learn-more-btn a{display:inline-block;padding:1em 1.5em;border:2px solid #272727;color:#272727;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;transition:all .1s linear;background:transparent;text-decoration:none;min-width:200px}
 .solution-section .learn-more-btn a:hover{background:#1cace6;border-color:#106080;color:#fff}

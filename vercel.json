@@ -41,6 +41,7 @@
     { "source": "/docs/ai-best-practices", "destination": "/api/html?path=%2Finternal%2Fai-best-practices" },
     { "source": "/docs/project-knowledge", "destination": "/api/html?path=%2Finternal%2Fproject-knowledge" },
     { "source": "/docs/work-log", "destination": "/api/html?path=%2Fdocs%2Fwork-log" },
+    { "source": "/docs/dev-workflow", "destination": "/api/html?path=%2Fdocs%2Fdev-workflow" },
     { "source": "/research", "destination": "/api/html?path=%2Fresearch" },
     { "source": "/research/industry-survey", "destination": "/api/html?path=%2Fresearch%2Findustry-survey" },
     { "source": "/research/regulatory-environment", "destination": "/api/html?path=%2Fresearch%2Fregulatory-environment" },

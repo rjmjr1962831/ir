@@ -27,6 +27,7 @@ import { renderUSFoodsRecallProcess } from "./pages/usfoods-recall-process.ts";
 import { renderSyscoRecallPacket } from "./pages/sysco-recall-packet.ts";
 import { renderAiBestPractices } from "./pages/ai-best-practices.ts";
 import { renderProjectKnowledge } from "./pages/project-knowledge.ts";
+import { renderDevWorkflow } from "./pages/dev-workflow.ts";
 import { renderWorkLog } from "./pages/work-log.ts";
 
 // --- Bot detection and logging ---
@@ -213,6 +214,17 @@ serve(async (req: Request) => {
 
   if (path === "/docs/work-log") {
     const html = renderWorkLog();
+    return new Response(html, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "private, max-age=30",
+      },
+    });
+  }
+
+  if (path === "/docs/dev-workflow") {
+    const html = renderDevWorkflow();
     return new Response(html, {
       status: 200,
       headers: {

@@ -68,7 +68,7 @@ const FAQ_LD = JSON.stringify({
       name: "How many product recalls occur annually in the United States?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "According to the Sedgwick Recall Index, all U.S. agencies combined issued 3,232 recalls in 2024, the second highest in six years. CPSC alone issued 369 recalls and warnings, while NHTSA had roughly 1,000 separate recall campaigns covering over 30 million vehicles. Q1 2025 defective units surged an additional 25%.",
+        text: "FDA and USDA-FSIS issued approximately 296 food-specific recalls in 2024 (241 FDA food/beverage plus 55 USDA FSIS meat/poultry). Across all product categories and agencies -- including CPSC, FDA, NHTSA, and USDA -- the Sedgwick Recall Index counted 3,232 total recalls in 2024, the second highest in six years. CPSC alone issued 369 recalls and warnings, while NHTSA had roughly 1,000 separate recall campaigns covering over 30 million vehicles. Q1 2025 defective units surged an additional 25%.",
       },
     },
     {
@@ -84,7 +84,7 @@ const FAQ_LD = JSON.stringify({
       name: "How many federal agencies must consumers monitor to stay fully protected from recalled products?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A single household would need to monitor at least six separate federal systems: CPSC, FDA, NHTSA, USDA/FSIS, EPA, and the Coast Guard. None of these systems know what a household actually owns, and there is no unified consumer experience connecting them.",
+        text: "For food recalls specifically, consumers must monitor two agencies: FDA (which covers most foods, drugs, devices, and cosmetics) and USDA-FSIS (which covers meat, poultry, and egg products). CDC supports outbreak investigations but does not oversee recalls directly. For all product categories, a household would also need to monitor CPSC (consumer products) and NHTSA (vehicles). None of these systems know what a household actually owns, and there is no unified consumer experience connecting them.",
       },
     },
     {
@@ -92,7 +92,7 @@ const FAQ_LD = JSON.stringify({
       name: "What is the average recall completion rate for consumer products?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The average consumer product recall correction rate is 30 to 40%, but CPSC admits some recalls have completion rates below 10%. The average response rate is about 6% according to Consumer Reports. Vehicle recall completion averages 45% across all manufacturers, and children's products already in homes have a completion rate of just 3.96%.",
+        text: "The average consumer product recall correction rate is 30 to 40%, but CPSC admits some recalls have completion rates below 10%. Industry estimates suggest recall response rates average in the single digits, though no single authoritative source provides a definitive figure. Vehicle recall completion averages 45% across all manufacturers, and children's products already in homes have a completion rate of just 3.96%.",
       },
     },
     {
@@ -100,7 +100,7 @@ const FAQ_LD = JSON.stringify({
       name: "How big is the product recall management software market?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The product recall management software market is estimated at US$664 million to US$2.5 billion in 2025, projected to reach US$1.07 billion to US$8.0 billion by 2032-2033 at a 7 to 15% CAGR. The broader product recall management platform market was US$4.32 billion in 2024, projected to reach US$8.23 billion by 2033.",
+        text: "The product recall management software market is estimated at US$664 million to US$2.5 billion in 2025, projected to reach US$1.07 billion to US$8.0 billion by 2032-2033 at a 7 to 15% CAGR (sources: 360iResearch and others). The broader product recall management platform market was estimated at US$4.32 billion in 2024, projected to reach US$8.23 billion by 2033 (single-source estimate from DataIntelo).",
       },
     },
     {
@@ -159,11 +159,11 @@ export function renderResearchIndustry(): string {
 
     <h3>The Status Quo Is Too Slow and Too Noisy</h3>
     <p>CPSC has had to re-announce at least 46 recalls that were tied to ~150 deaths and 300 injuries because the original notices did not reach enough consumers. At least 16 people have died from products that were already recalled -- inclined sleepers, dressers, bathrobes, cribs, bed rails -- simply because they never heard about the recall.</p>
-    <p>Survey and performance data show that about 70 percent of Americans have not heard of a recall affecting their products within a five-year period, and consumer product recall completion still hovers around 6 percent.</p>
+    <p>Survey and performance data show that about 70 percent of Americans have not heard of a recall affecting their products within a five-year period, and industry estimates suggest consumer product recall response rates average in the single digits.</p>
 
     <h3>How Existing Channels Fall Short</h3>
     <h4>Government lists and portals</h4>
-    <p>Federal agencies publish recall notices on their own sites and via generic email/RSS feeds. To be fully protected, a single household would need to monitor at least six separate systems (CPSC, FDA, NHTSA, FSIS, EPA, Coast Guard), none of which know what that household actually owns.</p>
+    <p>Federal agencies publish recall notices on their own sites and via generic email/RSS feeds. For food recalls, consumers must monitor two agencies -- FDA and USDA-FSIS. For broader product safety, they must also track CPSC and NHTSA. None of these systems know what a household actually owns.</p>
 
     <h4>Retailer and app fragmentation</h4>
     <ul>
@@ -260,7 +260,7 @@ export function renderResearchIndustry(): string {
       <table>
         <thead><tr><th>Service</th><th>Agency</th><th>Scope</th><th>Consumer Features</th></tr></thead>
         <tbody>
-          <tr><td><strong>Recalls.gov</strong></td><td>Multi-agency (6 federal agencies)</td><td>All product categories</td><td>One-stop portal, email subscription lists</td></tr>
+          <tr><td><strong>Recalls.gov</strong></td><td>Multi-agency portal (CPSC, FDA, NHTSA, USDA-FSIS, others)</td><td>All product categories</td><td>One-stop portal, email subscription lists</td></tr>
           <tr><td><strong>CPSC.gov/Recalls</strong></td><td>Consumer Product Safety Commission</td><td>Consumer products</td><td>Searchable database, email/RSS subscriptions, dedicated mobile app (launched 2019), 10-15 alerts per week</td></tr>
           <tr><td><strong>FDA Recalls</strong></td><td>Food &amp; Drug Administration</td><td>Food, drugs, devices, cosmetics</td><td>Daily/weekly email digests, searchable database</td></tr>
           <tr><td><strong>FSIS Recalls</strong></td><td>USDA Food Safety &amp; Inspection Service</td><td>Meat, poultry, egg products</td><td>Public health alerts</td></tr>
@@ -363,7 +363,8 @@ export function renderResearchIndustry(): string {
       <table>
         <thead><tr><th>Source/Agency</th><th>2024 Volume</th><th>Trend</th></tr></thead>
         <tbody>
-          <tr><td><strong>All agencies combined (Sedgwick Index)</strong></td><td>3,232 recalls (2nd highest in 6 years)</td><td>Up significantly; Q1 2025 defective units surged 25%</td></tr>
+          <tr><td><strong>All agencies, all products combined (Sedgwick Index)</strong></td><td>3,232 recalls (2nd highest in 6 years)</td><td>Up significantly; Q1 2025 defective units surged 25%</td></tr>
+          <tr><td><strong>FDA + USDA FSIS (food-specific)</strong></td><td>~296 food recalls</td><td>Severity increasing; hospitalizations more than doubled</td></tr>
           <tr><td><strong>CPSC (consumer products)</strong></td><td>369 recalls + warnings</td><td>2025 already exceeded 2024 total; on pace to break all-time 2007 record</td></tr>
           <tr><td><strong>FDA (food &amp; beverage)</strong></td><td>241 food/beverage recalls</td><td>Severity increasing even as count dipped slightly</td></tr>
           <tr><td><strong>USDA FSIS (meat/poultry)</strong></td><td>55 recalls</td><td>Down 38% from 2023</td></tr>
@@ -374,7 +375,7 @@ export function renderResearchIndustry(): string {
 
     <h3>3B. Scale of Impact</h3>
     <ul>
-      <li><strong>580.4 million defective units</strong> recalled across all categories in 2024 (up from 528.7M in 2023)</li>
+      <li><strong>580.4 million defective units</strong> recalled across all product categories and agencies in 2024 (up from 528.7M in 2023; includes food, consumer products, vehicles, drugs, and devices)</li>
       <li><strong>30+ million vehicles</strong> recalled in 2025 alone</li>
       <li><strong>1,392 people sickened</strong> by recalled food in 2024 (up from 1,118 in 2023)</li>
       <li><strong>487 hospitalizations</strong> from recalled food in 2024 (more than doubled from 230 in 2023)</li>
@@ -387,7 +388,7 @@ export function renderResearchIndustry(): string {
         <thead><tr><th>Market Segment</th><th>2025 Estimate</th><th>2032-2033 Projection</th><th>CAGR</th></tr></thead>
         <tbody>
           <tr><td>Product Recall Management Software</td><td>$664M - $2.5B</td><td>$1.07B - $8.0B</td><td>7-15%</td></tr>
-          <tr><td>Product Recall Management Platforms (broader)</td><td>$4.32B (2024)</td><td>$8.23B by 2033</td><td>8.1%</td></tr>
+          <tr><td>Product Recall Management Platforms (broader; single-source estimate, DataIntelo)</td><td>$4.32B (2024)</td><td>$8.23B by 2033</td><td>8.1%</td></tr>
           <tr><td>Product Recall Insurance</td><td>Growing</td><td>Growing</td><td>10.5%</td></tr>
         </tbody>
       </table>
@@ -465,7 +466,7 @@ export function renderResearchIndustry(): string {
 
     <h3>4F. Structural Challenges in Current Notification System</h3>
     <ol>
-      <li><strong>Fragmentation:</strong> Recalls are spread across 6+ federal agencies with separate databases, websites, and subscription systems</li>
+      <li><strong>Fragmentation:</strong> Food recalls alone are split between FDA and USDA-FSIS, each with separate databases, websites, and subscription systems. Broader product recalls add CPSC and NHTSA, further fragmenting the landscape</li>
       <li><strong>No purchase-history matching:</strong> Government systems don't know what you bought</li>
       <li><strong>Product mobility:</strong> Consumers move, products are resold, gifted, or donated</li>
       <li><strong>No barcode/receipt integration:</strong> No mainstream system connects grocery receipts or product scans to recall databases</li>
@@ -586,7 +587,7 @@ export function renderResearchIndustry(): string {
     <h2>8. Key Market Insights and Opportunities</h2>
 
     <h3>8A. The Awareness-Action Gap Is Enormous</h3>
-    <p><strong>70% of Americans haven't heard about a recall for products they own in 5 years</strong>, despite 3,200+ recalls annually affecting 580M+ units. This is a massive market failure in information delivery.</p>
+    <p><strong>70% of Americans haven't heard about a recall for products they own in 5 years</strong>, despite 3,200+ recalls annually across all agencies and product categories (approximately 296 of those are food-specific) affecting 580M+ units. This is a massive market failure in information delivery.</p>
 
     <h3>8B. No Dominant Consumer-Facing Player Exists</h3>
     <p>Unlike weather (Weather.com), traffic (Waze/Google Maps), or package tracking (17Track), there is <strong>no household-name app or service for product recalls</strong>. The space is fragmented among government sites, dormant startups (Whystle), and niche apps with minimal adoption.</p>
@@ -631,9 +632,9 @@ export function renderResearchIndustry(): string {
     <h2>9. Summary: State of the Industry</h2>
     <p>The product recall notification industry in 2026 is characterized by:</p>
     <ol>
-      <li><strong>Exploding volume</strong> -- 3,200+ recalls per year affecting hundreds of millions of units, trending sharply upward</li>
+      <li><strong>Exploding volume</strong> -- 3,200+ recalls per year across all agencies and product categories (~296 food-specific), affecting hundreds of millions of units, trending sharply upward</li>
       <li><strong>Catastrophic consumer awareness failure</strong> -- 70% of Americans never hear about recalls for products they own</li>
-      <li><strong>Fragmented notification infrastructure</strong> -- 6+ federal agencies, dozens of retailer systems, no unified consumer experience</li>
+      <li><strong>Fragmented notification infrastructure</strong> -- food recalls split between FDA and USDA-FSIS, broader product safety across CPSC and NHTSA, dozens of retailer systems, no unified consumer experience</li>
       <li><strong>Strong B2B market</strong> -- well-served by Sedgwick, Trustwell, and others ($2-8B market)</li>
       <li><strong>Vacant B2C market</strong> -- no dominant consumer-facing brand despite massive need</li>
       <li><strong>Emerging retailer responsibility</strong> -- Amazon/marketplace liability creates new notification mandates</li>

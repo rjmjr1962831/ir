@@ -20,6 +20,9 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/regulatory-reporting", "destination": "/cost-recovery", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/api/html?path=%2F" },
     { "source": "/solution", "destination": "/api/html?path=%2Fsolution" },
@@ -46,7 +49,6 @@
     { "source": "/research/sysco-recall-packet", "destination": "/api/html?path=%2Fresearch%2Fsysco-recall-packet" },
     { "source": "/incident-response", "destination": "/api/html?path=%2Fincident-response" },
     { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
-    { "source": "/regulatory-reporting", "destination": "/api/html?path=%2Fregulatory-reporting" },
     { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
     { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
     { "source": "/customer-quotes-solutions", "destination": "/api/html?path=%2Fcustomer-quotes-solutions" },

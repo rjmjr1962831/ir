@@ -408,7 +408,9 @@ export function renderHome(): string {
 <!-- 1. HERO: Dark video background with blue overlay -->
 <section class="hero video-hero" style="min-height:600px;position:relative;overflow:hidden">
   <div class="video-bg">
-    <iframe src="https://player.vimeo.com/video/314904191?background=1&autoplay=1&loop=1&muted=1&quality=720p" frameborder="0" allow="autoplay; fullscreen" style="position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;transform:translate(-50%,-50%)"></iframe>
+    <video autoplay muted loop playsinline style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover">
+      <source src="/video/BTT_WebsiteHeader_v0005.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-overlay" style="background:rgba(35,92,128,0.63)"></div>
   <div class="hero-content">

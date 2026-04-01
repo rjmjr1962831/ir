@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "tinacms dev -c \"echo 'Tina dev server running — open http://localhost:4001/admin'\"",
+    "dev": "tinacms dev -c \"npx serve public\"",
     "tina:build": "tinacms build",
     "tina:audit": "tinacms audit",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -17,8 +17,8 @@ a:hover{text-decoration:underline;color:#33c4ff}
 
 /* Hero */
 .hero{position:relative;background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;text-align:center;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.hero-overlay{position:absolute;inset:0;background:rgba(39,39,39,0.75);z-index:0}
-.hero-content{position:relative;z-index:1;max-width:900px}
+.hero-overlay{position:absolute;inset:0;background:rgba(39,39,39,0.75);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:900px}
 .hero h1{font-size:2.8rem;margin-bottom:1.25rem;font-weight:700;letter-spacing:0.5px;line-height:1.2}
 .hero p{max-width:750px;margin:0 auto;font-size:1.1rem;opacity:.9;line-height:1.8;font-weight:300}
 .hero .btn{display:inline-block;background:#00afec;color:#fff;padding:.85rem 2.5rem;border-radius:0;font-weight:600;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;margin-top:1.5rem;transition:background 0.2s}

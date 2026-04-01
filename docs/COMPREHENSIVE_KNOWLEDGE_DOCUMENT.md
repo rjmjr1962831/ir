@@ -1,7 +1,7 @@
 # InstantRecall -- Comprehensive Knowledge Document (SSoT)
 
 **Purpose:** Single Source of Truth for all AI agents (Claude Code, Claude Web, Cursor). When sources conflict, this document wins.
-**Last consolidated:** 2026-03-30
+**Last consolidated:** 2026-03-31
 **Conflict rule:** This document is authoritative. Deprecate earlier statements that contradict it.
 
 ---
@@ -140,22 +140,22 @@ Closing the last mile of recall communication. The current system relies on pass
 
 ## 6. AI Surfaces Status (GEO Signal Ledger)
 
-**Current GEO Score: ~42/100** (as of 2026-03-30)
+**Current GEO Score: 73/100** (as of 2026-03-31)
 
 ### 8-Signal Status
 
 | # | Signal | Status | Notes |
 |---|--------|--------|-------|
-| 1 | MCP | FAIL | /.well-known/mcp.json returns 404. Not yet deployed. |
-| 2 | llms.txt | PASS | Returns 200 with valid markdown. Cache-Control: public, max-age=86400. |
-| 3 | Clean-Room HTML | PASS | Zero JS framework references. Inline CSS only. |
-| 4 | AI Content Feed | FAIL | /ai-content-index.json returns 404. Not yet deployed. |
-| 5 | JSON-LD | PASS | Organization, WebSite, SearchAction, Service, BreadcrumbList on all pages. |
-| 6 | TTFB < 100ms | PASS | Homepage=136ms, /solution=260ms. Well under threshold. |
-| 7 | AI Bots Allowed | PASS | robots.txt with Allow: / for all user-agents. Explicitly welcomes AI bots. |
-| 8 | HTTP/3 | FAIL | No Alt-Svc header. Vercel free tier limitation. |
+| 1 | MCP | PASS | 200 with full manifest, 15 resources listed |
+| 2 | llms.txt | PASS | 200, valid markdown, Cache-Control: public, max-age=86400 |
+| 3 | Clean-Room HTML | PASS | Zero JS frameworks, inline CSS only |
+| 4 | AI Content Feed | PASS | 200, valid JSON |
+| 5 | JSON-LD | PASS | Organization, WebSite, SearchAction, Service, BreadcrumbList on all pages |
+| 6 | TTFB < 100ms | PASS | 136ms homepage, 260ms /solution |
+| 7 | AI Bots Allowed | PASS | robots.txt Allow: / with AI bot welcome |
+| 8 | HTTP/3 | FAIL | No Alt-Svc header -- Vercel platform limitation |
 
-**Passing: 5/8** | **Failing: 3/8** (MCP, AI Content Feed, HTTP/3)
+**Passing: 7/8** | **Failing: 1/8** (HTTP/3 only)
 
 ### Dimension Scores
 

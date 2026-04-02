@@ -107,8 +107,8 @@ async function fetchAll() {
     const start = performance.now();
     await fetch("https://ir-zeta.vercel.app/", { signal: AbortSignal.timeout(10000) });
     const ttfb = Math.round(performance.now() - start);
-    const normalized = Math.max(0, ttfb - 45);
-    ttfbNote = `~${normalized}ms (datacenter-normalized, warm cache)`;
+    
+    ttfbNote = `${ttfb}ms (datacenter, warm cache)`;
   } catch {
     ttfbNote = "Measurement failed (timeout or network error)";
   }

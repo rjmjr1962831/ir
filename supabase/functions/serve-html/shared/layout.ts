@@ -288,6 +288,7 @@ export function renderPage(opts: LayoutOptions): string {
 <body>
 ${header()}
 ${opts.body}
+${f ? `<div style="text-align:center;padding:1rem 0 0;color:rgba(255,255,255,.45);font-size:.75rem;letter-spacing:.5px">Last updated: ${formatDate(f.lastContentUpdate)}</div>` : ""}
 ${footer()}
 ${opts.path === "/" ? newsletterPopup() : ""}
 </body>

@@ -34,12 +34,56 @@ async function supaGet<T>(path: string): Promise<T> {
   return res.json();
 }
 
+// Related sites to poll for GEO signals (top 5 from benchmark)
+const RELATED_SITES = [
+  { name: "NSF.org", url: "https://www.nsf.org" },
+  { name: "Food Safety News", url: "https://www.foodsafetynews.com" },
+  { name: "Sedgwick", url: "https://www.sedgwick.com" },
+  { name: "GFSI", url: "https://www.mygfsi.com" },
+  { name: "SQF Institute", url: "https://www.sqfi.com" },
+];
+
+async function checkSignalCount(siteUrl: string): Promise<number> {
+  let score = 0;
+  try {
+    const checks = await Promise.allSettled([
+      fetch(`${siteUrl}/.well-known/mcp.json`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/llms.txt`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/robots.txt`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/`, { signal: AbortSignal.timeout(5000) }),
+    ]);
+    // MCP
+    if (checks[0].status === "fulfilled" && checks[0].value.ok) score++;
+    // llms.txt
+    if (checks[1].status === "fulfilled" && checks[1].value.ok) score++;
+    // robots.txt allows bots (count as pass if exists)
+    if (checks[2].status === "fulfilled" && checks[2].value.ok) {
+      const txt = await checks[2].value.text();
+      if (!txt.toLowerCase().includes("disallow: /")) score++;
+    }
+    // JSON-LD on homepage
+    if (checks[3].status === "fulfilled" && checks[3].value.ok) {
+      const html = await checks[3].value.text();
+      if (html.includes("application/ld+json")) score++;
+    }
+  } catch { /* timeout or network error */ }
+  return score;
+}
+
 async function fetchAll() {
   const [dimensions, history, signals] = await Promise.all([
     supaGet<ScoreDimension[]>("geo_score_dimensions?select=dimension_name,score,weight,notes,last_assessed&order=weight.desc"),
     supaGet<ScoreHistory[]>("geo_score_history?select=score_date,score,label&order=score_date.desc&limit=10"),
     supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,current_status_note&order=signal_name"),
   ]);
+
+  // Poll related sites in parallel
+  const relatedResults = await Promise.all(
+    RELATED_SITES.map(async (site) => {
+      const signals = await checkSignalCount(site.url);
+      return { name: site.name, signals };
+    })
+  );
 
   const totalWeight = dimensions.reduce((s, d) => s + (d.weight || 1), 0);
   const composite = Math.round(
@@ -53,7 +97,10 @@ async function fetchAll() {
   const prev = history.length > 1 ? history[1].score : null;
   const delta = prev !== null ? composite - prev : null;
 
-  return { composite, dimensions, history, signals, passing, total, delta, prev };
+  // Failing signals for deficiency summary
+  const failing = signals.filter((s) => s.status !== "PASS");
+
+  return { composite, dimensions, history, signals, passing, total, delta, prev, failing, relatedResults };
 }
 
 // ------- HTML email builder -------
@@ -92,12 +139,17 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
     )
     .join("");
 
-  // Score trend (last 5)
-  const recent = data.history.slice(0, 5).reverse();
-  const trendCells = recent
+  // Build deficiency text
+  const deficiencyText = data.failing.length === 0
+    ? "<strong>NONE.</strong> All signals passing."
+    : data.failing.map((f) => `<strong>${f.signal_name}:</strong> ${f.current_status_note || "Failing"}`).join("<br>");
+
+  // Related sites table
+  const relatedRows = data.relatedResults
+    .sort((a, b) => b.signals - a.signals)
     .map(
-      (h) =>
-        `<td style="text-align:center;padding:4px 8px"><div style="font-size:16px;font-weight:700;color:#272727">${h.score}</div><div style="font-size:10px;color:#888">${h.score_date.slice(5)}</div></td>`
+      (r) =>
+        `<tr><td style="padding:5px 10px;border-bottom:1px solid #f0f0f0;font-size:13px">${r.name}</td><td style="padding:5px 10px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:13px">${r.signals}/4</td></tr>`
     )
     .join("");
 
@@ -110,11 +162,19 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
 <div style="background:#00afec;border-radius:8px;padding:28px;text-align:center;margin:0 0 24px">
   <div style="font-size:52px;font-weight:800;color:#fff">${data.composite}/100</div>
   <div style="font-size:15px;color:rgba(255,255,255,0.95);margin-top:6px;font-weight:600">Citation-ready. Highest GEO score in the food safety industry.</div>
-  <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px">16-site benchmark: industry average 33/100. IR leads by 35+ points.</div>
   ${deltaText(data.delta, data.prev)}
 </div>
 
-${recent.length > 1 ? `<h2 style="font-size:16px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:6px">Score Trend</h2><table style="margin:0 auto 24px;border-collapse:collapse"><tr>${trendCells}</tr></table>` : ""}
+<div style="background:#f8f8f8;border-radius:6px;padding:20px;margin:0 0 24px;font-size:13px;color:#3e3e3e;line-height:1.7">
+  <p style="margin:0 0 12px"><strong style="color:#272727">What this score means:</strong> At ${data.composite}/100, Instant Recall's website is structured so that AI systems (ChatGPT, Claude, Gemini, Perplexity) can discover, read, and cite our content with high confidence. ${data.composite >= 90 ? "This is an elite score. AI engines have everything they need to recommend IR without hedging." : data.composite >= 80 ? "This is a strong score. Most AI citation infrastructure is in place." : "There is room for improvement in AI citation readiness."}</p>
+  <p style="margin:0 0 12px"><strong style="color:#272727">Deficiencies:</strong> ${deficiencyText}</p>
+  <p style="margin:0"><strong style="color:#272727">Related sites (live signal check):</strong></p>
+  <table style="width:100%;border-collapse:collapse;margin-top:8px">
+    <tr style="background:#e8e8e8"><th style="padding:5px 10px;text-align:left;font-size:12px">Site</th><th style="padding:5px 10px;text-align:center;font-size:12px">AI Signals</th></tr>
+    <tr style="background:#e8f7ff"><td style="padding:5px 10px;font-size:13px;font-weight:bold">Instant Recall</td><td style="padding:5px 10px;text-align:center;font-size:13px;font-weight:bold;color:#00afec">${data.passing}/${data.total}</td></tr>
+    ${relatedRows}
+  </table>
+</div>
 
 <h2 style="font-size:18px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:8px">Signal Dashboard (${data.passing}/${data.total} Pass)</h2>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px">

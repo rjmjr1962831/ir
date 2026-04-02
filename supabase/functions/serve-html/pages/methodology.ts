@@ -67,7 +67,33 @@ export function renderMethodology(): string {
   <h2>Explore Our Research</h2>
   <p>Read our original research on the recall notification industry, regulatory environment, and legal landscape.</p>
   <a href="/research" class="btn">View Research</a>
-</section>`;
+</section>
+
+<style>
+/* White theme overrides */
+body{background:#fff !important;color:#3e3e3e !important}
+main{background:#fff !important}
+.hero{background:#f8f8f8 !important}
+.hero-overlay{background:rgba(39,39,39,0.85) !important}
+.hero-content h1{color:#fff !important}
+.hero-content p{color:rgba(255,255,255,.9) !important}
+.container{background:#fff !important;color:#3e3e3e !important}
+.methodology-section h2{color:#272727 !important}
+.methodology-section p{color:#3e3e3e !important}
+.methodology-section li{color:#3e3e3e !important}
+.methodology-section a{color:#00afec !important}
+h1,h2,h3,h4,h5,h6{color:#272727}
+a{color:#00afec}
+.citation-data{background:#fff !important;color:#3e3e3e !important}
+.citation-data h2{color:#272727 !important}
+.ai-citation{background:#f8f8f8 !important;color:#3e3e3e !important;border-color:#e0e0e0 !important}
+.cite-source{color:#666 !important}
+.cta{background:#f8f8f8 !important;color:#3e3e3e !important}
+.cta h2{color:#272727 !important}
+.cta p{color:#3e3e3e !important}
+.btn{color:#fff !important;background:#00afec !important}
+footer{background:#272727 !important}
+</style>`;
 
   return renderPage({
     title: "Research Methodology | Instant Recall\u2122",

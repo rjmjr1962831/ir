@@ -114,6 +114,7 @@ const ROUTES: Record<string, () => string> = {
   "/support-request": renderSupportRequest,
   "/methodology": renderMethodology,
   "/who-trusts-us": renderPress,
+  "/press": renderPress,
   "/research/usfoods-recall-process": renderUSFoodsRecallProcess,
   "/research/sysco-recall-packet": renderSyscoRecallPacket,
 };

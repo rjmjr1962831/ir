@@ -60,6 +60,7 @@
     { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
     { "source": "/support-request", "destination": "/api/html?path=%2Fsupport-request" },
     { "source": "/who-trusts-us", "destination": "/api/html?path=%2Fwho-trusts-us" },
+    { "source": "/press", "destination": "/api/html?path=%2Fpress" },
     { "source": "/robots.txt", "destination": "/api/robots" },
     { "source": "/llms.txt", "destination": "/api/llms" },
     { "source": "/llms-full.txt", "destination": "/api/llms-full" },

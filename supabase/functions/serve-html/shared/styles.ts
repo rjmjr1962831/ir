@@ -11,7 +11,7 @@ a:hover{text-decoration:underline;color:#33c4ff}
 .site-header .logo{display:flex;align-items:center}
 .site-header .logo img{height:50px;width:auto}
 .site-header nav{display:flex;align-items:center;gap:0;white-space:nowrap}
-.site-header nav a{color:#fff;padding:0.5rem 1.25rem;font-size:17px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s;text-decoration:none;font-family:'Lato','Helvetica Neue',Helvetica,Arial,sans-serif}
+.site-header nav a{color:#fff;padding:0.5rem 1.25rem;font-size:17px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color 0.1s linear;text-decoration:none;font-family:'Lato','Helvetica Neue',Helvetica,Arial,sans-serif}
 .site-header nav a:hover{color:rgba(255,255,255,.8);text-decoration:none}
 .site-header nav a.nav-btn{background:transparent;border:2px solid #fff;color:#fff;padding:1em 1.5em;margin-left:1em;transition:background-color .1s ease-in-out,color .1s ease-in-out;border-radius:0}
 .site-header nav a.nav-btn:hover{background:#fff;color:#181818}

@@ -273,7 +273,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 .carousel-dots li.active a{background:#222}
 
 /* Customer testimonial styling */
-.customer-carousel{padding:36px 32px}
+.customer-carousel{padding:76px 32px}
 .customer-carousel h2{color:#fff;font-weight:400;text-align:center;font-size:42px;margin-bottom:2rem}
 .customer-carousel blockquote{font-size:1.15rem;font-style:italic;color:#fff;line-height:1.7;margin:0 auto 1.25rem;max-width:800px;text-align:center;font-weight:bold}
 .customer-carousel .source{text-align:right;max-width:800px;margin:0 auto;line-height:1}
@@ -291,7 +291,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
 .video-bg iframe{pointer-events:none}
 
 /* Intro / value prop section -- video is INSIDE this section */
-.intro-section{background:#fff;padding:40px 32px 0;margin:0;overflow:hidden}
+.intro-section{background:#fff;padding:76px 32px;margin:0;overflow:hidden}
 .intro-section .intro-inner{max-width:800px;margin:0 auto;text-align:center}
 .intro-section h1{font-size:46px;color:#272727;font-weight:400;margin-bottom:1.25rem;line-height:1.4em;letter-spacing:1.34px}
 .intro-section p{font-size:23px;color:#272727;line-height:1.4em;font-weight:300;letter-spacing:.43px;margin-bottom:0}
@@ -347,7 +347,7 @@ h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
   .solution-pillars{flex-direction:column;align-items:center}
   .intro-section h1,.decades-section h1,.solution-section h1{font-size:1.5rem}
   .intro-section p,.decades-section p{font-size:16px}
-  .intro-section{padding:26px 32px 0}
+  .intro-section{padding:26px 32px}
   .decades-section,.solution-section,.contact-section-home{padding:26px 32px}
   .video-embed{padding:17px 32px 0}
   blockquote{font-size:22px;line-height:24px}

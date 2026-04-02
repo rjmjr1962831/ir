@@ -12,6 +12,13 @@ const JSON_LD = JSON.stringify({
   },
 });
 
+const CONTACT_HERO_CSS = `
+.contact-hero{position:relative;background-size:cover;background-position:center center;color:#fff;text-align:center;aspect-ratio:1500/809;max-height:500px;display:flex;align-items:center;justify-content:center}
+.contact-hero .color-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);z-index:1}
+.contact-hero .desc-wrapper{position:relative;z-index:2}
+.contact-hero .desc-wrapper p{font-size:46px;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase;color:#fff;margin:0}
+`;
+
 export const CONTACT_FORM_CSS = `
 .contact-form-section{padding:4rem 2rem}
 .contact-form-section .section-inner{max-width:720px;margin:0 auto}
@@ -107,21 +114,36 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 `;
 
 export function renderContact(): string {
+  const contactPageCss = `
+${CONTACT_HERO_CSS}
+.contact-body{background:#fff;color:#272727;padding:2.5rem 2rem 3rem}
+.contact-body .prompt-text{text-align:center;font-size:1rem;color:#272727;margin-bottom:2rem;line-height:1.6}
+.contact-buttons{display:flex;justify-content:center;gap:2rem;max-width:700px;margin:0 auto 2rem}
+.contact-buttons a{display:inline-block;background:#272727;color:#fff;text-align:center;padding:.85rem 2rem;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .2s;border:none;border-radius:0}
+.contact-buttons a:hover{background:#3e3e3e;text-decoration:none;color:#fff}
+.contact-dnc{text-align:center;font-size:.95rem;color:#272727;line-height:1.6}
+.contact-dnc a{color:#272727;text-decoration:underline}
+.contact-dnc a:hover{color:#000}
+@media(max-width:600px){.contact-buttons{flex-direction:column;align-items:center;gap:1rem}.contact-buttons a{width:100%;max-width:400px}}
+`;
+
   const body = `
-<section class="hero" style="background-image:url('/images/AdobeStock_185382984-CMYK.webp')">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Contact Us</h1>
-    <p>Please select one of the following according to your needs:</p>
+<style>${contactPageCss}</style>
+
+<section class="contact-hero" style="background-image:url('/images/architecture-buildings-business-280193_edited.webp')">
+  <div class="color-overlay"></div>
+  <div class="desc-wrapper">
+    <p>Contact Us</p>
   </div>
 </section>
 
-<div class="container">
-  <div class="route-options">
-    <a href="https://myinstantrecall.com" class="route-option" rel="noopener">I am responding to a recall notification</a>
-    <a href="/contact" class="route-option secondary">I want to learn more about Instant Recall</a>
+<div class="contact-body">
+  <p class="prompt-text">Please select one of the following according to your needs:</p>
+  <div class="contact-buttons">
+    <a href="https://myinstantrecall.com" rel="noopener">I am responding to a recall notification</a>
+    <a href="/contact">I want to learn more about Instant Recall</a>
   </div>
-  <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:rgba(255,255,255,.5)">Were you contacted in error? Request to be put on the <a href="https://instantrecall.com/stop" target="_blank" style="color:#00afec">Do Not Contact</a> list.</p>
+  <p class="contact-dnc">Were you contacted in error? Request to be put on the <a href="https://instantrecall.com/stop" target="_blank">Do Not Contact</a> list.</p>
 </div>`;
 
   return renderPage({
@@ -136,11 +158,12 @@ export function renderContact(): string {
 
 export function renderContactDirect(): string {
   const body = `
-<section class="hero" style="background-image:url('/images/AdobeStock_185382984-CMYK.webp')">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Contact Us</h1>
-    <p>Want to learn more about Instant Recall?</p>
+<style>${CONTACT_HERO_CSS}</style>
+
+<section class="contact-hero" style="background-image:url('/images/architecture-buildings-business-280193_edited.webp')">
+  <div class="color-overlay"></div>
+  <div class="desc-wrapper">
+    <p>Contact Us</p>
   </div>
 </section>
 

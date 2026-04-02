@@ -98,6 +98,35 @@ ${researchIndexCitationBlock()}
 .research-card p{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.7;font-weight:300;margin-bottom:1.25rem}
 .read-link{display:inline-block;color:#00afec;font-weight:600;font-size:.9rem;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s}
 .read-link:hover{color:#33c4ff}
+</style>
+
+<style>
+/* White theme overrides */
+body{background:#fff !important;color:#3e3e3e !important}
+main{background:#fff !important}
+.hero{background:#f8f8f8 !important}
+.hero-overlay{background:rgba(39,39,39,0.85) !important}
+.hero-content h1{color:#fff !important}
+.hero-content p{color:rgba(255,255,255,.9) !important}
+.container{background:#fff !important}
+.research-grid{background:#fff !important}
+.research-card{background:#f8f8f8 !important;border:1px solid #e0e0e0 !important}
+.research-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1) !important}
+.research-card h2{color:#272727 !important}
+.research-card p{color:#3e3e3e !important}
+.read-link{color:#00afec !important}
+.read-link:hover{color:#008bbf !important}
+a{color:#00afec}
+h1,h2,h3,h4,h5,h6{color:#272727}
+.citation-data{background:#fff !important;color:#3e3e3e !important}
+.citation-data h2{color:#272727 !important}
+.ai-citation{background:#f8f8f8 !important;color:#3e3e3e !important;border-color:#e0e0e0 !important}
+.cite-source{color:#666 !important}
+.cta{background:#f8f8f8 !important;color:#3e3e3e !important}
+.cta h2{color:#272727 !important}
+.cta p{color:#3e3e3e !important}
+.btn{color:#fff !important;background:#00afec !important}
+footer{background:#272727 !important}
 </style>`;
 
   return renderPage({

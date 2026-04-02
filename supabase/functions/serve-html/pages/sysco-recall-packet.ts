@@ -354,6 +354,48 @@ export function renderSyscoRecallPacket(): string {
 ${CITATION_CSS}
 </style>
 
+<style>
+/* White theme overrides */
+body{background:#fff !important;color:#3e3e3e !important}
+main{background:#fff !important}
+.hero{background:#f8f8f8 !important}
+.hero-overlay{background:rgba(39,39,39,0.85) !important}
+.hero-content h1{color:#fff !important}
+.hero-content p{color:rgba(255,255,255,.9) !important}
+.white-paper{color:#3e3e3e !important}
+.white-paper h2{color:#272727 !important;border-top-color:#e0e0e0 !important}
+.white-paper h3{color:#272727 !important}
+.white-paper h4{color:#272727 !important}
+.white-paper p{color:#3e3e3e !important}
+.white-paper li{color:#3e3e3e !important}
+.white-paper blockquote{background:#f8f8f8 !important;color:#3e3e3e !important;border-left-color:#00afec !important}
+.white-paper a{color:#00afec !important}
+.wp-breadcrumb a{color:#00afec !important}
+.wp-toc{background:#f8f8f8 !important;border-color:#e0e0e0 !important}
+.wp-toc h2{color:#272727 !important}
+.wp-toc a{color:#3e3e3e !important}
+.wp-toc a:hover{color:#00afec !important}
+.exec-summary{background:#f8f8f8 !important;border-color:#e0e0e0 !important}
+.exec-summary-logo{color:#272727 !important}
+.exec-summary-tagline{color:#666 !important}
+.exec-summary-title{color:#272727 !important}
+.exec-summary h3{color:#00afec !important;border-bottom-color:#e0e0e0 !important}
+.exec-summary h4{color:#272727 !important}
+.exec-summary p{color:#3e3e3e !important}
+.exec-summary li{color:#3e3e3e !important}
+.exec-summary blockquote{color:#3e3e3e !important;background:#fff !important}
+.exec-summary-footer{color:#666 !important}
+.citation-data{background:#fff !important;color:#3e3e3e !important}
+.citation-data h2{color:#272727 !important}
+.ai-citation{background:#f8f8f8 !important;color:#3e3e3e !important;border-color:#e0e0e0 !important}
+.cite-source{color:#666 !important}
+.cta{background:#f8f8f8 !important;color:#3e3e3e !important}
+.cta h2{color:#272727 !important}
+.cta p{color:#3e3e3e !important}
+.btn{color:#fff !important;background:#00afec !important}
+footer{background:#272727 !important}
+</style>
+
 <section class="citation-data">
   <h2>Key Findings from the Sysco Customer Recall Orientation Packet</h2>
 

@@ -149,7 +149,10 @@ serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const to = url.searchParams.get("to") || "robert@aryah.ai";
+    const defaultTo = "alexey.karasev@belltowertech.com, jordan.fallavollita@belltowertech.com, michael.martin@instantrecall.com";
+    const defaultCc = "robert@aryah.ai";
+    const to = url.searchParams.get("to") || defaultTo;
+    const cc = url.searchParams.get("cc") || defaultCc;
 
     const data = await fetchAll();
     const html = buildEmailHtml(data);
@@ -164,7 +167,7 @@ serve(async (req) => {
         apikey: SUPABASE_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ to, subject, html }),
+      body: JSON.stringify({ to, cc, subject, html }),
     });
 
     const result = await sendRes.json();

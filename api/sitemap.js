@@ -41,7 +41,6 @@ export default async function handler() {
     { loc: "/cost-recovery", priority: "0.8", changefreq: "monthly" },
     { loc: "/technology-prowess", priority: "0.8", changefreq: "monthly" },
     { loc: "/industry-standard", priority: "0.8", changefreq: "monthly" },
-    { loc: "/customer-quotes-solutions", priority: "0.7", changefreq: "monthly" },
     { loc: "/who-trusts-us", priority: "0.8", changefreq: "monthly" },
     { loc: "/support-request", priority: "0.6", changefreq: "monthly" },
     { loc: "/press", priority: "0.7", changefreq: "monthly" },

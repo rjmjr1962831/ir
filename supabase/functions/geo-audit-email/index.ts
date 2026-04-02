@@ -4,6 +4,25 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrck
 const SUPABASE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SEND_EMAIL_URL = `${SUPABASE_URL}/functions/v1/send-email`;
 
+// ------- Bot classification -------
+
+const AI_CRAWLERS = new Set([
+  "GPTBot", "ChatGPT-User", "OAI-SearchBot",
+  "ClaudeBot", "Claude-Web", "Anthropic",
+  "PerplexityBot", "Gemini", "Google-Extended",
+  "Bytespider", "CCBot", "Cohere", "YouBot", "AI2Bot",
+]);
+const HUMAN_INITIATED = new Set([
+  "ChatGPT-User", "OAI-SearchBot", "PerplexityBot",
+]);
+// Everything else (Googlebot, Bingbot, Applebot, etc.) = search/other
+
+function classifyBot(bot: string): "ai" | "human" | "other" {
+  if (HUMAN_INITIATED.has(bot)) return "human";
+  if (AI_CRAWLERS.has(bot)) return "ai";
+  return "other";
+}
+
 // ------- Data fetching (same queries as dashboard.ts) -------
 
 interface ScoreDimension {
@@ -34,12 +53,80 @@ async function supaGet<T>(path: string): Promise<T> {
   return res.json();
 }
 
+// Related sites to poll for GEO signals (top 5 from benchmark)
+const RELATED_SITES = [
+  { name: "NSF.org", url: "https://www.nsf.org" },
+  { name: "Food Safety News", url: "https://www.foodsafetynews.com" },
+  { name: "Sedgwick", url: "https://www.sedgwick.com" },
+  { name: "GFSI", url: "https://www.mygfsi.com" },
+  { name: "SQF Institute", url: "https://www.sqfi.com" },
+];
+
+async function checkSignalCount(siteUrl: string): Promise<number> {
+  let score = 0;
+  try {
+    const checks = await Promise.allSettled([
+      fetch(`${siteUrl}/.well-known/mcp.json`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/llms.txt`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/robots.txt`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${siteUrl}/`, { signal: AbortSignal.timeout(5000) }),
+    ]);
+    // MCP
+    if (checks[0].status === "fulfilled" && checks[0].value.ok) score++;
+    // llms.txt
+    if (checks[1].status === "fulfilled" && checks[1].value.ok) score++;
+    // robots.txt allows bots (count as pass if exists)
+    if (checks[2].status === "fulfilled" && checks[2].value.ok) {
+      const txt = await checks[2].value.text();
+      if (!txt.toLowerCase().includes("disallow: /")) score++;
+    }
+    // JSON-LD on homepage
+    if (checks[3].status === "fulfilled" && checks[3].value.ok) {
+      const html = await checks[3].value.text();
+      if (html.includes("application/ld+json")) score++;
+    }
+  } catch { /* timeout or network error */ }
+  return score;
+}
+
 async function fetchAll() {
   const [dimensions, history, signals] = await Promise.all([
     supaGet<ScoreDimension[]>("geo_score_dimensions?select=dimension_name,score,weight,notes,last_assessed&order=weight.desc"),
     supaGet<ScoreHistory[]>("geo_score_history?select=score_date,score,label&order=score_date.desc&limit=10"),
     supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,current_status_note&order=signal_name"),
   ]);
+
+  // Crawl stats: yesterday vs day before
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const dayBefore = new Date(Date.now() - 172800000).toISOString().slice(0, 10);
+
+  interface CrawlRow { bot: string; ts: string }
+  const [yesterdayCrawls, dayBeforeCrawls] = await Promise.all([
+    supaGet<CrawlRow[]>(`crawl_log?select=bot,ts&ts=gte.${yesterday}T00:00:00&ts=lt.${yesterday}T23:59:59&limit=10000`),
+    supaGet<CrawlRow[]>(`crawl_log?select=bot,ts&ts=gte.${dayBefore}T00:00:00&ts=lt.${dayBefore}T23:59:59&limit=10000`),
+  ]);
+
+  function countByClass(rows: CrawlRow[]) {
+    let ai = 0, human = 0, other = 0;
+    for (const r of rows) {
+      const cls = classifyBot(r.bot);
+      if (cls === "ai") ai++;
+      else if (cls === "human") human++;
+      else other++;
+    }
+    return { ai, human, other, total: rows.length };
+  }
+
+  const crawlYesterday = countByClass(yesterdayCrawls);
+  const crawlDayBefore = countByClass(dayBeforeCrawls);
+
+  // Poll related sites in parallel
+  const relatedResults = await Promise.all(
+    RELATED_SITES.map(async (site) => {
+      const signals = await checkSignalCount(site.url);
+      return { name: site.name, signals };
+    })
+  );
 
   const totalWeight = dimensions.reduce((s, d) => s + (d.weight || 1), 0);
   const composite = Math.round(
@@ -53,7 +140,10 @@ async function fetchAll() {
   const prev = history.length > 1 ? history[1].score : null;
   const delta = prev !== null ? composite - prev : null;
 
-  return { composite, dimensions, history, signals, passing, total, delta, prev };
+  // Failing signals for deficiency summary
+  const failing = signals.filter((s) => s.status !== "PASS");
+
+  return { composite, dimensions, history, signals, passing, total, delta, prev, failing, relatedResults, crawlYesterday, crawlDayBefore, yesterdayDate: yesterday };
 }
 
 // ------- HTML email builder -------
@@ -69,6 +159,24 @@ function deltaText(delta: number | null, prev: number | null): string {
   const arrow = delta > 0 ? "\u2191" : "\u2193";
   const color = delta > 0 ? "#2e8b57" : "#d94040";
   return `<div style="font-size:13px;color:${color};margin-top:4px;font-weight:600">${arrow} ${Math.abs(delta)} pts from ${prev}</div>`;
+}
+
+function trendBadge(current: number, previous: number): string {
+  if (previous === 0 && current === 0) return `<span style="display:inline-block;background:#2e8b57;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">&mdash;</span>`;
+  const pct = previous === 0 ? 100 : Math.round(((current - previous) / previous) * 100);
+  if (pct > 5) return `<span style="display:inline-block;background:#00afec;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">\u2191 ${pct}%</span>`;
+  if (pct < -5) return `<span style="display:inline-block;background:#d94040;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">\u2193 ${Math.abs(pct)}%</span>`;
+  return `<span style="display:inline-block;background:#2e8b57;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">&mdash;</span>`;
+}
+
+function buildCrawlSection(yesterday: { ai: number; human: number; other: number; total: number }, dayBefore: { ai: number; human: number; other: number; total: number }): string {
+  return `<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px">
+<tr style="background:#f0f9fd"><th style="padding:8px;text-align:left;border-bottom:2px solid #e0e0e0">Category</th><th style="padding:8px;text-align:center;border-bottom:2px solid #e0e0e0">Count</th><th style="padding:8px;text-align:center;border-bottom:2px solid #e0e0e0">Trend</th></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>AI Crawlers</strong><br><span style="font-size:11px;color:#888">GPTBot, ClaudeBot, Bytespider, etc.</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.ai}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.ai, dayBefore.ai)}</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Human-Initiated</strong><br><span style="font-size:11px;color:#888">ChatGPT-User, PerplexityBot, OAI-SearchBot</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.human}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.human, dayBefore.human)}</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Search / Other</strong><br><span style="font-size:11px;color:#888">Googlebot, Bingbot, Applebot, etc.</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.other}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.other, dayBefore.other)}</td></tr>
+<tr style="background:#f8f8f8"><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Total</strong></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.total}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.total, dayBefore.total)}</td></tr>
+</table>`;
 }
 
 function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
@@ -92,12 +200,17 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
     )
     .join("");
 
-  // Score trend (last 5)
-  const recent = data.history.slice(0, 5).reverse();
-  const trendCells = recent
+  // Build deficiency text
+  const deficiencyText = data.failing.length === 0
+    ? "<strong>NONE.</strong> All signals passing."
+    : data.failing.map((f) => `<strong>${f.signal_name}:</strong> ${f.current_status_note || "Failing"}`).join("<br>");
+
+  // Related sites table
+  const relatedRows = data.relatedResults
+    .sort((a, b) => b.signals - a.signals)
     .map(
-      (h) =>
-        `<td style="text-align:center;padding:4px 8px"><div style="font-size:16px;font-weight:700;color:#272727">${h.score}</div><div style="font-size:10px;color:#888">${h.score_date.slice(5)}</div></td>`
+      (r) =>
+        `<tr><td style="padding:5px 10px;border-bottom:1px solid #f0f0f0;font-size:13px">${r.name}</td><td style="padding:5px 10px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:13px">${r.signals}/4</td></tr>`
     )
     .join("");
 
@@ -110,11 +223,22 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
 <div style="background:#00afec;border-radius:8px;padding:28px;text-align:center;margin:0 0 24px">
   <div style="font-size:52px;font-weight:800;color:#fff">${data.composite}/100</div>
   <div style="font-size:15px;color:rgba(255,255,255,0.95);margin-top:6px;font-weight:600">Citation-ready. Highest GEO score in the food safety industry.</div>
-  <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px">16-site benchmark: industry average 33/100. IR leads by 35+ points.</div>
   ${deltaText(data.delta, data.prev)}
 </div>
 
-${recent.length > 1 ? `<h2 style="font-size:16px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:6px">Score Trend</h2><table style="margin:0 auto 24px;border-collapse:collapse"><tr>${trendCells}</tr></table>` : ""}
+<div style="background:#f8f8f8;border-radius:6px;padding:20px;margin:0 0 24px;font-size:13px;color:#3e3e3e;line-height:1.7">
+  <p style="margin:0 0 12px"><strong style="color:#272727">What this score means:</strong> At ${data.composite}/100, Instant Recall's website is structured so that AI systems (ChatGPT, Claude, Gemini, Perplexity) can discover, read, and cite our content with high confidence. ${data.composite >= 90 ? "This is an elite score. AI engines have everything they need to recommend IR without hedging." : data.composite >= 80 ? "This is a strong score. Most AI citation infrastructure is in place." : "There is room for improvement in AI citation readiness."}</p>
+  <p style="margin:0 0 12px"><strong style="color:#272727">Deficiencies:</strong> ${deficiencyText}</p>
+  <p style="margin:0"><strong style="color:#272727">Related sites (live signal check):</strong></p>
+  <table style="width:100%;border-collapse:collapse;margin-top:8px">
+    <tr style="background:#e8e8e8"><th style="padding:5px 10px;text-align:left;font-size:12px">Site</th><th style="padding:5px 10px;text-align:center;font-size:12px">AI Signals</th></tr>
+    <tr style="background:#e8f7ff"><td style="padding:5px 10px;font-size:13px;font-weight:bold">Instant Recall</td><td style="padding:5px 10px;text-align:center;font-size:13px;font-weight:bold;color:#00afec">${data.passing}/${data.total}</td></tr>
+    ${relatedRows}
+  </table>
+</div>
+
+<h2 style="font-size:18px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:8px">Bot Crawler Activity (${data.yesterdayDate})</h2>
+${buildCrawlSection(data.crawlYesterday, data.crawlDayBefore)}
 
 <h2 style="font-size:18px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:8px">Signal Dashboard (${data.passing}/${data.total} Pass)</h2>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px">
@@ -130,6 +254,7 @@ ${dimRows}
 
 <hr style="border:none;border-top:1px solid #e0e0e0;margin:24px 0 12px">
 <p style="font-size:11px;color:#999;text-align:center">Automated GEO Audit | Instant Recall | ${today}</p>
+<p style="font-size:11px;color:#999;text-align:center;margin-top:4px">Author: Claude Opus 4.6 | Anthropic</p>
 
 </div></body></html>`;
 }
@@ -148,12 +273,15 @@ serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const to = url.searchParams.get("to") || "robert@aryah.ai";
+    const defaultTo = "alexey.karasev@belltowertech.com, jordan.fallavollita@belltowertech.com, michael.martin@instantrecall.com";
+    const defaultCc = "robert@aryah.ai";
+    const to = url.searchParams.get("to") || defaultTo;
+    const cc = url.searchParams.get("cc") || defaultCc;
 
     const data = await fetchAll();
     const html = buildEmailHtml(data);
     const today = new Date().toISOString().slice(0, 10);
-    const subject = `Instant Recall GEO Audit Report - ${today} | Score: ${data.composite}/100`;
+    const subject = `CONFIDENTIAL DAILY GEO REPORT - ${today} | Score: ${data.composite}/100`;
 
     // Send via send-email function
     const sendRes = await fetch(SEND_EMAIL_URL, {
@@ -163,7 +291,7 @@ serve(async (req) => {
         apikey: SUPABASE_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ to, subject, html }),
+      body: JSON.stringify({ to, cc, subject, html }),
     });
 
     const result = await sendRes.json();

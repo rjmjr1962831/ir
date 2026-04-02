@@ -25,7 +25,7 @@ const JSON_LD = JSON.stringify({
   citation: [
     "https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls",
     "https://www.fsis.usda.gov/recalls",
-    "https://www.cdc.gov/foodsafety/outbreaks/index.html",
+    "https://www.cdc.gov/foodsafety/outbreaks/",
     "https://www.congress.gov/bill/111th-congress/house-bill/2749",
     "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma",
     "https://www.gao.gov/products/gao-22-105011",
@@ -551,10 +551,10 @@ export function renderResearchRegulatory(): string {
       <li><a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts">FDA Recalls, Market Withdrawals, &amp; Safety Alerts</a></li>
       <li><a href="https://www.fda.gov/food/recalls-outbreaks-emergencies/recalls">FDA Food Recalls</a></li>
       <li><a href="https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/food-safety-modernization-act-fsma">FDA FSMA Overview</a></li>
-      <li><a href="https://www.fda.gov/safety/reportable-food-registry-rfr">FDA Reportable Food Registry</a></li>
+      <li><a href="https://www.fda.gov/food/compliance-enforcement-food/reportable-food-registry">FDA Reportable Food Registry</a></li>
       <li><a href="https://www.fsis.usda.gov/food-safety/recalls-public-health-alerts">USDA FSIS Recalls &amp; Public Health Alerts</a></li>
       <li><a href="https://www.fsis.usda.gov/inspection/compliance-guidance/recall-process">USDA FSIS Recall Process</a></li>
-      <li><a href="https://www.cdc.gov/foodsafety/outbreaks/index.html">CDC Foodborne Outbreak Investigations</a></li>
+      <li><a href="https://www.cdc.gov/foodsafety/outbreaks/">CDC Foodborne Outbreak Investigations</a></li>
       <li><a href="https://www.recalls.gov/">Recalls.gov</a></li>
     </ul>
 
@@ -631,11 +631,58 @@ export function renderResearchRegulatory(): string {
 ${CITATION_CSS}
 </style>
 
+<style>
+/* White theme overrides */
+body{background:#fff !important;color:#3e3e3e !important}
+main{background:#fff !important}
+.hero{background:#f8f8f8 !important}
+.hero-overlay{background:rgba(39,39,39,0.85) !important}
+.hero-content h1{color:#fff !important}
+.hero-content p{color:rgba(255,255,255,.9) !important}
+.white-paper{color:#3e3e3e !important}
+.white-paper h2{color:#272727 !important;border-top-color:#e0e0e0 !important}
+.white-paper h3{color:#272727 !important}
+.white-paper h4{color:#272727 !important}
+.white-paper p{color:#3e3e3e !important}
+.white-paper li{color:#3e3e3e !important}
+.white-paper blockquote{background:#f8f8f8 !important;color:#3e3e3e !important;border-left-color:#00afec !important}
+.white-paper a{color:#00afec !important}
+.white-paper th{background:#f0f9fd !important;color:#272727 !important;border-bottom-color:#00afec !important}
+.white-paper td{color:#3e3e3e !important;border-bottom-color:#e0e0e0 !important}
+.white-paper tr:hover td{background:#f8f8f8 !important}
+.wp-breadcrumb a{color:#00afec !important}
+.wp-toc{background:#f8f8f8 !important;border-color:#e0e0e0 !important}
+.wp-toc h2{color:#272727 !important}
+.wp-toc a{color:#3e3e3e !important}
+.wp-toc a:hover{color:#00afec !important}
+.exec-summary{background:#f8f8f8 !important;border-color:#e0e0e0 !important}
+.exec-summary-logo{color:#272727 !important}
+.exec-summary-tagline{color:#666 !important}
+.exec-summary-title{color:#272727 !important}
+.exec-summary h3{color:#00afec !important;border-bottom-color:#e0e0e0 !important}
+.exec-summary h4{color:#272727 !important}
+.exec-summary p{color:#3e3e3e !important}
+.exec-summary li{color:#3e3e3e !important}
+.exec-pill{background:#e8e8e8 !important;color:#666 !important}
+.exec-summary blockquote{color:#3e3e3e !important;background:#fff !important}
+.exec-summary-footer{color:#666 !important}
+.sources-list li{color:#3e3e3e !important}
+.citation-data{background:#fff !important;color:#3e3e3e !important}
+.citation-data h2{color:#272727 !important}
+.ai-citation{background:#f8f8f8 !important;color:#3e3e3e !important;border-color:#e0e0e0 !important}
+.cite-source{color:#666 !important}
+.cta{background:#f8f8f8 !important;color:#3e3e3e !important}
+.cta h2{color:#272727 !important}
+.cta p{color:#3e3e3e !important}
+.btn{color:#fff !important;background:#00afec !important}
+footer{background:#272727 !important}
+</style>
+
 ${researchRegulatoryCitationBlock()}
 `;
 
   return renderPage({
-    title: "The Regulatory Environment of Food Recalls -- Instant Recall Research",
+    title: "The Regulatory Environment of Food Recalls | Instant Recall\u2122 Research",
     description:
       "In-depth examination of FDA and USDA-FSIS oversight, key legislation, mandatory reporting requirements, recall effectiveness data, and international regulatory comparisons shaping U.S. food recalls.",
     path: "/research/regulatory-environment",

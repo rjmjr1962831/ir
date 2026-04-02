@@ -29,9 +29,9 @@ async function fetchRows(endpoint: string): Promise<CrawlRow[]> {
 }
 
 function scoreColor(n: number): string {
-  if (n >= 50) return "#00d4aa";
-  if (n >= 10) return "#ffd93d";
-  return "#ff6b6b";
+  if (n >= 50) return "#00afec";
+  if (n >= 10) return "#e6a817";
+  return "#d94040";
 }
 
 export async function handleCrawlStats(_req: Request): Promise<Response> {
@@ -134,31 +134,31 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
     const x = PAD_L + i * (barW + 2);
     const barH = (count / maxHourly) * plotH;
     const y = PAD_T + plotH - barH;
-    const color = count > 0 ? "#00d4aa" : "#1a2a3a";
+    const color = count > 0 ? "#00afec" : "#e0e0e0";
     chartBars += `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="2" fill="${color}" opacity="0.85"/>`;
     if (count > 0) {
-      chartBars += `<text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" fill="#00d4aa" font-size="9" font-weight="700">${count}</text>`;
+      chartBars += `<text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" fill="#272727" font-size="9" font-weight="700">${count}</text>`;
     }
     if (i % 4 === 0) {
       const hour = key.slice(11, 13) + ":00";
-      chartLabels += `<text x="${x + barW / 2}" y="${H - PAD_B + 14}" text-anchor="middle" fill="#556677" font-size="9">${hour}</text>`;
+      chartLabels += `<text x="${x + barW / 2}" y="${H - PAD_B + 14}" text-anchor="middle" fill="#888888" font-size="9">${hour}</text>`;
     }
   });
 
   const chartSvg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;max-width:100%">
-    <rect width="${W}" height="${H}" rx="8" fill="#111d28"/>
-    <line x1="${PAD_L}" y1="${PAD_T + plotH}" x2="${W - PAD_R}" y2="${PAD_T + plotH}" stroke="#1a2a3a" stroke-width="1"/>
+    <rect width="${W}" height="${H}" rx="8" fill="#f8f8f8"/>
+    <line x1="${PAD_L}" y1="${PAD_T + plotH}" x2="${W - PAD_R}" y2="${PAD_T + plotH}" stroke="#e0e0e0" stroke-width="1"/>
     ${chartBars}
     ${chartLabels}
   </svg>`;
 
   // Render bot table
   function botTable(entries: [string, number][], label: string): string {
-    if (entries.length === 0) return `<p style="color:#556677;font-size:.85rem">No crawls recorded for ${label}.</p>`;
+    if (entries.length === 0) return `<p style="color:#888888;font-size:.85rem">No crawls recorded for ${label}.</p>`;
     return `<table><thead><tr><th>Bot</th><th>Type</th><th>Crawls</th></tr></thead><tbody>${
       entries.map(([bot, count]) => {
         const cat = classify(bot);
-        const catColor = cat === "AI" ? "#00d4aa" : cat === "Search" ? "#ffd93d" : cat === "Social" ? "#a78bfa" : "#556677";
+        const catColor = cat === "AI" ? "#00afec" : cat === "Search" ? "#e6a817" : cat === "Social" ? "#7c5cbf" : "#888888";
         return `<tr><td>${bot}</td><td><span style="color:${catColor};font-weight:600;font-size:.8rem">${cat}</span></td><td style="text-align:right;font-weight:800">${count}</td></tr>`;
       }).join("")
     }</tbody></table>`;
@@ -166,10 +166,10 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
 
   // Render path table
   function pathTable(entries: [string, number][]): string {
-    if (entries.length === 0) return `<p style="color:#556677;font-size:.85rem">No crawls recorded.</p>`;
+    if (entries.length === 0) return `<p style="color:#888888;font-size:.85rem">No crawls recorded.</p>`;
     return `<table><thead><tr><th>Path</th><th>Crawls</th></tr></thead><tbody>${
       entries.slice(0, 20).map(([path, count]) =>
-        `<tr><td><a href="${path}" style="color:#00d4aa">${path}</a></td><td style="text-align:right;font-weight:800">${count}</td></tr>`
+        `<tr><td><a href="${path}" style="color:#00afec">${path}</a></td><td style="text-align:right;font-weight:800">${count}</td></tr>`
       ).join("")
     }</tbody></table>`;
   }
@@ -180,12 +180,12 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
     const timeStr = t.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
     const dateStr = t.toLocaleDateString("en-US", { month: "short", day: "numeric" });
     const cat = classify(r.bot);
-    const catColor = cat === "AI" ? "#00d4aa" : cat === "Search" ? "#ffd93d" : cat === "Social" ? "#a78bfa" : "#556677";
+    const catColor = cat === "AI" ? "#00afec" : cat === "Search" ? "#e6a817" : cat === "Social" ? "#7c5cbf" : "#888888";
     return `<tr>
-      <td style="white-space:nowrap;font-size:.8rem;color:#556677">${dateStr} ${timeStr}</td>
+      <td style="white-space:nowrap;font-size:.8rem;color:#888888">${dateStr} ${timeStr}</td>
       <td><span style="color:${catColor};font-weight:600">${r.bot}</span></td>
-      <td><a href="${r.path}" style="color:#00d4aa;font-size:.85rem">${r.path}</a></td>
-      <td style="text-align:center">${r.status === 200 ? '<span style="color:#00d4aa">200</span>' : `<span style="color:#ff6b6b">${r.status}</span>`}</td>
+      <td><a href="${r.path}" style="color:#00afec;font-size:.85rem">${r.path}</a></td>
+      <td style="text-align:center">${r.status === 200 ? '<span style="color:#2e8b57">200</span>' : `<span style="color:#d94040">${r.status}</span>`}</td>
     </tr>`;
   }).join("");
 
@@ -198,44 +198,44 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
   <meta name="robots" content="noindex, nofollow">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f1923;color:#e8e8e8;line-height:1.6;min-height:100vh}
-    a{color:#00d4aa;text-decoration:none}
-    a:hover{text-decoration:underline;color:#33e0be}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#ffffff;color:#3e3e3e;line-height:1.6;min-height:100vh}
+    a{color:#00afec;text-decoration:none}
+    a:hover{text-decoration:underline;color:#008ecc}
 
-    .dash-header{background:linear-gradient(135deg,#0f1923 0%,#1a2a3a 100%);border-bottom:2px solid #00d4aa;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-    .dash-header h1{font-size:1.5rem;font-weight:800;color:#fff}
-    .dash-header h1 span{color:#00d4aa}
-    .dash-header-meta{text-align:right;font-size:.85rem;color:#8899aa}
+    .dash-header{background:#272727;border-bottom:2px solid #00afec;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .dash-header h1{font-size:1.5rem;font-weight:800;color:#ffffff}
+    .dash-header h1 span{color:#00afec}
+    .dash-header-meta{text-align:right;font-size:.85rem;color:#cccccc}
     .dash-header-nav{display:flex;gap:1rem;font-size:.85rem}
-    .dash-header-nav a{color:#8899aa;font-weight:500}
-    .dash-header-nav a:hover{color:#00d4aa;text-decoration:none}
+    .dash-header-nav a{color:#cccccc;font-weight:500}
+    .dash-header-nav a:hover{color:#00afec;text-decoration:none}
 
     .container{max-width:1200px;margin:0 auto;padding:2rem}
 
     .stats-hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
-    .stat-card{background:#111d28;border:1px solid #1a2a3a;border-radius:8px;padding:1.25rem;text-align:center}
-    .stat-card .stat-value{font-size:2rem;font-weight:800;color:#00d4aa}
-    .stat-card .stat-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#556677;margin-top:.25rem}
+    .stat-card{background:#f8f8f8;border:1px solid #e0e0e0;border-radius:8px;padding:1.25rem;text-align:center}
+    .stat-card .stat-value{font-size:2rem;font-weight:800;color:#00afec}
+    .stat-card .stat-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#888888;margin-top:.25rem}
 
     .section{margin-bottom:2.5rem}
-    .section h2{font-size:1.1rem;font-weight:700;color:#00d4aa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #1a2a3a}
+    .section h2{font-size:1.1rem;font-weight:700;color:#272727;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #e0e0e0}
 
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 
     table{width:100%;border-collapse:collapse;font-size:.9rem}
-    th{text-align:left;padding:.5rem .75rem;color:#556677;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #1a2a3a}
-    td{padding:.45rem .75rem;border-bottom:1px solid rgba(255,255,255,0.04);color:#ccc}
-    tr:hover td{background:rgba(255,255,255,0.02)}
+    th{text-align:left;padding:.5rem .75rem;color:#888888;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e0e0e0}
+    td{padding:.45rem .75rem;border-bottom:1px solid #f0f0f0;color:#3e3e3e}
+    tr:hover td{background:#f5f5f5}
 
-    .chart-wrap{background:#111d28;border:1px solid #1a2a3a;border-radius:8px;padding:1rem;margin-bottom:1.5rem}
+    .chart-wrap{background:#f8f8f8;border:1px solid #e0e0e0;border-radius:8px;padding:1rem;margin-bottom:1.5rem}
 
     .category-bar{display:flex;height:24px;border-radius:4px;overflow:hidden;margin-bottom:.5rem}
-    .category-bar div{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#0f1923}
-    .cat-legend{display:flex;gap:1.5rem;font-size:.8rem;color:#8899aa;flex-wrap:wrap}
+    .category-bar div{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#ffffff}
+    .cat-legend{display:flex;gap:1.5rem;font-size:.8rem;color:#666666;flex-wrap:wrap}
     .cat-legend span{display:flex;align-items:center;gap:.35rem}
     .cat-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 
-    .footer{text-align:center;padding:2rem;font-size:.8rem;color:#556677;border-top:1px solid #1a2a3a;margin-top:2rem}
+    .footer{text-align:center;padding:2rem;font-size:.8rem;color:#888888;border-top:1px solid #e0e0e0;margin-top:2rem}
 
     @media(max-width:768px){
       .grid-2{grid-template-columns:1fr}
@@ -284,17 +284,17 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
     <h2>Crawl Categories (24h)</h2>
     ${last24h.length > 0 ? `
     <div class="category-bar">
-      ${categories24.AI > 0 ? `<div style="width:${(categories24.AI / last24h.length * 100).toFixed(1)}%;background:#00d4aa">${categories24.AI}</div>` : ""}
-      ${categories24.Search > 0 ? `<div style="width:${(categories24.Search / last24h.length * 100).toFixed(1)}%;background:#ffd93d">${categories24.Search}</div>` : ""}
-      ${categories24.Social > 0 ? `<div style="width:${(categories24.Social / last24h.length * 100).toFixed(1)}%;background:#a78bfa">${categories24.Social}</div>` : ""}
-      ${categories24.Other > 0 ? `<div style="width:${(categories24.Other / last24h.length * 100).toFixed(1)}%;background:#556677">${categories24.Other}</div>` : ""}
+      ${categories24.AI > 0 ? `<div style="width:${(categories24.AI / last24h.length * 100).toFixed(1)}%;background:#00afec">${categories24.AI}</div>` : ""}
+      ${categories24.Search > 0 ? `<div style="width:${(categories24.Search / last24h.length * 100).toFixed(1)}%;background:#e6a817">${categories24.Search}</div>` : ""}
+      ${categories24.Social > 0 ? `<div style="width:${(categories24.Social / last24h.length * 100).toFixed(1)}%;background:#7c5cbf">${categories24.Social}</div>` : ""}
+      ${categories24.Other > 0 ? `<div style="width:${(categories24.Other / last24h.length * 100).toFixed(1)}%;background:#aaaaaa">${categories24.Other}</div>` : ""}
     </div>
-    ` : '<p style="color:#556677;font-size:.85rem">No crawls in the last 24 hours.</p>'}
+    ` : '<p style="color:#888888;font-size:.85rem">No crawls in the last 24 hours.</p>'}
     <div class="cat-legend">
-      <span><span class="cat-dot" style="background:#00d4aa"></span> AI (${categories24.AI})</span>
-      <span><span class="cat-dot" style="background:#ffd93d"></span> Search (${categories24.Search})</span>
-      <span><span class="cat-dot" style="background:#a78bfa"></span> Social (${categories24.Social})</span>
-      <span><span class="cat-dot" style="background:#556677"></span> Other (${categories24.Other})</span>
+      <span><span class="cat-dot" style="background:#00afec"></span> AI (${categories24.AI})</span>
+      <span><span class="cat-dot" style="background:#e6a817"></span> Search (${categories24.Search})</span>
+      <span><span class="cat-dot" style="background:#7c5cbf"></span> Social (${categories24.Social})</span>
+      <span><span class="cat-dot" style="background:#aaaaaa"></span> Other (${categories24.Other})</span>
     </div>
   </div>
 
@@ -337,7 +337,7 @@ export async function handleCrawlStats(_req: Request): Promise<Response> {
     <h2>Recent Crawls (Last 50)</h2>
     <table>
       <thead><tr><th>Time</th><th>Bot</th><th>Path</th><th>Status</th></tr></thead>
-      <tbody>${feedRows || '<tr><td colspan="4" style="color:#556677;text-align:center;padding:1rem">No crawls recorded yet.</td></tr>'}</tbody>
+      <tbody>${feedRows || '<tr><td colspan="4" style="color:#888888;text-align:center;padding:1rem">No crawls recorded yet.</td></tr>'}</tbody>
     </table>
   </div>
 

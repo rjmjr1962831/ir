@@ -74,6 +74,31 @@ const JSON_LD = JSON.stringify({
 
 export function renderPress(): string {
   const body = `
+<style>
+  /* Who Trusts Us page: white-background branded overrides */
+  .press-page { background:#fff; }
+  .press-page .container { background:#fff; }
+  .press-page .section-title { color:#272727; }
+  .press-page .section-subtitle { color:#3e3e3e; }
+  .press-page .card { background:#f8f8f8; border:1px solid #e0e0e0; border-left:3px solid #00afec; }
+  .press-page .card h3 { color:#272727; }
+  .press-page .card p { color:#3e3e3e; }
+  .press-page .card p strong { color:#272727; }
+  .press-page .card a { color:#00afec; }
+  .press-page .client-card { background:#f8f8f8; border:1px solid #e0e0e0; }
+  .press-page .client-card:hover { box-shadow:0 8px 30px rgba(0,0,0,.1); }
+  .press-page .client-card h3 { color:#00afec; }
+  .press-page .client-card p { color:#3e3e3e; }
+  .press-page .client-card .client-tag { background:rgba(0,175,236,0.1); color:#00afec; }
+  .press-page .history-section { background:#fff; }
+  .press-page .history-section h2 { color:#272727; }
+  .press-page .history-section p { color:#3e3e3e; }
+  .press-page .history-stat { background:#f8f8f8; border:1px solid #e0e0e0; }
+  .press-page .history-stat .stat-value { color:#00afec; }
+  .press-page .history-stat .stat-label { color:#3e3e3e; }
+  .press-page a { color:#00afec; }
+</style>
+<div class="press-page">
 <section class="hero" style="min-height:400px;padding:5rem 2rem">
   <div class="hero-overlay" style="background:rgba(39,39,39,0.85)"></div>
   <div class="hero-content">
@@ -89,12 +114,12 @@ export function renderPress(): string {
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
     <div class="card" style="border-left:3px solid #00afec">
       <h3>US Foods Recall Process Overview</h3>
-      <p>US Foods, one of America's largest foodservice distributors, officially names <strong style="color:#fff">"Instant Recall by BellTower Technologies"</strong> in their Recall Process Overview documentation as the platform used to manage recall communications to their customers.</p>
+      <p>US Foods, one of America's largest foodservice distributors, officially names <strong>"Instant Recall by BellTower Technologies"</strong> in their Recall Process Overview documentation as the platform used to manage recall communications to their customers.</p>
       <p style="margin-top:1rem"><a href="https://www.usfoods.com/content/dam/usf/pdf/code-of-conduct/Recall-Process-Overview-v3.pdf" target="_blank" rel="noopener" style="font-weight:600">View US Foods Recall Process Overview (PDF) &rarr;</a></p>
     </div>
     <div class="card" style="border-left:3px solid #00afec">
       <h3>Sysco Customer Recall Orientation Packet</h3>
-      <p>Sysco, the world's largest foodservice distributor, names <strong style="color:#fff">"Instant Recall by BellTower Technologies"</strong> in their Customer Recall Orientation Packet as the system used to deliver recall notifications to Sysco customers.</p>
+      <p>Sysco, the world's largest foodservice distributor, names <strong>"Instant Recall by BellTower Technologies"</strong> in their Customer Recall Orientation Packet as the system used to deliver recall notifications to Sysco customers.</p>
       <p style="margin-top:1rem"><a href="https://assets.contentstack.io/v3/assets/bltfe3373143ecd3517/bltbed9319da41957ff/6966bee6f4f25c00087a9be8/RG-12_Sysco_Customer_Recall_Packet.pdf" target="_blank" rel="noopener" style="font-weight:600">View Sysco Customer Recall Orientation Packet (PDF) &rarr;</a></p>
     </div>
   </div>
@@ -200,10 +225,11 @@ export function renderPress(): string {
   <h2>Ready to Join the Industry Leaders?</h2>
   <p>See why the food industry's largest companies trust Instant Recall for recall preparedness and communications management.</p>
   <a href="/contact-instant-recall" class="btn">Contact Us</a>
-</section>`;
+</section>
+</div>`;
 
   return renderPage({
-    title: "Who Trusts Us | Instant Recall",
+    title: "Who Trusts Us | Instant Recall\u2122",
     description:
       "US Foods and Sysco officially name Instant Recall by BellTower Technologies in their recall process documentation. Trusted by Performance Food Group, Chick-fil-A, Casey's, Topgolf, and more for 25+ years.",
     path: "/who-trusts-us",

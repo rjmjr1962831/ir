@@ -3,6 +3,10 @@
     {
       "path": "/api/nightly-refresh",
       "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/ping",
+      "schedule": "*/5 * * * *"
     }
   ],
   "headers": [
@@ -21,7 +25,9 @@
     }
   ],
   "redirects": [
-    { "source": "/regulatory-reporting", "destination": "/cost-recovery", "permanent": true }
+    { "source": "/regulatory-reporting", "destination": "/cost-recovery", "permanent": true },
+    { "source": "/customer-quotes", "destination": "/", "permanent": true },
+    { "source": "/customer-quotes-solutions", "destination": "/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/api/html?path=%2F" },
@@ -52,7 +58,6 @@
     { "source": "/cost-recovery", "destination": "/api/html?path=%2Fcost-recovery" },
     { "source": "/technology-prowess", "destination": "/api/html?path=%2Ftechnology-prowess" },
     { "source": "/industry-standard", "destination": "/api/html?path=%2Findustry-standard" },
-    { "source": "/customer-quotes-solutions", "destination": "/api/html?path=%2Fcustomer-quotes-solutions" },
     { "source": "/support-request", "destination": "/api/html?path=%2Fsupport-request" },
     { "source": "/who-trusts-us", "destination": "/api/html?path=%2Fwho-trusts-us" },
     { "source": "/robots.txt", "destination": "/api/robots" },

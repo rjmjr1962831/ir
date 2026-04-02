@@ -43,6 +43,24 @@ const JSON_LD = JSON.stringify({
 
 export function renderAbout(): string {
   const body = `
+<style>
+  /* About page: white-background branded overrides */
+  .about-page { background:#fff; }
+  .about-page .container { background:#fff; }
+  .about-page .about-intro { color:#3e3e3e; }
+  .about-page .about-intro p { color:#3e3e3e; }
+  .about-page .section-title { color:#272727; }
+  .about-page .cards { gap:2.5rem; }
+  .about-page .card { background:#f8f8f8; border:1px solid #e0e0e0; }
+  .about-page .card h3 { color:#272727; }
+  .about-page .card p { color:#3e3e3e; }
+  .about-page .bio-card img { border:2px solid #00afec; }
+  .about-page .bio-card h3 { color:#272727; }
+  .about-page .bio-role { color:#3e3e3e; }
+  .about-page .bio-card p:last-child { color:#3e3e3e; }
+  .about-page a { color:#00afec; }
+</style>
+<div class="about-page">
 <section class="hero" style="background-image:url('/images/iStock-685238966.webp')">
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -130,10 +148,11 @@ ${aboutCitationBlock()}
   <h2>Ready to Strengthen Your Recall Readiness?</h2>
   <p>Connect with our team to learn how Instant Recall can protect your brand and your customers.</p>
   <a href="/contact-instant-recall" class="btn">Contact Us</a>
-</section>`;
+</section>
+</div>`;
 
   return renderPage({
-    title: "About Us | Instant Recall",
+    title: "About Us | Instant Recall\u2122",
     description:
       "Meet the Instant Recall team. The global leader in food incident management with more than two decades of food safety and recall expertise.",
     path: "/about-us",

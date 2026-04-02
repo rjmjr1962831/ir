@@ -2,6 +2,22 @@ import { renderPage } from "../shared/layout.ts";
 
 export function renderPrivacy(): string {
   const body = `
+<style>
+  /* Privacy page: match production Squarespace white-background layout */
+  .legal-privacy { background:#fff; color:#272727; padding:4rem 2rem; }
+  .legal-privacy .legal { color:#272727; }
+  .legal-privacy .legal h1 { color:#272727; font-size:1.8rem; margin-bottom:1rem; font-weight:700; }
+  .legal-privacy .legal h2 { color:#272727; font-size:1.3rem; margin:1.5rem 0 .5rem; }
+  .legal-privacy .legal h3 { color:#272727; font-size:1.1rem; margin:1rem 0 .4rem; }
+  .legal-privacy .legal p,
+  .legal-privacy .legal li { color:#272727; font-size:.95rem; line-height:1.7; margin-bottom:.5rem; font-weight:400; }
+  .legal-privacy .legal p strong { color:#272727; font-weight:700; }
+  .legal-privacy .legal a { color:#000; text-decoration:underline; }
+  .legal-privacy .legal a:hover { color:#000; }
+  .legal-privacy .legal ul,
+  .legal-privacy .legal ol { padding-left:1.5rem; margin-bottom:1rem; }
+</style>
+<div class="legal-privacy">
 <div class="legal">
   <h1>Privacy Policy</h1>
 
@@ -96,10 +112,11 @@ export function renderPrivacy(): string {
   McKinney, TX 75070</p>
 
   <p>We will address your concern and attempt to resolve any problem.</p>
+</div>
 </div>`;
 
   return renderPage({
-    title: "Privacy Policy -- Instant Recall",
+    title: "Privacy Policy | Instant Recall\u2122",
     description:
       "Privacy Policy for Instant Recall and BellTower Technologies LLC. Learn how we collect, use, and protect your information.",
     path: "/privacy-policy",

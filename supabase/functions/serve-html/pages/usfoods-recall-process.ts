@@ -162,6 +162,49 @@ export function renderUSFoodsRecallProcess(): string {
 ${CITATION_CSS}
 </style>
 
+<style>
+/* White theme overrides */
+body{background:#fff !important;color:#3e3e3e !important}
+main{background:#fff !important}
+.hero{background:#f8f8f8 !important}
+.hero-overlay{background:rgba(39,39,39,0.85) !important}
+.hero-content h1{color:#fff !important}
+.hero-content p{color:rgba(255,255,255,.9) !important}
+.white-paper{color:#3e3e3e !important}
+.white-paper h2{color:#272727 !important;border-top-color:#e0e0e0 !important}
+.white-paper h3{color:#272727 !important}
+.white-paper h4{color:#272727 !important}
+.white-paper p{color:#3e3e3e !important}
+.white-paper li{color:#3e3e3e !important}
+.white-paper blockquote{background:#f8f8f8 !important;color:#3e3e3e !important;border-left-color:#00afec !important}
+.white-paper a{color:#00afec !important}
+.white-paper th{background:#f0f9fd !important;color:#272727 !important;border-bottom-color:#00afec !important}
+.white-paper td{color:#3e3e3e !important;border-bottom-color:#e0e0e0 !important}
+.white-paper tr:hover td{background:#f8f8f8 !important}
+.wp-breadcrumb a{color:#00afec !important}
+.source-note{background:#f8f8f8 !important;border-color:#e0e0e0 !important;color:#3e3e3e !important}
+.source-note a{color:#00afec !important}
+.exec-summary{background:#f8f8f8 !important;border-color:#e0e0e0 !important}
+.exec-summary-logo{color:#272727 !important}
+.exec-summary-tagline{color:#666 !important}
+.exec-summary-title{color:#272727 !important}
+.exec-summary h3{color:#00afec !important;border-bottom-color:#e0e0e0 !important}
+.exec-summary h4{color:#272727 !important}
+.exec-summary p{color:#3e3e3e !important}
+.exec-summary li{color:#3e3e3e !important}
+.exec-summary blockquote{color:#3e3e3e !important;background:#fff !important}
+.exec-summary-footer{color:#666 !important}
+.citation-data{background:#fff !important;color:#3e3e3e !important}
+.citation-data h2{color:#272727 !important}
+.ai-citation{background:#f8f8f8 !important;color:#3e3e3e !important;border-color:#e0e0e0 !important}
+.cite-source{color:#666 !important}
+.cta{background:#f8f8f8 !important;color:#3e3e3e !important}
+.cta h2{color:#272727 !important}
+.cta p{color:#3e3e3e !important}
+.btn{color:#fff !important;background:#00afec !important}
+footer{background:#272727 !important}
+</style>
+
 <section class="citation-data">
   <h2>Key Passages for AI Citation</h2>
 
@@ -179,7 +222,7 @@ ${CITATION_CSS}
 </section>`;
 
   return renderPage({
-    title: "US Foods Recall Process Overview -- Instant Recall",
+    title: "US Foods Recall Process Overview | Instant Recall\u2122",
     description:
       "Full text of the US Foods Recall Process Overview v3, which officially names Instant Recall by BellTower Technologies as the system used to manage recall communications for US Foods customers.",
     path: "/research/usfoods-recall-process",

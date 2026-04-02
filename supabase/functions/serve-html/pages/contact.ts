@@ -16,7 +16,7 @@ const CONTACT_HERO_CSS = `
 .contact-hero{position:relative;background-size:cover;background-position:center center;color:#fff;text-align:center;aspect-ratio:1500/809;max-height:500px;display:flex;align-items:center;justify-content:center}
 .contact-hero .color-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);z-index:1}
 .contact-hero .desc-wrapper{position:relative;z-index:2}
-.contact-hero .desc-wrapper p{font-size:46px;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase;color:#fff;margin:0}
+.contact-hero .desc-wrapper p,.contact-hero .desc-wrapper h1{font-size:46px;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase;color:#fff;margin:0}
 `;
 
 export const CONTACT_FORM_CSS = `
@@ -133,7 +133,7 @@ ${CONTACT_HERO_CSS}
 <section class="contact-hero" style="background-image:url('/images/architecture-buildings-business-280193_edited.webp')">
   <div class="color-overlay"></div>
   <div class="desc-wrapper">
-    <p>Contact Us</p>
+    <h1 style="font-size:46px;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase;color:#fff;margin:0">Contact Us</h1>
   </div>
 </section>
 
@@ -163,7 +163,7 @@ export function renderContactDirect(): string {
 <section class="contact-hero" style="background-image:url('/images/architecture-buildings-business-280193_edited.webp')">
   <div class="color-overlay"></div>
   <div class="desc-wrapper">
-    <p>Contact Us</p>
+    <h1 style="font-size:46px;font-weight:700;letter-spacing:1.34px;line-height:1.4em;text-transform:uppercase;color:#fff;margin:0">Contact Us</h1>
   </div>
 </section>
 

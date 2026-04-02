@@ -130,6 +130,7 @@ ${dimRows}
 
 <hr style="border:none;border-top:1px solid #e0e0e0;margin:24px 0 12px">
 <p style="font-size:11px;color:#999;text-align:center">Automated GEO Audit | Instant Recall | ${today}</p>
+<p style="font-size:11px;color:#999;text-align:center;margin-top:4px">Author: Claude Opus 4.6 | Anthropic</p>
 
 </div></body></html>`;
 }
@@ -153,7 +154,7 @@ serve(async (req) => {
     const data = await fetchAll();
     const html = buildEmailHtml(data);
     const today = new Date().toISOString().slice(0, 10);
-    const subject = `Instant Recall GEO Audit Report - ${today} | Score: ${data.composite}/100`;
+    const subject = `CONFIDENTIAL DAILY GEO REPORT - ${today} | Score: ${data.composite}/100`;
 
     // Send via send-email function
     const sendRes = await fetch(SEND_EMAIL_URL, {

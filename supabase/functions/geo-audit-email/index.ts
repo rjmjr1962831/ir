@@ -4,6 +4,25 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "https://dewbyvlbmkersxjrck
 const SUPABASE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SEND_EMAIL_URL = `${SUPABASE_URL}/functions/v1/send-email`;
 
+// ------- Bot classification -------
+
+const AI_CRAWLERS = new Set([
+  "GPTBot", "ChatGPT-User", "OAI-SearchBot",
+  "ClaudeBot", "Claude-Web", "Anthropic",
+  "PerplexityBot", "Gemini", "Google-Extended",
+  "Bytespider", "CCBot", "Cohere", "YouBot", "AI2Bot",
+]);
+const HUMAN_INITIATED = new Set([
+  "ChatGPT-User", "OAI-SearchBot", "PerplexityBot",
+]);
+// Everything else (Googlebot, Bingbot, Applebot, etc.) = search/other
+
+function classifyBot(bot: string): "ai" | "human" | "other" {
+  if (HUMAN_INITIATED.has(bot)) return "human";
+  if (AI_CRAWLERS.has(bot)) return "ai";
+  return "other";
+}
+
 // ------- Data fetching (same queries as dashboard.ts) -------
 
 interface ScoreDimension {
@@ -77,6 +96,30 @@ async function fetchAll() {
     supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,current_status_note&order=signal_name"),
   ]);
 
+  // Crawl stats: yesterday vs day before
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const dayBefore = new Date(Date.now() - 172800000).toISOString().slice(0, 10);
+
+  interface CrawlRow { bot: string; ts: string }
+  const [yesterdayCrawls, dayBeforeCrawls] = await Promise.all([
+    supaGet<CrawlRow[]>(`crawl_log?select=bot,ts&ts=gte.${yesterday}T00:00:00&ts=lt.${yesterday}T23:59:59&limit=10000`),
+    supaGet<CrawlRow[]>(`crawl_log?select=bot,ts&ts=gte.${dayBefore}T00:00:00&ts=lt.${dayBefore}T23:59:59&limit=10000`),
+  ]);
+
+  function countByClass(rows: CrawlRow[]) {
+    let ai = 0, human = 0, other = 0;
+    for (const r of rows) {
+      const cls = classifyBot(r.bot);
+      if (cls === "ai") ai++;
+      else if (cls === "human") human++;
+      else other++;
+    }
+    return { ai, human, other, total: rows.length };
+  }
+
+  const crawlYesterday = countByClass(yesterdayCrawls);
+  const crawlDayBefore = countByClass(dayBeforeCrawls);
+
   // Poll related sites in parallel
   const relatedResults = await Promise.all(
     RELATED_SITES.map(async (site) => {
@@ -100,7 +143,7 @@ async function fetchAll() {
   // Failing signals for deficiency summary
   const failing = signals.filter((s) => s.status !== "PASS");
 
-  return { composite, dimensions, history, signals, passing, total, delta, prev, failing, relatedResults };
+  return { composite, dimensions, history, signals, passing, total, delta, prev, failing, relatedResults, crawlYesterday, crawlDayBefore, yesterdayDate: yesterday };
 }
 
 // ------- HTML email builder -------
@@ -116,6 +159,24 @@ function deltaText(delta: number | null, prev: number | null): string {
   const arrow = delta > 0 ? "\u2191" : "\u2193";
   const color = delta > 0 ? "#2e8b57" : "#d94040";
   return `<div style="font-size:13px;color:${color};margin-top:4px;font-weight:600">${arrow} ${Math.abs(delta)} pts from ${prev}</div>`;
+}
+
+function trendBadge(current: number, previous: number): string {
+  if (previous === 0 && current === 0) return `<span style="display:inline-block;background:#2e8b57;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">&mdash;</span>`;
+  const pct = previous === 0 ? 100 : Math.round(((current - previous) / previous) * 100);
+  if (pct > 5) return `<span style="display:inline-block;background:#00afec;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">\u2191 ${pct}%</span>`;
+  if (pct < -5) return `<span style="display:inline-block;background:#d94040;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">\u2193 ${Math.abs(pct)}%</span>`;
+  return `<span style="display:inline-block;background:#2e8b57;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:bold">&mdash;</span>`;
+}
+
+function buildCrawlSection(yesterday: { ai: number; human: number; other: number; total: number }, dayBefore: { ai: number; human: number; other: number; total: number }): string {
+  return `<table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px">
+<tr style="background:#f0f9fd"><th style="padding:8px;text-align:left;border-bottom:2px solid #e0e0e0">Category</th><th style="padding:8px;text-align:center;border-bottom:2px solid #e0e0e0">Count</th><th style="padding:8px;text-align:center;border-bottom:2px solid #e0e0e0">Trend</th></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>AI Crawlers</strong><br><span style="font-size:11px;color:#888">GPTBot, ClaudeBot, Bytespider, etc.</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.ai}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.ai, dayBefore.ai)}</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Human-Initiated</strong><br><span style="font-size:11px;color:#888">ChatGPT-User, PerplexityBot, OAI-SearchBot</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.human}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.human, dayBefore.human)}</td></tr>
+<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Search / Other</strong><br><span style="font-size:11px;color:#888">Googlebot, Bingbot, Applebot, etc.</span></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.other}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.other, dayBefore.other)}</td></tr>
+<tr style="background:#f8f8f8"><td style="padding:7px;border-bottom:1px solid #f0f0f0"><strong>Total</strong></td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:700">${yesterday.total}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${trendBadge(yesterday.total, dayBefore.total)}</td></tr>
+</table>`;
 }
 
 function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
@@ -175,6 +236,9 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
     ${relatedRows}
   </table>
 </div>
+
+<h2 style="font-size:18px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:8px">Bot Crawler Activity (${data.yesterdayDate})</h2>
+${buildCrawlSection(data.crawlYesterday, data.crawlDayBefore)}
 
 <h2 style="font-size:18px;color:#272727;border-bottom:2px solid #e0e0e0;padding-bottom:8px">Signal Dashboard (${data.passing}/${data.total} Pass)</h2>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px">

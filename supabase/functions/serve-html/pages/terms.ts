@@ -2,6 +2,22 @@ import { renderPage } from "../shared/layout.ts";
 
 export function renderTerms(): string {
   const body = `
+<style>
+  /* Terms page: match production Squarespace white-background layout */
+  .legal-terms { background:#fff; color:#272727; padding:4rem 2rem; }
+  .legal-terms .legal { color:#272727; }
+  .legal-terms .legal h1 { color:#272727; font-size:1.8rem; margin-bottom:1rem; font-weight:700; }
+  .legal-terms .legal h2 { color:#272727; font-size:1.3rem; margin:1.5rem 0 .5rem; }
+  .legal-terms .legal h3 { color:#272727; font-size:1.1rem; margin:1rem 0 .4rem; }
+  .legal-terms .legal p,
+  .legal-terms .legal li { color:#272727; font-size:.95rem; line-height:1.7; margin-bottom:.5rem; font-weight:400; }
+  .legal-terms .legal p strong { color:#272727; font-weight:700; }
+  .legal-terms .legal a { color:#000; text-decoration:underline; }
+  .legal-terms .legal a:hover { color:#000; }
+  .legal-terms .legal ul,
+  .legal-terms .legal ol { padding-left:1.5rem; margin-bottom:1rem; }
+</style>
+<div class="legal-terms">
 <div class="legal">
   <h1>Terms and Conditions</h1>
 
@@ -84,6 +100,7 @@ export function renderTerms(): string {
   The failure of either party to insist upon or enforce strict performance by the other party of any provision of the Terms of Service or to exercise any right under the Terms of Service will not be construed as a waiver or relinquishment to any extent of such party&rsquo;s right to assert or rely upon any such provision or right in that or any other instance, rather, the same will be and remain in full force and effect. BTT may assign its rights and obligations under these Terms of Service and upon such assignment BTT may be relieved of any further obligation hereunder. You represent to BTT that you have the authority to register with the website according to these Terms of Service.</p>
 
   <p>These Terms of Service and any Additional Terms (as such terms shall be identified when posted on the website by BTT) constitute the entire understanding between the parties as to subject matter hereof, and supersede all prior agreements and understandings. Any legally unenforceable provision of these Terms of Service will, at the election of BTT, be deleted or modified to correct the defect and, regardless, the remainder of the terms of these Terms of Service will remain valid and enforceable.</p>
+</div>
 </div>`;
 
   return renderPage({

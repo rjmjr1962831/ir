@@ -18,22 +18,77 @@ const JSON_LD = JSON.stringify({
 export function renderIndustryStandard(): string {
   const body = `
 <style>
-  .page-hero-image {
+  .subpage-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: #fff;
+    max-width: 100%;
+    min-height: 400px;
+  }
+  .subpage-card-image {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+  .subpage-card-image img {
     width: 100%;
+    height: 100%;
     display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
+    object-fit: cover;
+    aspect-ratio: 2222 / 1667;
+  }
+  .subpage-card-text {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    background: #fff;
+  }
+  .subpage-card-text h1 {
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #272727;
+    margin: 0 0 1rem;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+  }
+  .subpage-card-text p {
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #3e3e3e;
+    line-height: 1.7;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .subpage-card {
+      flex-direction: column;
+    }
+    .subpage-card-image,
+    .subpage-card-text {
+      flex: 1 1 auto;
+    }
+    .subpage-card-text {
+      padding: 2rem 1.5rem;
+    }
   }
 </style>
-<section style="background:#fff;padding:0;margin:0">
-  <img
-    class="page-hero-image"
-    src="/images/IndustryGoldStandard.webp"
-    alt="Industry Gold Standard"
-    width="1600"
-    height="900"
-    loading="eager"
-  />
+<section class="subpage-card">
+  <div class="subpage-card-image">
+    <img
+      src="/images/IndustryGoldStandard.webp"
+      alt="Industry Gold Standard"
+      width="2222"
+      height="1667"
+      loading="eager"
+    />
+  </div>
+  <div class="subpage-card-text">
+    <h1>Industry Gold Standard</h1>
+    <p>Instant Recall serves the largest and most prestigious food companies in the world. Enjoy peace-of-mind knowing that your customers and brand are protected by leader-shared practices, recall technology, and 24x7 response team.</p>
+  </div>
 </section>`;
 
   return renderPage({

@@ -3,6 +3,10 @@
     {
       "path": "/api/nightly-refresh",
       "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/ping",
+      "schedule": "*/5 * * * *"
     }
   ],
   "headers": [

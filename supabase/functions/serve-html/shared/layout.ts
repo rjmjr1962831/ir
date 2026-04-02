@@ -10,7 +10,16 @@ interface LayoutOptions {
   jsonLd?: string;
   body: string;
   freshness?: FreshnessData;
+  noIndex?: boolean;
 }
+
+const NOINDEX_PATHS = [
+  "/dashboard",
+  "/crawl-stats",
+  "/geo-ledger",
+  "/internal/",
+  "/docs/",
+];
 
 const BREADCRUMB_NAMES: Record<string, string> = {
   "/": "Home",
@@ -250,6 +259,7 @@ export function renderPage(opts: LayoutOptions): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${opts.title}</title>
   <meta name="description" content="${opts.description}">
+  ${(opts.noIndex || NOINDEX_PATHS.some(p => opts.path.startsWith(p))) ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   ${lastModMeta}
   <link rel="canonical" href="${canonical}">

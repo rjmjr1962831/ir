@@ -75,6 +75,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /crawl-stats
+Disallow: /geo-ledger
+Disallow: /internal/
+Disallow: /docs/
+Disallow: /api/
 
 Sitemap: https://www.instantrecall.com/sitemap.xml
 

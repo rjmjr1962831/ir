@@ -23,7 +23,7 @@ interface ScoreHistory {
 interface SignalStatus {
   signal_name: string;
   status: string;
-  notes?: string;
+  current_status_note?: string;
 }
 
 async function supaGet<T>(path: string): Promise<T> {
@@ -38,7 +38,7 @@ async function fetchAll() {
   const [dimensions, history, signals] = await Promise.all([
     supaGet<ScoreDimension[]>("geo_score_dimensions?select=dimension_name,score,weight,notes,last_assessed&order=weight.desc"),
     supaGet<ScoreHistory[]>("geo_score_history?select=score_date,score,label&order=score_date.desc&limit=10"),
-    supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,notes&order=signal_name"),
+    supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,current_status_note&order=signal_name"),
   ]);
 
   const totalWeight = dimensions.reduce((s, d) => s + (d.weight || 1), 0);
@@ -81,7 +81,7 @@ function buildEmailHtml(data: Awaited<ReturnType<typeof fetchAll>>): string {
   const signalRows = data.signals
     .map(
       (s) =>
-        `<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0">${s.signal_name}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${badge(s.status)}</td><td style="padding:7px;border-bottom:1px solid #f0f0f0;font-size:12px;color:#666">${s.notes || ""}</td></tr>`
+        `<tr><td style="padding:7px;border-bottom:1px solid #f0f0f0">${s.signal_name}</td><td style="padding:7px;text-align:center;border-bottom:1px solid #f0f0f0">${badge(s.status)}</td><td style="padding:7px;border-bottom:1px solid #f0f0f0;font-size:12px;color:#666">${s.current_status_note || ""}</td></tr>`
     )
     .join("");
 

@@ -96,29 +96,8 @@ async function fetchAll() {
     supaGet<SignalStatus[]>("geo_signal_status?select=signal_name,status,current_status_note&order=signal_name"),
   ]);
 
-  // Live TTFB measurement: warm cache then measure
-  let ttfbNote = "";
-  try {
-    // Warm the cache: 3 sequential hits, discard results
-    for (let i = 0; i < 3; i++) {
-      await fetch("https://ir-zeta.vercel.app/", { signal: AbortSignal.timeout(10000) });
-    }
-    // Measure TTFB on warm cache
-    const start = performance.now();
-    await fetch("https://ir-zeta.vercel.app/", { signal: AbortSignal.timeout(10000) });
-    const ttfb = Math.round(performance.now() - start);
-    
-    ttfbNote = `${ttfb}ms (datacenter, warm cache)`;
-  } catch {
-    ttfbNote = "Measurement failed (timeout or network error)";
-  }
-
-  // Override the TTFB signal note with live measurement
-  for (const s of signals) {
-    if (s.signal_name.toLowerCase().includes("ttfb") || s.signal_name.toLowerCase().includes("time to first byte")) {
-      s.current_status_note = ttfbNote;
-    }
-  }
+  // TTFB signal is read from geo_signal_status (externally measured value).
+  // No live datacenter measurement -- datacenter-to-datacenter gives misleadingly low numbers.
 
   // Crawl stats: yesterday vs day before
   const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);

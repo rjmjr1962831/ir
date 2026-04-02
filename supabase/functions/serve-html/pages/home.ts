@@ -485,7 +485,7 @@ export function renderHome(): string {
 <!-- 2. VALUE PROP: White background -->
 <section class="intro-section">
   <div class="intro-inner">
-    <h1>Protecting Your Customers, Your Brand, and Your Bottom Line</h1>
+    <h2>Protecting Your Customers, Your Brand, and Your Bottom Line</h2>
     <p>Instant Recall\u2122 is the fastest, most reliable way to initiate food recalls, withdrawals, holds, and mock events, enabling you to execute critical recall communications quickly, consistently, and with confidence.</p>
     <p style="margin-top:1rem">Our automated workflows, real-time alerts, and 24/7 expert support streamline every step, so you can act fast\u2014no matter how complex the event.</p>
   </div>
@@ -512,14 +512,14 @@ export function renderHome(): string {
 <!-- 5. DECADES OF TRUST: White background -->
 <section class="decades-section">
   <div class="decades-inner">
-    <h1>Decades of Trust Among Food Industry Leaders</h1>
+    <h2>Decades of Trust Among Food Industry Leaders</h2>
     <p>For more than 20 years, Instant Recall has set the standard for recall management across the global food industry. Trusted by suppliers, distributors, retailers, and restaurant chains alike, we combine proven technology with deep expertise and hands-on partnership to help you respond with speed, structure, and certainty.</p>
   </div>
 </section>
 
 <!-- 6. OUR SOLUTION: Light gray background with FA icons -->
 <section class="solution-section">
-  <h1>Our Solution</h1>
+  <h2>Our Solution</h2>
   <div class="solution-pillars">
     <div class="solution-pillar">
       <div class="icon-circle"><i class="fas fa-phone-volume"></i></div>
@@ -564,7 +564,7 @@ export function renderHome(): string {
 <!-- 9. CONTACT CTA: White background with HubSpot form -->
 <section class="section-white contact-form-section contact-section-home">
   <div class="section-inner">
-    <h1 style="color:#272727;font-size:46px;font-weight:400">Accelerate Your Recall Response</h1>
+    <h2 style="color:#272727;font-size:46px;font-weight:400">Accelerate Your Recall Response</h2>
     <script src="https://js-na2.hsforms.net/forms/embed/48681528.js" defer></script>
     <div class="hs-form-frame" data-region="na2" data-form-id="2759faa2-dc43-43f4-8d4d-8fb442c2d0bf" data-portal-id="48681528"></div>
   </div>

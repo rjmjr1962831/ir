@@ -1,7 +1,7 @@
 # InstantRecall -- Comprehensive Knowledge Document (SSoT)
 
 **Purpose:** Single Source of Truth for all AI agents (Claude Code, Claude Web, Cursor). When sources conflict, this document wins.
-**Last consolidated:** 2026-03-31
+**Last consolidated:** 2026-04-02
 **Conflict rule:** This document is authoritative. Deprecate earlier statements that contradict it.
 
 ---
@@ -298,68 +298,118 @@ Execute everything autonomously EXCEPT:
 
 ---
 
-## 12. Recent Updates (Session of 2026-03-30)
+## 12. Recent Updates (from t1)
 
-### AI Surface Buildout
+*Last synthesized: 2026-04-02*
+
+---
+
+### GEO & AI Discoverability
+
+- AI signals trajectory: 3/8 → 6/8 → 7/8 PASS (only HTTP/3 failing -- Vercel platform limitation)
 - Built and deployed: llms-full.txt, ai-content-index.json (API route), for-ai.txt, JSON-LD (Organization, WebSite, SearchAction, Service, BreadcrumbList on all pages), Link headers in vercel.json
-- Moved from 3/8 to 5/8 passing signals
-- MCP server skipped (not enough structured data to justify)
-- Key commit: ee15a13
+- Deployed .well-known/mcp.json manifest -- MCP signal flipped to PASS
+- FAQPage JSON-LD added to all 3 research white papers (24 FAQ entries total, 8 per page)
+- Sysco research page includes FAQPage JSON-LD (11 entries)
+- Auto-injected dateModified into JSON-LD on all pages from site_freshness table
+- All AI discovery files (ai-content-index, sitemap, llms.txt, llms-full.txt, for-ai, MCP manifest, nightly warm list) updated to include every page on site
+- Michael Martin (Co-Founder & Chairman) named as responsible party across footer, for-ai, llms.txt, llms-full.txt, MCP manifest, Organization JSON-LD
+- MCP server skipped -- not enough structured data to justify
+- Fixed /cost-recovery canonical bug (was pointing to 404 /regulatory-reporting)
+- Added og:image + twitter:image to all pages via shared layout
+- "Research" link added to header navigation (4 previously orphaned pages now discoverable)
+- GEO score trajectory: 18 (Mar 28) → 28 (Mar 29) → 42 (Mar 30) → 60 → 73 (Mar 31)
 
-### Deep Market Research (4 Parallel Agents)
-- Industry survey: 3,200+ recalls/year, 580M+ units, no dominant consumer player
-- Regulatory environment: 6 agencies, 6% participation, first CPSA criminal prosecution (Gree, June 2025)
-- Legal case data: Takata $1.5B+, IKEA MALM $46M, Fisher-Price $19M
-- Premium positioning: $4.32B market growing to $8.23B by 2033
+**Current GEO dimensions (as of Mar 31):**
+| Dimension | Score |
+|---|---|
+| AI crawler access | 80 |
+| Structured data | 75 |
+| Citation readiness | 20 |
+| Freshness signals | 15 |
+| Authority | 30 |
 
-### White Papers
-- "The Recall Notification Crisis" -- ~6,500 words, 80+ citations, 8 sections (internal)
-- Premium positioning white paper (internal)
-- 3 white papers being built as clean-room HTML at /research/*
+### Research & White Papers
 
-### Dev Site Rebuild
-- Crawled live Squarespace site, copied all 27 brand assets
-- Rebuilt every page: homepage, solution, contact, about (with headshots), portal, schedule
-- Brand: dark navy + gold color scheme, matches Squarespace site exactly
+- 3 research pages live as clean-room HTML at /research/*: industry, regulatory, legal
+- White paper fact corrections applied (all 3 papers had hallucinated stats):
+  - "6 federal agencies" for food recalls → corrected to FDA + USDA-FSIS as primary
+  - Takata "$1.5B+" → corrected to $1B DOJ penalty
+  - IKEA $46M → labeled as wrongful death settlement, not CPSC penalty
+  - Fisher-Price $19M → labeled as class-action, not CPSC penalty
+  - All-product stats (3,200+ recalls, 580M+ units) clearly labeled as all-product; food-specific ~296 added
+  - Added 3 missing food recall cases: PCA (28yr prison), Blue Bell ($19.35M), Jensen Farms (33 deaths)
+- US Foods Recall Process Overview published at /research/usfoods-recall-process (clean-room HTML, AI-digestible executive summary, ai-citation blockquotes)
+- Sysco Customer Recall Orientation Packet published at /research/sysco-recall-packet (same treatment + FAQPage JSON-LD)
+- "The Recall Notification Crisis" white paper (~6,500 words, 80+ citations) -- internal only, not published
+- Premium positioning white paper -- internal only
+- Key research data (corrected): B2B recall management market $4.32B growing to $8.23B by 2033; 6% consumer participation rate; first CPSA criminal prosecution (Gree, June 2025); EU GPSR mandates direct consumer notification
 
-### Dashboard (/dashboard)
-- Dark theme GEO score gauge, trend chart, page navigation cards
-- Fixed Vercel proxy routing with `?path=` query param pattern
-- Real-time score computation; baseline Mar 28=18, Mar 29=28, Mar 30=~42
+### Site & Infrastructure
 
-### Key Decisions
-- No MCP server (not enough data)
-- Domain stays on Squarespace for now (DNS cutover pending Robert's action)
+- Full site rebrand: navy/gold (#0b0b1a/#c8a951) → charcoal/cyan (#272727/#00afec); Raleway → Lato
+- Homepage pixel-matched to production (instantrecall.com):
+  - Solid dark header, sentence case headings, font-weight 400
+  - Icon color #00d49d, size 90x90px
+  - Video aspect-ratio:16/9 (replaced padding-bottom:56.25% hack)
+  - Carousels at 10000ms, solution labels ALL CAPS
+  - Footer: 4-column grid, removed dev-only links, added Cookie Settings + Back to Top
+- BTT_WebsiteHeader_v0005.mp4 (13MB) committed to public/video/ with static image fallback (fades to video after 2s)
+- HubSpot integration: Option 1 (branded) embed on homepage and /contact; global hs-script-loader in head; form rendering requires client-side JS
+- Vimeo video hero (314904191) and overview video embed (1152623274) on homepage
+- Testimonial section: single centered quote on cyan background
+- /regulatory-reporting is an alias for /cost-recovery (same handler)
+- /stop route exists in vercel.json but has no handler (dead route)
 - Vercel deployment protection removed (needed for public bot access)
-- Dashboard + geo-ledger are noindexed (internal tools)
+- 24-hour edge cache (s-maxage=86400) on all public pages; private cache for dashboard, crawl-stats, geo-ledger
+- Cache cleared on every pts (force redeploy)
+- NODE_OPTIONS=--max-old-space-size=16384 set in .bashrc and Windows env (setx)
 
-### Next Steps
+### Crawl Stats & Nightly Cron
+
+- crawl_log table in Supabase: bot, path, ts, ua, status, ip
+- 35 bot patterns detected in edge function index.ts (AI, search, social, generic)
+- /crawl-stats page: hourly chart, bot/path tables, live feed; fire-and-forget logging (no latency impact)
+- Nightly cron (api/nightly-refresh.js) runs 5am UTC via Vercel cron: force redeploys staging → production, polls up to 60s, warms all 28+ pages, updates site_freshness in Supabase
+- Env vars required: VERCEL_TOKEN and CRON_SECRET
+
+### Dashboard & Internal Tools
+
+- /dashboard: dark theme GEO score gauge, trend chart, page navigation cards, last 20 contact submissions with status badges
+- contact_submissions table in Supabase; /api/contact-submit edge endpoint with email validation; working form on /contact and homepage CTA
+- Aryah AI Best Practices doc (18 sections) published at /docs/ai-best-practices (internal, confidential)
+- Dashboard, crawl-stats, geo-ledger all noindexed
+
+### Access & Collaboration
+
+- Supabase project: dewbyvlbmkersxjrcknm
+- Supabase access token: sbp_c162819535b3ea4b12ff92eedb3fa116b67d75a8
+- Vercel project: prj_htbgIKYkHEwa0WNdPKVQ4sVy3iiE, team: team_7PGzhT9wecJMLFkOWDGGxptE
+- Working URL: https://ir-zeta.vercel.app
+- Production site (Squarespace): https://www.instantrecall.com -- do NOT deploy there
+- Vercel production branch is main -- all changes must be merged to main for deployment
+- rgallast (Jordan Fallavollita) added as write collaborator; branch protection on main requires 1 PR approval
+- Old GH_TOKEN (ghp_Vf4U8Z...) was exposed in IR repo package.json git history -- rotated, gildi .env updated
+- Supabase deploy fix: pass token as env var (`SUPABASE_ACCESS_TOKEN=sbp_... npx supabase functions deploy`) -- .env was overriding CLI login
+- DNS cutover from Squarespace to Vercel pending Robert's action
+
+### TinaCMS (In Progress)
+
+- Packages installed: tinacms 3.7.1, @tinacms/cli 2.2.1
+- Robert has Tina Cloud account; repo: rjmjr1962831/ir (private)
+- IR uses clean-room HTML -- Tina will provide admin panel form editor, not inline visual editing
+- Setup incomplete: tina/config.ts, content schemas, admin page still needed
+
+### Pending Items
+
 - DNS cutover from Squarespace to Vercel
-- Finish /research section (3 white papers as clean-room HTML)
-- Improve citation readiness (20 -> target 50+)
+- Complete TinaCMS setup (config, schemas, admin page)
+- Enrich service pages with citable data (incident-response, cost-recovery, technology-prowess, industry-standard -- score 3-4/10)
+- Add source hyperlinks to research citations; improve citation readiness (20 → target 50+)
 - Add freshness signals (blog, news feed, dated content)
 - Build authority (backlinks, external mentions, partnerships)
-- Deploy mcp.json and ai-content-index.json to fix remaining FAIL signals
-
----
-
-## 13. Commands Reference
-
-### PK (Load Project Knowledge)
-When Robert says `pk` or `pk ir`: query `geo_ledger_entries`, `geo_signal_status`, and `geo_score_dimensions` from Supabase (project dewbyvlbmkersxjrcknm). Answer the 6 verification questions.
-
-### LOG (Record Work to Ledger)
-After every work session, INSERT a new entry into `geo_ledger_entries`. Update `geo_signal_status` and `geo_score_dimensions` if any signal or dimension changed. INSERT into `geo_score_history` if composite score changed.
-
-### PTS (Push to Staging)
-`git add . && git commit && git push origin staging`
-
-### PTM (Push to Main)
-`npm run merge-to-main` only. Never touch main without ptm.
-
-### T1 (Session Takeaways)
-Write key findings/decisions from the current session to `docs/takeaways/`.
-
----
-
-*This document is the Single Source of Truth for the IR (Instant Recall) project. It is maintained on the staging branch only and never pushed to main.*
+- Add ~50 ticker items to match production (currently 14)
+- HTTP/3 signal (Vercel platform limitation -- may not be actionable)
+- Investigate geo-ledger TTFB (1.075s, DB fetch overhead)
+- Consider CookieYes integration for GDPR compliance
+- Complete pixel-matching for /solution page and remaining subpages

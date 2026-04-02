@@ -259,7 +259,7 @@ export function renderPage(opts: LayoutOptions): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${opts.title}</title>
   <meta name="description" content="${opts.description}">
-  ${(opts.noIndex || NOINDEX_PATHS.some(p => opts.path.startsWith(p))) ? '<meta name="robots" content="noindex, nofollow">' : ''}
+  ${(opts.noIndex || NOINDEX_PATHS.some(p => opts.path.startsWith(p))) ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow">'}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   ${lastModMeta}
   <link rel="canonical" href="${canonical}">
